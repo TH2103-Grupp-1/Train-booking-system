@@ -1,0 +1,46 @@
+Table TrainStations as TS {
+  Id int [pk, increment]
+  LocationSignature nvarchar (10)
+  AdvertisedLocationName nvarchar(50)
+  WGS84 nvarchar (100)
+  
+}
+
+Table Trains as T{
+  Id int [pk, increment]
+  Name nvarchar (50)
+  
+}
+
+Ref: T.Id < UB.TrainId
+
+Table Users as U {
+  Id int [pk, increment]
+  Email nvarchar (100)
+  Phone nvarchar (40)
+}
+
+Ref: U.Id < UB.UserId
+
+Table UserBookings as UB {
+  Id int [pk, increment]
+  UserId int
+  TrainId int
+  Cost decimal
+  BookingDate datetime
+  
+}
+
+Table TimeTable as TT {
+  Id int [pk, increment]
+  DepartureStationId int
+  ArrivalStationId int
+  TrainId int
+  DepartureTime datetime
+  ArrivalTime datetime
+}
+
+Ref: TS.Id - TT.DepartureStationId
+Ref: TS.Id - TT.ArrivalStationId
+Ref: T.Id - TT.TrainId
+
