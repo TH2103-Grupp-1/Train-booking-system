@@ -3,7 +3,7 @@ name: Build and Test Angular
 on:
   push:
     paths:
-      - './frontend'
+      - 'frontend/**'
 
 jobs:
   build:
