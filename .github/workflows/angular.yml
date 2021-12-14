@@ -1,11 +1,12 @@
-name: Angular GitHub CI
+name: Build and Test Angular
+
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
-  ci:
+  build:
+    name: Build & Test
     runs-on: ubuntu-latest
 
     strategy:
@@ -15,34 +16,27 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+            
+      - name: Setup Node.js environment
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Cache node modules
-        id: cache-nodemodules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          # caching node_modules
-          path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
       - name: Install Dependencies
-        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
-        run: |
-          npm ci
-      - name: Build
-        run: |
-          npm run build
-      - name: Lint
-        run: |
-          npm run lint
-      - name: Test
-        run: |
-          npm run test
+        run: npm ci
+          
+      - name: Run Unit Tests
+        run: npm run ci:test
+
+      - name: Clean Distribution Directory
+        run: npm run ci:clean
+        
+      - name: Build Application
+        run: npm run ci:build
