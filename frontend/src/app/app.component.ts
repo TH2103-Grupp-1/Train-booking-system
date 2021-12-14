@@ -11,10 +11,7 @@ export class AppComponent {
   title = 'train-booking-system';
 
 
-  constructor(public translate: LocalizationService) {
-    translate.use();
-    this.translate.loadLanguages();
-  }
+
 
   // constructor(localization: LocalizationService) {
   //   localization.use();

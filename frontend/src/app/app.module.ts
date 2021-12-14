@@ -10,6 +10,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -20,7 +23,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     StationsComponent,
-    NavbarComponent
+    NavbarComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatCardModule,
     MatButtonModule,
     HttpClientModule,
+    MatFormFieldModule,
+    MatSelectModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
