@@ -1,2 +1,18 @@
-<H2>Hello World!</H2>
+<!-- <div>
+<H2>{{'Hello World!' | translate}}</H2>
+<select #langselect></select>
+<option *ngFor="let lang of translate.languages" value="lang"></option>
+</div> -->
 
+<mat-card>
+  <mat-card-title>{{'Language' | translate}}</mat-card-title>
+  <mat-card-actions>
+    <button (click)="translate.setLanguage('en')" mat-button>{{'English' | translate}}</button>
+    <button (click)="translate.setLanguage('sv')" mat-button>{{'Swedish' | translate}}</button>
+  </mat-card-actions>
+</mat-card>
+
+
+<!-- Test routing -->
+<button mat-button><a routerLink="/stations" routerLinkActive="active">Stations</a></button>
+<router-outlet></router-outlet>
