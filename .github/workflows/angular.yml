@@ -2,7 +2,8 @@ name: Build and Test Angular
 
 on:
   push:
-    branches: [main]
+    paths:
+      - './frontend'
 
 jobs:
   build:
