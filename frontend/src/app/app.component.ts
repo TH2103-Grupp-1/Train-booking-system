@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { LocalizationService } from './services/localization.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'train-booking-system';
+
+
+  constructor(public translate: LocalizationService) {
+    translate.use();
+    this.translate.loadLanguages();
+  }
+
+  // constructor(localization: LocalizationService) {
+  //   localization.use();
+
+  // }
+
 }
