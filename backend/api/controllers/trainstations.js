@@ -3,13 +3,17 @@ import Database from "better-sqlite3";
 const db = new Database("../database.db");
 
 export const createTrainStation = (req, res) => {
-  let advertisedLocationName = req.body.AdvertisedLocationName;
-  let locationSignature = req.body.LocationSignature;
-  let coordinates = req.body.Coordinates;
 
+  let trainStations = [];
+
+  console.log(trainStations);
+
+  trainStations = req.body;
   const insert = db.prepare("INSERT INTO TrainStations (AdvertisedLocationName, LocationSignature, Coordinates) VALUES(?,?,?)");
-  insert.run(advertisedLocationName, locationSignature, coordinates);
-
+  
+  for (let trainStation of trainStations) {
+    insert.run(trainStation.AdvertisedLocationName, trainStation.LocationSignature, trainStation.Geometry.WGS84);
+  }
   return res.send("data inserted");
 }
 
