@@ -9,7 +9,6 @@ import { LocalizationService } from '../services/localization.service';
 export class NavbarComponent implements OnInit {
 
   constructor(public translate: LocalizationService) {
-    translate.use();
     this.translate.loadLanguages();
   }
 
