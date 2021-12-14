@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "ci:clean": "rimraf ./dist",
-    "ci:test": "ng test --watch=false --browsers=ChromeHeadlessCustom --code-coverage",
+    "ci:test": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
     "ci:build": "ng build --prod"
   },
   "private": true,
