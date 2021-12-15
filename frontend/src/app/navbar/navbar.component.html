@@ -1,26 +1,34 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">{{'Train Booking'| translate }} </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/" routerLinkActive="active">{{'Home' | translate}}</a>
-      <a class="nav-item nav-link" routerLink="/stations" routerLinkActive="active">{{'Stations' | translate}}</a>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{'Language' | translate}}
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" (click)="translate.setLanguage('en')">{{'English' | translate}}</a>
-          <a class="dropdown-item" (click)="translate.setLanguage('sv')">{{'Swedish' | translate}}</a>
-        </div>
-      </li>
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      {{'Train Booking'| translate }}
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ml-sm-5">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">{{'Home' | translate}}</a>
+        </li>
+        <li class="nav-item ml-sm-5">
+          <a class="nav-link" routerLink="/stations" routerLinkActive="active">{{'Stations' | translate}}</a>
+        </li>
+        <li class="nav-item dropdown ml-sm-5">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{'Language' | translate}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" (click)="translate.setLanguage('en')">{{'English' | translate}}</a>
+            <a class="dropdown-item" (click)="translate.setLanguage('sv')">{{'Swedish' | translate}}</a>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="{{'Search' | translate}}" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{{'Search' | translate}}</button>
+      </form>
+      <button class="btn btn-outline-primary ml-sm-2" type="submit">{{'Login' | translate}}</button>
     </div>
   </div>
 </nav>
-
-
-
-<!-- Test routing -->
-<!-- <button mat-button><a routerLink="/stations" routerLinkActive="active">Stations</a></button> -->
