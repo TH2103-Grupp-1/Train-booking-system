@@ -11,6 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from '../app.module';
+import { Notyf } from 'notyf';
+import { notyfFactory } from '../shared/guards/notyf.token';
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { HttpLoaderFactory } from '../app.module';
       }
     })
   ],
+  providers: [{ provide: Notyf, useFactory: notyfFactory }],
   exports: [
     LoginComponent,
     RegisterComponent
