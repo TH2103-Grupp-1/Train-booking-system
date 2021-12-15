@@ -5,6 +5,14 @@
   "Swedish": "Svenska",
   "Landing page": "Landningssida",
   "Stations": "Stationer",
-  "Train Booking": "Tågbokning"
+  "Train Booking": "Tågbokning",
+  "Search": "Sök",
+  "Login": "Logga in",
+  "Register": "Registrera",
+  "Password": "Lösenord",
+  "Don't have an account?": "Inget konto?",
+  "Already have an account?": "Har du redan ett konto?",
+  "Phone number": "Telefonnummer",
+  "Include area code": "Inkludera landsnummer"
 }
 
