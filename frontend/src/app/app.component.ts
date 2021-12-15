@@ -10,12 +10,9 @@ import { LocalizationService } from './services/localization.service';
 export class AppComponent {
   title = 'train-booking-system';
 
+  constructor(localization: LocalizationService) {
+    localization.use();
 
-
-
-  // constructor(localization: LocalizationService) {
-  //   localization.use();
-
-  // }
+  }
 
 }
