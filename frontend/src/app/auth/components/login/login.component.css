@@ -1,32 +1,7 @@
-/* Old Layout */
-/* .login-container {
-  display: flex;
-  justify-content: center;
-
-}
-
-.login-title {
-  padding-top: 10px;
-  display: flex;
-  justify-content: center;
-}
-
-.container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  padding-bottom: 20px;
-}
-
-button {
-  padding-top: 5px;
-  padding-bottom: 5px;
-} */
-
-/* New Layout */
-
 .row {
   text-align: center;
+}
+
+.card {
+  background-color: #f8f9fa !important;
 }
