@@ -36,3 +36,11 @@ export const getAllBookings = (req, res) => {
 
   res.send(result);
 }
+
+export const getBookingById = (req, res) => {
+  let preparedStatement = db.prepare("SELECT * FROM Bookings WHERE id = ?");
+
+  let booking = preparedStatement.get(req.params.id);
+
+  res.send(booking);
+}
