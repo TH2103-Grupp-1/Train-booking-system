@@ -26,3 +26,7 @@ button {
 } */
 
 /* New Layout */
+
+.row {
+  text-align: center;
+}
