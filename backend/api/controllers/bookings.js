@@ -28,3 +28,11 @@ export const createBooking = (req, res) => {
 
   res.send("Data inserted!");
 }
+
+export const getAllBookings = (req, res) => {
+  let preparedStatement = db.prepare("SELECT * FROM Bookings");
+
+  let result = preparedStatement.all();
+
+  res.send(result);
+}
