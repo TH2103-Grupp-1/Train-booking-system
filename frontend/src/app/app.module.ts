@@ -15,6 +15,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthModule } from './auth/auth.module';
+import { Notyf } from 'notyf';
+import { notyfFactory } from './shared/guards/notyf.token';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -48,7 +50,9 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [],
+  providers: [
+    { provide: Notyf, useFactory: notyfFactory }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

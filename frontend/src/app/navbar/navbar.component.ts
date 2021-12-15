@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { LocalizationService } from '../services/localization.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { LocalizationService } from '../services/localization.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public translate: LocalizationService) {
+  constructor(public translate: LocalizationService, public authService: AuthService) {
 
   }
 
