@@ -7,14 +7,22 @@ const algorithm = "aes-256-cbc"
 const secretKey = "LooOLisaISIXCoO02l12idxlcozPOIso"
 const iv = crypto.randomBytes(16);
 
-const encrypt = (text) => {
+const encrypt = (password) => {
   const cipher = crypto.createCipheriv(algorithm, secretKey, iv);
 
-  let encrypted = cipher.update(text, 'utf-8', 'hex');
+  let encrypted = cipher.update(password, 'utf-8', 'hex');
 
   encrypted += cipher.final('hex');
 
   return encrypted;
+}
+
+const decrypt = (password) => {
+  let decipher = crypto.createDecipheriv('aes-256-cbc', secretKey, iv); 
+  let decrypted = decipher.update(password, 'hex', 'utf-8');
+  decrypted += decipher.final('utf-8');
+
+  return decrypted;
 }
 
 export const createUser = (req, res) => {
@@ -32,5 +40,4 @@ export const createUser = (req, res) => {
   preparedStatement.run(username, firstName, lastName, email, phoneNumber, encryptedPassword);
 
   res.send("Data inserted!")
-
 }
