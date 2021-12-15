@@ -10,9 +10,11 @@ import { LocalizationService } from './services/localization.service';
 export class AppComponent {
   title = 'train-booking-system';
 
-  constructor(localization: LocalizationService, public translate: TranslateService) {
+  constructor(localization: LocalizationService, translate: TranslateService) {
     localization.use();
+    translate.addLangs(['en', 'sv'])
     translate.setDefaultLang('en');
+    translate.use('en');
   }
 
 }
