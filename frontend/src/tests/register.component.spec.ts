@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
-import { RegisterComponent } from './register.component';
+import { RegisterComponent } from '../app/auth/components/register/register.component';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -8,7 +9,8 @@ describe('RegisterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ]
+      declarations: [ RegisterComponent ],
+      imports: [TranslateModule.forRoot()]
     })
     .compileComponents();
   });

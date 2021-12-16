@@ -19,6 +19,7 @@ import { Notyf } from 'notyf';
 import { notyfFactory } from './shared/guards/notyf.token';
 
 
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/translations/', '.json');
 }
@@ -28,7 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     StationsComponent,
     NavbarComponent,
-    LandingPageComponent
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,

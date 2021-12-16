@@ -12,7 +12,6 @@ export class AppComponent {
 
   constructor(localization: LocalizationService) {
     localization.use();
-
   }
 
 }
