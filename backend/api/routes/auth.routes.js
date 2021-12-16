@@ -17,12 +17,14 @@ router.post('/login', async (req, res) => {
         res.status(400).send("There is no registered user with that email.");
     }
     else {
+        //As the bcrypt function is named; it compares the input with the password in the database. 
+        //"validPassword" is a boolean. If it's a match, then the returned value is true.
         const validPassword = await bcrypt.compare(password, user.password);
 
         if (validPassword) {
             const token = jwt.sign({userid: user.userid}, "secretKey", { expiresIn: '1h' });
             res.header('auth-token', token)
-            res.send(token)
+            res.send(token);
         }
         else {
             res.send("The password was incorrect.")
