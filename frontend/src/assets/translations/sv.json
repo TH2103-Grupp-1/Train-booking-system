@@ -25,7 +25,10 @@
   "My trip": "Min resa",
   "You need to be logged in to view this page": "Du behöver vara inloggad för att se denna sida",
   "Logged in": "Inloggad",
-  "Logged out": "Utloggad"
+  "Logged out": "Utloggad",
+  "Log out" : "Logga ut",
+  "Cannot reach server, check your internet connection": "Kan inte nå servern, kolla din internetanslutning.",
+  "Cannot reach server, try again later": "Kan inte nå servern, försök igen senare."
 
 }
 

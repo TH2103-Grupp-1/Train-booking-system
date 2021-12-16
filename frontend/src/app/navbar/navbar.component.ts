@@ -26,10 +26,11 @@ export class NavbarComponent implements OnInit {
 
   isLoggedIn() : boolean {
     let user = this.authService.currentUser;
-    if(user === null || undefined) {
-    return false;
+    if(user !== null) {
+      if(Object.keys(user).length !== 0) {
+        return true;
     }
-    return true;
+    } return false;
   }
 
   logout() {
