@@ -6,13 +6,13 @@ const router = express.Router();
 router.post('/login', (req, res) => {
     const user = {
         id: 1,
-        username: 'liam',
         email: 'liam@gmail.com'
     }
 
     jwt.sign({user}, 'secretkey', { expiresIn: '1h' } ,(err, token) => {
+        user.token = token;
         res.json({
-            token
+            user
         });
     });
 });
