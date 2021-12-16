@@ -1,14 +1,17 @@
 
 .input-textbox {
-  margin: 20px;
+  margin: 5px;
 }
 
-.travel-text {
+.travel-text,
+.safety-heading {
   text-align: center;
   font-size: large;
   margin-top: 40px;
   color: white;
 }
+
+
 
 .safety-message {
   text-align: center;
@@ -69,10 +72,25 @@
 #banner {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://wallup.net/wp-content/uploads/2017/11/17/364154-city-cityscape-lights-city_lights-blurred.jpg");
   /* Set a specific height */
-  height: 50%;
+  height: 80%;
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
 }
+
+@media only screen and (max-width: 320px) {
+   .material-icons {
+     font-size: 30px
+   }
+   .icon-text {
+     font-size: 12px;
+   }
+
+   .col {
+    padding-left: 35px;
+   }
+
+}
+
