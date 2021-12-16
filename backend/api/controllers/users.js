@@ -1,29 +1,6 @@
-import crypto from "crypto";
 import Database from "better-sqlite3";
-
+import {encrypt} from "../controllers/crypto.js"
 let db = new Database("../database.db");
-
-const algorithm = "aes-256-cbc"
-const secretKey = "LooOLisaISIXCoO02l12idxlcozPOIso"
-const iv = crypto.randomBytes(16);
-
-const encrypt = (password) => {
-  const cipher = crypto.createCipheriv(algorithm, secretKey, iv);
-
-  let encrypted = cipher.update(password, 'utf-8', 'hex');
-
-  encrypted += cipher.final('hex');
-
-  return encrypted;
-}
-
-const decrypt = (password) => {
-  let decipher = crypto.createDecipheriv('aes-256-cbc', secretKey, iv); 
-  let decrypted = decipher.update(password, 'hex', 'utf-8');
-  decrypted += decipher.final('utf-8');
-
-  return decrypted;
-}
 
 export const createUser = (req, res) => {
   let username = req.body.username;
