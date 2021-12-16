@@ -1,33 +1,37 @@
-
-<div class="container card">
-  <h1 class="login-title">{{'Login' | translate }}</h1>
-  <form  [formGroup]="loginForm">
-
-<div class="login-container">
-  <mat-form-field appearance="outline">
-    <mat-label>{{'Email' | translate }}</mat-label>
-    <input matInput placeholder="pat@example.com" formControlName="email" required>
-    <mat-error *ngIf="loginForm.value.email.invalid">{{getErrorMessage()}}</mat-error>
-  </mat-form-field>
-</div>
-<div class="login-container">
-  <mat-form-field appearance="outline">
-    <mat-label>{{'Password' | translate }}</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
-  </mat-form-field>
-</div>
-<div class="login-container">
-  <button mat-flat-button color="primary" type="submit" (click)="onSubmit()" [disabled]="!loginForm.valid">{{'Login' | translate }}</button>
-</div>
-<br>
-  <div class="login-container">
-    <p>{{"Don't have an account?" | translate }}</p>
+<div class="container h-75">
+  <div class="row align-items-center h-75">
+    <div class="card card-body">
+      <div class="row d-flex justify-content-center">
+        <h1>{{'Login' | translate }}</h1>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <form  [formGroup]="loginForm">
+          <div class="row">
+            <div class="col">
+              <mat-form-field appearance="outline">
+                <mat-label>{{'Email' | translate }}</mat-label>
+                <input matInput placeholder="pat@example.com" formControlName="email" required>
+                <mat-error *ngIf="loginForm.value.email.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field appearance="outline">
+                <mat-label>{{'Password' | translate }}</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <button mat-flat-button color="primary" type="submit" (click)="onSubmit()" [disabled]="!loginForm.valid">{{'Login' | translate }}</button>
+          </div>
+          <br>
+            <p>{{"Don't have an account?" | translate }}</p>
+            <button mat-stroked-button type="button" routerLink="/register">{{'Register' | translate }}</button>
+        </form>
+      </div>
+    </div>
   </div>
-  <div class="login-container">
-  <button mat-stroked-button type="button" routerLink="/register">{{'Register' | translate }}</button>
-</div>
-</form>
 </div>
