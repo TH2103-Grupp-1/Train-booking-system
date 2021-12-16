@@ -1,10 +1,10 @@
 import express from "express";
 import jwt from "jsonwebtoken";
-import { decrypt } from "../controllers/crypto.js";
-
+import bcrypt from "bcryptjs";
+import { db } from "../index.js";
 const router = express.Router();
 
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
 
     let email = req.body.email;
     let password = req.body.password;
@@ -17,22 +17,17 @@ router.post('/login', (req, res) => {
         res.status(400).send("There is no registered user with that email.");
     }
     else {
-        let decryptedPassword = decrypt(password);
+        const validPassword = await bcrypt.compare(password, user.password);
 
-        if (decryptedPassword === user.password) {
-            res.send("Credentials were successfully validated!");
+        if (validPassword) {
+            const token = jwt.sign({userid: user.userid}, "secretKey", { expiresIn: '1h' });
+            res.header('auth-token', token)
+            res.send(token)
         }
         else {
             res.send("The password was incorrect.")
         }
     }
-
-    jwt.sign({user}, 'secretkey', { expiresIn: '1h' } ,(err, token) => {
-        user.token = token;
-        res.json({
-            user
-        });
-    });
 });
 
 export default router;
