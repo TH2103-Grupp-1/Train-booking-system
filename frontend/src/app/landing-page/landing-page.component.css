@@ -1,14 +1,25 @@
+
+.input-textbox {
+  margin: 20px;
+}
+
 .travel-text {
   text-align: center;
-  font-size: 20px;
-  margin-bottom: 30px;
+  font-size: large;
+  margin-top: 40px;
+  color: white;
 }
 
-.container{
-  margin-top: 50px;
+.safety-message {
+  text-align: center;
+  margin-bottom: 40px;
+  color: white;
+  max-width: 700px;
 }
 
-.container h2, .info-text {
+
+.container h2,
+.info-text {
   text-align: center;
 }
 
@@ -32,10 +43,10 @@
   color: #aaa;
 }
 
+
 .border-bottom {
   text-align: center;
 }
-
 
 .material-icons {
   font-size: 48px;
@@ -43,6 +54,25 @@
 
 }
 
+.container {
+  margin-top: 20px;
+}
+
+.container a {
+  color: #000;
+}
+
 .icon-text {
   font-size: 12px;
+}
+
+#banner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://wallup.net/wp-content/uploads/2017/11/17/364154-city-cityscape-lights-city_lights-blurred.jpg");
+  /* Set a specific height */
+  height: 50%;
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
