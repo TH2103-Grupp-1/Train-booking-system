@@ -1,0 +1,25 @@
+
+
+.wrapper{
+  display:flex;
+  flex-direction:column;
+  /* width:80%; */
+  min-height: 250px;
+  justify-content: center;
+  align-items: center;
+  background-color:#F4F4EE; 
+}
+.depature-info{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height:75px;
+ background-color: #fff;
+ margin-top: 8px;
+}
+
+.box-info{
+  display: flex;
+  flex-direction:column;
+  
+}
