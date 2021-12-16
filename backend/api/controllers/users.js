@@ -1,5 +1,5 @@
 import Database from "better-sqlite3";
-import {encrypt} from "../controllers/crypto.js"
+import {encrypt} from "./encryption.js"
 let db = new Database("../database.db");
 
 export const createUser = async(req, res) => {
@@ -11,7 +11,7 @@ export const createUser = async(req, res) => {
   let password = req.body.password;
 
   let encryptedPassword = await encrypt(password);
-  
+
   let preparedStatement = db.prepare("INSERT INTO Users (username, firstName, lastName, email, phoneNumber, password) VALUES(?,?,?,?,?,?)");
 
   preparedStatement.run(username, firstName, lastName, email, phoneNumber, encryptedPassword);
