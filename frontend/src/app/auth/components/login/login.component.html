@@ -8,14 +8,14 @@
         <form  [formGroup]="loginForm">
           <div class="row">
             <div class="col">
-              <mat-form-field appearance="outline">
+              <mat-form-field class="input-field" appearance="outline">
                 <mat-label>{{'Email' | translate }}</mat-label>
                 <input matInput placeholder="pat@example.com" formControlName="email" required>
                 <mat-error *ngIf="loginForm.value.email.invalid">{{getErrorMessage()}}</mat-error>
               </mat-form-field>
             </div>
             <div class="col">
-              <mat-form-field appearance="outline">
+              <mat-form-field class="input-field" appearance="outline">
                 <mat-label>{{'Password' | translate }}</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password">
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
