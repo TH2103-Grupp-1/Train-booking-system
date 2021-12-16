@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Notyf } from 'notyf';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
@@ -9,7 +10,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router, private authService: AuthService, private notyf: Notyf) { }
+  constructor(private router: Router, private authService: AuthService, private notyf: Notyf, public translate: TranslateService) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -23,7 +24,7 @@ export class AuthGuard implements CanActivate {
     }
     //  return true;
     // not logged in so redirect to login page with the return url
-    this.notyf.error("Du behöver vara inloggad för att se denna sida"); // Todo: Translate
+    this.notyf.error(this.translate.instant("You need to be logged in to view this page"));
     this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
     return false;
   }

@@ -22,7 +22,10 @@
   "Last minute": "Sista minuten",
   "Traffic info": "Trafikinfo",
   "Commuter tickets & annual passes": "Pendlarbiljetter & årskort",
-  "My trip": "Min resa"
+  "My trip": "Min resa",
+  "You need to be logged in to view this page": "Du behöver vara inloggad för att se denna sida",
+  "Logged in": "Inloggad",
+  "Logged out": "Utloggad"
 
 }
 
