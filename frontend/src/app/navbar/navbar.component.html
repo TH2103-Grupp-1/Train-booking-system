@@ -20,11 +20,11 @@
             <span id="country-initials"></span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" (click)="translate.setLanguage('en')" (click)="setSelection('en')">
+            <a class="dropdown-item" (click)="setLanguage('en')">
               <img class="flag-icon" src="/assets/images/flag_icon_en.png" alt="English">
               {{'English' | translate}}
             </a>
-            <a class="dropdown-item" (click)="translate.setLanguage('sv')" (click)="setSelection('sv')">
+            <a class="dropdown-item" (click)="setLanguage('sv')">
               <img class="flag-icon" src="/assets/images/flag_icon_sv.png" alt="Svenska">
               {{'Swedish' | translate}}
             </a>

@@ -18,6 +18,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.translate.loadLanguages();
     this.isLoggedIn();
+    let currentLanguage = localStorage.getItem("language");
+    if (currentLanguage !== null) {
+      this.setLanguage(currentLanguage);
+    }
   }
 
   isLoggedIn() : boolean {
@@ -33,7 +37,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 
-  setSelection(selected: string) {
+  setLanguageIcon(selected: string) {
     const img = document.getElementById('flag-i') as HTMLImageElement;
     const initials = document.getElementById('country-initials') as HTMLSpanElement;
 
@@ -46,7 +50,11 @@ export class NavbarComponent implements OnInit {
       img.src = "/assets/images/flag_icon_sv.png"
       initials.innerHTML = "SV";
     }
+  }
 
+  setLanguage(language: string) {
+    this.translate.setLanguage(language);
+    this.setLanguageIcon(language);
   }
 
 }
