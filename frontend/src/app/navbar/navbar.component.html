@@ -16,11 +16,18 @@
         </li>
         <li class="nav-item dropdown ml-sm-5">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{'Language' | translate}}
+            <img class="flag-icon" id="flag-i" src="" alt="Flag icon">
+            <span id="country-initials"></span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" (click)="translate.setLanguage('en')">{{'English' | translate}}</a>
-            <a class="dropdown-item" (click)="translate.setLanguage('sv')">{{'Swedish' | translate}}</a>
+            <a class="dropdown-item" (click)="translate.setLanguage('en')" (click)="setSelection('en')">
+              <img class="flag-icon" src="/assets/images/flag_icon_en.png" alt="English">
+              {{'English' | translate}}
+            </a>
+            <a class="dropdown-item" (click)="translate.setLanguage('sv')" (click)="setSelection('sv')">
+              <img class="flag-icon" src="/assets/images/flag_icon_sv.png" alt="Svenska">
+              {{'Swedish' | translate}}
+            </a>
           </div>
         </li>
       </ul>

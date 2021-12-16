@@ -33,4 +33,20 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 
+  setSelection(selected: string) {
+    const img = document.getElementById('flag-i') as HTMLImageElement;
+    const initials = document.getElementById('country-initials') as HTMLSpanElement;
+
+    if (selected === 'en') {
+      img.src = "/assets/images/flag_icon_en.png";
+      initials.innerHTML = "EN";
+    }
+
+    if (selected === 'sv') {
+      img.src = "/assets/images/flag_icon_sv.png"
+      initials.innerHTML = "SV";
+    }
+
+  }
+
 }
