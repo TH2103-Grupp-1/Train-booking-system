@@ -1,0 +1,17 @@
+.col-md-8 h1 {
+    margin-top: 50px
+}
+.col-md-8{
+    padding-left: 0px;
+}
+.col-md-8 h2 {
+    margin-top: 40px;
+}
+.travel-info {
+    padding-left: 0px;
+}
+
+.inner-container {
+    padding: 5px;
+    background-color: lightgrey;
+}

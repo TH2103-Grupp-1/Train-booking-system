@@ -18,6 +18,7 @@ import { AuthModule } from './auth/auth.module';
 import { Notyf } from 'notyf';
 import { notyfFactory } from './shared/guards/notyf.token';
 import { ErrorInterceptor } from './shared/guards/interceptors/error-interceptor';
+import { AccountPageComponent } from './account-page/account-page.component';
 
 
 
@@ -31,6 +32,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     StationsComponent,
     NavbarComponent,
     LandingPageComponent,
+    AccountPageComponent,
   ],
   imports: [
     BrowserModule,
