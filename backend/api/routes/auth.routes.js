@@ -1,20 +1,35 @@
 import express from "express";
-import jwt from "jsonwebtoken"
-
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+import { db } from "../index.js";
 const router = express.Router();
 
-router.post('/login', (req, res) => {
-    const user = {
-        id: 1,
-        email: 'liam@gmail.com'
-    }
+router.post('/login', async (req, res) => {
 
-    jwt.sign({user}, 'secretkey', { expiresIn: '1h' } ,(err, token) => {
-        user.token = token;
-        res.json({
-            user
-        });
-    });
+    let email = req.body.email;
+    let password = req.body.password;
+
+    const preparedStatement = db.prepare("SELECT * FROM Users WHERE email = ?")
+
+    const user = preparedStatement.get(email);
+
+    if (!user) {
+        res.status(400).send("There is no registered user with that email.");
+    }
+    else {
+        //As the bcrypt function is named; it compares the input with the password in the database. 
+        //"validPassword" is a boolean. If it's a match, then the returned value is true.
+        const validPassword = await bcrypt.compare(password, user.password);
+
+        if (validPassword) {
+            const token = jwt.sign({userid: user.userid}, "secretKey", { expiresIn: '1h' });
+            res.header('auth-token', token)
+            res.send(token);
+        }
+        else {
+            res.send("The password was incorrect.")
+        }
+    }
 });
 
 export default router;
