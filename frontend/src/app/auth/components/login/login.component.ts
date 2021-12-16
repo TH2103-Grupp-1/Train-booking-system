@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
+    const result = this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
     .pipe(first())
     .subscribe(
       data => {
@@ -37,9 +37,12 @@ export class LoginComponent implements OnInit {
       },
       error => {
         this.notyf.error(this.translate.instant(error.message));
-      });;
+      },
+      );;
 
-
+      setTimeout(() => { // Prevent memory-leak
+        result.unsubscribe();
+      }, 5500);
   }
 
   getErrorMessage() {
