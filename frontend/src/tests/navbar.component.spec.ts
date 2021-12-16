@@ -2,9 +2,12 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { LocalizationService } from '../services/localization.service';
-
-import { NavbarComponent } from './navbar.component';
+import { LocalizationService } from '../app/services/localization.service';
+import { NavbarComponent } from '../app/navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { Notyf } from 'notyf';
+import { notyfFactory } from 'src/app/shared/guards/notyf.token';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -18,8 +21,8 @@ describe('NavbarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ NavbarComponent ],
-      providers: [LocalizationService],
-      imports: [TranslateModule.forRoot()]
+      providers: [LocalizationService, { provide: Notyf, useFactory: notyfFactory }],
+      imports: [TranslateModule.forRoot(), HttpClientModule, RouterTestingModule]
     })
     .compileComponents();
   });

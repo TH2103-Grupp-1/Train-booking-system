@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Notyf } from 'notyf';
 import { first } from 'rxjs';
 import { AuthService } from '../../../services/auth.service';
@@ -13,27 +14,29 @@ import { AuthService } from '../../../services/auth.service';
 export class LoginComponent implements OnInit {
   // email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
+  returnUrl: string | undefined;
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('')
   });
 
-  constructor(private authService: AuthService, private router: Router, public notyf: Notyf) { }
+  constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router, public notyf: Notyf, private translate: TranslateService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
     .pipe(first())
     .subscribe(
       data => {
-        this.notyf.success("Inloggad");
-        this.router.navigate(['/']);
+        console.log(data);
+        this.notyf.success(this.translate.instant('Logged in'));
+        this.router.navigate([this.returnUrl]);
       },
       error => {
-        console.log(error);
+        this.notyf.error(this.translate.instant(error.message));
       });;
 
 
