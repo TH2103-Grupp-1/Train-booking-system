@@ -7,7 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { AuthModule } from './auth/auth.module';
 import { Notyf } from 'notyf';
 import { notyfFactory } from './shared/guards/notyf.token';
+import { ErrorInterceptor } from './shared/guards/interceptors/error-interceptor';
 
 
 
@@ -52,7 +53,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [
-    { provide: Notyf, useFactory: notyfFactory }
+    { provide: Notyf, useFactory: notyfFactory },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
