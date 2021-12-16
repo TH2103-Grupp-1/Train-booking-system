@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { AuthModule } from './auth/auth.module';
 import { Notyf } from 'notyf';
 import { notyfFactory } from './shared/guards/notyf.token';
+import { DepartureComponent } from './departureSelection/departure/departure.component';
 
 
 
@@ -30,6 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     StationsComponent,
     NavbarComponent,
     LandingPageComponent,
+    DepartureComponent,
   ],
   imports: [
     BrowserModule,

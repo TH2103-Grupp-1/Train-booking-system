@@ -1,0 +1,58 @@
+.wrapper{
+  display:flex;
+  flex-direction:column;
+  min-height: 250px;
+  align-items: center; 
+  background-color:#F4F4EE; 
+}
+
+
+.choosen-cities-container{
+  display:flex;
+  justify-content: center;
+  margin-top: 4rem;
+  margin-bottom:3rem;
+  /* font-size:larger; */
+}
+.choosen-cities-container h2{
+  font-size:1.8rem;
+  font-weight:400;
+}
+
+.date-choosen-cities{
+display:flex;
+justify-content: space-between;
+}
+
+.info-tabel-header{
+  display:flex;
+  justify-content:space-between;
+  margin-top: 3rem;
+
+}
+
+.depature-info{
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+  align-items: center;
+  min-height:75px;
+ margin-top: 8px;
+ width:auto;
+}
+
+.box-info{
+  display: flex;
+  min-width: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height:75px;
+ background-color: #fff;
+ margin-top: 8px;
+}
+
+.box-holder{
+  display: flex;
+  width: 80%;
+}
