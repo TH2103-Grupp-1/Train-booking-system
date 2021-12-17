@@ -14,7 +14,7 @@ router.post('/login', async (req, res) => {
     let user = preparedStatement.get(email);
 
     if (!user) {
-        res.status(400).send("There is no registered user with that email.");
+        res.status(400).json({message: "There is no registered user with that email"});
     }
     else {
         //As the bcrypt function is named; it compares the input with the password in the database. 
@@ -30,7 +30,7 @@ router.post('/login', async (req, res) => {
             // res.send(token);
         }
         else {
-            res.send("The password was incorrect.")
+            res.status(400).json({message: "The password was incorrect"})
         }
     }
 });

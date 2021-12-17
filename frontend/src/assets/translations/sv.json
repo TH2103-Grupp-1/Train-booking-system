@@ -31,7 +31,9 @@
   "Cannot reach server, try again later": "Kan inte nå servern, försök igen senare.",
   "First name": "Namn",
   "Last name": "Efternamn",
-  "Registered, please login" : "Registrerad, vänligen logga in"
+  "Registered, please login" : "Registrerad, vänligen logga in",
+  "The password was incorrect" : "Felaktigt lösenord",
+  "There is no registered user with that email" : "Användaren existerar inte"
 
 }
 
