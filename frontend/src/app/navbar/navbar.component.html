@@ -8,10 +8,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item ml-sm-5">
+        <li class="nav-item ml-sm-4">
           <a class="nav-link" routerLink="/" routerLinkActive="active">{{'Home' | translate}}</a>
         </li>
-        <li class="nav-item ml-sm-5">
+        <li class="nav-item ml-sm-4">
           <a class="nav-link" routerLink="/stations" routerLinkActive="active">{{'Stations' | translate}}</a>
         </li>
       </ul>
@@ -31,7 +31,7 @@
           <button *ngIf="!isLoggedIn()" class="btn btn-outline-primary ml-sm-2" type="button" routerLink="/login">{{'Login' | translate}}</button>
         </div>
         <div *ngIf="isLoggedIn()" class="col">
-          <button class="btn btn-outline-primary ml-sm-2" type="button" (click)="logout()">{{'My pages' | translate}}</button>
+          <button class="btn btn-outline-primary ml-sm-2" type="button" routerLink="/stations" routerLinkActive="active">{{'My Pages' | translate}}</button>
         </div>
         <div class="col">
           <div class="dropdown">
@@ -52,8 +52,6 @@
           </div>
         </div>
       </div>
-
-
     </div>
   </div>
 </nav>
