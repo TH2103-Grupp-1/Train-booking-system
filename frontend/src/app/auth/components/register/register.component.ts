@@ -12,12 +12,13 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   hide = true;
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/), Validators.email, Validators.maxLength(100)]),
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
-    phoneNumber: new FormControl('', Validators.required),
+    phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^(\+|00)[1-9][0-9 \-\(\)\.]{7,32}$/)]),
     password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(100)])
   });
 
