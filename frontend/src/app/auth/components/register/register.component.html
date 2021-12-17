@@ -45,7 +45,7 @@
               </div>
             <br>
             <div class="row d-flex justify-content-center">
-              <button mat-flat-button color="primary" type="submit" (click)="onSubmit()" [disabled]="!registerForm.valid">{{'Register' | translate }}</button>
+              <button class="btn btn-success" color="primary" type="submit" (click)="onSubmit()" [disabled]="!registerForm.valid">{{'Register' | translate }}</button>
             </div>
             <br>
             <div class="row d-flex justify-content-center">
@@ -54,9 +54,8 @@
               </p>
             </div>
             <div class="row d-flex justify-content-center">
-              <button mat-stroked-button type="button" routerLink="/login">{{'Login' | translate }}</button>
+              <button class="btn btn-outline-secondary" type="button" routerLink="/login">{{'Login' | translate }}</button>
             </div>
-
           </form>
         </div>
       </div>
