@@ -1,6 +1,6 @@
 export interface Station {
-  id: number;
-  advertisedLocationName: string;
-  locationSignature: string;
-  coordinates: string;
+  Id: number;
+  AdvertisedLocationName: string;
+  LocationSignature: string;
+  Coordinates: string;
 }

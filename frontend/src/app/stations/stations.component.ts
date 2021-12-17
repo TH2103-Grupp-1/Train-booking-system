@@ -10,18 +10,14 @@ import { StationService } from '../services/station.service';
   styleUrls: ['./stations.component.css']
 })
 export class StationsComponent implements OnInit {
-  constructor(public stationService: StationService) {
-  }
 
-  stations: Station[] = [];
+  stations: Observable<Station[]>
+
+  constructor(public stationService: StationService) {
+    this.stations = this.stationService.getStations();
+  }
 
   ngOnInit(): void {
-    this.stationService.getStations().subscribe(s => {
-      this.stations = s
-    });
   }
 
-  // getStations(): void {
-  //   this.stations = this.stationService.getStations();
-  // }
 }
