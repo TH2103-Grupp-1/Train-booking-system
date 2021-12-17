@@ -1,11 +1,11 @@
 export interface User {
-  id: number;
-  email: string;
-  username: string;
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  token: string;
+  Id: number;
+  Email: string;
+  Username: string;
+  FirstName: string;
+  LastName: string;
+  PhoneNumber: string;
+  Token: string;
 }
 
 export interface RegisterDto {

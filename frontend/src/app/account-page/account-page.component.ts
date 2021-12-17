@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-account-page',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountPageComponent implements OnInit {
 
-  constructor() { }
+  name: string | undefined;
+
+  constructor(authService: AuthService) {
+    console.log(authService.currentUser);
+    let name = authService.currentUser?.FirstName;
+    console.log(name);
+    this.name = name;
+   }
 
   ngOnInit(): void {
   }
