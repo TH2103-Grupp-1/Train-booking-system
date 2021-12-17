@@ -56,3 +56,16 @@ justify-content: space-between;
   display: flex;
   width: 80%;
 }
+
+
+/*  CUSTOM PAGINATION DESIGN */
+
+.custom-pagination{
+  width: 600px;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-evenly;
+  align-items: center;
+  /* justify-items: end; */
+  /* flex-direction: column; */
+}
