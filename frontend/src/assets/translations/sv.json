@@ -28,7 +28,10 @@
   "Logged out": "Utloggad",
   "Log out" : "Logga ut",
   "Cannot reach server, check your internet connection": "Kan inte nå servern, kolla din internetanslutning.",
-  "Cannot reach server, try again later": "Kan inte nå servern, försök igen senare."
+  "Cannot reach server, try again later": "Kan inte nå servern, försök igen senare.",
+  "First name": "Namn",
+  "Last name": "Efternamn",
+  "Registered, please login" : "Registrerad, vänligen logga in"
 
 }
 
