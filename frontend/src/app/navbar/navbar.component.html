@@ -30,7 +30,7 @@
           <button *ngIf="!isLoggedIn()" class="btn btn-outline-primary ml-sm-2" type="button" routerLink="/login">{{'Login' | translate}} <i class="bi bi-person-fill"></i></button>
         </div>
         <div *ngIf="isLoggedIn()" class="col">
-          <button class="btn btn-outline-primary ml-sm-2" type="button" routerLink="/stations" routerLinkActive="active">{{'My Pages' | translate}} <i class="bi bi-person-lines-fill"></i></button>
+          <button class="btn btn-outline-primary ml-sm-2" type="button" routerLink="/account" routerLinkActive="active">{{'My Pages' | translate}} <i class="bi bi-person-lines-fill"></i></button>
         </div>
         <div class="col">
           <div class="dropdown">
