@@ -7,3 +7,7 @@ selected-language img {
   width: 20px;
   height: 20px;
 }
+
+.form-control {
+  width: 150px;
+}
