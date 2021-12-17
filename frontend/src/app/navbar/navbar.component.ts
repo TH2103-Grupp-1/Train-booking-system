@@ -17,7 +17,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.translate.loadLanguages();
-    this.isLoggedIn();
   }
 
   isLoggedIn() : boolean {

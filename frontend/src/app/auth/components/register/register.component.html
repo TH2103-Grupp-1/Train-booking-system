@@ -3,8 +3,7 @@
     <div class="card card-body">
       <h1>{{'Register' | translate }}</h1>
       <div class="row d-flex justify-content-center">
-        <form  [formGroup]="registerForm">
-            <div class="row">
+        <form [formGroup]="registerForm">
               <div class="col">
                 <mat-form-field appearance="outline">
                   <mat-label>{{'Email' | translate }}</mat-label>
@@ -14,8 +13,20 @@
               </div>
               <div class="col">
                 <mat-form-field appearance="outline">
+                  <mat-label>{{'First name' | translate }}</mat-label>
+                  <input matInput formControlName="firstName" required>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field appearance="outline">
+                  <mat-label>{{'Last name' | translate }}</mat-label>
+                  <input matInput formControlName="lastName" required>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field appearance="outline">
                   <mat-label>{{'Phone number' | translate }}</mat-label>
-                  <input matInput formControlName="phone" required>
+                  <input matInput formControlName="phoneNumber" required>
                   <mat-icon matSuffix>phone</mat-icon>
                   <mat-hint>{{'Include area code' | translate }}</mat-hint>
                 </mat-form-field>
@@ -29,10 +40,9 @@
                   </button>
                 </mat-form-field>
               </div>
-            </div>
             <br>
             <div class="row d-flex justify-content-center">
-              <button mat-flat-button color="primary" type="submit" (click)="onSubmit()" [disabled]="!registerForm.valid">{{'Register' | translate }}</button>
+              <button class="btn btn-success" color="primary" type="submit" (click)="onSubmit()" [disabled]="!registerForm.valid">{{'Register' | translate }}</button>
             </div>
             <br>
             <div class="row d-flex justify-content-center">
@@ -41,11 +51,9 @@
               </p>
             </div>
             <div class="row d-flex justify-content-center">
-              <button mat-stroked-button type="button" routerLink="/login">{{'Login' | translate }}</button>
+              <button class="btn btn-outline-secondary" type="button" routerLink="/login">{{'Login' | translate }}</button>
             </div>
-
           </form>
+        </div>
       </div>
     </div>
-  </div>
-</div>
