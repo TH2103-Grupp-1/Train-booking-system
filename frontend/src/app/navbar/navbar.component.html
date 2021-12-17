@@ -27,7 +27,6 @@
       </div>
       <div class="row">
         <div class="col">
-          <button *ngIf="isLoggedIn()" class="btn btn-outline-primary ml-sm-2" type="button" (click)="logout()">{{'Log out' | translate}}</button>
           <button *ngIf="!isLoggedIn()" class="btn btn-outline-primary ml-sm-2" type="button" routerLink="/login">{{'Login' | translate}}</button>
         </div>
         <div *ngIf="isLoggedIn()" class="col">
@@ -54,4 +53,5 @@
       </div>
     </div>
   </div>
+  <button *ngIf="isLoggedIn()" class="btn btn-outline-secondary ml-sm-2" type="button" (click)="logout()">{{'Log out' | translate}}</button>
 </nav>
