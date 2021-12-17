@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
   hide = true;
   returnUrl: string | undefined;
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('')
+    email: new FormControl('', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/),  Validators.email, Validators.maxLength(100)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(100)])
   });
 
   constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router, public notyf: Notyf, private translate: TranslateService) { }
@@ -27,19 +27,21 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
+    const result = this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
     .pipe(first())
     .subscribe(
       data => {
-        console.log(data);
         this.notyf.success(this.translate.instant('Logged in'));
         this.router.navigate([this.returnUrl]);
       },
       error => {
         this.notyf.error(this.translate.instant(error.message));
-      });;
+      },
+      );;
 
-
+      setTimeout(() => { // Prevent memory-leak
+        result.unsubscribe();
+      }, 5500);
   }
 
   getErrorMessage() {
