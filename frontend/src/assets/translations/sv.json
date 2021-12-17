@@ -32,7 +32,9 @@
   "First name": "Namn",
   "Last name": "Efternamn",
   "Registered, please login" : "Registrerad, vänligen logga in",
-  "My Pages": "Mina Sidor"
+  "My Pages": "Mina Sidor",
+  "The password was incorrect" : "Felaktigt lösenord",
+  "There is no registered user with that email" : "Användaren existerar inte"
 
 }
 
