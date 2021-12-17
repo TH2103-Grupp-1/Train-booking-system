@@ -1,11 +1,20 @@
 import { db } from "../index.js"
 
-function checkIfNull(arg) {
+function isInputNull(arg) {
   if (!arg) {
-    return false;
+    return true;
   }
   else {
+    return false;
+  }
+}
+
+function isInputTooLong(arg) {
+  if (arg.length > 30) {
     return true;
+  }
+  else {
+    return false;
   }
 }
 
@@ -20,8 +29,11 @@ export const validateRegisterUser = (req, res, next) => {
 
   const user = statement.get(email, phoneNumber);
 
-  if (!checkIfNull(email) || !checkIfNull(firstName) || !checkIfNull(lastName) || !checkIfNull(phoneNumber) || !checkIfNull(password)) {
+  if (isInputNull(email) || isInputNull(firstName) || isInputNull(lastName) || isInputNull(phoneNumber) || isInputNull(password)) {
     res.send("One or more inputs were empty.");
+  }
+  else if (isInputTooLong(email) || isInputTooLong(firstName) || isInputTooLong(lastName) || isInputTooLong(phoneNumber) || isInputTooLong(password)) {
+    res.send("One or more inputs were too long.");
   }
   else {
     if (user) {
