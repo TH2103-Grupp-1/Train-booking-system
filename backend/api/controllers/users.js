@@ -18,3 +18,29 @@ export const createUser = async(req, res) => {
 
   res.send("Data inserted!")
 }
+
+export const updateUser = async(req, res) => {
+
+  const { id } = req.params;
+  const {username, firstName, lastName, email, phoneNumber, password} = req.body;
+
+  let preparedStatement = db.prepare("SELECT * FROM Users WHERE userId = ?");
+
+  let user = preparedStatement.get(id);
+
+  if(username) user.username = username;
+  if(firstName) user.firstName = firstName;
+  if(lastName) user.lastName = lastName;
+  if(email) user.email = email;
+  if(phoneNumber) user.phoneNumber = phoneNumber;
+  if(password) user.password = password;
+
+  let encryptedPassword = await encrypt(password);
+
+  let userUpdate = db.prepare('UPDATE Users SET username = ?, firstName = ?, lastname = ?, email = ?, phoneNumber = ?, password = ? WHERE userId = ?');
+
+  userUpdate.run(username, firstName, lastName, email, phoneNumber, password, id)
+  
+  res.send('User updated');
+  
+}
