@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { Notyf } from 'notyf';
+import { first } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -9,18 +14,34 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   hide = true;
   registerForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.min(5)]),
-    phone: new FormControl('', Validators.required)
+    email: new FormControl('', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/), Validators.email, Validators.maxLength(100)]),
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
+    phoneNumber: new FormControl('', Validators.required),
+    password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(100)])
   });
 
-  constructor() { }
+  constructor(private authService: AuthService, private notyf: Notyf, private router: Router, private translate: TranslateService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
     console.log(this.registerForm.value);
+    const result = this.authService.register(this.registerForm.value)
+    .pipe(first()).subscribe(
+      data => {
+        this.notyf.success(this.translate.instant('Registered, please login'));
+         this.router.navigate(['/login']);
+      },
+      error => {
+        this.notyf.error(this.translate.instant(error.message));
+      },
+      );;
+
+      setTimeout(() => { // Prevent memory-leak
+        result.unsubscribe();
+      }, 5500);
   }
 
   getErrorMessage() {

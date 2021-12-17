@@ -5,3 +5,7 @@
 .card {
   margin-top: 50px;
 }
+
+mat-form-field {
+  width: 100%;
+}

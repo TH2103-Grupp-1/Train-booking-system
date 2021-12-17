@@ -3,8 +3,7 @@
     <div class="card card-body">
       <h1>{{'Register' | translate }}</h1>
       <div class="row d-flex justify-content-center">
-        <form  [formGroup]="registerForm">
-            <div class="row">
+        <form [formGroup]="registerForm">
               <div class="col">
                 <mat-form-field appearance="outline">
                   <mat-label>{{'Email' | translate }}</mat-label>
@@ -14,8 +13,20 @@
               </div>
               <div class="col">
                 <mat-form-field appearance="outline">
+                  <mat-label>{{'First name' | translate }}</mat-label>
+                  <input matInput formControlName="firstName" required>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field appearance="outline">
+                  <mat-label>{{'Last name' | translate }}</mat-label>
+                  <input matInput formControlName="lastName" required>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field appearance="outline">
                   <mat-label>{{'Phone number' | translate }}</mat-label>
-                  <input matInput formControlName="phone" required>
+                  <input matInput formControlName="phoneNumber" required>
                   <mat-icon matSuffix>phone</mat-icon>
                   <mat-hint>{{'Include area code' | translate }}</mat-hint>
                 </mat-form-field>
@@ -27,9 +38,11 @@
                   <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
+                  <div *ngIf="registerForm.value.password.invalid">
+                    Name must be at least 4 characters long.
+                  </div>
                 </mat-form-field>
               </div>
-            </div>
             <br>
             <div class="row d-flex justify-content-center">
               <button mat-flat-button color="primary" type="submit" (click)="onSubmit()" [disabled]="!registerForm.valid">{{'Register' | translate }}</button>
@@ -45,7 +58,6 @@
             </div>
 
           </form>
+        </div>
       </div>
     </div>
-  </div>
-</div>
