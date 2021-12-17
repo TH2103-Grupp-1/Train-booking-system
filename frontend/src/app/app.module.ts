@@ -18,6 +18,7 @@ import { AuthModule } from './auth/auth.module';
 import { Notyf } from 'notyf';
 import { notyfFactory } from './shared/guards/notyf.token';
 import { ErrorInterceptor } from './shared/guards/interceptors/error-interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -39,6 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     MatCardModule,
     MatButtonModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatFormFieldModule,
     MatSelectModule,
