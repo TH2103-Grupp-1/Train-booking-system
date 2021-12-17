@@ -16,8 +16,6 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.translate.loadLanguages();
-    this.isLoggedIn();
     let currentLanguage = localStorage.getItem("language");
     if (currentLanguage !== null) {
       this.setLanguage(currentLanguage);
