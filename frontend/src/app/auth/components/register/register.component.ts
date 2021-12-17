@@ -15,14 +15,16 @@ export class RegisterComponent implements OnInit {
 
   hide = true;
   registerForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/), Validators.email, Validators.maxLength(100)]),
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/), Validators.email, Validators.maxLength(50)]),
+    firstName: new FormControl('', [Validators.required, Validators.pattern(/[A-Za-z]/)]),
+    lastName: new FormControl('', [Validators.required, Validators.pattern(/[A-Za-z]/)]),
     phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^(\+|00)[1-9][0-9 \-\(\)\.]{7,32}$/)]),
     password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(100)])
   });
 
-  constructor(private authService: AuthService, private notyf: Notyf, private router: Router, private translate: TranslateService) { }
+  constructor(private authService: AuthService, private notyf: Notyf, private router: Router, private translate: TranslateService) {
+
+  }
 
   ngOnInit(): void {
   }
