@@ -1,1 +1,3 @@
-<p>stations works! adasdasdasd</p>
+<div *ngFor="let station of stations | async" class="card">
+<h2 >{{station.AdvertisedLocationName}} </h2>
+</div>

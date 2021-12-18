@@ -5,3 +5,12 @@
 .card {
   margin-top: 50px;
 }
+
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  width: 70%;
+  padding: 15px;
+}

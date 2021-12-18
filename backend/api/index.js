@@ -5,9 +5,12 @@ import bookingRoutes from "./routes/bookings.js";
 import userRoutes from "./routes/users.js";
 import authRoutes from "./routes/auth.routes.js";
 import cors from "cors";
+import Database from "better-sqlite3";
 
 const app = express();
 const PORT = 5000;
+
+export const db = new Database("../database.db");
 
 const corsOptions = {
   origin: 'http://localhost:4200'

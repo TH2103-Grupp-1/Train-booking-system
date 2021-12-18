@@ -1,0 +1,175 @@
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>{{'Welcome' | translate}}, {{name}}!</h1>
+                <div class="container no-padding margin-top" id="my-page-dropdown">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        {{'My Page' | translate}}
+                        <span class="pull-right">
+                            <i class="fa fa-chevron-down"></i>
+                        </span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <button class="dropdown-item" type="button">{{'My Offers' | translate}}</button>
+                        <button class="dropdown-item" type="button">{{'My Prio' | translate}}</button>
+                        <button class="dropdown-item" type="button">{{'Prio Account' | translate}}</button>
+                        <button class="dropdown-item" type="button">{{'All Bookings' | translate}}</button>
+                        <button class="dropdown-item" type="button">{{'Booked Trips' | translate}}</button>
+                        <button class="dropdown-item" type="button">{{'Commuter Tickets' | translate}}</button>
+                        <button class="dropdown-item" type="button">{{'My Credit Cards' | translate}}</button>
+                        <button class="dropdown-item" type="button">{{'Personal Data' | translate}}</button>
+                    </div>
+                </div>
+                <div class="container travel-info">
+                    <h2>{{'Upcoming Trips' | translate}}</h2>
+                    <table class="table table-responsive">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">{{'Departure Station' | translate}}</th>
+                                <th scope="col">{{'Destination' | translate}}</th>
+                                <th scope="col">{{'Departure Time' | translate}}</th>
+                                <th scope="col">{{'Time Of Arrival' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Göteborg C</td>
+                                <td>Stockholm C</td>
+                                <td>12.45</td>
+                                <td>16:00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2>{{'Commuter Tickets' | translate}}</h2>
+                    <table class="table table-responsive">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">{{'Departure Station' | translate}}</th>
+                                <th scope="col">{{'Destination' | translate}}</th>
+                                <th scope="col">{{'Departure Time' | translate}}</th>
+                                <th scope="col">{{'Time Of Arrival' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Göteborg C</td>
+                                <td>Stockholm C</td>
+                                <td>12.45</td>
+                                <td>16:00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2>{{'Credit Card' | translate}}</h2>
+                    <table class="table table-responsive">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">{{'Card Number' | translate}}</th>
+                                <th scope="col">{{'Points' | translate}}</th>
+                                <th scope="col">{{'Level' | translate}}</th>
+                                <th scope="col">{{'Good To' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>3456 4567 3241 4503</td>
+                                <td>1000</td>
+                                <td>Vit</td>
+                                <td>1 januari 2024</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="container inner-container" id="prio-card-info">
+                    <div class="container inner-container border-bottom">
+                        <h3>{{'Your Priocard' | translate}}</h3>
+                        <div class="row">
+                            <div class="col">
+                                <div class="container inner-container">
+                                    <h2>1000</h2>
+                                    <p>{{'Prio Points' | translate}}</p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="container inner-container">
+                                    <h2>Vit</h2>
+                                    <p>{{'Membership Level' | translate}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container inner-container border-bottom">
+                        <h3>{{'Points Due' | translate}}</h3>
+                        <div class="row">
+                            <div class="col">
+                                <p>1 januari 2024</p>
+                            </div>
+                            <div class="col">
+                                <h2>1000</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container inner-container border-top">
+                        <h3>{{'Credit Card' | translate}}</h3>
+                        <h2>3456 4567 3241 4503</h2>
+                    </div>
+                </div>
+                <h2 class="hide-when-screen-sm" id="my-page">{{'My Page' | translate}}</h2>
+                <div class="container inner-container no-padding hide-when-screen-sm">
+                    <div class="container inner-container border-bottom padding-left">
+                        <a href="">
+                            <h3>{{'My Offers' | translate}}</h3>
+                        </a>
+                    </div>
+                    <div class="container inner-container border-bottom padding-left">
+                        <a href="">
+                            <h3>{{'My Prio' | translate}}</h3>
+                        </a>
+                    </div>
+                    <div class="container inner-container border-bottom padding-left">
+                        <a href="">
+                            <h3>{{'Prio Account' | translate}}</h3>
+                        </a>
+                    </div>
+                    <div class="container inner-container border-bottom padding-left">
+                        <a href="">
+                            <h3>{{'All Bookings' | translate}}</h3>
+                        </a>
+                    </div>
+                    <div class="container inner-container border-bottom padding-left">
+                        <a href="">
+                            <h3>{{'Booked Trips' | translate}}</h3>
+                        </a>
+                    </div>
+                    <div class="container inner-container border-bottom padding-left">
+                        <a href="">
+                            <h3>{{'Commuter Tickets' | translate}}</h3>
+                        </a>
+                    </div>
+                    <div class="container inner-container border-bottom padding-left">
+                        <a href="">
+                            <h3>{{'My Credit Cards' | translate}}</h3>
+                        </a>
+                    </div>
+                    <div class="container inner-container border-bottom padding-left">
+                        <a href="">
+                            <h3>{{'Personal Data' | translate}}</h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="container no-padding margin-top">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" id="booking-btn">Boka Resa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,7 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -21,6 +21,9 @@ import { DepartureComponent } from './departureSelection/departure/departure.com
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
+import { ErrorInterceptor } from './shared/guards/interceptors/error-interceptor';
+import { AccountPageComponent } from './account-page/account-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -34,6 +37,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavbarComponent,
     LandingPageComponent,
     DepartureComponent,
+    AccountPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     MatCardModule,
     MatButtonModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatFormFieldModule,
     MatSelectModule,
@@ -57,7 +62,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [
-    { provide: Notyf, useFactory: notyfFactory }
+    { provide: Notyf, useFactory: notyfFactory },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

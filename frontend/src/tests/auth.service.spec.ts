@@ -1,8 +1,9 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { Notyf } from 'notyf';
 import { notyfFactory } from 'src/app/shared/guards/notyf.token';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AuthService } from '../app/services/auth.service';
 
 describe('AuthService', () => {
@@ -11,8 +12,8 @@ describe('AuthService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientModule ],
-      providers: [{ provide: Notyf, useFactory: notyfFactory }]
+      imports: [ HttpClientTestingModule, TranslateModule.forRoot() ],
+      providers: [{ provide: Notyf, useFactory: notyfFactory }],
   })
   .compileComponents();
 

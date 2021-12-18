@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+@media only screen and (min-width: 639px ) and(max-width: 680px) {
+  body.mat-typography {
+   font: 390 12px/10px Roboto, "Helvetica Neue", sans-serif;
+  }
+
+ }
+
