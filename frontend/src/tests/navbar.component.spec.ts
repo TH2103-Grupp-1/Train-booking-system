@@ -46,9 +46,15 @@ describe('NavbarComponent', () => {
   it('user should be logged out', () => {
     authServiceMock = jasmine.createSpyObj(['currentUser']);
     authServiceMock.currentUser.and.returnValue(false);
-
     let returnValue = component.isLoggedIn();
     expect(returnValue).toBeFalsy();
   })
 
+  it('should be swedish language and icon when selected', () => {
+    component.setLanguage('sv');
+    let country  = fixture.debugElement.query(By.css('#country-initials'));
+    let img = fixture.debugElement.query(By.css('.flag-icon'));
+    expect(img.nativeNode.src).toContain('assets/images/flag_icon_sv.png');
+    expect(country.nativeNode.textContent).toContain('SV');
+  });
 });
