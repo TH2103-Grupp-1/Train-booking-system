@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
   hide = true;
   returnUrl: string | undefined;
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/),  Validators.email, Validators.maxLength(100)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(100)])
+    email: new FormControl('', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/),  Validators.email, Validators.maxLength(30)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(30)])
   });
 
   constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router, public notyf: Notyf, private translate: TranslateService) { }

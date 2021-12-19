@@ -7,6 +7,8 @@ import { notyfFactory } from 'src/app/shared/guards/notyf.token';
 import { RouterTestingModule } from '@angular/router/testing'
 
 import { LoginComponent } from '../app/auth/components/login/login.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -15,8 +17,11 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
-      imports: [TranslateModule.forRoot(), HttpClientModule, RouterTestingModule],
-      providers: [{ provide: Notyf, useFactory: notyfFactory }]
+      imports: [TranslateModule.forRoot(), HttpClientModule, RouterTestingModule, ReactiveFormsModule],
+      providers: [{ provide: Notyf, useFactory: notyfFactory }],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ],
     })
     .compileComponents();
   });
