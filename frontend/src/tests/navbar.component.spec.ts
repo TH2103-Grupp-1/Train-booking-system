@@ -50,11 +50,20 @@ describe('NavbarComponent', () => {
     expect(returnValue).toBeFalsy();
   })
 
-  it('should be swedish language and icon when selected', () => {
-    component.setLanguage('sv');
+  it('language should default to swedish, then english when selected', () => {
+    component.ngOnInit();
     let country  = fixture.debugElement.query(By.css('#country-initials'));
     let img = fixture.debugElement.query(By.css('.flag-icon'));
+
     expect(img.nativeNode.src).toContain('assets/images/flag_icon_sv.png');
     expect(country.nativeNode.textContent).toContain('SV');
+
+    component.setLanguage('en');
+
+    country  = fixture.debugElement.query(By.css('#country-initials'));
+    img = fixture.debugElement.query(By.css('.flag-icon'));
+
+    expect(img.nativeNode.src).toContain('assets/images/flag_icon_en.png');
+    expect(country.nativeNode.textContent).toContain('EN');
   });
 });
