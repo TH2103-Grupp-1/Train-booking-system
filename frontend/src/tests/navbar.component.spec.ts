@@ -8,17 +8,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { Notyf } from 'notyf';
 import { notyfFactory } from 'src/app/shared/guards/notyf.token';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user.model';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
-  let translate: TranslateService;
-  let localization: LocalizationService;
   let fixture: ComponentFixture<NavbarComponent>;
   let de: DebugElement;
   let dom: any;
   let button: any;
+  let authServiceMock: any;
 
   beforeEach(async () => {
+
     await TestBed.configureTestingModule({
       declarations: [ NavbarComponent ],
       providers: [LocalizationService, { provide: Notyf, useFactory: notyfFactory }],
@@ -38,24 +40,15 @@ describe('NavbarComponent', () => {
   });
 
   it('should create', () => {
-    // localization = new LocalizationService(translate);
-    // component = new NavbarComponent(localization);
-    // localization = TestBed.inject(TranslateService);
-
     expect(component).toBeTruthy();
   });
 
-  // it('should show dropDown menu with languages', () => {
-  //   let menu = de.query(By.css('.navbar-toggler.collapsed'));
-  //   expect(menu).toBeTruthy();
+  it('user should be logged out', () => {
+    authServiceMock = jasmine.createSpyObj(['currentUser']);
+    authServiceMock.currentUser.and.returnValue(false);
 
-  //   // // trigger the menu
-  //   // button.click();
-
-  //   // // mat menu should be open now
-  //   // menu = de.query(By.css('.nav-item.dropdown.show'));
-  //   // expect(menu).toBeTruthy();
-
-  // })
+    let returnValue = component.isLoggedIn();
+    expect(returnValue).toBeFalsy();
+  })
 
 });
