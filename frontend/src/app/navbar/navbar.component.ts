@@ -16,7 +16,12 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.translate.loadLanguages();
+    let currentLanguage = localStorage.getItem("language");
+    if (currentLanguage !== null) {
+      this.setLanguage(currentLanguage);
+    } else {
+      this.setLanguage('sv');
+    }
   }
 
   isLoggedIn() : boolean {
@@ -31,6 +36,26 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.router.navigateByUrl('/');
+  }
+
+  setLanguageIcon(selected: string) {
+    const img = document.getElementById('flag-i') as HTMLImageElement;
+    const initials = document.getElementById('country-initials') as HTMLSpanElement;
+
+    if (selected === 'en') {
+      img.src = "/assets/images/flag_icon_en.png";
+      initials.innerText = "EN";
+    }
+
+    if (selected === 'sv') {
+      img.src = "/assets/images/flag_icon_sv.png"
+      initials.innerText = "SV";
+    }
+  }
+
+  setLanguage(language: string) {
+    this.translate.setLanguage(language);
+    this.setLanguageIcon(language);
   }
 
 }

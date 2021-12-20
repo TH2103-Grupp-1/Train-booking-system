@@ -8,28 +8,39 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item ml-sm-5">
-          <a class="nav-link" routerLink="/" routerLinkActive="active">{{'Home' | translate}}</a>
-        </li>
-        <li class="nav-item ml-sm-5">
-          <a class="nav-link" routerLink="/stations" routerLinkActive="active">{{'Stations' | translate}}</a>
-        </li>
-        <li class="nav-item dropdown ml-sm-5">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{'Language' | translate}}
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" (click)="translate.setLanguage('en')">{{'English' | translate}}</a>
-            <a class="dropdown-item" (click)="translate.setLanguage('sv')">{{'Swedish' | translate}}</a>
-          </div>
+        <li class="nav-item">
+          <button mat-button><a class="nav-link" routerLink="/stations" routerLinkActive="active">{{'Stations' | translate}}</a></button>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="{{'Search' | translate}}" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{{'Search' | translate}}</button>
-      </form>
-      <button *ngIf="isLoggedIn()" class="btn btn-outline-primary ml-sm-2" type="button" (click)="logout()">{{'Log out' | translate}}</button>
-      <button *ngIf="!isLoggedIn()" class="btn btn-outline-primary ml-sm-2" type="button" routerLink="/login">{{'Login' | translate}}</button>
+      <div class="row menu">
+        <div *ngIf="!isLoggedIn()" class="col  nav-item " >
+          <button mat-button class="menu-button" type="button" routerLink="/login">{{'Login' | translate}} <i class="bi bi-person-fill"></i></button>
+        </div>
+        <div *ngIf="isLoggedIn()" class="col">
+          <button mat-button class="menu-button" type="button" routerLink="/account" routerLinkActive="mat-accent"> {{'My Pages' | translate}} <i class="bi bi-person-lines-fill"></i></button>
+        </div>
+        <div class="col">
+          <div class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="flag-icon" id="flag-i" src="" alt="Flag icon">
+              <span id="country-initials" class="country-initials"></span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" (click)="setLanguage('en')">
+                <img class="flag-icon" src="/assets/images/flag_icon_en.png" alt="English">
+                {{'English' | translate}}
+              </a>
+              <a class="dropdown-item" (click)="setLanguage('sv')">
+                <img class="flag-icon" src="/assets/images/flag_icon_sv.png" alt="Svenska">
+                {{'Swedish' | translate}}
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <button class="menu-button" *ngIf="isLoggedIn()" mat-button type="button" (click)="logout()">{{'Log out' | translate}}</button>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
