@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PickSeatComponent } from './pick-seat.component';
+import { PickSeatComponent } from 'src/app/booking/pick-seat/pick-seat.component'
 
 describe('PickSeatComponent', () => {
   let component: PickSeatComponent;
