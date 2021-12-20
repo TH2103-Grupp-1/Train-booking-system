@@ -1,4 +1,5 @@
 import { db } from "../index.js"
+import jwt from "jsonwebtoken";
 
 function isInputNull(arg) {
   if (!arg) {
@@ -16,6 +17,19 @@ function isInputTooLong(arg) {
   else {
     return false;
   }
+}
+
+export const auth = (req, res, next) => {
+  const token = req.header("auth-token");
+  if (!token) {
+    res.send("Access denied.");
+  }
+  else {
+    const verified = jwt.verify(token, "secretKey");
+    req.user = verified;
+  }
+
+
 }
 
 export const validateRegisterUser = (req, res, next) => {
@@ -42,7 +56,6 @@ export const validateRegisterUser = (req, res, next) => {
     else {
       next();
     }
-  }
-
-  
+  } 
 }
+
