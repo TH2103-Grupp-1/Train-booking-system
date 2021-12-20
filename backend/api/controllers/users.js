@@ -24,7 +24,7 @@ export const updateUser = async(req, res) => {
   const { id } = req.params;
   const {firstName, lastName, email, phoneNumber, password} = req.body.user;
 
-  let preparedStatement = db.prepare("SELECT * FROM Users WHERE userId = ?");
+  let preparedStatement = db.prepare("SELECT * FROM Users WHERE Id = ?");
 
   let foundUser = preparedStatement.get(id);
 
