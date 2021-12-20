@@ -8,35 +8,22 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item ml-sm-4">
-          <a class="nav-link" routerLink="/" routerLinkActive="active">{{'Home' | translate}}</a>
-        </li>
-        <li class="nav-item ml-sm-4">
-          <a class="nav-link" routerLink="/stations" routerLinkActive="active">{{'Stations' | translate}}</a>
+        <li class="nav-item">
+          <button mat-button><a class="nav-link" routerLink="/stations" routerLinkActive="active">{{'Stations' | translate}}</a></button>
         </li>
       </ul>
-      <div class="row">
-        <form class="form-inline">
-          <div class="col">
-            <input class="form-control" type="search" placeholder="{{'Search' | translate}}" aria-label="Search">
-          </div>
-          <div class="col">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{{'Search' | translate}}</button>
-          </div>
-        </form>
-      </div>
-      <div class="row">
-        <div class="col">
-          <button *ngIf="!isLoggedIn()" class="btn btn-outline-primary ml-sm-2" type="button" routerLink="/login">{{'Login' | translate}} <i class="bi bi-person-fill"></i></button>
+      <div class="row menu">
+        <div *ngIf="!isLoggedIn()" class="col  nav-item " >
+          <button mat-button class="menu-button" type="button" routerLink="/login">{{'Login' | translate}} <i class="bi bi-person-fill"></i></button>
         </div>
         <div *ngIf="isLoggedIn()" class="col">
-          <button class="btn btn-outline-primary ml-sm-2" type="button" routerLink="/account" routerLinkActive="active">{{'My Pages' | translate}} <i class="bi bi-person-lines-fill"></i></button>
+          <button mat-button class="menu-button" type="button" routerLink="/account" routerLinkActive="mat-accent"> {{'My Pages' | translate}} <i class="bi bi-person-lines-fill"></i></button>
         </div>
         <div class="col">
           <div class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img class="flag-icon" id="flag-i" src="" alt="Flag icon">
-              <span id="country-initials"></span>
+              <span id="country-initials" class="country-initials"></span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" (click)="setLanguage('en')">
@@ -50,8 +37,10 @@
             </div>
           </div>
         </div>
+        <div class="col">
+          <button class="menu-button" *ngIf="isLoggedIn()" mat-button type="button" (click)="logout()">{{'Log out' | translate}}</button>
+        </div>
       </div>
-  <button *ngIf="isLoggedIn()" class="btn btn-outline-secondary ml-sm-2" type="button" (click)="logout()">{{'Log out' | translate}}</button>
     </div>
   </div>
 </nav>

@@ -3,7 +3,7 @@
   width: 20px;
 }
 
-selected-language img {
+.selected-language img {
   width: 20px;
   height: 20px;
 }
@@ -11,3 +11,32 @@ selected-language img {
 .form-control {
   width: 150px;
 }
+
+.country-initials {
+  padding-left: 5px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.menu-button {
+  font-size: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.dropdown {
+  padding-top: 5px;
+}
+
+@media screen and (max-width: 990px) {
+  .flag-icon {
+    height: 25px;
+    width: 25px;
+  }
+  .country-initials {
+    padding-left: 5px;
+    font-family: monospace;
+    font-size: 15px;
+  }
+}
+
+
