@@ -1,0 +1,80 @@
+a{
+    color: black;
+}
+
+.page-orientation-bar-back {
+    text-align: center;
+    background-color: rgb(120, 190, 14);
+    border: solid 1px white;
+}
+.page-orientation-bar-back a{
+    color: white;
+    font-size: 10px;
+}
+
+.page-orientation-bar-current {
+    text-align: center;
+    background-color: rgb(96, 151, 12);
+    border: solid 1px white;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.page-orientation-bar-current a{
+    color: white;
+    font-size: 10px;
+}
+
+.page-orientation-bar-next {
+    text-align: center;
+    background-color: rgb(235, 231, 231);
+    border: solid 1px white;
+}
+.page-orientation-bar-next a{
+    color: rgb(134, 134, 134);
+    font-size: 10px;
+}
+
+h1{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.ticket h2{
+    text-align: center;
+    margin-bottom: 5px;
+}
+.container p{
+    text-align: center;
+}
+.ticket p .time{
+    margin-left: 15px;
+}
+.ticket{
+    padding: 0px;
+    margin-bottom: 15px;
+}
+.ticket .container{
+    margin-top: 10px;
+}
+.no-padding{
+    padding: 0px;
+}
+#left {
+    text-align: left;
+}
+#right{
+    text-align: right;
+}
+#center{
+    text-align: center;
+}
+p #left{
+    margin-right: 15px;
+}
+p #right{
+    margin-left: 15px;
+}
+.inner-container{
+    max-width: 290px;
+}
