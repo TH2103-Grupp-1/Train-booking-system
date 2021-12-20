@@ -13,11 +13,11 @@
         </li>
       </ul>
       <div class="row menu">
-        <div *ngIf="!isLoggedIn()" class="col login-button" >
-          <button mat-button type="button" routerLink="/login">{{'Login' | translate}} <i class="bi bi-person-fill"></i></button>
+        <div *ngIf="!isLoggedIn()" class="col  nav-item " >
+          <button mat-button class="menu-button" type="button" routerLink="/login">{{'Login' | translate}} <i class="bi bi-person-fill"></i></button>
         </div>
         <div *ngIf="isLoggedIn()" class="col">
-          <button class="btn btn-outline-primary ml-sm-2" type="button" routerLink="/account" routerLinkActive="active">{{'My Pages' | translate}} <i class="bi bi-person-lines-fill"></i></button>
+          <button mat-button class="menu-button" type="button" routerLink="/account" routerLinkActive="mat-accent"> {{'My Pages' | translate}} <i class="bi bi-person-lines-fill"></i></button>
         </div>
         <div class="col">
           <div class="dropdown">
@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="col">
-          <button *ngIf="isLoggedIn()" class="btn btn-outline-secondary ml-sm-2" type="button" (click)="logout()">{{'Log out' | translate}}</button>
+          <button class="menu-button" *ngIf="isLoggedIn()" mat-button type="button" (click)="logout()">{{'Log out' | translate}}</button>
         </div>
       </div>
     </div>
