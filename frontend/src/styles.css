@@ -9,12 +9,19 @@ body {
 }
 
 
-
-
-
 @media only screen and (min-width: 639px ) and(max-width: 680px) {
   body.mat-typography {
    font: 390 12px/10px Roboto, "Helvetica Neue", sans-serif;
   }
  }
+
+ body.dark-mode {
+  background-color: #2d3436;
+  color: #ffffff;
+}
+
+body.light-mode {
+  background-color: #ffffff;
+  color: #2d3436;
+}
 

@@ -54,20 +54,22 @@
 .material-icons {
   font-size: 48px;
   width: 45px;
-
 }
 
 .container {
   margin-top: 20px;
 }
 
-.container a {
-  color: #000;
+a {
+  color: inherit;
 }
 
 .icon-text {
   font-size: 12px;
 }
+
+
+
 
 #banner {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://wallup.net/wp-content/uploads/2017/11/17/364154-city-cityscape-lights-city_lights-blurred.jpg");
