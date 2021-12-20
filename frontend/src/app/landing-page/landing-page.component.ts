@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Station } from '../models/station.model';
+import { StationService } from '../services/station.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-
-  constructor() { }
+  stations: Station[] = [];
+  constructor(private stationService: StationService) { }
 
   ngOnInit(): void {
+    this.getStations();
   }
 
+  getStations(): void {
+    this.stationService.getStations()
+        .subscribe(stations => this.stations = stations);
+  }
 }
