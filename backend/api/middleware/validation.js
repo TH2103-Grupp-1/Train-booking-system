@@ -30,14 +30,14 @@ export const validateRegisterUser = (req, res, next) => {
   const user = statement.get(email, phoneNumber);
 
   if (isInputNull(email) || isInputNull(firstName) || isInputNull(lastName) || isInputNull(phoneNumber) || isInputNull(password)) {
-    res.json({error_message:"One or more inputs were empty."});
+    res.json({message:"One or more inputs were empty."});
   }
   else if (isInputTooLong(email) || isInputTooLong(firstName) || isInputTooLong(lastName) || isInputTooLong(phoneNumber) || isInputTooLong(password)) {
-    res.json({error_message: "One or more inputs were too long."});
+    res.json({message: "One or more inputs were too long."});
   }
   else {
     if (user) {
-      res.json({error_message: "An account with this email or phone number already exists." })
+      res.json({message: "An account with this email or phone number already exists." })
     }
     else {
       next();
