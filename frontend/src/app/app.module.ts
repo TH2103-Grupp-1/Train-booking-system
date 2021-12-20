@@ -20,6 +20,10 @@ import { notyfFactory } from './shared/guards/notyf.token';
 import { ErrorInterceptor } from './shared/guards/interceptors/error-interceptor';
 import { AccountPageComponent } from './account-page/account-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BookingOverviewComponent } from './booking/booking-overview/booking-overview.component';
+import { OrderConfirmationComponent } from './booking/order-confirmation/order-confirmation.component';
+import { PaymentComponent } from './booking/payment/payment.component';
+import { PickSeatComponent } from './booking/pick-seat/pick-seat.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -33,6 +37,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavbarComponent,
     LandingPageComponent,
     AccountPageComponent,
+    BookingOverviewComponent,
+    OrderConfirmationComponent,
+    PaymentComponent,
+    PickSeatComponent,
   ],
   imports: [
     BrowserModule,
