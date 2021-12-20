@@ -1,6 +1,28 @@
+/* :host.dark-mode {
+  background-color: #2d3436;
+  color: #dfe6e9;
+}
+
+:host.light-mode {
+  background-color: #ffffff;
+  color: #2d3436;
+} */
+
+/* div {
+  color: inherit;
+} */
+
+a {
+  color: inherit;
+}
+
 .flag-icon {
   height: 20px;
   width: 20px;
+}
+
+.toggler {
+  padding-top: 10px;
 }
 
 .selected-language img {
@@ -26,6 +48,7 @@
 .dropdown {
   padding-top: 5px;
 }
+
 
 @media screen and (max-width: 990px) {
   .flag-icon {

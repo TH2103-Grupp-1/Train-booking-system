@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { empty } from 'rxjs';
+import { DarkModeService } from 'angular-dark-mode';
+import { empty, Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { LocalizationService } from '../services/localization.service';
 
@@ -11,7 +12,10 @@ import { LocalizationService } from '../services/localization.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public translate: LocalizationService, private authService: AuthService, private router: Router) {
+  darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
+
+  constructor(public translate: LocalizationService, private authService: AuthService, private router: Router,
+    public darkModeService: DarkModeService) {
 
   }
 
@@ -22,6 +26,10 @@ export class NavbarComponent implements OnInit {
     } else {
       this.setLanguage('sv');
     }
+  }
+
+  onToggle(): void {
+    this.darkModeService.toggle();
   }
 
   isLoggedIn() : boolean {
