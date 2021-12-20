@@ -15,11 +15,11 @@ export class RegisterComponent implements OnInit {
 
   hide = true;
   registerForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/), Validators.email, Validators.maxLength(50)]),
+    email: new FormControl('', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/), Validators.email, Validators.maxLength(30)]),
     firstName: new FormControl('', [Validators.required, Validators.pattern(/[A-Za-z]/)]),
     lastName: new FormControl('', [Validators.required, Validators.pattern(/[A-Za-z]/)]),
     phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^(\+|00)[1-9][0-9 \-\(\)\.]{7,32}$/)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(100)])
+    password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(30)])
   });
 
   constructor(private authService: AuthService, private notyf: Notyf, private router: Router, private translate: TranslateService) {
@@ -33,9 +33,22 @@ export class RegisterComponent implements OnInit {
     console.log(this.registerForm.value);
     const result = this.authService.register(this.registerForm.value)
     .pipe(first()).subscribe(
-      data => {
-        this.notyf.success(this.translate.instant('Registered, please login'));
-         this.router.navigate(['/login']);
+      () => {
+        const result = this.authService.login(this.registerForm.value.email, this.registerForm.value.password)
+        .pipe(first())
+        .subscribe(
+          () => {
+            this.notyf.success(this.translate.instant('Registered & logged in'));
+            this.router.navigate(['/']);
+          },
+          error => {
+            this.notyf.error(this.translate.instant(error.message));
+          },
+          );;
+
+          setTimeout(() => { // Prevent memory-leak
+            result.unsubscribe();
+          }, 5500);
       },
       error => {
         this.notyf.error(this.translate.instant(error.message));

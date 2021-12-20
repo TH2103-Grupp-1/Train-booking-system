@@ -19,6 +19,8 @@ export class NavbarComponent implements OnInit {
     let currentLanguage = localStorage.getItem("language");
     if (currentLanguage !== null) {
       this.setLanguage(currentLanguage);
+    } else {
+      this.setLanguage('sv');
     }
   }
 
@@ -42,12 +44,12 @@ export class NavbarComponent implements OnInit {
 
     if (selected === 'en') {
       img.src = "/assets/images/flag_icon_en.png";
-      initials.innerHTML = "EN";
+      initials.innerText = "EN";
     }
 
     if (selected === 'sv') {
       img.src = "/assets/images/flag_icon_sv.png"
-      initials.innerHTML = "SV";
+      initials.innerText = "SV";
     }
   }
 
