@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
 export const auth = (req, res, next) => {
-  const token = req.header("auth-token");
+  const token = req.header("token");
   if (!token) {
     res.json({message: "Access denied."});
   }
@@ -13,7 +13,7 @@ export const auth = (req, res, next) => {
       }
     }
     catch (err) {
-      res.json({ message: "Token expired. Access denied." });
+      res.json({ message: "Access denied." });
     }
   }
 }
