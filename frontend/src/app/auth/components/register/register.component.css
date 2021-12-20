@@ -4,13 +4,30 @@
 
 .card {
   margin-top: 50px;
+  background-color: inherit;
+  border-radius: 5px;
+  border-color: inherit;
 }
 
 mat-form-field {
   width: 100%;
+  /* color: white; */
 }
 
 button {
   width: 70%;
   padding: 15px;
+}
+
+matInput {
+  border-color: inherit;
+
+}
+
+label {
+  color: inherit;
+}
+
+mat-label {
+  color: inherit;
 }
