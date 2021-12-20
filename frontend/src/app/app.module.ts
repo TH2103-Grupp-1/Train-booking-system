@@ -24,6 +24,8 @@ import { BookingOverviewComponent } from './booking/booking-overview/booking-ove
 import { OrderConfirmationComponent } from './booking/order-confirmation/order-confirmation.component';
 import { PaymentComponent } from './booking/payment/payment.component';
 import { PickSeatComponent } from './booking/pick-seat/pick-seat.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
@@ -57,6 +59,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatFormFieldModule,
     MatSelectModule,
     MatIconModule,
+    MatAutocompleteModule,
+    MatInputModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
