@@ -13,7 +13,7 @@ import {map, startWith} from 'rxjs/operators';
 export class LandingPageComponent implements OnInit {
   myControl = new FormControl();
   stations: Station[] = [];
-  filteredOptions: Observable<Station[]>;
+  filteredOptions!: Observable<Station[]>;
 
   constructor(private stationService: StationService) { }
 
