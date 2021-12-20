@@ -42,7 +42,6 @@ export const validateRegisterUser = (req, res, next) => {
     else {
       next();
     }
-  }
-
-  
+  } 
 }
+
