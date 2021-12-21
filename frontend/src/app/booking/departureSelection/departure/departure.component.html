@@ -14,24 +14,24 @@
     <div class="col-md-4 col- no-padding">
       <div class="custom-pagination">
         <div class="pagination-icon-previous">
-          <span (click)="p.previous()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-              fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+          <div (click)="p.previous()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-chevron-left" viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
             </svg>Tidigare resor
-          </span>
+          </div>
 
           <div>
             current date
           </div>
           <div class="pagination-icon-next">
-            <span (click)="p.next()">Senare resor
+            <div (click)="p.next()">Senare resor
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-chevron-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                   d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
               </svg>
-            </span>
+            </div>
 
           </div>
         </div>
@@ -59,23 +59,50 @@
 
           <div *ngFor="let departures of tableData | paginate: { itemsPerPage: 4, currentPage: page,
         totalItems:totalLength } let i=index">
-            <div class=" depature-info" (click)="selectDeparture(departures.id)">
-              <div class=" container box-info">
-                <div class="col-5">{{departures.departure}} {{i}}</div>
-                <div>{{departures.secondClass}}</div>
-                <div>{{departures.firstClass}}</div>
-              </div>
-              <div *ngIf="selectedDepartureId != 0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt ab
-                consequuntur sunt culpa amet
-                illo, porro, odio magnam deleniti dicta magni. Assumenda architecto recusandae aliquam cumque
-                temporibus necessitatibus a eos.</div>
+            <mat-accordion>
+              <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    {{departures.departure}}
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    {{departures.secondClass}}
+                  </mat-panel-description>
+                  <mat-panel-description>
+                    {{departures.firstClass}}
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>{{departures.departure}}</p>
+                <div class=" container box-info">
+                  <div class="more-train-info">
+                    <h1>{{departures.departure}}</h1> <img class="train-image"
+                      src="../../../../assets/images/dubbeldackare-70x340.png" alt="">
+                    {{departures.arrival}}
+                  </div>
+
+                  <div class="price-box">
+                    <div>{{departures.firstClass}}</div>
+                    <div>{{departures.secondClass}}</div>
+                  </div>
+
+                </div>
 
 
 
-            </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+            <!-- <div class=" depature-info"> -->
+            <!-- <div class=" container box-info">
+
+
+            </div> -->
+
+
+
+
+            <!-- </div> -->
           </div>
         </div>
       </div>
     </table>
-
   </div>

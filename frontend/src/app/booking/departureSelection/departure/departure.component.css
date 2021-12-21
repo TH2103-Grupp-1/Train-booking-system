@@ -43,14 +43,33 @@ justify-content: space-between;
 
 .box-info{
   display: flex;
-  min-width: auto;
+  min-width: 60%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height:75px;
- background-color: #fff;
+ background-color: #F4F4EE;
  margin-top: 8px;
 }
+.price-box{
+  display: flex;
+  width :40%;
+  justify-content:space-evenly
+}
+
+.more-train-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 3rem;
+
+}
+
+.train-image{
+  width:80px;
+  padding-left:20px;
+}
+
 
 .box-holder{
   display: flex;

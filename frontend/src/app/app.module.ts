@@ -32,6 +32,8 @@ import { PickSeatComponent } from './booking/pick-seat/pick-seat.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatStepperModule } from '@angular/material/stepper';
 
 
 
@@ -53,6 +55,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PaymentComponent,
     PickSeatComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -70,6 +73,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatIconModule,
     MatAutocompleteModule,
     MatInputModule,
+    MatExpansionModule,
+    MatStepperModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
