@@ -11,6 +11,7 @@ export class LandingPageComponent implements OnInit {
   disabledCelandarStyle: string = "opacity: 0.2; pointer-events: none; user-select: none;";
 
   calendarStyle: string = this.disabledCelandarStyle;
+  selected:Date = new Date() || null;
 
   constructor() { }
 
@@ -20,12 +21,11 @@ export class LandingPageComponent implements OnInit {
 
       this.calendarStyle = "";
     }
-    else if (this.checked) {
+    else {
       this.checked = false;
 
       this.calendarStyle = this.disabledCelandarStyle;
-    }
-    
+    }  
   }
 
   ngOnInit(): void {
