@@ -13,13 +13,21 @@
 
 .checkbox-field{
   width: 234px;
-  height: fit-content;
-  margin: 5px;
+  margin: 5px ;
+  padding: 0px;
+  padding-top: 3px;
+  height: 30px
 }
 
-.calendar{
-  width: 234px;
-  margin: 5px;
+.calendars{
+  display: flex;
+  justify-content: center;
+}
+
+.calendars mat-card{
+   margin: 5px;
+   width: 234px;
+   height: 300px;
 }
 
 .safety-message {

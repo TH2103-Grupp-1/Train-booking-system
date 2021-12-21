@@ -14,19 +14,22 @@
         </div>
       </div>
       <div class="d-flex justify-content-center">
-        <mat-card class="checkbox-field">
+        <mat-card class="checkbox-field d-flex align-items-center">
+          <p>Hello</p>
         </mat-card>
   
         <mat-card class="checkbox-field">
           <mat-checkbox (change)="onCheck()">{{'Return trip' | translate}}</mat-checkbox>
         </mat-card>
       </div>
-      <div class="d-flex justify-content-center">
-        <mat-card class="calendar">
+
+      <div class="calendars">
+
+        <mat-card>
           <mat-calendar></mat-calendar>
         </mat-card>
 
-        <mat-card class="calendar" [style] = "calendarStyle">
+        <mat-card [style] = "calendarStyle">
           <mat-calendar></mat-calendar>
         </mat-card>
       </div>
