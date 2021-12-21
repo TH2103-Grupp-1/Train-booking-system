@@ -11,7 +11,10 @@
   color: white;
 }
 
-
+.calendar{
+  width: 234px;
+  margin: 5px;
+}
 
 .safety-message {
   text-align: center;
