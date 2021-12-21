@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DepartureComponent implements OnInit {
 
+
+
+  //testa data for departures 
   tableData = [
     { "id": 1, "departure": "07:45", "secondClass": "pris", "firstClass": "pris" },
     { "id": 2, "departure": "08:45", "secondClass": "pris", "firstClass": "pris" },
@@ -32,18 +35,27 @@ export class DepartureComponent implements OnInit {
 
   constructor() { }
 
+  // sets panel false to for use to our accordion
+  panelExpanded = false;
 
+  selectedDepartureId: number = 0
+
+  //PaginationService
   totalLength: any;
   page: number = 1;
 
+  selectDeparture(id: number) {
 
+    this.selectedDepartureId = id;
+
+  }
 
 
   ngOnInit(): void {
 
+    //get total length of table
     this.totalLength = this.tableData.length
-    console.log(this.tableData.length);
-    console.log(this.totalLength)
+
   }
 
 }

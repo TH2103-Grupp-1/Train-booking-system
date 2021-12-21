@@ -17,8 +17,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { AuthModule } from './auth/auth.module';
 import { Notyf } from 'notyf';
 import { notyfFactory } from './shared/guards/notyf.token';
-import { DepartureComponent } from './departureSelection/departure/departure.component';
+import { DepartureComponent } from './booking/departureSelection/departure/departure.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 import { ErrorInterceptor } from './shared/guards/interceptors/error-interceptor';
@@ -28,6 +29,11 @@ import { BookingOverviewComponent } from './booking/booking-overview/booking-ove
 import { OrderConfirmationComponent } from './booking/order-confirmation/order-confirmation.component';
 import { PaymentComponent } from './booking/payment/payment.component';
 import { PickSeatComponent } from './booking/pick-seat/pick-seat.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -46,6 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     OrderConfirmationComponent,
     PaymentComponent,
     PickSeatComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -56,10 +63,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatCardModule,
     MatButtonModule,
     ReactiveFormsModule,
+    MatSlideToggleModule,
     HttpClientModule,
     MatFormFieldModule,
     MatSelectModule,
     MatIconModule,
+    MatAutocompleteModule,
+    MatInputModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {

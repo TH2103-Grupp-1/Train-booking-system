@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrderConfirmationComponent } from './order-confirmation.component';
+import { OrderConfirmationComponent } from 'src/app/booking/order-confirmation/order-confirmation.component';
 
 describe('OrderConfirmationComponent', () => {
   let component: OrderConfirmationComponent;
