@@ -11,7 +11,7 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthModule } from './auth/auth.module';
@@ -24,6 +24,10 @@ import { BookingOverviewComponent } from './booking/booking-overview/booking-ove
 import { OrderConfirmationComponent } from './booking/order-confirmation/order-confirmation.component';
 import { PaymentComponent } from './booking/payment/payment.component';
 import { PickSeatComponent } from './booking/pick-seat/pick-seat.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -50,10 +54,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatCardModule,
     MatButtonModule,
     ReactiveFormsModule,
+    MatSlideToggleModule,
     HttpClientModule,
     MatFormFieldModule,
     MatSelectModule,
     MatIconModule,
+    MatAutocompleteModule,
+    MatInputModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {

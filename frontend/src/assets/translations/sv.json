@@ -80,8 +80,17 @@
   "My choices": "Mina val",
   "traveler": "resenär",
   "To pay": "Att betala",
-  "From which booking fee":"Varav bokningsavgift"
-  
-
+  "From which booking fee":"Varav bokningsavgift",
+  "Dark Mode" : "Mörkt Läge",
+  "4. Overview": "4. Översikt",
+  "Overview": "Översikt",
+  "Traveller": "Resande",
+  "Class": "Klass",
+  "Cannot be rebooked": "Kan ej ombokas",
+  "Travel time": "Restid",
+  "Changes": "Förändringar",
+  "Total": "Att betala",
+  "Switshes": "Byten",
+  "Book more trips": "Boka fler resor"
 }
 
