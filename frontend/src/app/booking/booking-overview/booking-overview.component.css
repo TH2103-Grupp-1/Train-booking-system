@@ -14,7 +14,7 @@ a{
 
 .page-orientation-bar-current {
     text-align: center;
-    background-color: rgb(96, 151, 12);
+    background-color: #156e31;
     border: solid 1px white;
     padding-left: 0px;
     padding-right: 0px;
@@ -40,21 +40,21 @@ h1{
     padding-bottom: 20px;
 }
 
-.ticket h2{
+.phone-ticket h2{
     text-align: center;
     margin-bottom: 5px;
 }
 .container p{
     text-align: center;
 }
-.ticket p .time{
+.phone-ticket p .time{
     margin-left: 15px;
 }
-.ticket{
+.phone-ticket{
     padding: 0px;
     margin-bottom: 15px;
 }
-.ticket .container{
+.phone-ticket .container{
     margin-top: 10px;
 }
 .no-padding{
@@ -85,5 +85,119 @@ p #right{
 .btn-block{
     width: 100%;
     border-radius: 0px;
-    
+}
+
+#continue-btn-phone {
+    border-radius: 0px;
+    background-color:  #156e31;
+    border-bottom: solid 3px #105426;
+    font-weight: bold;
+    text-align: left;
+    color: white;
+    transition: 0.40s linear;
+    margin-bottom: 50px;
+}
+
+#continue-btn-desktop{
+    height: 50px;
+    width: 250px;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    margin-left: 27px;
+    border-radius: 0px;
+    background-color:  #156e31;
+    border-bottom: solid 3px #105426;
+    font-weight: bold;
+    text-align: left;
+    color: white;
+    transition: 0.40s linear;  
+}
+#continue-btn-desktop:hover {
+    background-color: green;
+}
+
+#add-more-trips{
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-style: dashed;
+    border-width: 2px;
+    border-color: lightgray;
+}
+
+.fa-plus-circle{
+    color:rgb(62, 62, 236);
+    margin-left: 5px;
+}
+
+@media (min-width: 780px){
+    .phone-ticket{
+        visibility: hidden;
+        display: none;
+    }
+    .phone-bottom{
+        visibility: hidden;
+        display: none;
+    }
+    .page-orientation-bar-current a{
+        font-size: 13px;
+    }
+    .page-orientation-bar-next a{
+        font-size: 13px;
+    }
+    .page-orientation-bar-back a{
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 780px){
+    .desktop-card{
+        visibility: hidden;
+        display: none;
+    }
+    .desktop-bottom{
+        visibility: hidden;
+        display: none;
+    }
+    .page-orientation-bar-current a{
+        font-size: 10px;
+    }
+    .page-orientation-bar-next a{
+        font-size: 10px;
+    }
+    .page-orientation-bar-back a{
+        font-size: 10px;
+    }
+}
+
+/* Desktop card styling */
+
+.desktop-card .col h2{
+    font-size: 15px;
+    text-align: center;
+}
+.desktop-bottom .col{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.margin-top{
+    margin-top: 20px;
+}
+.margin-bottom{
+    margin-bottom: 20px;
+}
+#desktop-date {
+    font-weight: lighter;
+}
+#desktop-price{
+    padding-right: 7px;
+}
+#desktop-trash-icon{
+   margin-left: 7px;
+}
+.icon-margin-right{
+    margin-right: 10px;
+}
+.margin-left{
+    margin-left: 20px;
 }

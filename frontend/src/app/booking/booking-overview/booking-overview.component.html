@@ -1,38 +1,41 @@
 <div class="container">
-    <div class="row page-orientagion">
-        <div class="col page-orientation-bar-back">
-            <a href="">
-                1.
-            </a>
-        </div>
-        <div class="col page-orientation-bar-back">
-            <a href="">
-                2.
-            </a>
-        </div>
-        <div class="col page-orientation-bar-back">
-            <a href="">
-                3.
-            </a>
-        </div>
-        <div class="col-3 page-orientation-bar-current">
-            <a href="">
-                4. Overview
-            </a>
-        </div>
-        <div class="col page-orientation-bar-next">
-            <a href="">
-                5.
-            </a>
-        </div>
-        <div class="col page-orientation-bar-next">
-            <a href="">
-                6.
-            </a>
+    <div class="container">
+        <div class="row page-orientagion">
+            <div class="col page-orientation-bar-back">
+                <a href="">
+                    1.
+                </a>
+            </div>
+            <div class="col page-orientation-bar-back">
+                <a href="">
+                    2.
+                </a>
+            </div>
+            <div class="col page-orientation-bar-back">
+                <a href="">
+                    3.
+                </a>
+            </div>
+            <div class="col-3 page-orientation-bar-current">
+                <a href="">
+                    4. Overview
+                </a>
+            </div>
+            <div class="col page-orientation-bar-next">
+                <a href="">
+                    5.
+                </a>
+            </div>
+            <div class="col page-orientation-bar-next">
+                <a href="">
+                    6.
+                </a>
+            </div>
         </div>
     </div>
     <h1>Overview</h1>
-    <div class="container ticket no-padding border shadow-sm">
+    <!----------------------------- Phone size cards ----------------------------------->
+    <div class="container phone-ticket no-padding border shadow-sm">
         <div class="container border-bottom">
             <div class="container inner-container">
                 <h2>
@@ -85,7 +88,7 @@
             </div>
         </div>
     </div>
-    <div class="container ticket no-padding border shadow-sm">
+    <div class="container phone-ticket no-padding border shadow-sm">
         <div class="container border-bottom">
             <div class="container inner-container">
                 <h2>
@@ -137,9 +140,109 @@
                 </div>
             </div>
         </div>
+    </div>
+    <!---------------------------- Desktop size cards --------------------------------->
+    <div class="container border desktop-card margin-bottom">
+        <div class="container border-bottom no-padding margin-top">
+            <div class="row justify-content-center">
+                <div class="col col-auto">
+                    <h2 class="pull-left">
+                        <span><i class="fa fa-angle-double-right icon-margin-right"></i></span>
+                        <span>Göteborg C</span>
+                        <span> - </span>
+                        <span>Sthlm Central</span>
+                    </h2>
+                </div>
+                <div class="col col-auto thin">
+                    <h2 id="desktop-date">
+                        <span>Torsdag 23 december 2021</span>
+                        <span class="time">kl 06:24</span>
+                    </h2>
+                </div>
+                <div class="col">
+                    <h2 class="pull-right">
+                        <span class="border-right" id="desktop-price">1024:-</span>
+                        <span id="desktop-trash-icon"> <a href="">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="container border-bottom no-padding margin-top">
+            <p id="left">
+                <span>1 Traveller</span>
+                <span class="margin-left">2 Class</span>
+                <span class="margin-left">Cannot be rebocked</span>
+            </p>
+        </div>
+        <div class="container no-padding margin-top">
+            <p id="left">
+                <span>SJ</span>
+                <span class="margin-left">Travel time 4:05 h</span>
+                <span class="margin-left">0 Switches</span>
+            </p>
+        </div>
+    </div>
+    <!---------------------------------- Desktop return trip card ------------------------------------->
+    <div class="container border desktop-card">
+        <div class="container border-bottom no-padding margin-top">
+            <div class="row justify-content-center">
+                <div class="col col-auto">
+                    <h2 class="pull-left">
+                        <span><i class="fa fa-angle-double-left icon-margin-right"></i></span>
+                        <span>Sthlm Central</span>
+                        <span> - </span>
+                        <span>Göteborg C</span>
+                    </h2>
+                </div>
+                <div class="col col-auto thin">
+                    <h2 id="desktop-date">
+                        <span>Torsdag 24 december 2021</span>
+                        <span class="time">kl 06:24</span>
+                    </h2>
+                </div>
+                <div class="col">
+                    <h2 class="pull-right">
+                        <span class="border-right" id="desktop-price">1024:-</span>
+                        <span id="desktop-trash-icon"> <a href="">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="container border-bottom no-padding margin-top">
+            <p id="left">
+                <span>1 Traveller</span>
+                <span class="margin-left">2 Class</span>
+                <span class="margin-left">Cannot be rebocked</span>
+            </p>
+        </div>
+        <div class="container no-padding margin-top">
+            <p id="left">
+                <span>SJ</span>
+                <span class="margin-left">Travel time 4:05 h</span>
+                <span class="margin-left">0 Switches</span>
+            </p>
+        </div>
+    </div>
+    <div class="container border-style" id="add-more-trips">
+        <a href="">
+            <div class="row justify-content-center">
+                <span>
+                    <i class="fa fa-plus-circle fa-lg"></i>
+                    Add more trips
+                </span>
+            </div>
+        </a>
     </div>
 </div>
-<div class="container-fluid">
+<!----------------------------- Bottom ------------------------------>
+<!------------------------------- Phone Bottom ------------------------------------>
+<div class="container-fluid phone-bottom">
     <div class="row">
         <div class="col">
             <h3 id="left">Total</h3>
@@ -148,5 +251,32 @@
             <h3 id="right">2048:-</h3>
         </div>
     </div>
-    <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block" id="continue-btn-phone">
+        Continue
+        <span class="pull-right">
+            <i class="fa fa-angle-right fa-lg"></i>
+        </span>
+    </button>
+</div>
+
+<!--------------------------------------- Desktop Bottom -------------------------------------------->
+<div class="container-fluid desktop-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 id="left">Total</h1>
+            </div>
+            <div class="col">
+                <div class="row align-items-center float-right">
+                    <h1>2048:-</h1>                 
+                    <button type="button" class="btn btn-primary btn-lg" id="continue-btn-desktop">
+                        Continue
+                        <span class="pull-right">
+                            <i class="fa fa-angle-right fa-lg"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
