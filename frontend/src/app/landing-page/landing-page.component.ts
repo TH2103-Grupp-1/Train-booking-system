@@ -11,7 +11,9 @@ export class LandingPageComponent implements OnInit {
   disabledCelandarStyle: string = "opacity: 0.2; pointer-events: none; user-select: none;";
 
   calendarStyle: string = this.disabledCelandarStyle;
-  selected:Date = new Date() || null;
+  selected1: Date = new Date() || null;
+  
+  selected2:Date = new Date() || null;
 
   constructor() { }
 

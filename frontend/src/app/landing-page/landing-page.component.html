@@ -13,28 +13,44 @@
           <input type="text" class="form-control" placeholder="{{'TO' | translate}}">
         </div>
       </div>
-      <div class="d-flex justify-content-center">
-        <mat-card class="checkbox-field d-flex align-items-center">
-          <p>Hello</p>
-        </mat-card>
-  
-        <mat-card class="checkbox-field">
-          <mat-checkbox (change)="onCheck()">{{'Return trip' | translate}}</mat-checkbox>
+
+      <div class="booking-options">
+        <mat-card>
+          <div class="left buttons">
+            <p>Hello</p>
+          </div>
+          <div class="right-buttons">
+            <div>
+              <input type="checkbox" (change)="onCheck()" id="return-trip" value="Return-trip">
+              <label for="return-trip">{{'Return trip' | translate}}</label>
+            </div>
+            <div>
+              <input type="radio" id="arrival" name="drone" value="Arrival" checked>
+              <label for="arrival">{{'Arrival' | translate}}</label>
+            </div>
+            <div>
+              <input type="radio" id="departure" name="drone" value="Departure">
+              <label for="departure">{{'Departure' | translate }}</label>
+            </div>
+          </div>
+            
         </mat-card>
       </div>
 
       <div class="calendars">
-
+        
         <mat-card>
-          <mat-calendar></mat-calendar>
+          <p>{{selected1 | date: 'short'}}</p>
+          <mat-calendar [(selected)] ="selected1"></mat-calendar>
         </mat-card>
 
         <mat-card [style] = "calendarStyle">
-          <mat-calendar></mat-calendar>
+          <p>{{selected2 | date: 'short'}}</p>
+          <mat-calendar [(selected)] ="selected2"></mat-calendar>
         </mat-card>
+     
       </div>
 
-     
       <h3 class="safety-heading">{{'Travel safely with us' | translate}}</h3>
       <p class="safety-message">{{"Right now the Swedish Public Health Agency recommends that you use a face mask when traveling with public transport when it's crowded. Read more about how you can help us make the journey safe for you and your fellow travelers here." | translate}}</p>
     </div>

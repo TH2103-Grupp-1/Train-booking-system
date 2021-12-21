@@ -11,12 +11,28 @@
   color: white;
 }
 
-.checkbox-field{
-  width: 234px;
-  margin: 5px ;
+.booking-options{
+  display: flex;
+  justify-content: center;
+}
+
+.booking-options mat-card{
+  width: 478px;
+  height: 40px;
+  margin: 5px;
   padding: 0px;
-  padding-top: 3px;
-  height: 30px
+  display: flex;
+  justify-content: space-between;
+}
+
+.right-buttons{
+  width: 50%;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-evenly;
+  transform: scale(0.9);
 }
 
 .calendars{
@@ -25,10 +41,15 @@
 }
 
 .calendars mat-card{
-   margin: 5px;
-   width: 234px;
-   height: 300px;
+  margin: 5px;
+  padding-top: 30px;
+  width: 234px;
+  height: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 
 .safety-message {
   text-align: center;
