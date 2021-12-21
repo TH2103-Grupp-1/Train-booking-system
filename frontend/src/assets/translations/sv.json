@@ -59,6 +59,17 @@
   "Registered, please login" : "Registrerad, vänligen logga in",
   "My Pages": "Mina Sidor",
   "The password was incorrect" : "Felaktigt lösenord",
-  "There is no registered user with that email" : "Användaren existerar inte"
+  "There is no registered user with that email" : "Användaren existerar inte",
+  "4. Overview": "4. Översikt",
+  "Overview": "Översikt",
+  "Traveller": "Resande",
+  "Class": "Klass",
+  "Cannot be rebooked": "Kan ej ombokas",
+  "Travel time": "Restid",
+  "Changes": "Förändringar",
+  "Total": "Att betala",
+  "Switshes": "Byten",
+  "Continue": "Fortsätt",
+  "Book more trips": "Boka fler resor"
 }
 
