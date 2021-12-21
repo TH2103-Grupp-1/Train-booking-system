@@ -11,6 +11,12 @@
   color: white;
 }
 
+.checkbox-field{
+  width: 234px;
+  height: fit-content;
+  margin: 5px;
+}
+
 .calendar{
   width: 234px;
   margin: 5px;
