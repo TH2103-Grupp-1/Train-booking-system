@@ -16,14 +16,24 @@ export class LandingPageComponent implements OnInit {
   disabledCelandarStyle: string = "opacity: 0.2; pointer-events: none; user-select: none;";
 
   calendarStyle: string = this.disabledCelandarStyle;
-  selected1: Date = new Date() || null;
+  selectedDate_calendar1: Date = new Date() || null;
+  selectedTime_calendar1: string = "00:00";
   
-  selected2:Date = new Date() || null;
+  selectedDate_calendar2: Date = new Date() || null;
+  selectedTime_calendar2: string = "00:00";
   myControl = new FormControl();
   stations: Station[] = [];
   filteredOptions!: Observable<Station[]>;
 
   constructor(private stationService: StationService) { }
+
+  setTimeCalendar1(time: string) {
+    this.selectedTime_calendar1 = time;
+  }
+
+  setTimeCalendar2(time: string) {
+    this.selectedTime_calendar2 = time;
+  }
 
   onCheck() {
     if (!this.checked) {
