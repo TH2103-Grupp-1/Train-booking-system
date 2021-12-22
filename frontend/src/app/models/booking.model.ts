@@ -1,6 +1,7 @@
 import { Station } from "./station.model";
 import { TicketReciever } from "./ticketreciever.model";
 import { Train } from "./train.model";
+import { TravelerType } from "./traveler.model";
 
 export class Booking {
   Id?: number;

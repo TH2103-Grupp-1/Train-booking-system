@@ -1,4 +1,4 @@
-enum TravelerType {
+export enum TravelerType {
   Adult,
   Child,
   Student,
