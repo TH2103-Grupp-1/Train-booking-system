@@ -33,6 +33,10 @@
   justify-content: space-evenly;
 }
 
+.left-buttons input{
+  margin-right: 5px;
+}
+
 .right-buttons{
   width: 50%;
   padding-top: 10px;
@@ -40,6 +44,10 @@
   align-items: center;
   justify-content: center;
   justify-content: space-evenly;
+}
+
+.right-buttons input{
+  margin-right: 5px;
 }
 
 .calendars{
