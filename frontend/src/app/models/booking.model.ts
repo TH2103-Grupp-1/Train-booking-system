@@ -1,4 +1,5 @@
 import { Station } from "./station.model";
+import { TicketReciever } from "./ticketreciever.model";
 import { Train } from "./train.model";
 
 export interface Booking {
@@ -8,8 +9,11 @@ export interface Booking {
   ReturnTrip: Boolean;
   DepartureDate: Date;
   ReturnTripDate: Date;
-  Travelers: Traveler[];
+  Travelers: TravelerType[];
   Trains: Train[];
   TicketClass: string;
-  // Seats: number[];
+  Price: number;
+  DeliveryMethod: 'Sms' | 'Email';
+  TicketReciever: TicketReciever;
+  
 }
