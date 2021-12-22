@@ -1,5 +1,5 @@
 export interface Seat {
-  Id: number;
-  SeatNumber: number;
-  IsOccupied: boolean;
+  Id?: number;
+  SeatNumber?: number;
+  IsOccupied?: boolean;
 }
