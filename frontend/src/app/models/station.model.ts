@@ -1,5 +1,5 @@
 export interface Station {
-  Id: number;
+  Id?: number;
   AdvertisedLocationName: string;
   LocationSignature: string;
   Coordinates: string;
