@@ -1,1 +1,52 @@
-<p>pick-seat works!</p>
+<div class="container">
+      <div class="row page-orientagion">
+          <div class="col page-orientation-bar-back">
+              <a href="">
+                  1.
+              </a>
+          </div>
+          <div class="col page-orientation-bar-back">
+              <a href="">
+                  2.
+              </a>
+          </div>
+          <div class="col-3 page-orientation-bar-current">
+              <a>
+                {{'3. Optional' | translate}}
+              </a>
+          </div>
+          <div class="col page-orientation-bar-next">
+              <a>
+                  4.
+              </a>
+          </div>
+          <div class="col page-orientation-bar-next">
+              <a href="">
+                  5.
+              </a>
+          </div>
+          <div class="col page-orientation-bar-next">
+              <a href="">
+                  6.
+              </a>
+          </div>
+      </div>
+  </div>
+  <div class="container h-75 train-container">
+    <div class="align-items-center h-75">
+      <div class="scrolling-wrapper">
+        <div *ngFor="let carriage of train.carriages" (click)="selectCarriage(carriage)" class="carriage card"><h2>Carriage {{carriage.number}}</h2></div>
+      </div>
+        <div *ngIf="selectedCarriage !== undefined" class="seats">
+          <div class="seats-overview card">
+              <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color" class="carriage-thing card row">
+            <div *ngFor="let seat of selectedCarriage.seats" class="seat card"><mat-button-toggle (click)="selectSeat(seat.seatNumber)" value="red">{{seat.seatNumber}}</mat-button-toggle></div>
+          </mat-button-toggle-group>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="selectedSeat !== 0 " class="container train-container"><h1>You selected seat {{selectedSeat}} on carriage {{selectedCarriage.number}} </h1></div>
+
+
+

@@ -27,6 +27,8 @@ import { PickSeatComponent } from './booking/pick-seat/pick-seat.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 
 
 
@@ -55,6 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatButtonModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
+    MatButtonToggleModule,
     HttpClientModule,
     MatFormFieldModule,
     MatSelectModule,
