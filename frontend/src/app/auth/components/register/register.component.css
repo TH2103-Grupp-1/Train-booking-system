@@ -4,13 +4,49 @@
 
 .card {
   margin-top: 50px;
+  background-color: inherit;
+  border-radius: 5px;
+  border-color: inherit;
 }
 
 mat-form-field {
   width: 100%;
+  /* color: white; */
 }
+
+
 
 button {
   width: 70%;
   padding: 15px;
+  color: inherit;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: red!important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: inherit!important;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: red!important;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
+  color: red!important;
+  opacity: 0.8!important;
+}
+
+::ng-deep .mat-input-element {
+  caret-color: red!important;
+}
+
+::ng-deep .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
+  caret-color: red!important;
+}
+
+::ng-deep .mat-form-field-label {
+    color: inherit!important;
 }
