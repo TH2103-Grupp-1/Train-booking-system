@@ -1,12 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { StationService } from 'src/app/services/station.service';
 
-import { LandingPageComponent } from '../app/landing-page/landing-page.component';
+import { LandingPageComponent } from './landing-page.component';
 
 describe('LandingPageComponent', () => {
   let component: LandingPageComponent;
   let fixture: ComponentFixture<LandingPageComponent>;
-  let stationService: StationService;
 
   // beforeEach(async () => {
   //   await TestBed.configureTestingModule({
@@ -22,7 +20,7 @@ describe('LandingPageComponent', () => {
   // });
 
   it('should create', () => {
-    component = new LandingPageComponent(stationService);
+    component = new LandingPageComponent();
     expect(component).toBeTruthy();
   });
 });

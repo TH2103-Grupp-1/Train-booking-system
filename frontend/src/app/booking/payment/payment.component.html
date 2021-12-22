@@ -1,19 +1,22 @@
+<!-- Radio buttons for delivery method -->
 <div class="container">
   <h2>{{ "Delivery" | translate }}</h2>
   <div class="container border">
     <div
-      class="form-check"
-      data-toggle="collapse"
-      href="#e-ticket"
-      role="button"
-      aria-expanded="false"
-      aria-controls="e-ticket"
+    class="form-check"
+    data-toggle="collapse"
+    href="#e-ticket"
+    role="button"
+    aria-expanded="false"
+    aria-controls="e-ticket"
     >
-      <input
-        class="form-check-input"
-        type="radio"
-        name="flexRadioDefault"
-        id="flexRadioDefault1"
+
+    <input
+    class="form-check-input"
+    type="radio"
+    name="flexRadioDefault"
+    id="flexRadioDefault1"
+    checked
       />
       <label class="form-check-label" for="flexRadioDefault1">
         {{ "E-ticket" | translate }}
@@ -23,6 +26,7 @@
       <hr />
         {{ 'The ticket is a pdf that is sent to your e-mail.On the train, you show the ticket in your mobile or computer. You can also print the ticket.' | translate }}
     </div>
+
   </div>
   <div class="container border">
     <div
@@ -76,16 +80,18 @@
   </div>
 </div>
 
+
+<!-- Form -->
 <form class="container">
   <h2>{{ "Travelers" | translate }}</h2>
   <div class="row">
     <div class="col col-md-4">
       <label for="">{{ "First name" | translate }}</label>
-      <input type="text" class="form-control" />
+      <input type="text" class="form-control" maxlength="30" />
     </div>
     <div class="col col-md-4">
       <label for="">{{ "Last name" | translate }}</label>
-      <input type="text" class="form-control" />
+      <input type="text" class="form-control" maxlength="30" />
     </div>
   </div>
   <div class="row">
@@ -97,31 +103,32 @@
           }})</label
         >
         <div class="input-group">
-          <div class="input-group-addon"></div>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" maxlength="8" />
         </div>
       </div>
     </div>
     <div class="col col-md-4">
       <label for="">E-mail</label>
-      <input type="text" class="form-control" />
+      <input type="text" class="form-control" maxlength="50" />
     </div>
   </div>
   <div class="row">
     <div class="col col-md-4">
       <label for="">{{ "Phone number" | translate }}</label>
-      <input type="text" class="form-control" />
+      <input type="text" class="form-control" maxlength="12" />
     </div>
   </div>
 </form>
 
+
+<!-- Payment method -->
 <div class="container">
   <h2>{{ "Payment method" | translate }}</h2>
   <div class="form-check">
     <input
       class="form-check-input"
       type="radio"
-      name="flexRadioDefault"
+      name="flexRadioDefault1"
       id="flexRadioDefault4"
     />
     <label class="form-check-label" for="flexRadioDefault4"> Swish </label>
@@ -130,7 +137,7 @@
     <input
       class="form-check-input"
       type="radio"
-      name="flexRadioDefault"
+      name="flexRadioDefault1"
       id="flexRadioDefault5"
       checked
     />
@@ -142,7 +149,7 @@
     <input
       class="form-check-input"
       type="radio"
-      name="flexRadioDefault"
+      name="flexRadioDefault1"
       id="flexRadioDefault6"
       checked
     />
@@ -155,6 +162,7 @@
   </div>
 </div>
 
+<!-- Current ticket -->
 <div class="container main">
   <div class="my-choices">
     <h3> {{ 'My choices' | translate }} </h3>
@@ -166,13 +174,13 @@
   </div>
     <br>
     <div class="price">
-      <p>  1 {{ 'traveler' | translate }} </p>
+      <p>1 {{ 'traveler' | translate }} </p>
       <p>835:-</p>
     </div>
     <hr>
     <div class="pay">
       <p>{{ 'To pay' | translate }} </p>
-      <p>960:-</p>
+      <p>835:-</p>
     </div>
     <div class="booking-fee">
       <p> {{ 'From which booking fee' | translate }} </p>
@@ -181,11 +189,14 @@
   </div>
 </div>
 
-
+<!-- Buttons for navigating -->
 <div class="container">
   <div class="bottom-buttons">
     <a href="">&lt; {{ "Back" | translate }}</a>
     <button type="button" class="btn btn-warning">{{ 'Cancel' | translate }}</button>
-    <button type="button" class="btn btn-success"> {{ 'Continue' | translate }}</button>
+    <button type="submit" class="btn btn-success"> {{ 'Continue' | translate }}</button>
   </div>
 </div>
+
+
+
