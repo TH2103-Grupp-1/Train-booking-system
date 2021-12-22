@@ -8,67 +8,94 @@ import { Component, OnInit } from '@angular/core';
 export class PickSeatComponent implements OnInit {
 
   constructor() {
-    this.train =
+    this.booking =
     {
-      name: 'Test', carriages: [
-        {
-          seats:
-            [{ seatNumber: 1 }, { seatNumber: 2 }, { seatNumber: 3 },
+      Travelers: [Traveler.Adult, Traveler.Child],
+      Train: {
+        name: 'Test', carriages: [
+          {
+            seats:
+              [{ seatNumber: 1 }, { seatNumber: 2 }, { seatNumber: 3 },
               { seatNumber: 4 }, { seatNumber: 5 }, { seatNumber: 6 },
               { seatNumber: 4 }, { seatNumber: 5 }, { seatNumber: 6 },
               { seatNumber: 4 }, { seatNumber: 5 }, { seatNumber: 6 }
-            ], number: 1
-        },
-        {
-          seats:
-            [{ seatNumber: 4 }, { seatNumber: 5 }, { seatNumber: 6 }],
+              ], number: 1
+          },
+          {
+            seats:
+              [{ seatNumber: 4 }, { seatNumber: 5 }, { seatNumber: 6 }],
             number: 2
-        },
-        {
-          seats:
-            [{ seatNumber: 1 }, { seatNumber: 2 }, { seatNumber: 3 }],
+          },
+          {
+            seats:
+              [{ seatNumber: 1 }, { seatNumber: 2 }, { seatNumber: 3 }],
             number: 3
-        },
-        {
-          seats:
-            [{ seatNumber: 1 }, { seatNumber: 2 }, { seatNumber: 3 }],
+          },
+          {
+            seats:
+              [{ seatNumber: 1 }, { seatNumber: 2 }, { seatNumber: 3 }],
             number: 4
-        },
-        {
-          seats:
-            [{ seatNumber: 1 }, { seatNumber: 2 }, { seatNumber: 3 }],
+          },
+          {
+            seats:
+              [{ seatNumber: 1 }, { seatNumber: 2 }, { seatNumber: 3 }],
             number: 5
-        },
-        {
-          seats:
-            [{ seatNumber: 1 }, { seatNumber: 2 }, { seatNumber: 3 }],
+          },
+          {
+            seats:
+              [{ seatNumber: 1 }, { seatNumber: 2 }, { seatNumber: 3 }],
             number: 6
-        }
-      ]
+          }
+        ]
+      }
     }
   }
 
 
-
-  train: Train;
+  booking: Booking;
+  // train!: Train;
   selectedCarriage!: Carriage;
-  selectedSeat: number = 0;
-
+  selectedSeat: number[] = [];
+  maxSeats: number = 0;
   ngOnInit(): void {
-    console.log(this.selectedCarriage);
+    this.maxSeats = this.booking.Travelers.length;
   }
 
   selectCarriage(ca: Carriage) {
-    this.selectedSeat = 0;
+    this.selectedSeat = [];
     this.selectedCarriage = ca;
-    console.log(this.selectedSeat);
   }
 
   selectSeat(seat: number) {
-    this.selectedSeat = seat;
+    this.selectedSeat.push(seat);
+    console.log(this.selectedSeat);
+  }
+
+  change(group: any) {
+    if (group.value.length >= this.maxSeats) {
+      let newValue = group.value;
+      newValue.shift();
+      group.value = newValue;
+      // this.selectedSeat.push(newValue);
+      this.selectedSeat = [];
+
+    }
   }
 }
 
+// Mock interfaces under, to be removed.
+
+export interface Booking {
+  Train: Train,
+  Travelers: Traveler[]
+}
+
+export enum Traveler {
+  Adult,
+  Child,
+  Student,
+  Retired
+}
 export interface Train {
   name: string;
   carriages: Carriage[];
