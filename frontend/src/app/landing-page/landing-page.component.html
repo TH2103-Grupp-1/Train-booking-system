@@ -37,8 +37,15 @@
 
       <div class="booking-options">
         <mat-card>
-          <div class="left buttons">
-            <p>Hello</p>
+          <div class="left-buttons">
+            <div>
+              <input type="radio" id="arrival" name="One-way-trip" value="Arrival" checked>
+              <label for="arrival">{{'Arrival' | translate}}</label>
+            </div>
+            <div>
+              <input type="radio" id="departure" name="One-way-trip" value="Departure">
+              <label for="departure">{{'Departure' | translate }}</label>
+            </div>
           </div>
           <div class="right-buttons">
             <div>
@@ -46,11 +53,11 @@
               <label for="return-trip">{{'Return trip' | translate}}</label>
             </div>
             <div>
-              <input type="radio" id="arrival" name="drone" value="Arrival" checked>
+              <input type="radio" id="arrival" name="Return-trip" value="Return-arrival" checked>
               <label for="arrival">{{'Arrival' | translate}}</label>
             </div>
             <div>
-              <input type="radio" id="departure" name="drone" value="Departure">
+              <input type="radio" id="departure" name="Return-trip" value="Return-departure">
               <label for="departure">{{'Departure' | translate }}</label>
             </div>
           </div>

@@ -24,6 +24,15 @@
   justify-content: space-between;
 }
 
+.left-buttons{
+  width: 50%;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
 .right-buttons{
   width: 50%;
   padding-top: 10px;
@@ -31,7 +40,6 @@
   align-items: center;
   justify-content: center;
   justify-content: space-evenly;
-  transform: scale(0.9);
 }
 
 .calendars{
