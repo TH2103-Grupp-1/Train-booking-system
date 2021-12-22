@@ -17,9 +17,8 @@
 }
 
 .booking-options mat-card{
-  width: 478px;
+  width: 100%;
   height: 40px;
-  margin: 5px;
   padding: 0px;
   display: flex;
   justify-content: space-between;
@@ -41,13 +40,17 @@
 }
 
 .calendars mat-card{
-  margin: 5px;
-  padding-top: 30px;
-  width: 234px;
-  height: 340px;
+  margin-top: 10px;
+  padding: 20px;
+  width: 100%;
+  height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.calendars mat-calendar{
+  width: 100%;
 }
 
 

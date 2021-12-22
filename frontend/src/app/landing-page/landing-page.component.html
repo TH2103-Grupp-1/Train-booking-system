@@ -60,12 +60,12 @@
 
       <div class="calendars">
         
-        <mat-card>
+        <mat-card class="mr-3">
           <p>{{selected1 | date: 'short'}}</p>
           <mat-calendar [(selected)] ="selected1"></mat-calendar>
         </mat-card>
 
-        <mat-card [style] = "calendarStyle">
+        <mat-card [style] = "calendarStyle" class="ml-3">
           <p>{{selected2 | date: 'short'}}</p>
           <mat-calendar [(selected)] ="selected2"></mat-calendar>
         </mat-card>
