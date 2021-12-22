@@ -4,6 +4,7 @@ import { StationService } from '../services/station.service';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { Booking } from '../models/booking.model';
 
 @Component({
   selector: 'app-landing-page',
@@ -14,6 +15,7 @@ export class LandingPageComponent implements OnInit {
   myControl = new FormControl();
   stations: Station[] = [];
   filteredOptions!: Observable<Station[]>;
+  booking: Booking = new Booking();
 
   constructor(private stationService: StationService) { }
 
