@@ -68,13 +68,15 @@
       <div class="calendars">
         
         <mat-card class="mr-3">
-          <p>{{selected1 | date: 'short'}}</p>
-          <mat-calendar [(selected)] ="selected1"></mat-calendar>
+          <p>{{selectedDate_calendar1 | date: 'shortDate'}} - {{selectedTime_calendar1}}</p>
+          <input class="timepicker" type="time" #time (change)="setTimeCalendar1(time.value)">
+          <mat-calendar [(selected)] ="selectedDate_calendar1"></mat-calendar>
         </mat-card>
 
         <mat-card [style] = "calendarStyle" class="ml-3">
-          <p>{{selected2 | date: 'short'}}</p>
-          <mat-calendar [(selected)] ="selected2"></mat-calendar>
+          <p>{{selectedDate_calendar2 | date: 'shortDate'}} - {{selectedTime_calendar2}}</p>
+          <input class="timepicker" name="timeCalendar2" type="time" #time (change)="setTimeCalendar2(time.value)">
+          <mat-calendar [(selected)] ="selectedDate_calendar2"></mat-calendar>
         </mat-card>
      
       </div>
