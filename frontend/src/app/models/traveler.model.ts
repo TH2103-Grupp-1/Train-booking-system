@@ -1,4 +1,4 @@
-enum Traveler {
+enum TravelerType {
   Adult,
   Child,
   Student,
