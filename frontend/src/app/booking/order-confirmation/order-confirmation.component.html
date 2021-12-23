@@ -1,1 +1,358 @@
-<p>order-confirmation works!</p>
+<div class="container">
+    <div class="container">
+        <div class="row page-orientagion">
+            <div class="col page-orientation-bar-back">
+                <a href="">
+                    1.
+                </a>
+            </div>
+            <div class="col page-orientation-bar-back">
+                <a href="">
+                    2.
+                </a>
+            </div>
+            <div class="col page-orientation-bar-back">
+                <a href="">
+                    3.
+                </a>
+            </div>
+            <div class="col page-orientation-bar-back">
+                <a href="">
+                    4.
+                </a>
+            </div>
+            <div class="col page-orientation-bar-back">
+                <a href="">
+                    5.
+                </a>
+            </div>
+            <div class="col-3 page-orientation-bar-current">
+                <a href="">
+                    {{'Recipe' | translate}}
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container inner-container border-bottom">
+        <h1 class="margin-top">{{'Thank you for your order.' | translate}}</h1>
+        <h2 class="gray-text">{{'Here is all the information of your order. This is also your recipe.' | translate}}</h2>
+    </div>
+    <div class="container inner-container">
+        <h2 class="margin-top" id="ordernumber"><span>{{'Your order number is: ' | translate}}</span><span>13124443546464</span></h2>
+        <!----------------------------------------- Phone info card 1-------------------------------------------------->
+        <div class="container border shadow p-3 mb-5 rounded" id="info-container-phone-1">
+            <div class="container border-bottom inner-container">
+                <h2>
+                    <span>Stockholm C</span>
+                    <span> - </span>
+                    <span>Halmstad C</span>
+                </h2>
+                <p>tisdag, 22 december, 18:11</p>
+            </div>
+            <div class="container inner-container" id="trip-info">
+                <h3>
+                    <span><i class="fa fa-angle-double-right fa-lg"></i></span>
+                    <span>18:11</span>
+                    <span>&nbsp;</span>
+                    <span>Stockholm C</span>
+                    <span> - </span>
+                    <span>22:45</span>
+                    <span>&nbsp;</span>
+                    <span>Halmstad C</span>
+                </h3>
+                <p>SJ, X 2000, 445</p>
+                <p>
+                    <span>{{'Vagon ' | translate}}</span>
+                    <span>6</span>
+                    <span>, </span>
+                    <span>{{'Seat ' | translate}}</span>
+                    <span>22</span>
+                    <span>, </span>
+                    <span>{{'Window' | translate}}</span>
+                    <span>, </span>
+                    <span>{{'Salon' | translate}}</span>
+                </p>
+                <div class="container inner-container margin-top border-top">
+                    <div class="container inner-container">
+                        <h3 class="bold">
+                            <span>Skalle</span>
+                            <span>&nbsp;</span>
+                            <span>Skallesson</span>
+                        </h3>
+                        <div class="row">
+                            <div class="col text-align-left" id="phone-row-col-left">
+                                <p class="border-bottom">
+                                    <span>2</span>
+                                    <span>&nbsp;</span>
+                                    <span>{{'Class' | translate}}</span>
+                                </p>
+                                <p class="border-bottom">{{'Seat reservation' | translate}}</p>
+                                <p class="border-bottom">{{'Cannot be rebooked' | translate}}</p>
+                                <p class="bold">{{'Sum' | translate}}</p>
+                            </div>
+                            <div class="col text-align-right" id="phone-row-col-right">
+                                <p class="border-bottom">
+                                    <span>245</span>
+                                    <span>:-</span>
+                                </p>
+                                <p class="border-bottom">{{'Included' | translate}}</p>
+                                <p class="border-bottom">
+                                    <span>0</span>
+                                    <span>:-</span>
+                                </p>
+                                <p>
+                                    <span>245</span>
+                                    <span>:-</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!----------------------------------------- Phone info card 2-------------------------------------------------->
+
+        <div class="container border margin-top shadow p-3 mb-5 rounded" id="info-container-phone-2">
+            <div class="container border-bottom inner-container">
+                <h2>
+                    <span>Stockholm C</span>
+                    <span> - </span>
+                    <span>Halmstad C</span>
+                </h2>
+                <p>tisdag, 22 december, 18:11</p>
+            </div>
+            <div class="container inner-container" id="trip-info">
+                <h3>
+                    <span><i class="fa fa-angle-double-left fa-lg"></i></span>
+                    <span>18:11</span>
+                    <span>&nbsp;</span>
+                    <span>Stockholm C</span>
+                    <span> - </span>
+                    <span>22:45</span>
+                    <span>&nbsp;</span>
+                    <span>Halmstad C</span>
+                </h3>
+                <p>SJ, X 2000, 445</p>
+                <p>
+                    <span>Vagon 6</span>
+                    <span>, </span>
+                    <span>Seat 22</span>
+                    <span>, </span>
+                    <span>Window</span>
+                    <span>, </span>
+                    <span>Salon</span>
+                </p>
+                <div class="container inner-container margin-top border-top">
+                    <div class="container inner-container">
+                        <h3 class="bold">
+                            <span>Skalle</span>
+                            <span>&nbsp;</span>
+                            <span>Skallesson</span>
+                        </h3>
+                        <div class="row">
+                            <div class="col text-align-left" id="phone-row-col-left">
+                                <p class="border-bottom">
+                                    <span>2</span>
+                                    <span>&nbsp;</span>
+                                    <span>{{'Class' | translate}}</span>
+                                </p>
+                                <p class="border-bottom">{{'Seat reservation' | translate}}</p>
+                                <p class="border-bottom">{{'Cannot be rebooked' | translate}}</p>
+                                <p class="bold">{{'Sum' | translate}}</p>
+                            </div>
+                            <div class="col text-align-right" id="phone-row-col-right">
+                                <p class="border-bottom">
+                                    <span>245</span>
+                                    <span>:-</span>
+                                </p>
+                                <p class="border-bottom">{{'Included' | translate}}</p>
+                                <p class="border-bottom">
+                                    <span>0</span>
+                                    <span>:-</span>
+                                </p>
+                                <p>
+                                    <span>245</span>
+                                    <span>:-</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--------------------------------- Desktop info card 1 ---------------------------------------->
+        <div class="container border shadow p-3 mb-5 rounded" id="info-container-1">
+            <div class="container border-bottom inner-container">
+                <h2>
+                    <span>Stockholm C</span>
+                    <span> - </span>
+                    <span>Halmstad C</span>
+                </h2>
+                <p>tisdag, 22 december, 18:11</p>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <div class="container inner-container" id="trip-info">
+                        <h3>
+                            <span><i class="fa fa-angle-double-right fa-lg"></i></span>
+                            <span>18:11</span>
+                            <span>&nbsp;</span>
+                            <span>Stockholm C</span>
+                            <span> - </span>
+                            <span>22:45</span>
+                            <span>&nbsp;</span>
+                            <span>Halmstad C</span>
+                        </h3>
+                    </div>
+                    <p>SJ, X 2000, 445</p>
+                    <h3 class="bold">
+                        <span>Skalle</span>
+                        <span>&nbsp;</span>
+                        <span>Skallesson</span>
+                    </h3>
+                    <p>
+                        <span>{{'Vagon ' | translate}}</span>
+                        <span>6</span>
+                        <span>, </span>
+                        <span>{{'Seat ' | translate}}</span>
+                        <span>22</span>
+                        <span>, </span>
+                        <span>{{'Window' | translate}}</span>
+                        <span>, </span>
+                        <span>{{'Salon' | translate}}</span>
+                    </p>
+                </div>
+                <div class="col-4 margin-top border-left">
+                    <div class="container inner-container">
+                        <h3 class="bold">
+                            <span>Skalle</span>
+                            <span>&nbsp;</span>
+                            <span>Skallesson</span>
+                        </h3>
+                        <div class="row justify-content-center">
+                            <div class="col pull-left">
+                                <p>
+                                    <span>2</span>
+                                    <span>&nbsp;</span>
+                                    <span>{{'Class' | translate}}</span>
+                                </p>
+                                <p>{{'Seat reservation' | translate}}</p>
+                                <p>{{'Cannot be rebooked' | translate}}</p>
+                                <p class="bold">{{'Sum' | translate}}</p>
+                            </div>
+                            <div class="col pull-right">
+                                <p>
+                                    <span>245</span>
+                                    <span>:-</span>
+                                </p>
+                                <p>{{'Included' | translate}}</p>
+                                <p>
+                                    <span>0</span>
+                                    <span>:-</span>
+                                </p>
+                                <p>
+                                    <span>245</span>
+                                    <span>:-</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container border shadow p-3 mb-5 rounded" id="info-container-2">
+            <div class="container border-bottom inner-container">
+                <h2>
+                    <span>Halmstad C</span>
+                    <span> - </span>
+                    <span>Stockholm C</span>
+                </h2>
+                <p>onsdag, 23 december, 18:11</p>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <div class="container inner-container" id="trip-info">
+                        <h3>
+                            <span><i class="fa fa-angle-double-left fa-lg"></i></span>
+                            <span>18:11</span>
+                            <span>&nbsp;</span>
+                            <span>Halmstad C</span>
+                            <span> - </span>
+                            <span>22:45</span>
+                            <span>&nbsp;</span>
+                            <span>Stockholm C</span>
+                        </h3>
+                    </div>
+                    <p>SJ, X 2000, 445</p>
+                    <h3 class="bold">
+                        <span>Skalle</span>
+                        <span>&nbsp;</span>
+                        <span>Skallesson</span>
+                    </h3>
+                    <p>
+                        <span>{{'Vagon ' | translate}}</span>
+                        <span>6</span>
+                        <span>, </span>
+                        <span>{{'Seat ' | translate}}</span>
+                        <span>22</span>
+                        <span>, </span>
+                        <span>{{'Window' | translate}}</span>
+                        <span>, </span>
+                        <span>{{'Salon' | translate}}</span>
+                    </p>
+                </div>
+                <div class="col-4 margin-top border-left">
+                    <div class="container inner-container">
+                        <h3 class="bold">
+                            <span>Skalle</span>
+                            <span>&nbsp;</span>
+                            <span>Skallesson</span>
+                        </h3>
+                        <div class="row justify-content-center">
+                            <div class="col pull-left">
+                                <p>
+                                    <span>2</span>
+                                    <span>&nbsp;</span>
+                                    <span>{{'Class' | translate}}</span>
+                                </p>
+                                <p>{{'Seat reservation' | translate}}</p>
+                                <p>{{'Cannot be rebooked' | translate}}</p>
+                                <p class="bold">{{'Sum' | translate}}</p>
+                            </div>
+                            <div class="col pull-right">
+                                <p>
+                                    <span>245</span>
+                                    <span>:-</span>
+                                </p>
+                                <p>Included</p>
+                                <p>
+                                    <span>0</span>
+                                    <span>:-</span>
+                                </p>
+                                <p>
+                                    <span>245</span>
+                                    <span>:-</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container text-align-right">
+            <h1 class="bold" id="total-sum">
+                <span>{{'Price total' | translate}}</span>
+                <span>: </span>
+                <span>490</span>
+                <span>:-</span>
+            </h1>
+            <h2 id="vat">
+                <span>{{'VAT: ' | translate}}</span>
+                <span>6.0%</span>
+                <span>&nbsp;</span>
+                <span>29,4</span>
+                <span>:-</span>
+            </h2>
+        </div>
+    </div>  
+</div>

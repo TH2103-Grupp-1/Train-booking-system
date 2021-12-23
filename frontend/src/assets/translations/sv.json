@@ -74,6 +74,19 @@
   "Book more trips": "Boka fler resor",
   "Arrival": "Ankomst",
   "Departure": "Avresa",
-  "Return trip": "Returresa"
+  "Return trip": "Returresa",
+  "Seat reservation": "Platsreservation",
+  "Recipe": "Kvitto",
+  "Thank you for your order.": "Tack för din beställning.",
+  "Here is all the information of your order. This is also your recipe.": "Här får du all information om din beställning. det är också ditt kvitto.",
+  "Your order number is: ": "Ditt ordernummer är: ",
+  "Vagon ": "Vagn ",
+  "Seat ": "Säte",
+  "Window": "Fönster",
+  "Salon": "Salong",
+  "Sum": "Summa",
+  "Included": "Ingår",
+  "Price total": "Pris totalt",
+  "VAT: ": "Moms: "
 }
 
