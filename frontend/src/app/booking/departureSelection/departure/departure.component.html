@@ -12,87 +12,99 @@
 
   <div class=" row no-gutters">
     <div class="col-md-4 col- no-padding">
-      <div class="custom-pagination">
+      <div class="container custom-pagination">
         <div class="pagination-icon-previous">
-          <div (click)="p.previous()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="bi bi-chevron-left" viewBox="0 0 16 16">
+          <div (click)="p.previous(); showPreviousDay()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-            </svg>Tidigare resor
+            </svg>Tidigare resor {{previousDay}}
           </div>
+        </div>
 
-          <div>
-            current date
-          </div>
-          <div class="pagination-icon-next">
-            <div (click)="p.next()">Senare resor
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-chevron-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-              </svg>
-            </div>
-
+        <div>
+          <p>{{myDate | date: 'fullDate'}}</p>
+        </div>
+        <div class="pagination-icon-next">
+          <div (click)="p.next() ;showNextDay()">Senare resor {{nextDay}}
+            <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-chevron-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
 
 
 
-  <div class="date-choosen-cities">
-    <table class=" table table-striped table">
-      <div class="wrapper">
+<div class="date-choosen-cities">
+  <table class=" table table-striped table">
+    <div class="wrapper">
 
-        <div class="container">
+      <div class="container">
 
-          <div class="info-tabel-header">
-            <div class="col-5">avgång</div>
-            <div>
-              2 klass
-            </div>
-            <div>1 klass</div>
+        <div class="info-tabel-header">
+          <div class="col-5">{{'Departure' | translate}}</div>
+          <div>
+            {{'1 Class' | translate}}
           </div>
-          <!-- loops and create list of departures "dynamic from component" -->
+          <div>{{'2 Class'| translate}}</div>
+        </div>
 
-          <div *ngFor="let departures of tableData | paginate: { itemsPerPage: 4, currentPage: page,
-        totalItems:totalLength } let i=index">
-            <mat-accordion>
-              <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    {{departures.departure}}
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    {{departures.secondClass}}
-                  </mat-panel-description>
-                  <mat-panel-description>
-                    {{departures.firstClass}}
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <p>{{departures.departure}}</p>
-                <div class=" container box-info">
+        <!-- loops and create list of departures "dynamic from component And pagintaes to 4 items/site" -->
+
+        <div *ngFor="let departures of tableData | paginate: { itemsPerPage: 4, currentPage: page,
+        totalItems:totalLength }">
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{departures.departure}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  <!-- {{departures.firstClass}} -->
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>{{'Select ticket'| translate}}</p>
+              <!-- <p>{{departures.departure}}</p> -->
+
+              <div class=" container box-info">
+                <div class="container left-container">
                   <div class="more-train-info">
-                    <h1>{{departures.departure}}</h1> <img class="train-image"
-                      src="../../../../assets/images/dubbeldackare-70x340.png" alt="">
-                    {{departures.arrival}}
+                    <div class="departure-holder">{{'Departure'| translate}}{{' '}}{{departures.departure}}</div>
+                    <div class="train-pic-holder"> <img class="train-image"
+                        src="../../../../assets/images/dubbeldackare-70x340.png" alt="">
+                    </div>
+                    <div class="arrvial-holder">
+                      {{'Arrival'| translate}}{{' '}} {{departures.arrival}}</div>
+                    <div>
+                      <p>Model</p>
+                    </div>
+                    <div>
+                      <p>TrainServices</p>
+                    </div>
                   </div>
-
-                  <div class="price-box">
-                    <div>{{departures.firstClass}}</div>
-                    <div>{{departures.secondClass}}</div>
-                  </div>
-
                 </div>
-
-
-
-              </mat-expansion-panel>
-            </mat-accordion>
-            <!-- <div class=" depature-info"> -->
-            <!-- <div class=" container box-info">
+                <div class="container right-container">
+                  <div class="price-box">
+                    <div class="price-box-first">
+                      <div type="submit" (click)="selectedPrice()">{{departures.firstClass}} SEK</div>
+                    </div>
+                    <div class="price-box-second">
+                      <div>{{departures.secondClass}} SEK</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <!-- <div class=" depature-info"> -->
+          <!-- <div class=" container box-info">
 
 
             </div> -->
@@ -100,9 +112,9 @@
 
 
 
-            <!-- </div> -->
-          </div>
+          <!-- </div> -->
         </div>
       </div>
-    </table>
-  </div>
+    </div>
+  </table>
+</div>

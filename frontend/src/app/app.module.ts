@@ -34,6 +34,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatGridListModule } from '@angular/material/grid-list'
 
 
 
@@ -75,6 +76,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatInputModule,
     MatExpansionModule,
     MatStepperModule,
+    MatGridListModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
