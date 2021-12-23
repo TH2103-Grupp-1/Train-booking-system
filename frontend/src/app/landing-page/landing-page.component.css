@@ -11,12 +11,74 @@
   color: white;
 }
 
+.booking-options{
+  display: flex;
+  justify-content: center;
+}
+
+.booking-options mat-card{
+  width: 100%;
+  height: 40px;
+  padding: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-buttons{
+  width: 50%;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.left-buttons input{
+  margin-right: 5px;
+}
+
+.right-buttons{
+  width: 50%;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.right-buttons input{
+  margin-right: 5px;
+}
+
+.calendars{
+  display: flex;
+  justify-content: center;
+}
+
+.calendars mat-card{
+  margin-top: 10px;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timepicker{
+  width: 80%;
+  border-radius: 5px;
+  border: 1px solid rgb(145, 145, 145);
+}
+
+.calendars mat-calendar{
+  width: 90%;
+}
 
 
 .safety-message {
   text-align: center;
-  margin-bottom: 40px;
   color: white;
+  margin-bottom: 40px;
   max-width: 700px;
 }
 
@@ -103,7 +165,6 @@ a {
    .icon-text {
      font-size: 12px;
    }
-
    /* .col {
     padding-left: 35px;
    } */

@@ -34,11 +34,59 @@
         </div>
 
       </div>
+
+      <div class="booking-options">
+        <mat-card>
+          <div class="left-buttons">
+            <div>
+              <input type="radio" id="arrival" name="One-way-trip" value="Arrival" checked>
+              <label for="arrival">{{'Arrival' | translate}}</label>
+            </div>
+            <div>
+              <input type="radio" id="departure" name="One-way-trip" value="Departure">
+              <label for="departure">{{'Departure' | translate }}</label>
+            </div>
+          </div>
+          <div class="right-buttons">
+            <div>
+              <input type="checkbox" (change)="onCheck()" id="return-trip" value="Return-trip">
+              <label for="return-trip">{{'Return trip' | translate}}</label>
+            </div>
+            <div>
+              <input type="radio" id="arrival" name="Return-trip" value="Return-arrival" checked>
+              <label for="arrival">{{'Arrival' | translate}}</label>
+            </div>
+            <div>
+              <input type="radio" id="departure" name="Return-trip" value="Return-departure">
+              <label for="departure">{{'Departure' | translate }}</label>
+            </div>
+          </div>
+            
+        </mat-card>
+      </div>
+
+      <div class="calendars">
+        
+        <mat-card class="mr-3">
+          <p>{{selectedDate_calendar1 | date: 'shortDate'}} - {{selectedTime_calendar1}}</p>
+          <input class="timepicker" type="time" #time (change)="setTimeCalendar1(time.value)">
+          <mat-calendar [(selected)] ="selectedDate_calendar1"></mat-calendar>
+        </mat-card>
+
+        <mat-card [style] = "calendarStyle" class="ml-3">
+          <p>{{selectedDate_calendar2 | date: 'shortDate'}} - {{selectedTime_calendar2}}</p>
+          <input class="timepicker" name="timeCalendar2" type="time" #time (change)="setTimeCalendar2(time.value)">
+          <mat-calendar [(selected)] ="selectedDate_calendar2"></mat-calendar>
+        </mat-card>
+     
+      </div>
+
       <h3 class="safety-heading">{{'Travel safely with us' | translate}}</h3>
       <p class="safety-message">{{"Right now the Swedish Public Health Agency recommends that you use a face mask when traveling with public transport when it's crowded. Read more about how you can help us make the journey safe for you and your fellow travelers here." | translate}}</p>
     </div>
   </div>
 </div>
+
 
 <div class="container">
   <div class="border-bottom">
@@ -80,4 +128,3 @@
     </div>
   </div>
 </div>
-
