@@ -65,7 +65,7 @@
         </mat-card>
       </div>
 
-      <div *ngIf="fromStation !== undefined && toStation !== undefined" class="calendars">
+      <div *ngIf="fromStation !== undefined && toStation !== undefined" class="calendars fadein">
 
         <mat-card class="mr-3">
           <p>{{selectedDate_calendar1 | date: 'shortDate'}} - {{selectedTime_calendar1}}</p>
@@ -80,7 +80,7 @@
         </mat-card>
 
       </div>
-      <button *ngIf="fromStation !== undefined && toStation !== undefined" class="btn btn-success" color="primary" type="submit" (click)="getDistanceAndCost()">{{'Continue' | translate }}</button>
+      <button *ngIf="fromStation !== undefined && toStation !== undefined" class="btn btn-success continue-button" color="primary" type="submit" (click)="getDistanceAndCost()">{{'Continue' | translate }}</button>
 
 
 
