@@ -9,9 +9,9 @@
           <form class="search-form">
             <mat-form-field class="search-full-width" appearance="fill">
               <mat-label>{{'FROM' | translate}}</mat-label>
-              <input maxlength="30" type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
-              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              <input maxlength="30" type="text" matInput [formControl]="fromStationControl" [matAutocomplete]="auto1">
+              <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayFromStation" (optionSelected)='selectToStation($event)'>
+                <mat-option *ngFor="let option of filteredFromStationOptions | async" [value]="option">
                   {{option.AdvertisedLocationName}}
                 </mat-option>
               </mat-autocomplete>
@@ -23,9 +23,9 @@
           <form class="search-form">
             <mat-form-field class="search-full-width" appearance="fill">
               <mat-label>{{'TO' | translate}}</mat-label>
-              <input maxlength="30" type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
-              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              <input maxlength="30" type="text" matInput [formControl]="toStationControl" [matAutocomplete]="auto2">
+              <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayToStation" (optionSelected)='selectFromStation($event)'>
+                <mat-option *ngFor="let option of filteredToStationOptions | async" [value]="option">
                   {{option.AdvertisedLocationName}}
                 </mat-option>
               </mat-autocomplete>
@@ -35,7 +35,7 @@
 
       </div>
 
-      <div class="booking-options">
+      <div *ngIf="fromStation !== undefined && toStation !== undefined" class="booking-options">
         <mat-card>
           <div class="left-buttons">
             <div>
@@ -61,12 +61,12 @@
               <label for="departure">{{'Departure' | translate }}</label>
             </div>
           </div>
-            
+
         </mat-card>
       </div>
 
-      <div class="calendars">
-        
+      <div *ngIf="fromStation !== undefined && toStation !== undefined" class="calendars fadein">
+
         <mat-card class="mr-3">
           <p>{{selectedDate_calendar1 | date: 'shortDate'}} - {{selectedTime_calendar1}}</p>
           <input class="timepicker" type="time" #time (change)="setTimeCalendar1(time.value)">
@@ -78,10 +78,14 @@
           <input class="timepicker" name="timeCalendar2" type="time" #time (change)="setTimeCalendar2(time.value)">
           <mat-calendar [(selected)] ="selectedDate_calendar2"></mat-calendar>
         </mat-card>
-     
-      </div>
 
-      <h3 class="safety-heading">{{'Travel safely with us' | translate}}</h3>
+      </div>
+      <button *ngIf="fromStation !== undefined && toStation !== undefined" class="btn btn-success continue-button" color="primary" type="submit" (click)="getDistanceAndCost()">{{'Continue' | translate }}</button>
+
+
+
+
+      <h3 (click)="s()" class="safety-heading">{{'Travel safely with us' | translate}}</h3>
       <p class="safety-message">{{"Right now the Swedish Public Health Agency recommends that you use a face mask when traveling with public transport when it's crowded. Read more about how you can help us make the journey safe for you and your fellow travelers here." | translate}}</p>
     </div>
   </div>
