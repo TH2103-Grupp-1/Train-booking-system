@@ -30,7 +30,6 @@ import { OrderConfirmationComponent } from './booking/order-confirmation/order-c
 import { PaymentComponent } from './booking/payment/payment.component';
 import { PickSeatComponent } from './booking/pick-seat/pick-seat.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -38,6 +37,9 @@ import { MatGridListModule } from '@angular/material/grid-list'
 
 
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/translations/', '.json');
@@ -72,6 +74,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatFormFieldModule,
     MatSelectModule,
     MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatAutocompleteModule,
     MatInputModule,
     MatExpansionModule,
