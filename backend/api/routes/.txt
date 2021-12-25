@@ -1,0 +1,1 @@
+Här i går routesen. Man importerar logiken från controllers mappen

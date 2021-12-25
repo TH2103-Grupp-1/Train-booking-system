@@ -22,6 +22,7 @@
   padding: 0px;
   display: flex;
   justify-content: space-between;
+  animation: fadein 1s;
 }
 
 .left-buttons{
@@ -50,6 +51,18 @@
   margin-right: 5px;
 }
 
+.fadein {
+  -moz-transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+@keyframes fadein {
+  from { opacity: 0}
+  to   { opacity: 1}
+}
+
 .calendars{
   display: flex;
   justify-content: center;
@@ -58,6 +71,8 @@
 .calendars mat-card{
   margin-top: 10px;
   width: 100%;
+  animation: fadein 1s;
+
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -108,6 +123,9 @@
   color: #aaa;
 }
 
+.continue-button {
+  animation: fadein 2s;
+}
 
 .border-bottom {
   text-align: center;
