@@ -86,26 +86,26 @@
 
 
 <!-- Form -->
-<form class="container">
+<form class="container" [formGroup]="paymentForm">
   <h2>{{ "Travelers" | translate }}</h2>
   <div class="row">
     <div class="col col-md-4">
       <label for="">{{ "First name" | translate }}</label>
-      <input type="text" class="form-control" maxlength="30" />
+      <input type="text" class="form-control" maxlength="30" formControlName="firstName"/>
     </div>
     <div class="col col-md-4">
       <label for="">{{ "Last name" | translate }}</label>
-      <input type="text" class="form-control" maxlength="30" />
+      <input type="text" class="form-control" maxlength="30" formControlName="lastName" />
     </div>
   </div>
   <div class="row">
         <div class="col col-md-4">
           <label for="">{{ "Phone number" | translate }}</label>
-          <input type="text" class="form-control" maxlength="12" />
+          <input type="text" class="form-control" maxlength="12" formControlName="phoneNumber" />
         </div>
     <div class="col col-md-4">
       <label for="">E-mail</label>
-      <input type="text" class="form-control" maxlength="50" />
+      <input type="text" class="form-control" maxlength="50" formControlName="email" />
     </div>
   </div>
 </form>
@@ -159,18 +159,18 @@
   </div>
   <div class="ticket-info">
     <div class="ticket-time">
-    <h4>Sthlm Central - Göteborg C</h4>
-    <p>{{ 'Tue' | translate}} 21 dec 2021, 12:33 - 15:35</p>
+    <h4>{{booking.FromLocation!.AdvertisedLocationName}} - {{booking.ToLocation!.AdvertisedLocationName}}</h4>
+    <p>{{booking.TimeTable!.DepartureTime}} - {{booking.TimeTable!.ArrivalTime!.toTimeString()}} </p>
   </div>
     <br>
     <div class="price">
       <p>1 {{ 'traveler' | translate }} </p>
-      <p>835:-</p>
+      <p>{{booking.Price}}:-</p>
     </div>
     <hr>
     <div class="pay">
       <p>Total</p>
-      <p>835:-</p>
+      <p>{{booking.Price}}:-</p>
     </div>
   </div>
 </div>

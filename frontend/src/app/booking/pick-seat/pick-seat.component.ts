@@ -39,7 +39,6 @@ export class PickSeatComponent implements OnInit {
 
   selectSeat(seat: number) {
     this.selectedSeat.push(seat);
-    this.selectedCarriage.Seats?.push({ SeatNumber: seat });
   }
 
   change(group: any) {
@@ -49,11 +48,13 @@ export class PickSeatComponent implements OnInit {
       group.value = newValue;
       // this.selectedSeat.push(newValue);
       this.selectedSeat = [];
-
     }
   }
 
   submit() {
+    for(let seat of this.selectedSeat) {
+      this.selectedCarriage.Seats?.push({ SeatNumber: seat });
+    }
     this.booking.Train?.Carriages?.push(this.selectedCarriage);
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/overview');
