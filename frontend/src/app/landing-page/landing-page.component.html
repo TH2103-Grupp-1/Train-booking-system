@@ -10,7 +10,7 @@
             <mat-form-field class="search-full-width" appearance="fill">
               <mat-label>{{'FROM' | translate}}</mat-label>
               <input maxlength="30" type="text" matInput [formControl]="fromStationControl" [matAutocomplete]="auto1">
-              <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayFromStation" (optionSelected)='selectToStation($event)'>
+              <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayFromStation" (optionSelected)='selectFromStation($event)'>
                 <mat-option *ngFor="let option of filteredFromStationOptions | async" [value]="option">
                   {{option.AdvertisedLocationName}}
                 </mat-option>
@@ -24,7 +24,7 @@
             <mat-form-field class="search-full-width" appearance="fill">
               <mat-label>{{'TO' | translate}}</mat-label>
               <input maxlength="30" type="text" matInput [formControl]="toStationControl" [matAutocomplete]="auto2">
-              <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayToStation" (optionSelected)='selectFromStation($event)'>
+              <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayToStation" (optionSelected)='selectToStation($event)'>
                 <mat-option *ngFor="let option of filteredToStationOptions | async" [value]="option">
                   {{option.AdvertisedLocationName}}
                 </mat-option>

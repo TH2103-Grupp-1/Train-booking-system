@@ -1,6 +1,6 @@
 <div class="container">
   <div class="choosen-cities-container">
-    <h2>Stockholm Central - Göteborg C
+    <h2>{{booking.FromLocation?.AdvertisedLocationName}} - {{booking.ToLocation?.AdvertisedLocationName}}
     </h2>
   </div>
 
@@ -93,10 +93,7 @@
                 <div class="container right-container">
                   <div class="price-box">
                     <div class="price-box-first">
-                      <div type="submit" (click)="selectedPrice()">{{departures.firstClass}} SEK</div>
-                    </div>
-                    <div class="price-box-second">
-                      <div>{{departures.secondClass}} SEK</div>
+                      <div type="submit" (click)="selectedPrice()">{{booking.Price}} SEK</div>
                     </div>
                   </div>
                 </div>

@@ -6,6 +6,8 @@ import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { Booking } from '../models/booking.model';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { BookingBuilderService } from '../services/booking-builder.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -36,7 +38,7 @@ export class LandingPageComponent implements OnInit {
   fromStation!: Station;
   toStation!: Station;
 
-  constructor(private stationService: StationService) { }
+  constructor(private stationService: StationService, private bookingBuilder: BookingBuilderService, private route: Router) { }
 
   setTimeCalendar1(time: string) {
     this.selectedTime_calendar1 = time;
@@ -109,6 +111,10 @@ export class LandingPageComponent implements OnInit {
     console.log(this.fromStation);
   }
 
+  submit() {
+
+  }
+
   getDistanceAndCost() {
     let fromStationCoords = this.fromStation.Coordinates.split(/([() ])/);
     let toStationCoords = this.toStation.Coordinates.split(/([() ])/);
@@ -122,7 +128,14 @@ export class LandingPageComponent implements OnInit {
     let distance = Math.round(this.calculateDistance(fromYCoord, fromXCoord, toYCoord, toXCoord));
     let cost =this.getCostForDistance(distance);
 
-    window.alert("Distans " + distance + 'KM. ' + 'Cost: ' + cost + 'kr');
+    this.booking.FromLocation = this.fromStation;
+    this.booking.ToLocation = this.toStation;
+    this.booking.Price = cost;
+    this.booking.Distance = distance;
+
+    this.bookingBuilder.updateBooking(this.booking);
+
+    this.route.navigateByUrl('/departures');
   }
 
     getCostForDistance(distance: number) {
@@ -138,4 +151,6 @@ export class LandingPageComponent implements OnInit {
 
     return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
   }
+
+
 }

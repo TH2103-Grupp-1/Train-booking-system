@@ -14,6 +14,7 @@ export class Booking {
   Trains?: Train[];
   TicketClass?: string;
   Price?: number;
+  Distance?: number;
   DeliveryMethod?: 'Sms' | 'Email';
   TicketReciever?: TicketReciever;
 

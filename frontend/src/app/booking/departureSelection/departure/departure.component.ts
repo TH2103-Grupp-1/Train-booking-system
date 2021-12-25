@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Booking } from 'src/app/models/booking.model';
+import { BookingBuilderService } from 'src/app/services/booking-builder.service';
 
 @Component({
   selector: 'app-departure',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DepartureComponent implements OnInit {
 
+  booking!: Booking;
+
+  constructor(private bookingService: BookingBuilderService, private route: Router) {}
+
+  ngOnInit(): void {
+
+    if(this.bookingService.getBooking() === undefined) {
+     this.route.navigateByUrl('/');
+    } else {
+      this.booking = this.bookingService.getBooking();
+
+    }
 
 
-  //testa data for departures 
+    // if(this.booking)
+
+    //get total length of table
+    this.totalLength = this.tableData.length
+  }
+
+  //testa data for departures
   tableData = [
     { "id": 2, "departure": "08:45", "arrival": "14:05", "secondClass": "468", "firstClass": "798" },
     { "id": 3, "departure": "09:45", "arrival": "15:05", "secondClass": "468", "firstClass": "798" },
@@ -83,16 +104,5 @@ export class DepartureComponent implements OnInit {
     this.totalcost
   }
 
-
-
-
-
-  ngOnInit(): void {
-
-    //get total length of table
-    this.totalLength = this.tableData.length
-
-
-  }
 
 }
