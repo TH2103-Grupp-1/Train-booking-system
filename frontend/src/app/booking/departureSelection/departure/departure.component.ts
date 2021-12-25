@@ -100,7 +100,6 @@ export class DepartureComponent implements OnInit {
 
   selectDeparture(departure: TimeTable) {
     this.selectedDeparture = departure;
-    console.log(this.selectDeparture);
   }
 
   selectedPrice() {

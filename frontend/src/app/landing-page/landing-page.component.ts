@@ -98,18 +98,12 @@ export class LandingPageComponent implements OnInit {
         .subscribe(stations => this.stations = stations);
   }
 
-  s() {
-    console.log(this.fromStation, this.toStation);
-  }
-
   selectToStation(e: MatAutocompleteSelectedEvent) {
     this.toStation = e.option.value;
-    console.log(this.toStation);
   }
 
   selectFromStation(e: MatAutocompleteSelectedEvent) {
     this.fromStation = e.option.value;
-    console.log(this.fromStation);
   }
 
   submit() {
