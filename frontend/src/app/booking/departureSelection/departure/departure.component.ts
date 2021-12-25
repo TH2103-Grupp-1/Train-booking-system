@@ -1,6 +1,8 @@
+import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Booking } from 'src/app/models/booking.model';
+import { TimeTable } from 'src/app/models/timetable.model';
 import { BookingBuilderService } from 'src/app/services/booking-builder.service';
 
 @Component({
@@ -31,28 +33,30 @@ export class DepartureComponent implements OnInit {
   }
 
   //testa data for departures
-  tableData = [
-    { "id": 2, "departure": "08:45", "arrival": "14:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 3, "departure": "09:45", "arrival": "15:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 4, "departure": "10:45", "arrival": "16:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 5, "departure": "11:45", "arrival": "17:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 6, "departure": "17:45", "arrival": "18:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 1, "departure": "07:45", "arrival": "13:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 7, "departure": "18:45", "arrival": "19:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 8, "departure": "19:45", "arrival": "20:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 9, "departure": "20:45", "arrival": "21:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 11, "departure": "07:30", "arrival": "13:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 10, "departure": "06:30", "arrival": "12:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 12, "departure": "08:30", "arrival": "14:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 13, "departure": "09:45", "arrival": "15:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 14, "departure": "10:20", "arrival": "16:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 15, "departure": "11:25", "arrival": "17:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 16, "departure": "07:40", "arrival": "13:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 17, "departure": "08:30", "arrival": "14:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 18, "departure": "09:30", "arrival": "15:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 19, "departure": "10:10", "arrival": "16:05", "secondClass": "468", "firstClass": "798" },
-    { "id": 20, "departure": "11:15", "arrival": "17:05", "secondClass": "468", "firstClass": "798" },
+  tableData: TimeTable[] = [
+    { Id: 2, DepartureTime: new Date("2021-12-25: 08:45"), ArrivalTime: new Date("2021-12-25: 14:05")},
+    { Id: 3, DepartureTime: new Date("2021-12-25: 09:45"), ArrivalTime: new Date("2021-12-25: 15:05") },
+    { Id: 4, DepartureTime: new Date("2021-12-25: 10:45"), ArrivalTime: new Date("2021-12-25: 16:05") },
+    { Id: 5, DepartureTime: new Date("2021-12-25: 11:45"), ArrivalTime: new Date("2021-12-25: 17:05") },
+    { Id: 6, DepartureTime: new Date("2021-12-25: 17:45"), ArrivalTime: new Date("2021-12-25: 18:05") },
+    { Id: 1, DepartureTime: new Date("2021-12-25: 07:45"), ArrivalTime: new Date("2021-12-25: 13:05") },
+    { Id: 7, DepartureTime: new Date("2021-12-25: 18:45"), ArrivalTime: new Date("2021-12-25: 19:05") },
+    { Id: 8, DepartureTime: new Date("2021-12-25: 19:45"), ArrivalTime: new Date("2021-12-25: 20:05") },
+    { Id: 9, DepartureTime: new Date("2021-12-25: 20:45"), ArrivalTime: new Date("2021-12-25: 21:05") },
+    { Id: 11, DepartureTime: new Date("2021-12-25: 07:30"), ArrivalTime: new Date("2021-12-25: 13:05") },
+    { Id: 10, DepartureTime: new Date("2021-12-25: 06:30"), ArrivalTime: new Date("2021-12-25: 12:05") },
+    { Id: 12, DepartureTime: new Date("2021-12-25: 08:30"), ArrivalTime: new Date("2021-12-25: 14:05") },
+    { Id: 13, DepartureTime: new Date("2021-12-25: 09:45"), ArrivalTime: new Date("2021-12-25: 15:05") },
+    { Id: 14, DepartureTime: new Date("2021-12-25: 10:20"), ArrivalTime: new Date("2021-12-25: 16:05") },
+    { Id: 15, DepartureTime: new Date("2021-12-25: 11:25"), ArrivalTime: new Date("2021-12-25: 17:05") },
+    { Id: 16, DepartureTime: new Date("2021-12-25: 07:40"), ArrivalTime: new Date("2021-12-25: 13:05") },
+    { Id: 17, DepartureTime: new Date("2021-12-25: 08:30"), ArrivalTime: new Date("2021-12-25: 14:05") },
+    { Id: 18, DepartureTime: new Date("2021-12-25: 09:30"), ArrivalTime: new Date("2021-12-25: 15:05") },
+    { Id: 19, DepartureTime: new Date("2021-12-25: 10:10"), ArrivalTime: new Date("2021-12-25: 16:05") },
+    { Id: 20, DepartureTime: new Date("2021-12-25: 11:15"), ArrivalTime: new Date("2021-12-25: 17:05") },
   ]
+
+
 
   // ********************************************************
   // Get the current to date next and previous dates
@@ -82,7 +86,7 @@ export class DepartureComponent implements OnInit {
 
   // sets panel false for use to our accordion
   panelExpanded = false;
-  selectedDepartureId: number = 0
+  selectedDeparture!: TimeTable;
 
   panelOpenState = false;
 
@@ -94,14 +98,19 @@ export class DepartureComponent implements OnInit {
   totalcost: any;
 
 
-  selectDeparture(id: number) {
-
-    this.selectedDepartureId = id;
-
+  selectDeparture(departure: TimeTable) {
+    this.selectedDeparture = departure;
+    console.log(this.selectDeparture);
   }
 
   selectedPrice() {
     this.totalcost
+  }
+
+  submit() {
+    this.booking.TimeTable = this.selectedDeparture;
+    this.bookingService.updateBooking(this.booking);
+    this.route.navigateByUrl('/seat');
   }
 
 

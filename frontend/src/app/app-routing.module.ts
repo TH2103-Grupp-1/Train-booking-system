@@ -8,6 +8,7 @@ import { AccountPageComponent } from './account-page/account-page.component';
 import { PaymentComponent } from './booking/payment/payment.component';
 import { BookingOverviewComponent } from './booking/booking-overview/booking-overview.component';
 import { OrderConfirmationComponent } from './booking/order-confirmation/order-confirmation.component';
+import { PickSeatComponent } from './booking/pick-seat/pick-seat.component';
 
 const routes: Routes = [
   { path: 'stations', component: StationsComponent, canActivate: [AuthGuard]},
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'overview', component: BookingOverviewComponent},
   { path: 'confirmation', component: OrderConfirmationComponent },
   { path: 'departures', component: DepartureComponent },
-
+  { path: 'seat', component: PickSeatComponent }
 ];
 
 @NgModule({
