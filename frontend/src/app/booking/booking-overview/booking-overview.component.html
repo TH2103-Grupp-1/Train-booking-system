@@ -39,13 +39,13 @@
         <div class="container border-bottom">
             <div class="container inner-container">
                 <h2>
-                    <span>Göteborg C</span>
+                    <span>{{booking.FromLocation}}</span>
                     <span> - </span>
-                    <span>Sthlm Central</span>
+                    <span>{{booking.ToLocation}}</span>
                 </h2>
                 <p>
-                    <span>Torsdag 23 december 2021</span>
-                    <span class="time">kl 06:24</span>
+                    <!-- <span>Torsdag 23 december 2021</span>
+                    <span class="time">kl 06:24</span> -->
                 </p>
             </div>
         </div>
@@ -76,7 +76,7 @@
                     <h4>{{'Total' | translate}}</h4>
                 </div>
                 <div class="col" id="center">
-                    <h4>1024:-</h4>
+                    <h4>{{booking.Price}}:-</h4>
                 </div>
                 <div class="col" id="right">
                     <span>
@@ -92,9 +92,9 @@
         <div class="container border-bottom">
             <div class="container inner-container">
                 <h2>
-                    <span>Göteborg C</span>
+                    <span>{{booking.FromLocation!.AdvertisedLocationName}}</span>
                     <span> - </span>
-                    <span>Sthlm Central</span>
+                    <span>{{booking.ToLocation!.AdvertisedLocationName}}</span>
                 </h2>
                 <p>
                     <span>Torsdag 23 december 2021</span>
@@ -129,7 +129,7 @@
                     <h4>{{'Total' | translate}}</h4>
                 </div>
                 <div class="col" id="center">
-                    <h4>1024:-</h4>
+                    <h4>{{booking.Price}}:-</h4>
                 </div>
                 <div class="col" id="right">
                     <span>
@@ -148,9 +148,9 @@
                 <div class="col col-auto">
                     <h2 class="pull-left">
                         <span><i class="fa fa-angle-double-right icon-margin-right"></i></span>
-                        <span>Göteborg C</span>
+                        <span>{{booking.FromLocation!.AdvertisedLocationName}}</span>
                         <span> - </span>
-                        <span>Sthlm Central</span>
+                        <span>{{booking.ToLocation!.AdvertisedLocationName}}</span>
                     </h2>
                 </div>
                 <div class="col col-auto thin">
@@ -161,7 +161,7 @@
                 </div>
                 <div class="col">
                     <h2 class="pull-right">
-                        <span class="border-right" id="desktop-price">1024:-</span>
+                        <span class="border-right" id="desktop-price">{{booking.Price}}:-</span>
                         <span id="desktop-trash-icon"> <a href="">
                             <i class="fa fa-trash"></i>
                         </a>
@@ -195,15 +195,15 @@
         </div>
     </div>
     <!---------------------------------- Desktop return trip card ------------------------------------->
-    <div class="container border desktop-card">
+    <!-- <div class="container border desktop-card">
         <div class="container border-bottom no-padding margin-top">
             <div class="row justify-content-center">
                 <div class="col col-auto">
                     <h2 class="pull-left">
                         <span><i class="fa fa-angle-double-left icon-margin-right"></i></span>
-                        <span>Sthlm Central</span>
+                        <span>{{booking.FromLocation}}</span>
                         <span> - </span>
-                        <span>Göteborg C</span>
+                        <span>{{booking.ToLocation}}</span>
                     </h2>
                 </div>
                 <div class="col col-auto thin">
@@ -214,7 +214,7 @@
                 </div>
                 <div class="col">
                     <h2 class="pull-right">
-                        <span class="border-right" id="desktop-price">1024:-</span>
+                        <span class="border-right" id="desktop-price">{{booking.Price}}:-</span>
                         <span id="desktop-trash-icon"> <a href="">
                             <i class="fa fa-trash"></i>
                         </a>
@@ -257,7 +257,7 @@
             </div>
         </a>
     </div>
-</div>
+</div> -->
 <!----------------------------- Bottom ------------------------------>
 <!------------------------------- Phone Bottom ------------------------------------>
 <div class="container-fluid border-top phone-bottom">
@@ -266,7 +266,7 @@
             <h3 id="left">{{'Total' | translate}}</h3>
         </div>
         <div class="col">
-            <h3 id="right">2048:-</h3>
+            <h3 id="right">{{booking.Price}}:-</h3>
         </div>
     </div>
     <button type="button" class="btn btn-primary btn-lg btn-block" id="continue-btn-phone">
@@ -286,7 +286,7 @@
             </div>
             <div class="col">
                 <div class="row align-items-center float-right">
-                    <h1>2048:-</h1>
+                    <h1>{{booking.Price}}:-</h1>
                     <button type="button" class="btn btn-primary btn-lg" id="continue-btn-desktop">
                         {{'Continue' | translate}}
                         <span class="pull-right">

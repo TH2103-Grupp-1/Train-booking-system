@@ -35,17 +35,20 @@
   <div class="container h-75 train-container">
     <div class="align-items-center h-75">
       <div class="scrolling-wrapper">
-        <div *ngFor="let carriage of booking.Train.carriages" (click)="selectCarriage(carriage)" class="carriage card"><h2>Carriage {{carriage.number}}</h2></div>
+        <div *ngFor="let carriage of booking.Train!.Carriages" (click)="selectCarriage(carriage)" class="carriage card"><h2>Carriage {{carriage.CarriageNumber}}</h2></div>
       </div>
         <div *ngIf="selectedCarriage !== undefined" class="seats">
           <div class="seats-overview card">
               <mat-button-toggle-group #group="matButtonToggleGroup" class="carriage-thing card row" multiple (change)="change(group)">
-            <div *ngFor="let seat of selectedCarriage.seats" class="seat card" (click)="selectSeat(seat.seatNumber)"><mat-button-toggle>{{seat.seatNumber}}</mat-button-toggle></div>
+            <div *ngFor="let seat of selectedCarriage.Seats" class="seat card" (click)="selectSeat(seat.SeatNumber!)"><mat-button-toggle>{{seat.SeatNumber}}</mat-button-toggle></div>
           </mat-button-toggle-group>
           </div>
           </div>
-          <div class="container train-container"><h1>Passengers: {{booking.Travelers.length}}</h1></div>
-          <div *ngIf="selectedSeat.length > 0" class="container train-container"><h1>You selected seat {{selectedSeat.concat()}} on carriage {{selectedCarriage.number}} </h1></div>
+          <div class="container train-container"><h1>Passengers: {{booking.Travelers!.length}}</h1></div>
+          <div *ngIf="selectedSeat.length > 0" class="container train-container">
+            <h1>You selected seat {{selectedSeat.concat()}} on carriage {{selectedCarriage.CarriageNumber}} </h1>
+            <button class="btn btn-success" (click)="submit()">{{'Continue' | translate }}</button>
+          </div>
         </div>
       </div>
 

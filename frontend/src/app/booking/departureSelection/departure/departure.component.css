@@ -1,3 +1,44 @@
+.page-orientation-bar-back {
+  text-align: center;
+  background-color: rgb(120, 190, 14);
+  border: solid 1px white;
+}
+
+.page-orientation-bar-back a {
+  color: white;
+  font-size: 10px;
+}
+
+.page-orientation-bar-current {
+  text-align: center;
+  background-color: #156e31;
+  border: solid 1px white;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.page-orientation-bar-current a {
+  color: white;
+  font-size: 10px;
+}
+
+.page-orientation-bar-next {
+  text-align: center;
+  background-color: rgb(235, 231, 231);
+  border: solid 1px white;
+}
+
+.page-orientation-bar-next a {
+  color: rgb(134, 134, 134);
+  font-size: 10px;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 .wrapper{
   display:flex;
   flex-direction:column;

@@ -108,6 +108,18 @@ export class DepartureComponent implements OnInit {
   }
 
   submit() {
+    this.booking.Train = {
+      Id: 1, Model: 'SJ High-speed train X 2000', Carriages: [{
+        Id: 1,
+        CarriageNumber: 1,
+        Seats:
+          [{ SeatNumber: 1 }, { SeatNumber: 2 }, { SeatNumber: 3 },
+          { SeatNumber: 4 }, { SeatNumber: 5 }, { SeatNumber: 6 },
+          { SeatNumber: 4 }, { SeatNumber: 5 }, { SeatNumber: 6 },
+          { SeatNumber: 4 }, { SeatNumber: 5 }, { SeatNumber: 6 }]
+        }]
+      };
+
     this.booking.TimeTable = this.selectedDeparture;
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/seat');

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Booking } from 'src/app/models/booking.model';
+import { Carriage } from 'src/app/models/carriage.model';
+import { TravelerType } from 'src/app/models/traveler.model';
+import { BookingBuilderService } from 'src/app/services/booking-builder.service';
 
 @Component({
   selector: 'app-pick-seat',
@@ -7,58 +12,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PickSeatComponent implements OnInit {
 
-  constructor() {
-    this.booking =
-    {
-      Travelers: [Traveler.Adult, Traveler.Child],
-      Train: {
-        name: 'Test', carriages: [
-          {
-            seats:
-              [{ seatNumber: 1 }, { seatNumber: 2 }, { seatNumber: 3 },
-              { seatNumber: 4 }, { seatNumber: 5 }, { seatNumber: 6 },
-              { seatNumber: 4 }, { seatNumber: 5 }, { seatNumber: 6 },
-              { seatNumber: 4 }, { seatNumber: 5 }, { seatNumber: 6 }
-              ], number: 1
-          },
-          {
-            seats:
-              [{ seatNumber: 4 }, { seatNumber: 5 }, { seatNumber: 6 }],
-            number: 2
-          },
-          {
-            seats:
-              [{ seatNumber: 1 }, { seatNumber: 2 }, { seatNumber: 3 }],
-            number: 3
-          },
-          {
-            seats:
-              [{ seatNumber: 1 }, { seatNumber: 2 }, { seatNumber: 3 }],
-            number: 4
-          },
-          {
-            seats:
-              [{ seatNumber: 1 }, { seatNumber: 2 }, { seatNumber: 3 }],
-            number: 5
-          },
-          {
-            seats:
-              [{ seatNumber: 1 }, { seatNumber: 2 }, { seatNumber: 3 }],
-            number: 6
-          }
-        ]
-      }
+  constructor(private bookingService: BookingBuilderService, private route: Router) {
+
+    if (this.bookingService.getBooking() === undefined) {
+      this.route.navigateByUrl('/');
+    } else {
+      this.booking = this.bookingService.getBooking();
     }
   }
 
 
-  booking: Booking;
+  booking!: Booking;
   // train!: Train;
   selectedCarriage!: Carriage;
   selectedSeat: number[] = [];
   maxSeats: number = 0;
+
   ngOnInit(): void {
-    this.maxSeats = this.booking.Travelers.length;
+    this.maxSeats = this.booking.Travelers!.length;
   }
 
   selectCarriage(ca: Carriage) {
@@ -68,7 +39,7 @@ export class PickSeatComponent implements OnInit {
 
   selectSeat(seat: number) {
     this.selectedSeat.push(seat);
-    console.log(this.selectedSeat);
+    this.selectedCarriage.Seats?.push({ SeatNumber: seat });
   }
 
   change(group: any) {
@@ -81,31 +52,10 @@ export class PickSeatComponent implements OnInit {
 
     }
   }
-}
 
-// Mock interfaces under, to be removed.
-
-export interface Booking {
-  Train: Train,
-  Travelers: Traveler[]
-}
-
-export enum Traveler {
-  Adult,
-  Child,
-  Student,
-  Retired
-}
-export interface Train {
-  name: string;
-  carriages: Carriage[];
-}
-
-export interface Carriage {
-  number: number;
-  seats: Seat[]
-}
-
-export interface Seat {
-  seatNumber: number;
+  submit() {
+    this.booking.Train?.Carriages?.push(this.selectedCarriage);
+    this.bookingService.updateBooking(this.booking);
+    this.route.navigateByUrl('/overview');
+  }
 }

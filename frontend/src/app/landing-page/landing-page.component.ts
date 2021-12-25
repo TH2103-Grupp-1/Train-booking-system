@@ -8,6 +8,7 @@ import { Booking } from '../models/booking.model';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { BookingBuilderService } from '../services/booking-builder.service';
 import { Route, Router } from '@angular/router';
+import { TravelerType } from '../models/traveler.model';
 
 @Component({
   selector: 'app-landing-page',
@@ -133,6 +134,7 @@ export class LandingPageComponent implements OnInit {
     this.booking.Price = cost;
     this.booking.Distance = distance;
 
+    this.booking.Travelers = [TravelerType.Adult];
     this.bookingBuilder.updateBooking(this.booking);
 
     this.route.navigateByUrl('/departures');

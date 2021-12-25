@@ -13,7 +13,7 @@ export class Booking {
   // DepartureDate?: Date;
   // ReturnTripDate?: Date;
   Travelers?: TravelerType[];
-  Trains?: Train[];
+  Train?: Train;
   TicketClass?: string;
   Price?: number;
   Distance?: number;
