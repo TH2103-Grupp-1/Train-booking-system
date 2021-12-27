@@ -1,4 +1,4 @@
-<div class="body">
+<div>
 
   <div class="container-fluid" id="banner">
     <div class=" h-100 d-flex justify-content-center align-items-center">
@@ -38,7 +38,7 @@
 
         </div>
 
-        <div class="booking-options">
+        <div *ngIf="fromStation !== undefined && toStation !== undefined"  class="booking-options">
           <mat-card>
             <div class="left-buttons">
               <div>
@@ -68,7 +68,7 @@
           </mat-card>
         </div>
 
-        <div class="calendars fadein">
+        <div *ngIf="fromStation !== undefined && toStation !== undefined"  class="calendars fadein">
 
           <mat-card class="mr-3">
             <p>{{selectedDate_calendar1 | date: 'shortDate'}} - {{selectedTime_calendar1}}</p>
