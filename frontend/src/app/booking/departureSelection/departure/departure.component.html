@@ -32,20 +32,14 @@
     </div>
   </div>
 </div>
-
 <div class="container">
   <div class="choosen-cities-container">
     <h2>{{booking.FromLocation?.AdvertisedLocationName}} - {{booking.ToLocation?.AdvertisedLocationName}}
     </h2>
   </div>
-
-  <pagination-controls (pageChange)="page = $event"></pagination-controls>
-
+  <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
   <pagination-template #p="paginationApi" (pageChange)="page = $event">
   </pagination-template>
-
-
-
   <div class=" row no-gutters">
     <div class="col-md-4 col- no-padding">
       <div class="container custom-pagination">
@@ -54,15 +48,14 @@
               fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-            </svg>Tidigare resor {{previousDay | date}}
+            </svg> {{previousDay | date: 'E, d, LLL '}}
           </div>
         </div>
-
         <div>
           <p>{{myDate | date: 'fullDate'}}</p>
         </div>
         <div class="pagination-icon-next">
-          <div (click)="p.next() ;showNextDay()">Senare resor {{nextDay | date}}
+          <div (click)="p.next() ;showNextDay()">Senare resor {{nextDay |date: 'E, d, LLL '}}
             <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-chevron-right" viewBox="0 0 16 16">
               <path fill-rule="evenodd"
@@ -74,10 +67,6 @@
     </div>
   </div>
 </div>
-
-
-
-
 <div class="date-choosen-cities">
   <table class=" table table-striped table">
     <div class="wrapper">
@@ -101,7 +90,7 @@
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  {{departure.DepartureTime?.toTimeString()}}
+                  {{departure.DepartureTime | date:'H:mm'}} - {{departure.ArrivalTime | date:'H:mm'}}
                 </mat-panel-title>
                 <mat-panel-description>
                   <!-- {{departures.firstClass}} -->
@@ -114,12 +103,16 @@
                 <div class="container left-container">
                   <div class="more-train-info">
                     <div class="departure-holder"> <strong>{{'Departure'| translate}} </strong> {{'
-                      '}}{{departure.DepartureTime}}</div>
+                      '}}{{departure.DepartureTime |date:'h:mm'}} <h4>
+                        {{booking.FromLocation?.AdvertisedLocationName}}
+                      </h4>
+                    </div>
                     <div class="train-pic-holder"> <img class="train-image"
                         src="../../../../assets/images/dubbeldackare-70x340.png" alt="">
                     </div>
                     <div class="arrvial-holder">
-                      <strong> {{'Arrival'| translate}}{{' '}} </strong> {{departure.ArrivalTime}}
+                      <strong> {{'Arrival'| translate}}{{' '}} </strong> {{departure.ArrivalTime | date:'H:mm'}}
+                      <h4>{{booking.ToLocation?.AdvertisedLocationName}} </h4>
                     </div>
                     <div>
                       <p>Model</p>
