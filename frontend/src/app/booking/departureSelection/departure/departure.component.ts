@@ -14,12 +14,13 @@ export class DepartureComponent implements OnInit {
 
   booking!: Booking;
 
-  constructor(private bookingService: BookingBuilderService, private route: Router) {}
+  constructor(private bookingService: BookingBuilderService, private route: Router) { }
 
   ngOnInit(): void {
+    console.log('tabledata' + this.tableData);
 
-    if(this.bookingService.getBooking() === undefined) {
-     this.route.navigateByUrl('/');
+    if (this.bookingService.getBooking() === undefined) {
+      this.route.navigateByUrl('/');
     } else {
       this.booking = this.bookingService.getBooking();
 
@@ -32,9 +33,10 @@ export class DepartureComponent implements OnInit {
     this.totalLength = this.tableData.length
   }
 
+
   //testa data for departures
   tableData: TimeTable[] = [
-    { Id: 2, DepartureTime: new Date("2021-12-25: 08:45"), ArrivalTime: new Date("2021-12-25: 14:05")},
+    { Id: 2, DepartureTime: new Date("fullDate"), ArrivalTime: new Date("2021-12-25: 14:05") },
     { Id: 3, DepartureTime: new Date("2021-12-25: 09:45"), ArrivalTime: new Date("2021-12-25: 15:05") },
     { Id: 4, DepartureTime: new Date("2021-12-25: 10:45"), ArrivalTime: new Date("2021-12-25: 16:05") },
     { Id: 5, DepartureTime: new Date("2021-12-25: 11:45"), ArrivalTime: new Date("2021-12-25: 17:05") },
@@ -116,8 +118,8 @@ export class DepartureComponent implements OnInit {
           { SeatNumber: 4 }, { SeatNumber: 5 }, { SeatNumber: 6 },
           { SeatNumber: 4 }, { SeatNumber: 5 }, { SeatNumber: 6 },
           { SeatNumber: 4 }, { SeatNumber: 5 }, { SeatNumber: 6 }]
-        }]
-      };
+      }]
+    };
 
     this.booking.TimeTable = this.selectedDeparture;
     this.bookingService.updateBooking(this.booking);
