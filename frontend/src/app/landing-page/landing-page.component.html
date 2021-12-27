@@ -35,7 +35,7 @@
 
       </div>
 
-      <div *ngIf="fromStation !== undefined && toStation !== undefined" class="booking-options">
+      <div class="booking-options">
         <mat-card>
           <div class="left-buttons">
             <div>
@@ -65,18 +65,18 @@
         </mat-card>
       </div>
 
-      <div *ngIf="fromStation !== undefined && toStation !== undefined" class="calendars fadein">
+      <div class="calendars fadein">
 
         <mat-card class="mr-3">
           <p>{{selectedDate_calendar1 | date: 'shortDate'}} - {{selectedTime_calendar1}}</p>
           <input class="timepicker" type="time" #time (change)="setTimeCalendar1(time.value)">
-          <mat-calendar [(selected)] ="selectedDate_calendar1"></mat-calendar>
+          <mat-calendar [(selected)] ="selectedDate_calendar1" [minDate]="minDate" [maxDate]="maxDate" ></mat-calendar>
         </mat-card>
 
         <mat-card [style] = "calendarStyle" class="ml-3">
           <p>{{selectedDate_calendar2 | date: 'shortDate'}} - {{selectedTime_calendar2}}</p>
           <input class="timepicker" name="timeCalendar2" type="time" #time (change)="setTimeCalendar2(time.value)">
-          <mat-calendar [(selected)] ="selectedDate_calendar2"></mat-calendar>
+          <mat-calendar [(selected)] ="selectedDate_calendar2" [minDate]="minDate" [maxDate]="maxDate"></mat-calendar>
         </mat-card>
 
       </div>
