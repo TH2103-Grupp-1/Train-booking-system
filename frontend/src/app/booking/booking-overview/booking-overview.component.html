@@ -1,209 +1,209 @@
 <div class="container">
+  <div class="container">
+    <div class="row page-orientagion">
+      <div class="col page-orientation-bar-back">
+        <a href="">
+          1.
+        </a>
+      </div>
+      <div class="col page-orientation-bar-back">
+        <a href="">
+          2.
+        </a>
+      </div>
+      <div class="col page-orientation-bar-back">
+        <a routerLink="/seat">
+          3.
+        </a>
+      </div>
+      <div class="col-3 page-orientation-bar-current">
+        <a href="">
+          {{'4. Overview' | translate}}
+        </a>
+      </div>
+      <div class="col page-orientation-bar-next">
+        <a href="">
+          5.
+        </a>
+      </div>
+      <div class="col page-orientation-bar-next">
+        <a href="">
+          6.
+        </a>
+      </div>
+    </div>
+  </div>
+  <h1>{{'Overview' | translate}}</h1>
+  <!----------------------------- Phone size cards ----------------------------------->
+  <div class="container phone-ticket no-padding border shadow-sm">
+    <div class="container border-bottom">
+      <div class="container inner-container">
+        <h2>
+          <span>{{booking.FromLocation}}</span>
+          <span> - </span>
+          <span>{{booking.ToLocation}}</span>
+        </h2>
+        <p>
+          <!-- <span>Torsdag 23 december 2021</span>
+                    <span class="time">kl 06:24</span> -->
+        </p>
+      </div>
+    </div>
+    <div class="container border-bottom">
+      <p><span>1 </span><span>{{'Traveller' | translate}}</span></p>
+      <p><span>2 </span><span>{{'Class' | translate}}</span></p>
+      <p>{{'Cannot be rebooked' | translate}}</p>
+      <p><i class="fa fa-check"></i> Seat reservation</p>
+    </div>
+    <div class="container border-bottom">
+      <div class="container inner-container no-padding">
+        <p>
+          <span id="left">
+            {{booking.Train!.Model}}
+          </span>
+          <span>
+            <span>{{'Travel time' | translate}}</span><span> 3:11h</span>
+          </span>
+          <span id="right">
+            <span>0 </span><span>{{'Changes' | translate}}</span>
+          </span>
+        </p>
+      </div>
+    </div>
     <div class="container">
-        <div class="row page-orientagion">
-            <div class="col page-orientation-bar-back">
-                <a href="">
-                    1.
-                </a>
-            </div>
-            <div class="col page-orientation-bar-back">
-                <a href="">
-                    2.
-                </a>
-            </div>
-            <div class="col page-orientation-bar-back">
-                <a href="">
-                    3.
-                </a>
-            </div>
-            <div class="col-3 page-orientation-bar-current">
-                <a href="">
-                    {{'4. Overview' | translate}}
-                </a>
-            </div>
-            <div class="col page-orientation-bar-next">
-                <a href="">
-                    5.
-                </a>
-            </div>
-            <div class="col page-orientation-bar-next">
-                <a href="">
-                    6.
-                </a>
-            </div>
+      <div class="row justify-content-center">
+        <div class="col" id="left">
+          <h4>{{'Total' | translate}}</h4>
         </div>
+        <div class="col" id="center">
+          <h4>{{booking.Price}}:-</h4>
+        </div>
+        <div class="col" id="right">
+          <span>
+            <a href="">
+              <i class="fa fa-trash"></i>
+            </a>
+          </span>
+        </div>
+      </div>
     </div>
-    <h1>{{'Overview' | translate}}</h1>
-    <!----------------------------- Phone size cards ----------------------------------->
-    <div class="container phone-ticket no-padding border shadow-sm">
-        <div class="container border-bottom">
-            <div class="container inner-container">
-                <h2>
-                    <span>Göteborg C</span>
-                    <span> - </span>
-                    <span>Sthlm Central</span>
-                </h2>
-                <p>
-                    <span>Torsdag 23 december 2021</span>
-                    <span class="time">kl 06:24</span>
-                </p>
-            </div>
-        </div>
-        <div class="container border-bottom">
-            <p><span>1 </span><span>{{'Traveller' | translate}}</span></p>
-            <p><span>2 </span><span>{{'Class' | translate}}</span></p>
-            <p>{{'Cannot be rebooked' | translate}}</p>
-            <p><i class="fa fa-check"></i> Seat reservation</p>
-        </div>
-        <div class="container border-bottom">
-            <div class="container inner-container no-padding">
-                <p>
-                    <span id="left">
-                        SJ
-                    </span>       
-                     <span>
-                         <span>{{'Travel time' | translate}}</span><span> 3:11h</span>
-                     </span>
-                     <span id="right">
-                         <span>0 </span><span>{{'Changes' | translate}}</span>
-                     </span>
-                </p>           
-            </div>
-        </div>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col" id="left">
-                    <h4>{{'Total' | translate}}</h4>
-                </div>
-                <div class="col" id="center">
-                    <h4>1024:-</h4>
-                </div>
-                <div class="col" id="right">
-                    <span>
-                        <a href="">
-                            <i class="fa fa-trash"></i>
-                        </a>
-                    </span>
-                </div>
-            </div>
-        </div>
+  </div>
+  <div class="container phone-ticket no-padding border shadow-sm">
+    <div class="container border-bottom">
+      <div class="container inner-container">
+        <h2>
+          <span>{{booking.FromLocation!.AdvertisedLocationName}}</span>
+          <span> - </span>
+          <span>{{booking.ToLocation!.AdvertisedLocationName}}</span>
+        </h2>
+        <p>
+          <span>Torsdag 23 december 2021</span>
+          <span class="time">kl 06:24</span>
+        </p>
+      </div>
     </div>
-    <div class="container phone-ticket no-padding border shadow-sm">
-        <div class="container border-bottom">
-            <div class="container inner-container">
-                <h2>
-                    <span>Göteborg C</span>
-                    <span> - </span>
-                    <span>Sthlm Central</span>
-                </h2>
-                <p>
-                    <span>Torsdag 23 december 2021</span>
-                    <span class="time">kl 06:24</span>
-                </p>
-            </div>
-        </div>
-        <div class="container border-bottom">
-            <p><span>1 </span><span>{{'Traveller' | translate}}</span></p>
-            <p><span>2 </span><span>{{'Class' | translate}}</span></p>
-            <p>{{'Cannot be rebooked' | translate}}</p>
-            <p><i class="fa fa-check"></i> Seat reservation</p>
-        </div>
-        <div class="container border-bottom">
-            <div class="container inner-container no-padding">
-                <p>
-                    <span id="left">
-                        SJ
-                    </span>       
-                     <span>
-                        <span>{{'Travel time' | translate}}</span><span> 3:11h</span>
-                     </span>
-                     <span id="right">
-                        <span>0 </span><span>{{'Changes' | translate}}</span>
-                     </span>
-                </p>           
-            </div>
-        </div>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col" id="left">
-                    <h4>{{'Total' | translate}}</h4>
-                </div>
-                <div class="col" id="center">
-                    <h4>1024:-</h4>
-                </div>
-                <div class="col" id="right">
-                    <span>
-                        <a href="">
-                            <i class="fa fa-trash"></i>
-                        </a>
-                    </span>
-                </div>
-            </div>
-        </div>
+    <div class="container border-bottom">
+      <p><span>1 </span><span>{{'Traveller' | translate}}</span></p>
+      <p><span>2 </span><span>{{'Class' | translate}}</span></p>
+      <p>{{'Cannot be rebooked' | translate}}</p>
+      <p><i class="fa fa-check"></i> Seat reservation</p>
     </div>
-    <!---------------------------- Desktop size cards --------------------------------->
-    <div class="container border desktop-card margin-bottom">
-        <div class="container border-bottom no-padding margin-top">
-            <div class="row justify-content-center">
-                <div class="col col-auto">
-                    <h2 class="pull-left">
-                        <span><i class="fa fa-angle-double-right icon-margin-right"></i></span>
-                        <span>Göteborg C</span>
-                        <span> - </span>
-                        <span>Sthlm Central</span>
-                    </h2>
-                </div>
-                <div class="col col-auto thin">
-                    <h2 id="desktop-date">
-                        <span>Torsdag 23 december 2021</span>
-                        <span class="time">kl 06:24</span>
-                    </h2>
-                </div>
-                <div class="col">
-                    <h2 class="pull-right">
-                        <span class="border-right" id="desktop-price">1024:-</span>
-                        <span id="desktop-trash-icon"> <a href="">
-                            <i class="fa fa-trash"></i>
-                        </a>
-                        </span>
-                    </h2>
-                </div>
-            </div>
-        </div>
-        <div class="container border-bottom no-padding margin-top">
-            <p id="left">
-                <span>1 </span><span>{{'Traveller' | translate}}</span>
-                <span class="margin-left">
-                    <span>2 </span>
-                    <span>{{'Class' | translate}}</span>
-                </span>
-                <span class="margin-left">{{'Cannot be rebooked' | translate}}</span>
-            </p>
-        </div>
-        <div class="container no-padding margin-top">
-            <p id="left">
-                <span>SJ</span>
-                <span class="margin-left">
-                    <span>{{'Travel time' | translate}}</span>
-                    <span> 4:05 h</span>
-                </span>
-                <span class="margin-left">
-                    <span>0 </span>
-                    <span>{{'Switshes' | translate}}</span>
-                </span>
-            </p>
-        </div>
+    <div class="container border-bottom">
+      <div class="container inner-container no-padding">
+        <p>
+          <span id="left">
+            {{booking.Train!.Model}}
+          </span>
+          <span>
+            <span>{{'Travel time' | translate}}</span><span> 3:11h</span>
+          </span>
+          <span id="right">
+            <span>0 </span><span>{{'Changes' | translate}}</span>
+          </span>
+        </p>
+      </div>
     </div>
-    <!---------------------------------- Desktop return trip card ------------------------------------->
-    <div class="container border desktop-card">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col" id="left">
+          <h4>{{'Total' | translate}}</h4>
+        </div>
+        <div class="col" id="center">
+          <h4>{{booking.Price}}:-</h4>
+        </div>
+        <div class="col" id="right">
+          <span>
+            <a href="">
+              <i class="fa fa-trash"></i>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---------------------------- Desktop size cards --------------------------------->
+  <div class="container border desktop-card margin-bottom">
+    <div class="container border-bottom no-padding margin-top">
+      <div class="row justify-content-center">
+        <div class="col col-auto">
+          <h2 class="pull-left">
+            <span><i class="fa fa-angle-double-right icon-margin-right"></i></span>
+            <span>{{booking.FromLocation!.AdvertisedLocationName}}</span>
+            <span> - </span>
+            <span>{{booking.ToLocation!.AdvertisedLocationName}}</span>
+          </h2>
+        </div>
+        <div class="col col-auto thin">
+          <h2 id="desktop-date">
+            <span>Torsdag 23 december 2021</span>
+            <span class="time">kl 06:24</span>
+          </h2>
+        </div>
+        <div class="col">
+          <h2 class="pull-right">
+            <span class="border-right" id="desktop-price">{{booking.Price}}:-</span>
+            <span id="desktop-trash-icon"> <a href="">
+                <i class="fa fa-trash"></i>
+              </a>
+            </span>
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="container border-bottom no-padding margin-top">
+      <p id="left">
+        <span>1 </span><span>{{'Traveller' | translate}}</span>
+        <span class="margin-left">
+          <span>2 </span>
+          <span>{{'Class' | translate}}</span>
+        </span>
+        <span class="margin-left">{{'Cannot be rebooked' | translate}}</span>
+      </p>
+    </div>
+    <div class="container no-padding margin-top">
+      <p id="left">
+        {{booking.Train!.Model}}
+          <span class="margin-left">
+            <span>{{'Travel time' | translate}}</span>
+            <span> 4:05 h</span>
+          </span>
+          <span class="margin-left">
+            <span>0 </span>
+            <span>{{'Switshes' | translate}}</span>
+          </span>
+      </p>
+    </div>
+  </div>
+  <!---------------------------------- Desktop return trip card ------------------------------------->
+  <!-- <div class="container border desktop-card">
         <div class="container border-bottom no-padding margin-top">
             <div class="row justify-content-center">
                 <div class="col col-auto">
                     <h2 class="pull-left">
                         <span><i class="fa fa-angle-double-left icon-margin-right"></i></span>
-                        <span>Sthlm Central</span>
+                        <span>{{booking.FromLocation}}</span>
                         <span> - </span>
-                        <span>Göteborg C</span>
+                        <span>{{booking.ToLocation}}</span>
                     </h2>
                 </div>
                 <div class="col col-auto thin">
@@ -214,7 +214,7 @@
                 </div>
                 <div class="col">
                     <h2 class="pull-right">
-                        <span class="border-right" id="desktop-price">1024:-</span>
+                        <span class="border-right" id="desktop-price">{{booking.Price}}:-</span>
                         <span id="desktop-trash-icon"> <a href="">
                             <i class="fa fa-trash"></i>
                         </a>
@@ -235,7 +235,7 @@
         </div>
         <div class="container no-padding margin-top">
             <p id="left">
-                <span>SJ</span>
+                <span   {{booking.Train!.Model}}</span>
                 <span class="margin-left">
                     <span>{{'Travel time' | translate}}</span>
                     <span> 4:05 h</span>
@@ -257,44 +257,44 @@
             </div>
         </a>
     </div>
-</div>
-<!----------------------------- Bottom ------------------------------>
-<!------------------------------- Phone Bottom ------------------------------------>
-<div class="container-fluid border-top phone-bottom">
+</div> -->
+  <!----------------------------- Bottom ------------------------------>
+  <!------------------------------- Phone Bottom ------------------------------------>
+  <div class="container-fluid border-top phone-bottom">
     <div class="row">
-        <div class="col">
-            <h3 id="left">{{'Total' | translate}}</h3>
-        </div>
-        <div class="col">
-            <h3 id="right">2048:-</h3>
-        </div>
+      <div class="col">
+        <h3 id="left">{{'Total' | translate}}</h3>
+      </div>
+      <div class="col">
+        <h3 id="right">{{booking.Price}}:-</h3>
+      </div>
     </div>
     <button type="button" class="btn btn-primary btn-lg btn-block" id="continue-btn-phone">
-        {{'Continue' | translate}}
-        <span class="pull-right">
-            <i class="fa fa-angle-right fa-lg"></i>
-        </span>
+      {{'Continue' | translate}}
+      <span class="pull-right">
+        <i class="fa fa-angle-right fa-lg"></i>
+      </span>
     </button>
-</div>
+  </div>
 
-<!--------------------------------------- Desktop Bottom -------------------------------------------->
-<div class="container-fluid border-top desktop-bottom">
+  <!--------------------------------------- Desktop Bottom -------------------------------------------->
+  <div class="container-fluid border-top desktop-bottom">
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <h1 id="left">{{'Total' | translate}}</h1>
-            </div>
-            <div class="col">
-                <div class="row align-items-center float-right">
-                    <h1>2048:-</h1>                 
-                    <button type="button" class="btn btn-primary btn-lg" id="continue-btn-desktop">
-                        {{'Continue' | translate}}
-                        <span class="pull-right">
-                            <i class="fa fa-angle-right fa-lg"></i>
-                        </span>
-                    </button>
-                </div>
-            </div>
+      <div class="row">
+        <div class="col">
+          <h1 id="left">{{'Total' | translate}}</h1>
         </div>
+        <div class="col">
+          <div class="row align-items-center float-right">
+            <h1>{{booking.Price}}:-</h1>
+            <button type="button" (click)="submit()" class="btn btn-primary btn-lg" id="continue-btn-desktop">
+              {{'Continue' | translate}}
+              <span class="pull-right">
+                <i class="fa fa-angle-right fa-lg"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>

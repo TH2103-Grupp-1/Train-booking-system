@@ -6,5 +6,5 @@ export interface Train {
   Model?: 'Regional' | 'SJ High-speed train X 2000';
   TimeTables?: TimeTable[];
   TrainServices?: string[]; // Wheelchair lift, Bistro, Wifi etc
-  Carriage?: Carriage[];
+  Carriages?: Carriage[];
 }
