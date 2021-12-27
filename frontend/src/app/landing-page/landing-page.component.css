@@ -73,7 +73,7 @@
   width: 100%;
   animation: fadein 1s;
 
-  height: fit-content;
+  height: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
