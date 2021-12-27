@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Station } from '../models/station.model';
 import { StationService } from '../services/station.service';
 import {FormControl} from '@angular/forms';
@@ -22,8 +22,8 @@ export class LandingPageComponent implements OnInit {
 
   calendarStyle: string = this.disabledCelandarStyle;
 
-  @Input() minDate: Date;
-  @Input() maxDate: Date;
+  minDate: Date;
+  maxDate: Date;
 
   selectedDate_calendar1: Date = new Date() || null;
   selectedTime_calendar1: string = "00:00";
@@ -44,8 +44,9 @@ export class LandingPageComponent implements OnInit {
 
   constructor(private stationService: StationService, private bookingBuilder: BookingBuilderService, private route: Router) { 
     const currentYear = new Date().getFullYear();
+    const currentDate = new Date();
 
-    this.minDate = new Date(currentYear, 0, 0);
+    this.minDate = new Date(currentDate);
     this.maxDate = new Date(currentYear + 1, 11, 31);
   }
 
