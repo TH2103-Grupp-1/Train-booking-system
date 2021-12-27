@@ -11,10 +11,7 @@ export class AccountPageComponent implements OnInit {
   name: string | undefined;
 
   constructor(authService: AuthService) {
-    console.log(authService.currentUser);
-    let name = authService.currentUser?.FirstName;
-    console.log(name);
-    this.name = name;
+    this.name = authService.currentUser?.FirstName;
    }
 
   ngOnInit(): void {

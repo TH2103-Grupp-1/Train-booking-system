@@ -26,7 +26,7 @@
   "You need to be logged in to view this page": "Du behöver vara inloggad för att se denna sida",
   "Logged in": "Inloggad",
   "Logged out": "Utloggad",
-  "Log out" : "Logga ut",
+  "Log out": "Logga ut",
   "Registered & logged in": "Registrerad & inloggad",
   "Cannot reach server, check your internet connection": "Kan inte nå servern, kolla din internetanslutning.",
   "Cannot reach server, try again later": "Kan inte nå servern, försök igen senare.",
@@ -56,7 +56,7 @@
   "Points Due": "Poäng Som Förfaller",
   "First name": "Namn",
   "Last name": "Efternamn",
-  "Registered, please login" : "Registrerad, vänligen logga in",
+  "Registered, please login": "Registrerad, vänligen logga in",
   "My Pages": "Mina Sidor",
   "The password was incorrect" : "Felaktigt lösenord",
   "There is no registered user with that email" : "Användaren existerar inte",
@@ -92,6 +92,8 @@
   "Tue":"Tis",
   "Continue": "Fortsätt",
   "Book more trips": "Boka fler resor",
+  "Price": "Pris",
+  "Departure": "Avgång",
   "Seat reservation": "Platsreservation",
   "Recipe": "Kvitto",
   "Thank you for your order.": "Tack för din beställning.",
@@ -106,7 +108,10 @@
   "Price total": "Pris totalt",
   "VAT: ": "Moms: ",
   "Arrival": "Ankomst",
-  "Departure": "Avresa",
-  "Return trip": "Returresa"
+  "1 Class": "1 Klass",
+  "2 Class": "2 Klass",
+  "Select ticket": "Välj Biljett",
+  "Return trip": "Returresa",
+  "Optional": "Tillval",
+  "Timetable": "Tidstabell"
 }
-

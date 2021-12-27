@@ -1,0 +1,159 @@
+<div class="container">
+  <div class="row page-orientagion">
+      <div class="col page-orientation-bar-back">
+          <a href="">
+              1.
+          </a>
+      </div>
+      <div class="col page-orientation-bar-current">
+          <a href="">
+            {{'2. Timetable' | translate}}
+          </a>
+      </div>
+      <div class="col-3 page-orientation-bar-next">
+          <a>
+              3.
+          </a>
+      </div>
+      <div class="col page-orientation-bar-next">
+          <a>
+              4.
+          </a>
+      </div>
+      <div class="col page-orientation-bar-next">
+          <a href="">
+              5.
+          </a>
+      </div>
+      <div class="col page-orientation-bar-next">
+          <a href="">
+              6.
+          </a>
+      </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="choosen-cities-container">
+    <h2>{{booking.FromLocation?.AdvertisedLocationName}} - {{booking.ToLocation?.AdvertisedLocationName}}
+    </h2>
+  </div>
+
+  <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
+
+  <pagination-template #p="paginationApi" (pageChange)="page = $event">
+  </pagination-template>
+
+
+  <div class=" row no-gutters">
+    <div class="col-md-4 col- no-padding">
+      <div class="container custom-pagination">
+        <div class="pagination-icon-previous">
+          <div (click)="p.previous(); showPreviousDay()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+            </svg>Tidigare resor {{previousDay}}
+          </div>
+        </div>
+
+        <div>
+          <p>{{myDate | date: 'fullDate'}}</p>
+        </div>
+        <div class="pagination-icon-next">
+          <div (click)="p.next() ;showNextDay()">Senare resor {{nextDay}}
+            <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-chevron-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="date-choosen-cities">
+  <table class=" table table-striped table">
+    <div class="wrapper">
+
+      <div class="container">
+
+        <div class="info-tabel-header">
+          <div class="col-5">{{'Departure' | translate}}</div>
+          <div>
+            {{'1 Class' | translate}}
+          </div>
+          <!-- <div>{{'2 Class'| translate}}</div> -->
+        </div>
+
+        <!-- loops and create list of departures "dynamic from component And pagintaes to 4 items/site" -->
+
+        <div *ngFor="let departure of tableData | paginate: { itemsPerPage: 4, currentPage: page,
+        totalItems:totalLength }">
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{departure.DepartureTime?.toTimeString()}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  <!-- {{departures.firstClass}} -->
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>{{'Select ticket'| translate}}</p>
+              <!-- <p>{{departures.departure}}</p> -->
+
+              <div class=" container box-info">
+                <div class="container left-container">
+                  <div class="more-train-info">
+                    <div class="departure-holder"> <strong>{{'Departure'| translate}} </strong> {{' '}}{{departure.DepartureTime}}</div>
+                    <div class="train-pic-holder"> <img class="train-image"
+                        src="../../../../assets/images/dubbeldackare-70x340.png" alt="">
+                    </div>
+                    <div class="arrvial-holder">
+                    <strong>  {{'Arrival'| translate}}{{' '}} </strong> {{departure.ArrivalTime}}</div>
+                    <div>
+                      <p>Model</p>
+                    </div>
+                    <div>
+                      <p>TrainServices</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="container right-container">
+                  <div (click)="selectDeparture(departure)" class="price-box">
+                    <div class="price-box-first">
+                      <div>{{booking.Price}} SEK</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+
+
+          <!-- <div class=" depature-info"> -->
+          <!-- <div class=" container box-info">
+
+
+            </div> -->
+
+
+
+
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </table>
+
+</div>
+<div *ngIf="selectedDeparture !== undefined" class="summary">
+<h1><strong>Total SEK:</strong> {{booking.Price}}</h1>
+<button class="btn btn-success" (click)="submit()">{{'Continue' | translate }}</button>
+</div>

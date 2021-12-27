@@ -1,0 +1,94 @@
+.page-orientation-bar-back {
+  text-align: center;
+  background-color: rgb(120, 190, 14);
+  border: solid 1px white;
+}
+
+.page-orientation-bar-back a {
+  color: white;
+  font-size: 10px;
+}
+
+.page-orientation-bar-current {
+  text-align: center;
+  background-color: #156e31;
+  border: solid 1px white;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.page-orientation-bar-current a {
+  color: white;
+  font-size: 10px;
+}
+
+.page-orientation-bar-next {
+  text-align: center;
+  background-color: rgb(235, 231, 231);
+  border: solid 1px white;
+}
+
+.page-orientation-bar-next a {
+  color: rgb(134, 134, 134);
+  font-size: 10px;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.train-container {
+  margin: 0 auto;
+  text-align: center;
+  width: 800px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.train-carriages {
+  /* display: flex;
+  justify-content: center; */
+  width: 800px;
+  height: 300px;
+  overflow-x: scroll;
+  /* position: relative; */
+}
+
+.seats-overview {
+  margin-top: 50px;
+  width: 800px;
+  height: 400px;
+}
+
+.seat {
+  height: 40px;
+  width: 40px;
+  margin: 20px;
+}
+
+.carriage {
+  background-color: #fff;
+  width: 200px;
+  height: 60px;
+  display: flex;
+  display: inline-block;
+}
+
+.carriage-thing {
+  width: 700px;
+  height: 300px;
+  /* display: flex; */
+  /* justify-content: center; */
+  margin: 4em;
+}
+
+.scrolling-wrapper {
+  width: 800px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}

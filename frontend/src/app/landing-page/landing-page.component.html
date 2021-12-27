@@ -10,7 +10,7 @@
             <mat-form-field class="search-full-width" appearance="fill">
               <mat-label>{{'FROM' | translate}}</mat-label>
               <input maxlength="30" type="text" matInput [formControl]="fromStationControl" [matAutocomplete]="auto1">
-              <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayFromStation" (optionSelected)='selectToStation($event)'>
+              <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayFromStation" (optionSelected)='selectFromStation($event)'>
                 <mat-option *ngFor="let option of filteredFromStationOptions | async" [value]="option">
                   {{option.AdvertisedLocationName}}
                 </mat-option>
@@ -24,7 +24,7 @@
             <mat-form-field class="search-full-width" appearance="fill">
               <mat-label>{{'TO' | translate}}</mat-label>
               <input maxlength="30" type="text" matInput [formControl]="toStationControl" [matAutocomplete]="auto2">
-              <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayToStation" (optionSelected)='selectFromStation($event)'>
+              <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayToStation" (optionSelected)='selectToStation($event)'>
                 <mat-option *ngFor="let option of filteredToStationOptions | async" [value]="option">
                   {{option.AdvertisedLocationName}}
                 </mat-option>
@@ -85,7 +85,7 @@
 
 
 
-      <h3 (click)="s()" class="safety-heading">{{'Travel safely with us' | translate}}</h3>
+      <h3 class="safety-heading">{{'Travel safely with us' | translate}}</h3>
       <p class="safety-message">{{"Right now the Swedish Public Health Agency recommends that you use a face mask when traveling with public transport when it's crowded. Read more about how you can help us make the journey safe for you and your fellow travelers here." | translate}}</p>
     </div>
   </div>
