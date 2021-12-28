@@ -22,6 +22,9 @@ export class LandingPageComponent implements OnInit {
 
   calendarStyle: string = this.disabledCelandarStyle;
 
+  minDate: Date;
+  maxDate: Date;
+
   selectedDate_calendar1: Date = new Date() || null;
   selectedTime_calendar1: string = "00:00";
 
@@ -39,7 +42,13 @@ export class LandingPageComponent implements OnInit {
   fromStation!: Station;
   toStation!: Station;
 
-  constructor(private stationService: StationService, private bookingBuilder: BookingBuilderService, private route: Router) { }
+  constructor(private stationService: StationService, private bookingBuilder: BookingBuilderService, private route: Router) { 
+    const currentYear = new Date().getFullYear();
+    const currentDate = new Date();
+
+    this.minDate = new Date(currentDate);
+    this.maxDate = new Date(currentYear + 1, 11, 31);
+  }
 
   setTimeCalendar1(time: string) {
     this.selectedTime_calendar1 = time;

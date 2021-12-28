@@ -73,7 +73,7 @@
   width: 100%;
   animation: fadein 1s;
 
-  height: fit-content;
+  height: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,7 +93,6 @@
 .safety-message {
   text-align: center;
   color: white;
-  margin-bottom: 40px;
   max-width: 700px;
 }
 
@@ -154,7 +153,7 @@ a {
 #banner {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://wallup.net/wp-content/uploads/2017/11/17/364154-city-cityscape-lights-city_lights-blurred.jpg");
   /* Set a specific height */
-  height: 80%;
+  height: 840px;
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
   background-repeat: no-repeat;
