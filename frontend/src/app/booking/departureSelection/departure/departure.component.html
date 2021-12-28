@@ -40,22 +40,22 @@
   <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
   <pagination-template #p="paginationApi" (pageChange)="page = $event">
   </pagination-template>
-  <div class=" row no-gutters">
-    <div class="col-md-4 col- no-padding">
+  <div class=" row no-gutters container center">
+    <div class="col-md-12 col- no-padding">
       <div class="container custom-pagination">
         <div class="pagination-icon-previous">
           <div (click)="p.previous(); showPreviousDay()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
               fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-            </svg> {{previousDay | date: 'E, d, LLL '}}
+            </svg> {{previousDay | date: 'E d LLL '}}
           </div>
         </div>
         <div>
-          <p>{{myDate | date: 'fullDate'}}</p>
+          <p>{{changeDate | date: 'fullDate'}}</p>
         </div>
         <div class="pagination-icon-next">
-          <div (click)="p.next() ;showNextDay()">Senare resor {{nextDay |date: 'E, d, LLL '}}
+          <div (click)="p.next() ;showNextDay()">{{nextDay |date: 'E d LLL '}}
             <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-chevron-right" viewBox="0 0 16 16">
               <path fill-rule="evenodd"

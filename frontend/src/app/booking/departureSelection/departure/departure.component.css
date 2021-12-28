@@ -194,7 +194,7 @@ justify-content: space-between;
 /*  CUSTOM PAGINATION DESIGN */
 
 .custom-pagination{
-  width: 80vh;
+  /* width: 80vh; */
   display: flex;
   /* flex-direction:column; */
   justify-content: space-between;

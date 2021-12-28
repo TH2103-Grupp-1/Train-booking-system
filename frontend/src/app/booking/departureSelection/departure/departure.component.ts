@@ -60,23 +60,40 @@ export class DepartureComponent implements OnInit {
   // ********************************************************
   // Get the current to date next and previous dates
   myDate = new Date();
+  //sets mydate to a Date we can change 
+  changeDate: number = this.myDate.setDate(this.myDate.getDate())
+
   // nextdate
-  nextDay: number = this.myDate.setDate(this.myDate.getDate());
+  nextDate = new Date()
+  // set next date to show next day
+  nextDay: number = this.nextDate.setDate(this.nextDate.getDate() + 1);
 
   // Show deparures on date after today.
   showNextDay() {
-    this.nextDay = this.myDate.setDate(this.myDate.getDate() + 1);
-    this.previousDay = this.myDate.setDate(this.myDate.getDate() + 1);
+    if (this.myDate !== this.nextDate) {
+      this.changeDate = this.myDate.setDate(this.myDate.getDate() + 1);
+      this.nextDay = this.nextDate.setDate(this.nextDate.getDate() + 1);
+      this.previousDay = this.previousDate.setDate(this.previousDate.getDate() + 1)
+    } else if (this.myDate === this.nextDate) {
+      this.nextDay = this.nextDate.setDate(this.nextDate.getDate() + 1);
+      this.previousDay = this.previousDate.setDate(this.previousDate.getDate() + 1)
+    }
 
-
-    // this.nextDay = this.nextDay + 1;
-    // this.previousDay = this.previousDay + 1;
   }
+
+  previousDate = new Date()
   // Show departures on previous day.
-  previousDay: number = this.myDate.getDate();
+  previousDay: number = this.previousDate.setDate(this.previousDate.getDate() - 1)
   showPreviousDay() {
-    this.previousDay = this.myDate.setDate(this.myDate.getDate() - 1);
-    this.nextDay = this.myDate.setDate(this.myDate.getDate() - 1);
+    if (this.myDate !== this.nextDate) {
+      this.changeDate = this.myDate.setDate(this.myDate.getDate() - 1);
+      this.previousDay = this.previousDate.setDate(this.previousDate.getDate() - 1)
+      this.nextDay = this.nextDate.setDate(this.nextDate.getDate() - 1);
+    } else if (this.myDate === this.nextDate) {
+      this.previousDay = this.previousDate.setDate(this.previousDate.getDate() - 1)
+      this.nextDay = this.nextDate.setDate(this.nextDate.getDate() - 1);
+    }
+
     // this.previousDay = this.previousDay - 1;
     // this.nextDay = this.nextDay - 1;
   }
