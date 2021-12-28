@@ -20,4 +20,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/users", userRoutes);
 
+app.get("/*", function (req, res) {
+    res.sendFile("index.html", { root: "public/" });
+  });
+  
+
 app.listen(port, () => console.log('Listening on port ' + port));
