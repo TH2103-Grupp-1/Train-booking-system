@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Notyf } from 'notyf';
 import { BehaviorSubject, empty, map, Observable } from 'rxjs';
@@ -9,7 +9,8 @@ import { RegisterDto, User } from '../models/user.model';
   providedIn: 'root'
 })
 export class AuthService {
-  BASE_URL: string = 'http://localhost:5000';
+  BASE_URL = window.location.origin + '/api';
+
 
   private userSubject$: BehaviorSubject<User | null>;
   public user: Observable<User | null>;
@@ -21,6 +22,7 @@ export class AuthService {
   }
 
   public get currentUser(): User | null {
+    console.log(this.BASE_URL);
     return this.userSubject$.value;
   }
 
