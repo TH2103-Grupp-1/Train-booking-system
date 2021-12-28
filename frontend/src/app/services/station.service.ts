@@ -7,8 +7,8 @@ import { Station } from '../models/station.model';
   providedIn: 'root'
 })
 export class StationService {
+  BASE_URL = window.location.origin + '/api';
 
-  BASE_URL: string = 'http://localhost:5000';
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {

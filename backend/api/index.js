@@ -4,28 +4,20 @@ import trainStationRoutes from "./routes/trainstations.js";
 import bookingRoutes from "./routes/bookings.js";
 import userRoutes from "./routes/users.js";
 import authRoutes from "./routes/auth.routes.js";
-import cors from "cors";
 import Database from "better-sqlite3";
 
 const app = express();
-const PORT = 5000;
+const port = process.env.PORT || 4000;
 
 export const db = new Database("../database.db");
 
-const corsOptions = {
-  origin: 'http://localhost:4200'
-}
+app.use('/', express.static('dist/train-booking-system')); // Pit Angular build 'dist' folder in api folder. 
 
-app.use(cors(corsOptions));
 app.use(bodyParser.json({limit: "50mb"}));
 
-app.use("/trainstations", trainStationRoutes);
-app.use("/auth", authRoutes);
+app.use("/api/trainstations", trainStationRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/bookings", bookingRoutes);
+app.use("/api/users", userRoutes);
 
-app.use("/bookings", bookingRoutes);
-
-app.use("/users", userRoutes);
-
-app.listen(PORT, () => {
-  console.log(`Server started at port: ${PORT}`)
-});
+app.listen(port, () => console.log('Listening on port ' + port));
