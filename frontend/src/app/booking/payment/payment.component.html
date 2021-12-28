@@ -1,188 +1,197 @@
 <!-- Radio buttons for delivery method -->
 <div class="container">
-  <h2>{{ "Delivery" | translate }}</h2>
-  <div id="radio-buttons">
-  <div class="container border no-padding">
-    <div
-    class="form-check"
-    data-toggle="collapse"
-    href="#e-ticket"
-    role="button"
-    aria-expanded="false"
-    aria-controls="e-ticket"
-    >
-    <label class="form-check-label radio-label" for="flexRadioDefault1">
-    <input
-    class="form-check-input"
-    type="radio"
-    name="flexRadioDefault"
-    id="flexRadioDefault1"
-    checked
-      />
-
-        {{ "E-ticket" | translate }}
-      </label>
-    </div>
-    <div class="container collapse" id="e-ticket" data-parent="#radio-buttons">
-      <hr />
-        {{ 'The ticket is a pdf that is sent to your e-mail.On the train, you show the ticket in your mobile or computer. You can also print the ticket.' | translate }}
-    </div>
-
-  </div>
-  <div class="container border no-padding">
-    <div
-      class="form-check"
-      data-toggle="collapse"
-      href="#sms-ticket"
-      role="button"
-      aria-expanded="false"
-      aria-controls="sms-ticket"
-    >
-    <label class="form-check-label radio-label" for="flexRadioDefault2">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="flexRadioDefault"
-        id="flexRadioDefault2"
-        checked
-      />
-
-        {{ "SMS-ticket" | translate }}
-      </label>
-    </div>
-    <div class="container collapse" id="sms-ticket" data-parent="#radio-buttons">
-      <hr />
-        {{ 'An SMS with a link to your ticket will be sent the day before departure. If you travel within 24 hours, the ticket will be sent within 15 minutes. The SMS ticket must be able to be read electronically on board. If your screen is broken, we recommend a different delivery method.' | translate }}
-    </div>
-  </div>
-  <div class="container border no-padding">
-    <div
-      class="form-check"
-      data-toggle="collapse"
-      href="#pick-up"
-      role="button"
-      aria-expanded="false"
-      aria-controls="pick-up"
-    >
-    <label class="form-check-label radio-label" for="flexRadioDefault3">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="flexRadioDefault"
-        id="flexRadioDefault3"
-        checked
-      />
-
-        {{ "Pick up" | translate }}
-      </label>
-    </div>
-    <div class="container collapse" id="pick-up" data-parent="#radio-buttons">
-      <hr />
-        {{ 'Pick up your ticket in our Ticket Machine. Tickets can also be picked up, for a fee of 100 SEK per booking number, at Pressbyrån and 7-Eleven. Keep in mind that our Ticket Machine, Pressbyrån or 7-Eleven is not available in all locations!' | translate }}
-    </div>
-  </div>
-</div>
-</div>
-
-
-<!-- Form -->
-<form class="container" [formGroup]="paymentForm">
-  <h2>{{ "Travelers" | translate }}</h2>
-  <div class="row">
-    <div class="col col-md-4">
-      <label for="">{{ "First name" | translate }}</label>
-      <input type="text" class="form-control" maxlength="30" formControlName="firstName"/>
-    </div>
-    <div class="col col-md-4">
-      <label for="">{{ "Last name" | translate }}</label>
-      <input type="text" class="form-control" maxlength="30" formControlName="lastName" />
+  <div class="container">
+    <div class="row page-orientagion">
+      <div class="col page-orientation-bar-back">
+        <a href="">
+          1.
+        </a>
+      </div>
+      <div class="col page-orientation-bar-back">
+        <a href="">
+          2.
+        </a>
+      </div>
+      <div class="col page-orientation-bar-back">
+        <a routerLink="/seat">
+          3.
+        </a>
+      </div>
+      <div class="col page-orientation-bar-back">
+        <a href="">
+          4.
+        </a>
+      </div>
+      <div class="col-3 page-orientation-bar-current">
+        <a href="">
+          {{ "Payment" | translate }}
+        </a>
+      </div>
+      <div class="col page-orientation-bar-next">
+        <a href="">
+          6.
+        </a>
+      </div>
     </div>
   </div>
   <div class="row">
-        <div class="col col-md-4">
-          <label for="">{{ "Phone number" | translate }}</label>
-          <input type="text" class="form-control" maxlength="12" formControlName="phoneNumber" />
+    <div class="col-8">
+      <div class="container no-padding">
+        <h2>{{ "Delivery" | translate }}</h2>
+        <div id="radio-buttons">
+          <div class="container border no-padding">
+            <div class="form-check padding" data-toggle="collapse" href="#e-ticket" role="button" aria-expanded="false"
+              aria-controls="e-ticket">
+
+              <label class="form-check-label radio-label" for="flexRadioDefault1">
+                <span><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                    checked /></span>
+                <span>{{ "E-ticket" | translate }}</span>
+
+              </label>
+            </div>
+            <div class="container collapse" id="e-ticket" data-parent="#radio-buttons">
+              <hr />
+              {{ 'The ticket is a pdf that is sent to your e-mail.On the train, you show the ticket in your mobile or
+              computer. You can also print the ticket.' | translate }}
+            </div>
+
+          </div>
+          <div class="container border no-padding">
+            <div class="form-check padding" data-toggle="collapse" href="#sms-ticket" role="button"
+              aria-expanded="false" aria-controls="sms-ticket">
+              <label class="form-check-label radio-label" for="flexRadioDefault2">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
+
+                {{ "SMS-ticket" | translate }}
+              </label>
+            </div>
+            <div class="container collapse" id="sms-ticket" data-parent="#radio-buttons">
+              <hr />
+              {{ 'An SMS with a link to your ticket will be sent the day before departure. If you travel within 24
+              hours, the ticket will be sent within 15 minutes. The SMS ticket must be able to be read electronically on
+              board. If your screen is broken, we recommend a different delivery method.' | translate }}
+            </div>
+          </div>
+          <div class="container border no-padding">
+            <div class="form-check padding" data-toggle="collapse" href="#pick-up" role="button" aria-expanded="false"
+              aria-controls="pick-up">
+              <label class="form-check-label radio-label" for="flexRadioDefault3">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked />
+
+                {{ "Pick up" | translate }}
+              </label>
+            </div>
+            <div class="container collapse" id="pick-up" data-parent="#radio-buttons">
+              <hr />
+              {{ 'Pick up your ticket in our Ticket Machine. Tickets can also be picked up, for a fee of 100 SEK per
+              booking number, at Pressbyrån and 7-Eleven. Keep in mind that our Ticket Machine, Pressbyrån or 7-Eleven
+              is not available in all locations!' | translate }}
+            </div>
+          </div>
         </div>
-    <div class="col col-md-4">
-      <label for="">E-mail</label>
-      <input type="text" class="form-control" maxlength="50" formControlName="email" />
+        <!-- Form -->
+        <form class="container no-padding" [formGroup]="paymentForm">
+          <h2>{{ "Travelers" | translate }}</h2>
+          <div class="row">
+            <div class="col col-md-4">
+              <label for="">{{ "First name" | translate }}</label>
+              <input type="text" class="form-control" maxlength="30" formControlName="firstName" />
+            </div>
+            <div class="col col-md-4">
+              <label for="">{{ "Last name" | translate }}</label>
+              <input type="text" class="form-control" maxlength="30" formControlName="lastName" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-md-4">
+              <label for="">{{ "Phone number" | translate }}</label>
+              <input type="text" class="form-control" maxlength="12" formControlName="phoneNumber" />
+            </div>
+            <div class="col col-md-4">
+              <label for="">E-mail</label>
+              <input type="text" class="form-control" maxlength="50" formControlName="email" />
+            </div>
+          </div>
+        </form>
+
+
+        <!-- Payment method -->
+        <div class="container no-padding">
+          <h2>{{ "Payment method" | translate }}</h2>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault4" />
+            <label class="form-check-label" for="flexRadioDefault4"> Swish </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault5" checked />
+            <label class="form-check-label" for="flexRadioDefault5">
+              {{ "Credit card" | translate }}
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault6" checked />
+            <label class="form-check-label" for="flexRadioDefault6">
+              {{ "Private invoice" | translate }}
+              <span class="invoice-text">{{
+                "Invoice fee 0 kr, with the possibility of partial payment" | translate
+                }}</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Buttons for navigating -->
+        <div class="container no-padding">
+          <div class="row">
+            <div class="col-2 pull-left">
+              <a class="a-tag-back" href="">
+                <span><i class="fa fa-angle-left fa-10x"></i></span>
+                <span>{{ "Back" | translate }}</span>
+              </a>
+            </div>
+            <div class="col pull-right">
+              <div class="row pull-right">
+                <div class="col col-btn no-padding">
+                  <button type="button" class="btn btn-primary btn-lg btn-block" id="cancel-btn">{{ 'Cancel' | translate }}</button>
+                </div>
+                <div class="col pull-right col-btn no-padding">
+                  <button type="button" class="btn btn-primary btn-lg btn-block" id="continue-btn">{{ 'Continue' | translate }}
+                    <span class="pull-right">
+                      <i class="fa fa-angle-right fa-lg"></i>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!------------------------------------------------- second column ----------------------------------------------------------->
+    <div class="col-3 pull-right">
+      <!-- Current ticket -->
+      <div class="container main sticky-top no-padding pull-right">
+        <div class="my-choices">
+          <h3> {{ 'My choices' | translate }} </h3>
+        </div>
+        <div class="ticket-info">
+          <div class="ticket-time">
+            <h4>{{booking.FromLocation!.AdvertisedLocationName}} - {{booking.ToLocation!.AdvertisedLocationName}}</h4>
+            <p>{{booking.TimeTable!.DepartureTime}} - {{booking.TimeTable!.ArrivalTime!.toTimeString()}} </p>
+          </div>
+          <br>
+          <div class="price">
+            <p>1 {{ 'traveler' | translate }} </p>
+            <p>{{booking.Price}}:-</p>
+          </div>
+          <hr>
+          <div class="pay">
+            <p>Total</p>
+            <p>{{booking.Price}}:-</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</form>
 
-
-<!-- Payment method -->
-<div class="container">
-  <h2>{{ "Payment method" | translate }}</h2>
-  <div class="form-check">
-    <input
-      class="form-check-input"
-      type="radio"
-      name="flexRadioDefault1"
-      id="flexRadioDefault4"
-    />
-    <label class="form-check-label" for="flexRadioDefault4"> Swish </label>
-  </div>
-  <div class="form-check">
-    <input
-      class="form-check-input"
-      type="radio"
-      name="flexRadioDefault1"
-      id="flexRadioDefault5"
-      checked
-    />
-    <label class="form-check-label" for="flexRadioDefault5">
-      {{ "Credit card" | translate }}
-    </label>
-  </div>
-  <div class="form-check">
-    <input
-      class="form-check-input"
-      type="radio"
-      name="flexRadioDefault1"
-      id="flexRadioDefault6"
-      checked
-    />
-    <label class="form-check-label" for="flexRadioDefault6">
-      {{ "Private invoice" | translate }}
-      <span class="invoice-text">{{
-        "Invoice fee 0 kr, with the possibility of partial payment" | translate
-      }}</span>
-    </label>
-  </div>
 </div>
-
-<!-- Current ticket -->
-<div class="container main">
-  <div class="my-choices">
-    <h3> {{ 'My choices' | translate }} </h3>
-  </div>
-  <div class="ticket-info">
-    <div class="ticket-time">
-    <h4>{{booking.FromLocation!.AdvertisedLocationName}} - {{booking.ToLocation!.AdvertisedLocationName}}</h4>
-    <p>{{booking.TimeTable!.DepartureTime}} - {{booking.TimeTable!.ArrivalTime!.toTimeString()}} </p>
-  </div>
-    <br>
-    <div class="price">
-      <p>1 {{ 'traveler' | translate }} </p>
-      <p>{{booking.Price}}:-</p>
-    </div>
-    <hr>
-    <div class="pay">
-      <p>Total</p>
-      <p>{{booking.Price}}:-</p>
-    </div>
-  </div>
-</div>
-
-<!-- Buttons for navigating -->
-<div class="container">
-  <div class="bottom-buttons">
-    <a href="">&lt; {{ "Back" | translate }}</a>
-    <button type="button" class="btn btn-warning">{{ 'Cancel' | translate }}</button>
-    <button type="submit" class="btn btn-success"> {{ 'Continue' | translate }}</button>
-  </div>
-</div>
-
-
-
