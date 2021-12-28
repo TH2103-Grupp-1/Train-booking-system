@@ -9,7 +9,7 @@ import Database from "better-sqlite3";
 const app = express();
 const port = process.env.PORT || 4000;
 
-export const db = new Database("../database.db");
+export const db = new Database("./database.db");
 
 app.use('/', express.static('dist/train-booking-system')); // Pit Angular build 'dist' folder in api folder. 
 
