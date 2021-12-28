@@ -11,7 +11,7 @@ const port = process.env.PORT || 4000;
 
 export const db = new Database("./database.db");
 
-app.use('/', express.static('dist/train-booking-system')); // Pit Angular build 'dist' folder in api folder. 
+app.use('/', express.static('public/')); // Pit Angular build 'dist' folder in api folder. 
 
 app.use(bodyParser.json({limit: "50mb"}));
 
