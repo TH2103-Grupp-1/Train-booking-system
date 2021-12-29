@@ -1,6 +1,6 @@
 import { db } from "../index.js";
 
-export const getAllTrains = (req, res) => {
+export const getAllCarriages = (req, res) => {
   const statement = db.prepare("SELECT * FROM Carriages");
 
   const results = statement.all();
