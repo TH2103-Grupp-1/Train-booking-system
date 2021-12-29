@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Booking } from 'src/app/models/booking.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { BookingBuilderService } from 'src/app/services/booking-builder.service';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
   selector: 'app-payment',
@@ -21,7 +22,7 @@ export class PaymentComponent implements OnInit {
 
   booking: Booking;
 
-  constructor(private authService: AuthService, private bookingService: BookingBuilderService, private route: Router) {
+  constructor(private authService: AuthService, private bookingService: BookingBuilderService, private route: Router, private paymentService: PaymentService) {
     this.booking = bookingService.getBooking();
     if(this.booking === undefined) { route.navigateByUrl('/'); }
   }
@@ -42,4 +43,9 @@ export class PaymentComponent implements OnInit {
 
   }
 
+  checkout() {
+    console.log('de här borde synas');
+    var test = this.paymentService.toCheckout();
+    console.log(test);
+  }
 }

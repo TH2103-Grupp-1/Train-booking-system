@@ -5,6 +5,8 @@ import bookingRoutes from "./routes/bookings.js";
 import userRoutes from "./routes/users.js";
 import authRoutes from "./routes/auth.routes.js";
 import Database from "better-sqlite3";
+import paymentRoutes from "./routes/payment.js";
+
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -19,6 +21,7 @@ app.use("/api/trainstations", trainStationRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/payment", paymentRoutes);
 
 app.get("/*", function (req, res) {
     res.sendFile("index.html", { root: "public/" });
