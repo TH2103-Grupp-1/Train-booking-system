@@ -5,24 +5,22 @@ import bookingRoutes from "./routes/bookings.js";
 import userRoutes from "./routes/users.js";
 import authRoutes from "./routes/auth.routes.js";
 import Database from "better-sqlite3";
+import cors from 'cors';
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 
 export const db = new Database("./database.db");
 
-app.use(express.static('public/'));
+// app.use(express.static('public/')); // FOR PRODUCTION
+
+app.use(cors()); // ONLY FOR DEVELOPMENT
 
 app.use(bodyParser.json({limit: "50mb"}));
 
 app.use("/api/trainstations", trainStationRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/bookings", bookingRoutes);
-app.use("/api/users", userRoutes);
-
-app.get("/*", function (req, res) {
-    res.sendFile("index.html", { root: "public/" });
-  });
-  
+app.use("/api/users", userRoutes);  
 
 app.listen(port, () => console.log('Listening on port ' + port));
