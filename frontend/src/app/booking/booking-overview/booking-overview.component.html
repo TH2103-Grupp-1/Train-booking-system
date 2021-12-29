@@ -39,9 +39,9 @@
     <div class="container border-bottom">
       <div class="container inner-container">
         <h2>
-          <span>{{booking.FromLocation}}</span>
+          <span>{{booking.FromLocation!.AdvertisedLocationName}}</span>
           <span> - </span>
-          <span>{{booking.ToLocation}}</span>
+          <span>{{booking.ToLocation!.AdvertisedLocationName}}</span>
         </h2>
         <p>
           <!-- <span>Torsdag 23 december 2021</span>
@@ -97,8 +97,8 @@
           <span>{{booking.ToLocation!.AdvertisedLocationName}}</span>
         </h2>
         <p>
-          <span>Torsdag 23 december 2021</span>
-          <span class="time">kl 06:24</span>
+          <span>{{booking.TimeTable?.DepartureTime}}</span>
+          <span class="time">kl ???</span>
         </p>
       </div>
     </div>
@@ -195,15 +195,15 @@
     </div>
   </div>
   <!---------------------------------- Desktop return trip card ------------------------------------->
-  <!-- <div class="container border desktop-card">
+  <div class="container border desktop-card">
         <div class="container border-bottom no-padding margin-top">
             <div class="row justify-content-center">
                 <div class="col col-auto">
                     <h2 class="pull-left">
                         <span><i class="fa fa-angle-double-left icon-margin-right"></i></span>
-                        <span>{{booking.FromLocation}}</span>
+                        <span>{{booking.FromLocation?.AdvertisedLocationName}}</span>
                         <span> - </span>
-                        <span>{{booking.ToLocation}}</span>
+                        <span>{{booking.ToLocation?.AdvertisedLocationName}}</span>
                     </h2>
                 </div>
                 <div class="col col-auto thin">
@@ -235,7 +235,7 @@
         </div>
         <div class="container no-padding margin-top">
             <p id="left">
-                <span   {{booking.Train!.Model}}</span>
+                <span>{{booking.Train!.Model}}</span>
                 <span class="margin-left">
                     <span>{{'Travel time' | translate}}</span>
                     <span> 4:05 h</span>
@@ -257,7 +257,7 @@
             </div>
         </a>
     </div>
-</div> -->
+</div>
   <!----------------------------- Bottom ------------------------------>
   <!------------------------------- Phone Bottom ------------------------------------>
   <div class="container-fluid border-top phone-bottom">
