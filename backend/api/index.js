@@ -6,6 +6,7 @@ import userRoutes from "./routes/users.js";
 import authRoutes from "./routes/auth.routes.js";
 import carriageRoutes from "./routes/carriages.js";
 import trainRoutes from "./routes/trains.js";
+import seatRoutes from "./routes/seats.js";
 import Database from "better-sqlite3";
 
 const app = express();
@@ -22,6 +23,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/carriages", carriageRoutes);
 app.use("/api/trains", trainRoutes);
+app.use("/api/seats")
 app.use("/api/users", userRoutes);
 
 app.get("/*", function (req, res) {
