@@ -114,5 +114,16 @@
   "Select ticket": "Välj Biljett",
   "Optional": "Tillval",
   "Timetable": "Tidstabell",
-  "Exit trip": "Utresa"
+  "Exit trip": "Utresa",
+  "Selected trip": "Delsträcka",
+  "Seat reserved": "Sittplats reserverad",
+  "Carrige": "Vagn",
+  "Travel direction": "Färdriktning",
+  "Total for 1 traveller": "Totalt för 1 resenär",
+  "Seats": "Platser",
+  "Trip": "Delsträcka",
+  "Traveltime": "Restid",
+  "Pick seat": "Välj plats",
+  "Traveler": "resenär"
+  
 }

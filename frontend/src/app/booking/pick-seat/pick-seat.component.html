@@ -39,10 +39,10 @@
 
   <h1 class="font-weight-bold text-left mb-0 pb-0">
     <span><i class="fa fa-angle-double-right fa-10x mr-1"></i></span>
-    <span>Exit trip</span>
+    <span>{{'Exit trip' | translate}}</span>
   </h1>
   <div class="container p-3 mb-3">
-    <h3 clas="font-weight-bold mb-1">Selected trip</h3>
+    <h3 clas="font-weight-bold mb-1">{{'Selected trip' | translate}}</h3>
     <div class="container m-0 border">
       <div class="row border-bottom">
         <div class="col-8">
@@ -67,7 +67,7 @@
               <i class="material-icons" style="font-size: 16px;">airline_seat_recline_normal</i>
             </span>
             <span>&nbsp;</span>
-            <span>Seat reserved</span>
+            <span>{{'Seat reserved' | translate}}</span>
           </p>
         </div>
         <div class="col">
@@ -83,12 +83,12 @@
           <div class="row justify-content-center">
             <div *ngFor="let carriage of booking.Train!.Carriages" (click)="selectCarriage(carriage)"
               class="col carriage border shadow rounded mb-2 text-center align-content-center">
-              <h3>Carriage {{carriage.CarriageNumber}}</h3>
+              <h3>{{'Carrige ' | translate}}{{carriage.CarriageNumber}}</h3>
             </div>
           </div>
         </div>
         <h2 class="mb-2 text-center">
-          <span class="mr-2">Travel direction</span>
+          <span class="mr-2">{{'Travel direction' | translate}}</span>
           <span><i class="fa fa-arrow-right"></i></span>
         </h2>
         <div *ngIf="selectedCarriage !== undefined" class="seats">
@@ -156,7 +156,7 @@
   <div class="container-fluid border-top pt-2">
     <div class="container">
       <span>
-        <p class="pull-left">Total for 1 traveller</p>
+        <p class="pull-left">{{'Total for 1 traveller' | translate}}</p>
       </span>
       <span>
         <h2 class="pull-right">{{booking.Price}}:-</h2>
@@ -171,11 +171,11 @@
         <div class="col">
           <h2 class="pull-left font-weight-bold">
             <span><i class="fa fa-angle-double-right fa-15x mr-2"></i></span>
-            <span>Exit trip</span>
+            <span>{{'Exit trip' | translate}}</span>
           </h2>
         </div>
         <div class="col">
-          <h1 class="pull-right p-0 m-0">price</h1>
+          <h1 class="pull-right p-0 m-0">{{'Price' | translate}}</h1>
         </div>
       </div>
       <p>
@@ -218,15 +218,15 @@
 
   <div class="container border shadow rounded p-2">
     <div class="row font-weight-bold">
-      <div class="col-md-3">Seats</div>
-      <div class="col-md-3">Trip</div>
-      <div class="col-md-6">Traveltime</div>
+      <div class="col-md-3">{{'Seats' | translate}}</div>
+      <div class="col-md-3">{{'Trip' | translate}}</div>
+      <div class="col-md-6">{{'Traveltime' | translate}}</div>
     </div>
 
     <div class="row mt-2 font-weight-light">
       <div class="col-md-3">
         <h2 id="seatReservationDesktop">
-          Seat reserved
+          {{'Seat reserved' | translate}}
         </h2>
       </div>
       <div class="col-md-3">
@@ -240,7 +240,7 @@
       </div>
       <div class="col-md-3">
         <h2 id="travelTime">
-          Traveltime
+          {{'Traveltime' | translate}}
         </h2>
       </div>
       <div class="col-md-3 text-center">
@@ -249,7 +249,7 @@
         (click)="iconToggleDesktop()" id="seatPickerToggle">
           <h2>
             <span class="mr-1">
-              Pick seat
+              {{'Pick seat' | translate}}
             </span>
             <span>
               <i class="fa fa-caret-down" id="iconDesktop"></i>
@@ -267,12 +267,12 @@
           <div class="row justify-content-center">
             <div *ngFor="let carriage of booking.Train!.Carriages" (click)="selectCarriage(carriage)"
               class="col-2 carriage border shadow rounded mb-2 text-center align-content-center">
-              <h3 class="m-0">Carriage {{carriage.CarriageNumber}}</h3>
+              <h3 class="m-0">{{'Carrige' | translate}} {{carriage.CarriageNumber}}</h3>
             </div>
           </div>
         </div>
         <h2 class="mb-2 text-center">
-          <span class="mr-2">Travel direction</span>
+          <span class="mr-2">{{'Travel direction' | translate}}</span>
           <span><i class="fa fa-arrow-right"></i></span>
         </h2>
         <div *ngIf="selectedCarriage !== undefined" class="seats" id="seatsDesktop">
@@ -309,10 +309,10 @@
       <div class="col">
         <div class="row">
           <div class="col pull-left">
-            <h2>Total</h2>
+            <h2>{{'Total' | translate}}</h2>
             <p>
               <span class="mr-1">{{booking.Travelers}}</span>
-              <span>Traveler(s)</span>
+              <span>{{'Traveler' | translate}}</span>
             </p>
           </div>
           <div class="col-8 p-0">
