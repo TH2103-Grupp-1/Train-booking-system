@@ -7,13 +7,16 @@ import authRoutes from "./routes/auth.routes.js";
 import Database from "better-sqlite3";
 import paymentRoutes from "./routes/payment.js";
 
+import cors from 'cors';
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 
 export const db = new Database("./database.db");
 
-app.use(express.static('public/'));
+// app.use(express.static('public/')); // FOR PRODUCTION
+
+app.use(cors()); // ONLY FOR DEVELOPMENT
 
 app.use(bodyParser.json({limit: "50mb"}));
 
@@ -27,5 +30,4 @@ app.get("/*", function (req, res) {
     res.sendFile("index.html", { root: "public/" });
   });
   
-
 app.listen(port, () => console.log('Listening on port ' + port));
