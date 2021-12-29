@@ -115,7 +115,7 @@
                       <h4>{{booking.ToLocation?.AdvertisedLocationName}} </h4>
                     </div>
                     <div>
-                      <p>Model</p>
+                      <p></p>
                     </div>
                     <div>
                       <p>TrainServices</p>
@@ -124,7 +124,8 @@
                 </div>
                 <div class="container right-container">
                   <div (click)="selectDeparture(departure)" class="price-box">
-                    <div class="price-box-first">
+                    <div class="price-box-first"
+                      [ngClass]="{'price-box-first-clicked' : !toggled, 'price-box-first': toggled}">
                       <div>{{booking.Price}} SEK</div>
                     </div>
                   </div>
@@ -152,5 +153,6 @@
 </div>
 <div *ngIf="selectedDeparture !== undefined" class="summary">
   <h1><strong>Total SEK:</strong> {{booking.Price}}</h1>
-  <button class="btn btn-success" (click)="submit()">{{'Continue' | translate }}</button>
+  <button class="btn btn-success " (click)="submit()">{{'Continue' |
+    translate }}</button>
 </div>

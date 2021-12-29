@@ -25,13 +25,15 @@ export class DepartureComponent implements OnInit {
       this.booking = this.bookingService.getBooking();
 
     }
-
+    console.log('status' + this.toggled)
 
     // if(this.booking)
 
     //get total length of table
     this.totalLength = this.tableData.length
   }
+
+
 
   //testa data for departures
   tableData: TimeTable[] = [
@@ -56,6 +58,10 @@ export class DepartureComponent implements OnInit {
     { Id: 19, DepartureTime: new Date("2021-12-31: 10:10"), ArrivalTime: new Date("2021-12-31: 16:05") },
     { Id: 20, DepartureTime: new Date("2021-12-31: 11:15"), ArrivalTime: new Date("2021-12-31: 17:05") },
   ]
+
+
+
+
 
   // ********************************************************
   // Get the current to date next and previous dates
@@ -109,24 +115,25 @@ export class DepartureComponent implements OnInit {
   // sets panel false for use to our accordion
   panelExpanded = false;
   selectedDeparture!: TimeTable;
-
   panelOpenState = false;
+
 
   //PaginationService
   totalLength: any;
   page: number = 1;
+  // totalcost: any;
 
 
-  totalcost: any;
-
+  // check if price button is toggled and call with function so see if its clicked
+  toggled = true;
 
   selectDeparture(departure: TimeTable) {
     this.selectedDeparture = departure;
+    this.toggled = !this.toggled;
   }
 
-  selectedPrice() {
-    this.totalcost
-  }
+
+
 
 
 
@@ -146,6 +153,7 @@ export class DepartureComponent implements OnInit {
     this.booking.TimeTable = this.selectedDeparture;
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/seat');
+
   }
 
 

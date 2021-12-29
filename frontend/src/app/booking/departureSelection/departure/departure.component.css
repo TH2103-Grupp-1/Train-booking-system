@@ -108,11 +108,7 @@ justify-content: space-between;
 /* *********** PRICE SECTION ********* */
 .price-box{
   display: flex;
-  /* width :40%; */
-  /* flex-direction:column; */
   justify-content:space-evenly;
-  /* align-items: start; */
-  /* border: 1px solid #d6d660; */
   height:5rem ;
 }
 
@@ -128,6 +124,17 @@ justify-content: space-between;
 .price-box-first:hover{
   background-color: #FAFAF7;
   color: #00A2C7;
+}
+.price-box-first-clicked{
+   border:#adb5bd solid 1px;
+  margin-top: 5px;
+  width: 6rem;
+  text-align:right;
+  cursor: pointer;
+  padding-right: 5px;
+    padding-top: 5px;
+  background-color:#00A2C7;
+  color: #fff;
 }
 
 .price-box-first >div{
@@ -221,4 +228,13 @@ mat-expansion-panel-header{
 .summary {
   display: flex;
   justify-content: center;
+}
+
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
 }
