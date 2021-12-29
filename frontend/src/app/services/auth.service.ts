@@ -3,14 +3,14 @@ import { Inject, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Notyf } from 'notyf';
 import { BehaviorSubject, empty, map, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { RegisterDto, User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  BASE_URL = window.location.origin + '/api';
-
+  BASE_URL: string;
 
   private userSubject$: BehaviorSubject<User | null>;
   public user: Observable<User | null>;
@@ -19,6 +19,7 @@ export class AuthService {
   constructor(private http: HttpClient, private notyf: Notyf, private translate: TranslateService) {
     this.userSubject$ = new BehaviorSubject<User | null>(JSON.parse(localStorage.getItem('user') || '{}'));
     this.user = this.userSubject$.asObservable();
+    this.BASE_URL = environment.BASE_URL;
   }
 
   public get currentUser(): User | null {

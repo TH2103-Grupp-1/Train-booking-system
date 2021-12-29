@@ -1,15 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Station } from '../models/station.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StationService {
-  BASE_URL = window.location.origin + '/api';
+  BASE_URL: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.BASE_URL = environment.BASE_URL;
+  }
 
   ngOnInit(): void {
   }

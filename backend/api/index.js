@@ -9,13 +9,16 @@ import trainRoutes from "./routes/trains.js";
 import seatRoutes from "./routes/seats.js";
 import timeTableRoutes from "./routes/timetables.js";
 import Database from "better-sqlite3";
+import cors from 'cors';
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 
 export const db = new Database("./database.db");
 
-app.use(express.static('public/'));
+// app.use(express.static('public/')); // FOR PRODUCTION
+
+app.use(cors()); // ONLY FOR DEVELOPMENT
 
 app.use(bodyParser.json({limit: "50mb"}));
 
