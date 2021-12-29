@@ -6,15 +6,16 @@ export const checkout = async (req, res) => {
         line_items: [
             {
             // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-            price: 'price_1KBJM2CIFWrvMwQGNgpt4OBu',
+            price: 'price_1KC3YzCIFWrvMwQGQdb2cDcK',
             quantity: 1,
             },
         ],
         mode: 'payment',
-        success_url: `localhost:4000/overview`,
-        cancel_url: `localhost:4000/`,
+        success_url: `http://localhost:5000/overview`,
+        cancel_url: `http://localhost:5000/`,
     });
 
     console.log('payment reached');
-    res.redirect(303, session.url);
+    // res.redirect(303, session.url);
+    res.json({message: session.url});
 }

@@ -44,8 +44,6 @@ export class PaymentComponent implements OnInit {
   }
 
   checkout() {
-    console.log('de här borde synas');
     var test = this.paymentService.toCheckout();
-    console.log(test);
   }
 }
