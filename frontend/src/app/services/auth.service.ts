@@ -23,7 +23,6 @@ export class AuthService {
   }
 
   public get currentUser(): User | null {
-    console.log(this.BASE_URL);
     return this.userSubject$.value;
   }
 
