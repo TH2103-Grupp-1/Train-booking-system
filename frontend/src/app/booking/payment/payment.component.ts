@@ -44,6 +44,7 @@ export class PaymentComponent implements OnInit {
   }
 
   checkout() {
-   this.paymentService.requestPaymentSession('price_1KC3YzCIFWrvMwQGQdb2cDcK');
+   console.log(this.booking.Price);
+   this.paymentService.requestPaymentSession(this.booking.Price!, `${this.booking.FromLocation?.AdvertisedLocationName} - ${this.booking.ToLocation?.AdvertisedLocationName}`);
   }
 }

@@ -22,12 +22,11 @@ export class PaymentService {
   }
 
 
-   requestPaymentSession(priceId: string): void {
+   requestPaymentSession(price: number, productName: string): void {
     this.http
       .post<ISession>(this.BASE_URL + '/payment', {
-        // priceId: priceId,
-        // successUrl: environment.success_url,
-        // failureUrl: environment.cancel_url,
+        price,
+        productName
       })
       .subscribe((session) => {
         this.redirectToCheckout(session);

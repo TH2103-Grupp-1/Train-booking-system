@@ -2,12 +2,24 @@ import Stripe from 'stripe';
 
 export const checkout = async (req, res) => {
     const stripe = new Stripe('sk_test_51KBEVTFsTQg8DW3AcC4T7kIy2bRIh3rmTOaixwXjvMI0UN8uayvhuEx5CppoXGZcmDSk2a4FVUZhUKgYieoRXb1U001PQsHRW3');
+    console.log(req.body.price);
+    console.log(req.body.productName);
+    const product = await stripe.products.create({
+        name: req.body.productName,
+        images: ['https://wallup.net/wp-content/uploads/2017/11/17/364154-city-cityscape-lights-city_lights-blurred.jpg']
+    });
+
+    const price = await stripe.prices.create({
+        product: product.id,
+        unit_amount: req.body.price * 100,
+        currency: 'sek'
+    });
+
     const session = await stripe.checkout.sessions.create({
         line_items: [
             {
-            // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-            price: 'price_1KBz4tFsTQg8DW3ASQhudyJd',
-            quantity: 1,
+                price: price.id,
+                quantity: 1,
             },
         ],
         mode: 'payment',
