@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { BookingOverviewComponent } from 'src/app/booking/booking-overview/booking-overview.component';
 
 describe('BookingOverviewComponent', () => {
@@ -7,7 +9,8 @@ describe('BookingOverviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BookingOverviewComponent ]
+      declarations: [ BookingOverviewComponent ],
+      imports: [RouterTestingModule, TranslateModule.forRoot()]
     })
     .compileComponents();
   });

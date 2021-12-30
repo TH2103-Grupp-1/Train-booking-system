@@ -18,7 +18,6 @@ export class StationService {
   }
 
   getStations(): Observable<Station[]> {
-
     return this.http.get<Station[]>(this.BASE_URL + '/trainstations');
   }
 
