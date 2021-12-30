@@ -7,3 +7,7 @@ export const getAllSeats = (req, res) => {
 
   res.send(results);
 }
+
+export const getCarriageSeats = (req, res) => {
+  res.send(db.prepare("SELECT * FROM Seats WHERE CarriageId = ?").all(req.params.id));
+}
