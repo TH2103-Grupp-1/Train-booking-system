@@ -22,12 +22,12 @@ export class PaymentService {
   }
 
 
-   requestMemberSession(priceId: string): void {
+   requestPaymentSession(priceId: string): void {
     this.http
       .post<ISession>(this.BASE_URL + '/payment', {
-        priceId: priceId,
-        successUrl: environment.success_url,
-        failureUrl: environment.cancel_url,
+        // priceId: priceId,
+        // successUrl: environment.success_url,
+        // failureUrl: environment.cancel_url,
       })
       .subscribe((session) => {
         this.redirectToCheckout(session);
@@ -40,20 +40,5 @@ export class PaymentService {
     stripe.redirectToCheckout({
       sessionId: session.sessionId,
     });
-
-
-
-
-    // let obj;
-    // const url = this.http.post(this.BASE_URL + '/payment', {}).subscribe((s: any)  => {
-    //   console.log('This is SSSS: ', s.message);
-    //   this.router.navigateByUrl(s.message);
-    // })
-    // console.log("This is obj: ", obj)
-
-
-
-    // this.router.navigateByUrl();
-
   }
 }

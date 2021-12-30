@@ -44,6 +44,6 @@ export class PaymentComponent implements OnInit {
   }
 
   checkout() {
-   this.paymentService.requestMemberSession('price_1KC3YzCIFWrvMwQGQdb2cDcK');
+   this.paymentService.requestPaymentSession('price_1KC3YzCIFWrvMwQGQdb2cDcK');
   }
 }
