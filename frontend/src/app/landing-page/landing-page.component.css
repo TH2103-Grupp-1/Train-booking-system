@@ -191,7 +191,7 @@ a {
   font-weight: bold;
   text-align: left;
   color: white;
-  transition: 0.40s linear;  
+  transition: 0.40s linear;
 }
 #continue-btn-desktop:hover {
   background-color: green;
@@ -294,10 +294,9 @@ mat-card{
     visibility: hidden;
     display: none;
   }
- 
+
 }
 
   #banner{
     height: fit-content;
   }
-}
