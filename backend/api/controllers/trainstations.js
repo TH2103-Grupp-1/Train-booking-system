@@ -1,6 +1,4 @@
-import Database from "better-sqlite3";
-
-const db = new Database("./database.db");
+import { db } from "../index.js";
 
 export const createTrainStation = (req, res) => {
 

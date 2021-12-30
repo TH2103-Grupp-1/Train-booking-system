@@ -4,6 +4,10 @@ import trainStationRoutes from "./routes/trainstations.js";
 import bookingRoutes from "./routes/bookings.js";
 import userRoutes from "./routes/users.js";
 import authRoutes from "./routes/auth.routes.js";
+import carriageRoutes from "./routes/carriages.js";
+import trainRoutes from "./routes/trains.js";
+import seatRoutes from "./routes/seats.js";
+import timeTableRoutes from "./routes/timetables.js";
 import Database from "better-sqlite3";
 import cors from 'cors';
 
@@ -21,6 +25,15 @@ app.use(bodyParser.json({limit: "50mb"}));
 app.use("/api/trainstations", trainStationRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/bookings", bookingRoutes);
-app.use("/api/users", userRoutes);  
+app.use("/api/carriages", carriageRoutes);
+app.use("/api/trains", trainRoutes);
+app.use("/api/seats", seatRoutes);
+app.use("/api/timeTableRoutes", timeTableRoutes);
+app.use("/api/users", userRoutes);
+
+app.get("/*", function (req, res) {
+    res.sendFile("index.html", { root: "public/" });
+  });
+  
 
 app.listen(port, () => console.log('Listening on port ' + port));

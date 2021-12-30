@@ -297,6 +297,7 @@ mat-card{
  
 }
 
-
-
-
+  #banner{
+    height: fit-content;
+  }
+}
