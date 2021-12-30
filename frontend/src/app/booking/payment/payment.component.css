@@ -2,6 +2,42 @@
   margin-bottom: 3rem;
 }
 
+a{
+  color: black;
+}
+
+.page-orientation-bar-back {
+  text-align: center;
+  background-color: rgb(120, 190, 14);
+  border: solid 1px white;
+}
+.page-orientation-bar-back a{
+  color: white;
+  font-size: 10px;
+}
+
+.page-orientation-bar-current {
+  text-align: center;
+  background-color: #156e31;
+  border: solid 1px white;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.page-orientation-bar-current a{
+  color: white;
+  font-size: 10px;
+}
+
+.page-orientation-bar-next {
+  text-align: center;
+  background-color: rgb(235, 231, 231);
+  border: solid 1px white;
+}
+.page-orientation-bar-next a{
+  color: rgb(134, 134, 134);
+  font-size: 10px;
+}
+
 .row {
   margin-bottom: 20px;
 }
@@ -29,7 +65,7 @@
 
 .main {
   height: auto;
-  width: 20rem;
+  width: 15rem;
   /* margin-left: 45rem; */
 }
 
@@ -61,7 +97,7 @@
 }
 
 .radio-label {
-  display:block;
+  
   width: 100%;
   height:100%;
   cursor:pointer;
@@ -71,4 +107,79 @@
   padding: 0px;
 }
 
+.sticky-top { 
+  top: 0.5em; 
+}
 
+.padding {
+  padding: 10px;
+}
+.form-check-input{
+  position: relative;
+}
+
+.fa-angle-left{
+  margin-right: 5px;
+}
+
+.a-tag-back{
+  font-size: 15px;
+}
+
+#continue-btn{
+  height: 50px;
+  width: 250px;
+  margin-bottom: 15px;
+  border-radius: 0px;
+  background-color:  #156e31;
+  border-bottom: solid 3px #105426;
+  font-weight: bold;
+  text-align: left;
+  color: white;
+  transition: 0.40s linear;  
+}
+#continue-btn:hover {
+  background-color: green;
+}
+
+#cancel-btn{
+  height: 50px;
+  width: 250px;
+  margin-right: 15px;
+  border-radius: 0px;
+  background-color:  white;
+  border: solid 3px darkgray;
+  font-weight: bold;
+  text-align: center;  
+  color: black;
+}
+
+.col-btn{
+  max-width: fit-content;
+}
+
+@media (min-width: 780px){
+  
+  .page-orientation-bar-current a{
+      font-size: 13px;
+  }
+  .page-orientation-bar-next a{
+      font-size: 13px;
+  }
+  .page-orientation-bar-back a{
+      font-size: 13px;
+  }
+}
+
+@media (max-width: 780px){
+ 
+  .page-orientation-bar-current a{
+      font-size: 10px;
+  }
+  .page-orientation-bar-next a{
+      font-size: 10px;
+  }
+  .page-orientation-bar-back a{
+      font-size: 10px;
+  }
+}

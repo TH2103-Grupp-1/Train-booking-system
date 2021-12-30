@@ -188,3 +188,14 @@ a {
 
 }
 
+
+@media only screen and (max-width: 520px) {
+  #banner{
+    height: fit-content;
+  }
+  .safety-heading{
+    margin-top: 15px;
+  }
+}
+
+
