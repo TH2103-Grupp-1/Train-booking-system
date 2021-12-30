@@ -19,9 +19,6 @@ import { Notyf } from 'notyf';
 import { notyfFactory } from './shared/guards/notyf.token';
 import { DepartureComponent } from './booking/departureSelection/departure/departure.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-
-
-
 import { ErrorInterceptor } from './shared/guards/interceptors/error-interceptor';
 import { AccountPageComponent } from './account-page/account-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -35,13 +32,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-
-
-
-
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { Location } from '@angular/common';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/translations/', '.json');
@@ -59,8 +53,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     OrderConfirmationComponent,
     PaymentComponent,
     PickSeatComponent,
-
-
   ],
   imports: [
     BrowserModule,
