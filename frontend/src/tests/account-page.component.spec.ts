@@ -1,4 +1,5 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpHandler } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { Notyf } from 'notyf';
@@ -13,8 +14,8 @@ describe('AccountPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AccountPageComponent],
-      imports: [HttpClientModule, TranslateModule.forRoot()],
-      providers: [{ provide: Notyf, useFactory: notyfFactory }]
+      imports: [TranslateModule.forRoot(), HttpClientTestingModule],
+      providers: [{ provide: Notyf, useFactory: notyfFactory}]
     })
       .compileComponents();
   });

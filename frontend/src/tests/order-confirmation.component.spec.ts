@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { OrderConfirmationComponent } from 'src/app/booking/order-confirmation/order-confirmation.component';
 
@@ -8,7 +9,8 @@ describe('OrderConfirmationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OrderConfirmationComponent ]
+      declarations: [ OrderConfirmationComponent ],
+      imports: [ TranslateModule.forRoot()]
     })
     .compileComponents();
   });

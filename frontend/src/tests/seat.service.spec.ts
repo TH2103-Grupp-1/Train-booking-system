@@ -5,21 +5,21 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Notyf } from 'notyf';
 import { notyfFactory } from 'src/app/shared/guards/notyf.token';
 
-import { BookingBuilderService } from '../app/services/booking-builder.service';
+import { SeatService } from '../app/services/seat.service';
 
-describe('BookingBuilderService', () => {
-  let service: BookingBuilderService;
+describe('SeatService', () => {
+  let service: SeatService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule, TranslateModule.forRoot() ],
-      providers: [{ provide: Notyf, useFactory: notyfFactory, RouterTestingModule }],
+      imports: [ HttpClientTestingModule, TranslateModule.forRoot(),  RouterTestingModule],
+      providers: [{ provide: Notyf, useFactory: notyfFactory , }],
   })
   .compileComponents();
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(BookingBuilderService);
+    service = TestBed.inject(SeatService);
   });
 
   it('should be created', () => {

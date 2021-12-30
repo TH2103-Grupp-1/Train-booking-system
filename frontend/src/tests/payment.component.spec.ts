@@ -1,6 +1,10 @@
+import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { Notyf } from 'notyf';
 
 import { PaymentComponent } from 'src/app/booking/payment/payment.component';
+import { notyfFactory } from 'src/app/shared/guards/notyf.token';
 
 describe('PaymentComponent', () => {
   let component: PaymentComponent;
@@ -8,7 +12,9 @@ describe('PaymentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PaymentComponent ]
+      declarations: [ PaymentComponent ],
+      providers: [ HttpClientModule, {provide: Notyf, useFactory: notyfFactory}],
+      imports: [TranslateModule.forRoot()]
     })
     .compileComponents();
   });
