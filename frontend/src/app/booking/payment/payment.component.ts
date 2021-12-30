@@ -44,6 +44,6 @@ export class PaymentComponent implements OnInit {
   }
 
   checkout() {
-    var test = this.paymentService.toCheckout();
+   this.paymentService.requestMemberSession('price_1KC3YzCIFWrvMwQGQdb2cDcK');
   }
 }

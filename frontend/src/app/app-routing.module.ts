@@ -18,7 +18,8 @@ const routes: Routes = [
   { path: 'overview', component: BookingOverviewComponent},
   { path: 'confirmation', component: OrderConfirmationComponent },
   { path: 'departures', component: DepartureComponent },
-  { path: 'seat', component: PickSeatComponent }
+  { path: 'seat', component: PickSeatComponent },
+  { path: 'stripe', component: PaymentComponent}
 ];
 
 @NgModule({
