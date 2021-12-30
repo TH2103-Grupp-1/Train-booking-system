@@ -45,7 +45,6 @@ export class AuthService {
   }
 
   register(user: RegisterDto) {
-    let temp = user;
     return this.http.post<any>(`${this.BASE_URL}/users/`, {user})
       .pipe(map(result => {
         if (result === 201) {
