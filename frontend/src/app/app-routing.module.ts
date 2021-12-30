@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { StationsComponent } from './stations/stations.component';
 import { AuthGuard } from './shared/guards/auth.guard';
-import { DepartureComponent } from './booking/departureSelection/departure/departure.component'
+import { DepartureComponent } from './booking/departure/departure.component'
 import { AccountPageComponent } from './account-page/account-page.component';
 import { PaymentComponent } from './booking/payment/payment.component';
 import { BookingOverviewComponent } from './booking/booking-overview/booking-overview.component';

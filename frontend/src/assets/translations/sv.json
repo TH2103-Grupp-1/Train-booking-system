@@ -88,10 +88,12 @@
   "Cannot be rebooked": "Kan ej ombokas",
   "Travel time": "Restid",
   "Changes": "Förändringar",
-  "Switshes": "Byten",
+  "Swaps": "Byten",
   "Tue":"Tis",
   "Continue": "Fortsätt",
   "Book more trips": "Boka fler resor",
+  "Arrival": "Ankomst",
+  "Return trip": "Returresa",
   "Price": "Pris",
   "Departure": "Avgång",
   "Seat reservation": "Platsreservation",
@@ -107,11 +109,10 @@
   "Included": "Ingår",
   "Price total": "Pris totalt",
   "VAT: ": "Moms: ",
-  "Arrival": "Ankomst",
   "1 Class": "1 Klass",
   "2 Class": "2 Klass",
   "Select ticket": "Välj Biljett",
-  "Return trip": "Returresa",
   "Optional": "Tillval",
-  "Timetable": "Tidstabell"
+  "Timetable": "Tidstabell",
+  "Exit trip": "Utresa"
 }
