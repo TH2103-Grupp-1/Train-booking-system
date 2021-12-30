@@ -157,5 +157,13 @@ export class LandingPageComponent implements OnInit {
     return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
   }
 
+  showReturnCalender(): void {
+    var target = document.getElementById('returnCalender');
+    target?.setAttribute("style", "visibility:visible; display:block;");
+
+    var clickedElement = document.getElementById('add-more-trips');
+    clickedElement?.setAttribute("style", "visibility:hidden; display:none;");
+  }
+
 
 }
