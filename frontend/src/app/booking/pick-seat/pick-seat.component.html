@@ -6,13 +6,13 @@
               </a>
           </div>
           <div class="col page-orientation-bar-back">
-              <a href="">
-                  2.
+            <a routerLink="/departures">
+                  2. {{'Timetable' | translate}}
               </a>
           </div>
           <div class="col-3 page-orientation-bar-current">
               <a>
-                {{'3. Optional' | translate}}
+                 3. {{'Optional' | translate}}
               </a>
           </div>
           <div class="col page-orientation-bar-next">
@@ -21,12 +21,12 @@
               </a>
           </div>
           <div class="col page-orientation-bar-next">
-              <a href="">
+              <a>
                   5.
               </a>
           </div>
           <div class="col page-orientation-bar-next">
-              <a href="">
+              <a>
                   6.
               </a>
           </div>
@@ -36,7 +36,8 @@
   <div class="container h-75 train-container">
     <div class="align-items-center h-75">
       <div class="scrolling-wrapper">
-        <div *ngFor="let carriage of carriages" (click)="selectCarriage(carriage)" class="carriage card"><h2>Carriage {{carriage.Id}}</h2></div>
+        <div *ngFor="let carriage of carriages" (click)="selectCarriage(carriage)" class="carriage card"><h2>{{carriage.CarriageType}}</h2>
+      </div>
       </div>
         <div *ngIf="selectedCarriage !== undefined" class="seats">
           <div class="seats-overview card">
@@ -47,7 +48,7 @@
           </div>
           <div class="container train-container"><h1>Passengers: {{booking.Travelers!.length}}</h1></div>
           <div *ngIf="selectedSeat.length > 0" class="container train-container">
-            <h1>You selected seat {{selectedSeat.concat()}} on carriage {{selectedCarriage.Id}} </h1>
+            <h1>You selected seat {{selectedSeat.concat()}} on carriage {{selectedCarriage.CarriageType}} </h1>
             <button class="btn btn-success" (click)="submit()">{{'Continue' | translate }}</button>
           </div>
         </div>

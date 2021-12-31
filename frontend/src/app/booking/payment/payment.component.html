@@ -8,18 +8,18 @@
         </a>
       </div>
       <div class="col page-orientation-bar-back">
-        <a href="">
-          2.
+        <a routerLink="/departures">
+          {{'Timetable' | translate}}
         </a>
       </div>
       <div class="col page-orientation-bar-back">
         <a routerLink="/seat">
-          3.
+          {{'Optional' | translate}}
         </a>
       </div>
       <div class="col page-orientation-bar-back">
-        <a href="">
-          4.
+        <a routerLink="/overview">
+          {{'Overview' | translate}}
         </a>
       </div>
       <div class="col-3 page-orientation-bar-current">
@@ -28,7 +28,7 @@
         </a>
       </div>
       <div class="col page-orientation-bar-next">
-        <a href="">
+        <a>
           6.
         </a>
       </div>
@@ -144,7 +144,7 @@
         <div class="container no-padding">
           <div class="row">
             <div class="col-2 pull-left">
-              <a class="a-tag-back" href="">
+              <a class="a-tag-back" routerLink="/overview">
                 <span><i class="fa fa-angle-left fa-10x"></i></span>
                 <span>{{ "Back" | translate }}</span>
               </a>
