@@ -1,9 +1,5 @@
 import { db } from "../index.js";
 
 export const getAllTimeTables = (req, res) => {
-  const statement = db.prepare("SELECT * FROM TimeTables");
-
-  const results = statement.all();
-
-  res.send(results);
+  res.send(db.prepare("SELECT * FROM TimeTables INNER JOIN Trains on TimeTables.TrainId = Trains.TrainId").all());
 }

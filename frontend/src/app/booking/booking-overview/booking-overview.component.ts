@@ -13,7 +13,6 @@ export class BookingOverviewComponent implements OnInit {
   booking!: Booking;
 
   constructor(private bookingService: BookingBuilderService, private route: Router) {
-
     this.booking = bookingService.getBooking();
     if(this.booking === undefined) { route.navigateByUrl('/'); }
    }
