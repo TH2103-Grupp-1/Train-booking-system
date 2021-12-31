@@ -27,7 +27,7 @@ export const checkout = async (req, res) => {
             price: booking.Price,
             distance: booking.Distance
         },
-        success_url: `http://localhost:5000/order/success?session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `http://localhost:4200/confirmation?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `http://localhost:4200/`,
     });
 
