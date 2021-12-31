@@ -34,8 +34,8 @@ app.use("/api/payment", paymentRoutes);
 app.use("/api/carriages", carriageRoutes);
 app.use("/api/trains", trainRoutes);
 app.use("/api/seats", seatRoutes);
-app.use("/api/timeTableRoutes", timeTableRoutes);
-app.use("/api/users", userRoutes);
+app.use("/api/timetables", timeTableRoutes);
+app.use("/api/users", userRoutes);  
 
 app.get('/order/success', async (req, res) => {
   const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
@@ -44,4 +44,6 @@ app.get('/order/success', async (req, res) => {
   res.send(`<html><body><h1>Thanks for your order, ${customer.name}!</h1><br><h3>Distance: ${session.metadata.distance}</h3><br><h3>Price: ${session.metadata.price}</h2></html>`);
 });
   
+
+
 app.listen(port, () => console.log('Listening on port ' + port));
