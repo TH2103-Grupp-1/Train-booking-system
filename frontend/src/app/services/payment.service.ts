@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Booking } from '../models/booking.model';
+import { Confirmation } from '../models/confirmation.model';
 import { ISession } from '../models/payments.models';
 import { BookingBuilderService } from './booking-builder.service';
 
@@ -41,5 +42,9 @@ export class PaymentService {
     stripe.redirectToCheckout({
       sessionId: session.sessionId,
     });
+  }
+
+  getSessionDetails(sessionId: string) : Observable<any> {
+    return this.http.get<any>(`${this.BASE_URL}/payment/order/success?session_id=${sessionId}`);
   }
 }
