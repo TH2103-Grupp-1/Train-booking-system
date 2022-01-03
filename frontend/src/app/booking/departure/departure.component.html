@@ -79,8 +79,6 @@
         <!-- loops and create list of departures "dynamic from component And pagintaes to 4 items/site" -->
 
         <!-- <div>ashdasd{{departure.ArrivalTime}}</div> -->
-        <div class="ticketBox" *ngFor="let departure of tableData | paginate: { itemsPerPage: 4, currentPage: page,
-        totalItems:totalLength }">
         <div *ngFor="let departure of trainTimeTables">
           <mat-accordion>
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
