@@ -15,10 +15,7 @@ export const createBooking = (req, res) => {
   let carriageNumber = req.body.carriageNumber;
   let trainChanges = req.body.trainChanges;
   let travelClass = req.body.travelClass;
-  let returnTrip = req.body.returnTrip;
-
-  console.log(req.body);
-
+  
   let preparedStatement = db.prepare("INSERT INTO Bookings (Destination, FromStation, DepartureTime, DepartureDate, ArrivalTime, ArrivalDate, Price, Email, PhoneNumber, SeatNumber, CarriageNumber, TrainChanges, TravelClass) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
   preparedStatement.run(destination, fromStation, departureTime, departureDate, arrivalTime, arrivalDate, price, email, phoneNumber, seatNumber, carriageNumber, username, trainChanges, travelClass, returnTrip);
