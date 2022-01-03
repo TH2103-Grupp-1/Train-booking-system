@@ -2,7 +2,6 @@ import { Seat } from "./seat.model";
 
 export interface Carriage {
   Id?: number;
-  CarriageNumber?: number;
+  CarriageType?: 'Restaurant' | 'Regular';
   Seats?: Seat[];
-  IsFirstClass?: boolean;
 }

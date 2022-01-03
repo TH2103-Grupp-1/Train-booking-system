@@ -1,5 +1,6 @@
 export interface Seat {
   Id?: number;
+  CarriageId?: number;
   SeatNumber?: number;
-  IsOccupied?: boolean;
+  Occupied?: boolean;
 }

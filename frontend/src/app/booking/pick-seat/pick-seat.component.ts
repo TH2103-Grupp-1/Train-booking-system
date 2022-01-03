@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Booking } from 'src/app/models/booking.model';
 import { Carriage } from 'src/app/models/carriage.model';
-import { TravelerType } from 'src/app/models/traveler.model';
 import { BookingBuilderService } from 'src/app/services/booking-builder.service';
+import { TrainService } from 'src/app/services/train.service';
+import { Train } from 'src/app/models/train.model';
+import { Observable } from 'rxjs';
+import { Seat } from 'src/app/models/seat.model';
 
 @Component({
   selector: 'app-pick-seat',
@@ -12,8 +15,7 @@ import { BookingBuilderService } from 'src/app/services/booking-builder.service'
 })
 export class PickSeatComponent implements OnInit {
 
-  constructor(private bookingService: BookingBuilderService, private route: Router) {
-
+  constructor(private bookingService: BookingBuilderService, private trainService: TrainService, private route: Router) {
     if (this.bookingService.getBooking() === undefined) {
       this.route.navigateByUrl('/');
     } else {
@@ -21,19 +23,23 @@ export class PickSeatComponent implements OnInit {
     }
   }
 
-
+  carriages!: Carriage[];
+  seats!: Observable<Seat[]>;
   booking!: Booking;
-  // train!: Train;
   selectedCarriage!: Carriage;
   selectedSeat: number[] = [];
   maxSeats: number = 0;
 
   ngOnInit(): void {
     this.maxSeats = this.booking.Travelers!.length;
+    this.trainService.getTrainCarriages(this.booking.TimeTable?.TrainId!).subscribe(t => {
+     this.carriages = t;
+    });
   }
 
   selectCarriage(ca: Carriage) {
     this.selectedSeat = [];
+    this.seats = this.trainService.getSeatsForCarriage(ca.Id!);
     this.selectedCarriage = ca;
   }
 

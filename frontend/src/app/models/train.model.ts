@@ -1,10 +1,11 @@
 import { Carriage } from "./carriage.model";
-import { TimeTable } from "./timetable.model";
+import { TrainTimeTable } from "./timetable.model";
 
 export interface Train {
-  Id?: number;
-  Model?: 'Regional' | 'SJ High-speed train X 2000';
-  TimeTables?: TimeTable[];
+  TrainId?: number;
+  TrainType?: string;
+  BasePrice?: number;
+  Speed?: number;
   TrainServices?: string[]; // Wheelchair lift, Bistro, Wifi etc
   Carriages?: Carriage[];
 }

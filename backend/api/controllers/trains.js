@@ -7,3 +7,7 @@ export const getAllTrains = (req, res) => {
 
   res.send(results);
 }
+
+export const getTrainById = (req, res) => {
+  res.send(db.prepare("SELECT * FROM Trains WHERE TrainId = ?").get(req.params.id));
+}

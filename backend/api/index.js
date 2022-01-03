@@ -28,12 +28,7 @@ app.use("/api/bookings", bookingRoutes);
 app.use("/api/carriages", carriageRoutes);
 app.use("/api/trains", trainRoutes);
 app.use("/api/seats", seatRoutes);
-app.use("/api/timeTableRoutes", timeTableRoutes);
-app.use("/api/users", userRoutes);
-
-app.get("/*", function (req, res) {
-    res.sendFile("index.html", { root: "public/" });
-  });
-  
+app.use("/api/timetables", timeTableRoutes);
+app.use("/api/users", userRoutes);  
 
 app.listen(port, () => console.log('Listening on port ' + port));

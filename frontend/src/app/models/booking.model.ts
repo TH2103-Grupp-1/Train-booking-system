@@ -1,6 +1,6 @@
 import { Station } from "./station.model";
 import { TicketReciever } from "./ticketreciever.model";
-import { TimeTable } from "./timetable.model";
+import { TrainTimeTable } from "./timetable.model";
 import { Train } from "./train.model";
 import { TravelerType } from "./traveler.model";
 
@@ -9,7 +9,7 @@ export class Booking {
   FromLocation?: Station;
   ToLocation?: Station;
   ReturnTrip?: Boolean;
-  TimeTable?: TimeTable;
+  TimeTable?: TrainTimeTable;
   // DepartureDate?: Date;
   // ReturnTripDate?: Date;
   Travelers?: TravelerType[];
