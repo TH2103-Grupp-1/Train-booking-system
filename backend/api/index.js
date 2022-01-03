@@ -1,6 +1,6 @@
 import bodyParser from "body-parser";
 import express from "express";
-import trainStationRoutes from "./routes/trainstations.js";
+import trainStationRoutes from "./routes/trainstations.js"
 import bookingRoutes from "./routes/bookings.js";
 import userRoutes from "./routes/users.js";
 import authRoutes from "./routes/auth.routes.js";
@@ -17,7 +17,7 @@ const port = process.env.PORT || 5000;
 
 export const db = new Database("./database.db");
 
-app.use(express.static('public/')); // FOR PRODUCTION
+app.use(express.static('./public')); // FOR PRODUCTION
 
 // app.use(cors()); // ONLY FOR DEVELOPMENT
 
