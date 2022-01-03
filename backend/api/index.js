@@ -1,6 +1,6 @@
 import bodyParser from "body-parser";
 import express from "express";
-import trainStationRoutes from "./routes/trainStations.js"
+import trainStationRoutes from "./routes/trainstations.js"
 import bookingRoutes from "./routes/bookings.js";
 import userRoutes from "./routes/users.js";
 import authRoutes from "./routes/auth.routes.js";
