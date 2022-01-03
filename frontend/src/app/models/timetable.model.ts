@@ -1,4 +1,4 @@
-import { Station } from "./station.model";
+import { Station } from './station.model';
 
 export interface TimeTable {
   Id?: number;
@@ -6,4 +6,6 @@ export interface TimeTable {
   DepartureTime?: Date;
   // ArrivalStation?: Station;
   ArrivalTime?: Date;
+  empty?: any;
+  Time?: string;
 }
