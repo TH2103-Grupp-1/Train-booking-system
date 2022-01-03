@@ -155,7 +155,7 @@
                   <button type="button" class="btn btn-primary btn-lg btn-block" id="cancel-btn">{{ 'Cancel' | translate }}</button>
                 </div>
                 <div class="col pull-right col-btn no-padding">
-                  <button type="button" class="btn btn-primary btn-lg btn-block" id="continue-btn">{{ 'Continue' | translate }}
+                  <button type="button" class="btn btn-primary btn-lg btn-block" id="continue-btn" (click)="checkout()">{{ 'Checkout' | translate }}
                     <span class="pull-right">
                       <i class="fa fa-angle-right fa-lg"></i>
                     </span>
@@ -177,7 +177,7 @@
         <div class="ticket-info">
           <div class="ticket-time">
             <h4>{{booking.FromLocation!.AdvertisedLocationName}} - {{booking.ToLocation!.AdvertisedLocationName}}</h4>
-            <p>{{booking.TimeTable!.DepartureTime}} - {{booking.TimeTable!.ArrivalTime!.toTimeString()}} </p>
+            <p>{{booking.TimeTable!.DepartureTime}} - {{booking.TimeTable!.ArrivalTime!}} </p>
           </div>
           <br>
           <div class="price">
@@ -193,5 +193,4 @@
       </div>
     </div>
   </div>
-
 </div>
