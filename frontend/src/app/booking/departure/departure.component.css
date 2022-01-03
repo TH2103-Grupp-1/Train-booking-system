@@ -197,6 +197,11 @@ justify-content: space-between;
   margin-bottom: 15px;
 }
 
+.travelerSection{
+  display: flex;
+  justify-content: space-between;
+}
+
 mat-expansion-panel-header{
   display: flex;
   width: 100%;
