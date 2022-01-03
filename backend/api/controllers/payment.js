@@ -1,4 +1,5 @@
 import Stripe from 'stripe';
+import { db } from "../index.js";
 
 export const checkout = async (req, res) => {
     const stripe = new Stripe('sk_test_51KBEVTFsTQg8DW3AcC4T7kIy2bRIh3rmTOaixwXjvMI0UN8uayvhuEx5CppoXGZcmDSk2a4FVUZhUKgYieoRXb1U001PQsHRW3');
@@ -51,6 +52,20 @@ export const orderSuccess = async (req, res) => {
         console.log('This is the orderSuccess metadata');
         console.log(result);
         result.CustomerName = customer.name;
+
+        
+        let prepareStatement = db.prepare("SELECT Occupied FROM Seats WHERE Id = ?");
+
+        let foundSeat = prepareStatement.get(result.SeatId);
+
+        foundSeat.occupied = true;
+
+        let updateSeats = db.prepare('UPDATE Seats SET Occupied = 1 WHERE Id = ?');
+
+        updateSeats.run(results.SeatId);
+
+
+
         res.json({ message: result });
     } catch (error) {
         res.json({ message: 'Not found' });
