@@ -19,6 +19,6 @@ export class Booking {
   Distance?: number;
   DeliveryMethod?: 'Sms' | 'Email';
   TicketReciever?: TicketReciever;
-  SelectedSeat?: number;
+  SeatId?: number;
 
 }

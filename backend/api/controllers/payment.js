@@ -33,7 +33,7 @@ export const checkout = async (req, res) => {
             TrainType: booking.TimeTable.TrainType,
             DepartureTime: booking.TimeTable.DepartureTime,
             ArrivalTime: booking.TimeTable.ArrivalTime,
-            SelectedSeat: booking.SelectedSeat
+            SeatId: booking.SeatId
         },
         success_url: `${BASE_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${BASE_URL}`,

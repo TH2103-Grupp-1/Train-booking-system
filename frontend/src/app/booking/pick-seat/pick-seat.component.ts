@@ -43,9 +43,9 @@ export class PickSeatComponent implements OnInit {
     this.selectedCarriage = ca;
   }
 
-  selectSeat(seat: number) {
+  selectSeat(seat: number, seatId: number) {
     this.selectedSeat.push(seat);
-    this.booking.SelectedSeat = seat;
+    this.booking.SeatId = seatId;
   }
 
   change(group: any) {
