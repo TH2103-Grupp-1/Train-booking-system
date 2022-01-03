@@ -162,7 +162,7 @@ export class DepartureComponent implements OnInit {
       var hours = Math.floor(decimalTid / (60 * 60));
       var diff5 = decimalTid - hours * 60 * 60;
       var minutes = Math.floor(diff5 / 60);
-      time.Time! = String(hours + ':' + minutes + 'h');
+      time.Time! = String('Restid ' + hours + ':' + minutes + 'h');
     }
   }
   //diff
