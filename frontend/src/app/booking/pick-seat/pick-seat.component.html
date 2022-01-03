@@ -42,7 +42,18 @@
         <div *ngIf="selectedCarriage !== undefined" class="seats">
           <div class="seats-overview card">
               <mat-button-toggle-group #group="matButtonToggleGroup" class="carriage-thing card row" multiple (change)="change(group)">
-            <div *ngFor="let seat of seats | async" class="seat card" (click)="selectSeat(seat.SeatNumber!, seat.Id!)"><mat-button-toggle>{{seat.SeatNumber}}</mat-button-toggle></div>
+            <div *ngFor="let seat of seats | async">
+              <div *ngIf="!seat.Occupied" class="seat card" (click)="selectSeat(seat.SeatNumber!, seat.Id!)">
+                <mat-button-toggle>
+                  {{seat.SeatNumber}}
+                </mat-button-toggle>
+              </div>
+              <div *ngIf="seat.Occupied" class="seat card occupied">
+                <mat-button-toggle>
+                  {{seat.SeatNumber}}
+                </mat-button-toggle>
+              </div>
+            </div>
           </mat-button-toggle-group>
           </div>
           </div>
