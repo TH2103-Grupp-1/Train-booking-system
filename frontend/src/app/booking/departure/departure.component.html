@@ -41,7 +41,7 @@
   <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
   <pagination-template #p="paginationApi" (pageChange)="page = $event">
   </pagination-template>
-  <div class=" row no-gutters container center">
+  <div class="row no-gutters container center" id="datesContainer">
     <div class="col-md-12 col- no-padding">
       <div class="container custom-pagination">
         <div class="pagination-icon-previous">
@@ -77,7 +77,9 @@
         </div>
 
         <!-- loops and create list of departures "dynamic from component And pagintaes to 4 items/site" -->
-        <div *ngFor="let departure of trainTimeTables">
+
+        <!-- <div>ashdasd{{departure.ArrivalTime}}</div> -->
+        <div class="ticketBox" *ngFor="let departure of trainTimeTables">
           <mat-accordion>
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
               <mat-expansion-panel-header>
