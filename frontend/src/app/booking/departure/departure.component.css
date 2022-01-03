@@ -69,6 +69,14 @@ display:flex;
 justify-content: space-between;
 }
 
+#datesContainer{
+  padding: 20px;
+}
+
+#datesContainer p {
+  margin: 0px;
+}
+
 .info-tabel-header{
   display:flex;
   justify-content:space-between;
