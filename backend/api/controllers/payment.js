@@ -3,8 +3,7 @@ import Stripe from 'stripe';
 export const checkout = async (req, res) => {
     const stripe = new Stripe('sk_test_51KBEVTFsTQg8DW3AcC4T7kIy2bRIh3rmTOaixwXjvMI0UN8uayvhuEx5CppoXGZcmDSk2a4FVUZhUKgYieoRXb1U001PQsHRW3');
     let booking = JSON.parse(req.body.booking);
-
-    console.log(booking);
+    const BASE_URL = req.protocol+"://"+req.headers.host
 
     const product = await stripe.products.create({
         name: req.body.productName,
@@ -34,25 +33,22 @@ export const checkout = async (req, res) => {
             ArrivalTime: booking.TimeTable.ArrivalTime
 
         },
-        success_url: `http://localhost:4200/confirmation?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `http://localhost:4200/`,
+        success_url: `${BASE_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${BASE_URL}`,
     });
 
     res.status(200).json({ sessionId: session.id });
 }
 
 export const orderSuccess = async (req, res) => {
-try {
-    const stripe = new Stripe('sk_test_51KBEVTFsTQg8DW3AcC4T7kIy2bRIh3rmTOaixwXjvMI0UN8uayvhuEx5CppoXGZcmDSk2a4FVUZhUKgYieoRXb1U001PQsHRW3')
-    const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
-    const customer = await stripe.customers.retrieve(session.customer);
-    let result = session.metadata;
-    result.CustomerName = customer.name;
-    res.json({message: result});
-} catch (error) {
-    res.json({message: 'Not found'});
-}
-   
-
-    // res.send(`<html><body><h1>Thanks for your order, ${customer.name}!</h1><br><h3>Distance: ${session.metadata.distance}</h3><br><h3>Price: ${session.metadata.price}</h2></html>`);
+    try {
+        const stripe = new Stripe('sk_test_51KBEVTFsTQg8DW3AcC4T7kIy2bRIh3rmTOaixwXjvMI0UN8uayvhuEx5CppoXGZcmDSk2a4FVUZhUKgYieoRXb1U001PQsHRW3')
+        const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
+        const customer = await stripe.customers.retrieve(session.customer);
+        let result = session.metadata;
+        result.CustomerName = customer.name;
+        res.json({ message: result });
+    } catch (error) {
+        res.json({ message: 'Not found' });
+    }
 }
