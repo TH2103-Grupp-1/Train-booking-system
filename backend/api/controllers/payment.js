@@ -52,19 +52,16 @@ export const orderSuccess = async (req, res) => {
         console.log('This is the orderSuccess metadata');
         console.log(result);
         result.CustomerName = customer.name;
-
         
         let prepareStatement = db.prepare("SELECT Occupied FROM Seats WHERE Id = ?");
 
-        let foundSeat = prepareStatement.get(result.SeatId);
+        let foundSeat = prepareStatement.get(parseInt(result.SeatId));
 
         foundSeat.occupied = true;
 
         let updateSeats = db.prepare('UPDATE Seats SET Occupied = 1 WHERE Id = ?');
 
-        updateSeats.run(results.SeatId);
-
-
+        updateSeats.run(parseInt(result.SeatId));
 
         res.json({ message: result });
     } catch (error) {
