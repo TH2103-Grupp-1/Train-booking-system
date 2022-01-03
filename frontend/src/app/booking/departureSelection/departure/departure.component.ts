@@ -155,23 +155,14 @@ export class DepartureComponent implements OnInit {
     for (let time of this.tableData) {
       //calc arrivaltim - departuretime and get to MILISEC
       var date3 = time.ArrivalTime!.getTime() - time.DepartureTime!.getTime();
-      console.log('date3 ' + date3);
       var dagar = Math.floor(date3 / (60 * 60 * 24 * 1000));
-      console.log('dagar ' + dagar);
       var datum4 = date3 / (60 * 60 * 1000) - dagar * 24;
-      console.log('datum4 ' + datum4);
-
       //Calc milisec to hours and minutes
       var decimalTid = datum4 * 60 * 60;
-      console.log('decimalTid ' + decimalTid);
-
       var hours = Math.floor(decimalTid / (60 * 60));
-      console.log('timmar ' + hours);
       var diff5 = decimalTid - hours * 60 * 60;
-      console.log('minuter diff5 ex ' + diff5);
       var minutes = Math.floor(diff5 / 60);
-      console.log('minuter ' + minutes);
-      time.Time! = String(hours + ':' + minutes + 'H');
+      time.Time! = String(hours + ':' + minutes + 'h');
     }
   }
   //diff
