@@ -5,41 +5,69 @@ import { TrainTimeTable } from 'src/app/models/timetable.model';
 import { BookingBuilderService } from 'src/app/services/booking-builder.service';
 import { TimetableService } from 'src/app/services/timetable.service';
 
+interface AgeGroupInterface {
+  id: number;
+  ageGroup: string;
+}
 @Component({
   selector: 'app-departure',
   templateUrl: './departure.component.html',
-  styleUrls: ['./departure.component.css']
+  styleUrls: ['./departure.component.css'],
 })
 export class DepartureComponent implements OnInit {
-
   booking!: Booking;
   trainTimeTables!: TrainTimeTable[];
 
-  constructor(private bookingService: BookingBuilderService, private timeTableService: TimetableService, private route: Router) { }
+  constructor(
+    private bookingService: BookingBuilderService,
+    private timeTableService: TimetableService,
+    private route: Router
+  ) {}
 
   ngOnInit(): void {
-
     if (this.bookingService.getBooking() === undefined) {
       this.route.navigateByUrl('/');
     } else {
       this.booking = this.bookingService.getBooking();
-      this.timeTableService.getTimeTables().subscribe(t => {
-        for(let train of t) {
-          train.PriceTotal = Math.round(train.BasePrice * this.booking.Distance!);
+      this.timeTableService.getTimeTables().subscribe((t) => {
+        for (let train of t) {
+          train.PriceTotal = Math.round(
+            train.BasePrice * this.booking.Distance!
+          );
         }
         this.trainTimeTables = t;
       });
     }
   }
 
+  travelers: AgeGroupInterface[] = [{ id: 0, ageGroup: 'adult' }];
+  counter: number = 0;
+
+  addTraveler() {
+    if (this.travelers.length < 9) {
+      this.counter++;
+      this.travelers.push({ id: this.counter, ageGroup: 'adult' });
+    }
+    console.log('Travelers');
+  }
+
+  changeTraveler(index: number, value: string) {
+    for (let traveler of this.travelers) {
+      if (index === traveler.id) {
+        traveler.ageGroup = value;
+      }
+    }
+    console.log(this.travelers);
+  }
+
   // ********************************************************
   // Get the current to date next and previous dates
   myDate = new Date();
   //sets mydate to a Date we can change
-  changeDate: number = this.myDate.setDate(this.myDate.getDate())
+  changeDate: number = this.myDate.setDate(this.myDate.getDate());
 
   // nextdate
-  nextDate = new Date()
+  nextDate = new Date();
   // set next date to show next day
   nextDay: number = this.nextDate.setDate(this.nextDate.getDate() + 1);
 
@@ -48,24 +76,33 @@ export class DepartureComponent implements OnInit {
     if (this.myDate !== this.nextDate) {
       this.changeDate = this.myDate.setDate(this.myDate.getDate() + 1);
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() + 1);
-      this.previousDay = this.previousDate.setDate(this.previousDate.getDate() + 1)
+      this.previousDay = this.previousDate.setDate(
+        this.previousDate.getDate() + 1
+      );
     } else if (this.myDate === this.nextDate) {
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() + 1);
-      this.previousDay = this.previousDate.setDate(this.previousDate.getDate() + 1)
+      this.previousDay = this.previousDate.setDate(
+        this.previousDate.getDate() + 1
+      );
     }
-
   }
 
-  previousDate = new Date()
+  previousDate = new Date();
   // Show departures on previous day.
-  previousDay: number = this.previousDate.setDate(this.previousDate.getDate() - 1)
+  previousDay: number = this.previousDate.setDate(
+    this.previousDate.getDate() - 1
+  );
   showPreviousDay() {
     if (this.myDate !== this.nextDate) {
       this.changeDate = this.myDate.setDate(this.myDate.getDate() - 1);
-      this.previousDay = this.previousDate.setDate(this.previousDate.getDate() - 1)
+      this.previousDay = this.previousDate.setDate(
+        this.previousDate.getDate() - 1
+      );
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() - 1);
     } else if (this.myDate === this.nextDate) {
-      this.previousDay = this.previousDate.setDate(this.previousDate.getDate() - 1)
+      this.previousDay = this.previousDate.setDate(
+        this.previousDate.getDate() - 1
+      );
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() - 1);
     }
   }
@@ -80,9 +117,7 @@ export class DepartureComponent implements OnInit {
   totalLength: any;
   page: number = 1;
 
-
   totalcost: any;
-
 
   selectDeparture(departure: TrainTimeTable) {
     this.selectedDeparture = departure;
@@ -94,6 +129,4 @@ export class DepartureComponent implements OnInit {
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/seat');
   }
-
-
 }
