@@ -12,6 +12,7 @@ import Database from "better-sqlite3";
 import paymentRoutes from "./routes/payment.js";
 import cors from 'cors';
 
+
 const app = express();
 const port = process.env.PORT || 5000;
 
