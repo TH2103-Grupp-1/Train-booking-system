@@ -11,7 +11,7 @@ export const getAllSeats = async (req, res) => {
 }
 
 export const getCarriageSeats = async (req, res) => {
-  res.send(db.prepare("SELECT * FROM Seats WHERE Id = ?").all(req.params.id));
+  res.send(db.prepare("SELECT * FROM Seats WHERE CarriageId = ?").all(req.params.id));
 }
 
 
