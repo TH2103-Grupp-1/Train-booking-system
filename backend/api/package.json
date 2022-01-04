@@ -9,8 +9,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "start:dev": "nodemon index.js"
+    "start": "set NODE_ENV=production && npm run start:prod",
+    "start:prod": "set NODE_ENV=production && node index.js",
+    "start:dev": "set NODE_ENV=development && nodemon nodenv -f index.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,9 +20,14 @@
     "better-sqlite3": "^7.4.5",
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "if-env": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.15",
     "stripe": "^8.195.0"
+  },
+  "devDependencies": {
+    "node-env-run": "^4.0.2"
   }
 }
