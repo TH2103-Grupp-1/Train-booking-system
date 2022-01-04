@@ -24,16 +24,8 @@ export class DepartureComponent implements OnInit {
     } else {
       this.booking = this.bookingService.getBooking();
     }
-    // console.log('datum3 ' + this.datum3);
-    // console.log('dat4 ' + this.dat4);
 
     this.calculateTime();
-
-    // console.log(this.timeCalculation(this.selectedTime));
-    // console.log('diff' + this.diff)
-    // this.timeCalculation(this.decToTime);
-    // console.log(this.timeCalculation(this.decToTime));
-    // if(this.booking)
 
     //get total length of table
     this.totalLength = this.tableData.length;
@@ -146,15 +138,12 @@ export class DepartureComponent implements OnInit {
   datum1: any = new Date('2022-01-01: 07:45');
   datum2: any = new Date('2022-01-01: 13:05');
 
-  //TODO
-
-  // deptime: any = this.tableData;
-  // times = this.deptime.DepartureTime;
   selectedTime!: string;
   calculateTime() {
     for (let time of this.tableData) {
       //calc arrivaltim - departuretime and get to MILISEC
       var date3 = time.ArrivalTime!.getTime() - time.DepartureTime!.getTime();
+      //check days
       var dagar = Math.floor(date3 / (60 * 60 * 24 * 1000));
       var datum4 = date3 / (60 * 60 * 1000) - dagar * 24;
       //Calc milisec to hours and minutes
@@ -165,7 +154,6 @@ export class DepartureComponent implements OnInit {
       time.Time! = String(' ' + hours + ':' + minutes + ' h');
     }
   }
-  //diff
   datum3 = this.datum2.getTime() - this.datum1.getTime();
 
   days = Math.floor(this.datum3 / (60 * 60 * 24 * 1000));
@@ -247,11 +235,38 @@ export class DepartureComponent implements OnInit {
   // totalcost: any;
 
   // check if price button is toggled and call with function so see if its clicked
-  toggled = true;
-  // checktoggled() {
-  //   this.selectedDeparture.Id
-  //   this.toggled = !this.toggled;
+  toggled = false;
+  priceChecked = '';
 
+  abc() {
+    var color = document.getElementById(index).style.color;
+    if (color === 'red') document.getElementById(index).style.color = 'black';
+    else document.getElementById(index).style.color = 'red';
+  }
+
+  getIndex(index?: number) {
+    for (let pricetag of this.tableData)
+      if (index === pricetag.Id) {
+        this.priceChecked = 'background-color: purple;';
+      } else {
+        this.priceChecked = '';
+      }
+  }
+  //   else index !== pricetag.Id;
+  // this.priceChecked = ' ';
+
+  // if (!this.toggled) {
+  //   this.priceChecked = ' ';
+  // } else if (this.toggled) {
+  //   this.priceChecked = 'background-color: red;';
+  // }
+  //   console.log(index);
+  // }
+
+  // clickedId(departure: TimeTable) {
+  //   // checktoggled() {
+  //   this.selectedDeparture.Id;
+  //   this.toggled = !this.toggled;
   // }
   // testa!: TimeTable;
 

@@ -54,8 +54,9 @@
           </div>
         </div>
         <div>
-          <div>{{ datum1 | date: "H:mm:ss" }}</div>
-          <p>{{ changeDate | date: "fullDate" }}</p>
+          <p>
+            <strong>{{ changeDate | date: "fullDate" }}</strong>
+          </p>
         </div>
         <div class="pagination-icon-next">
           <div (click)="p.next(); showNextDay()">
@@ -153,20 +154,21 @@
                     </div>
                     <div>
                       <p>TrainServices</p>
+                      <h3>{{ i }}</h3>
+                      <p>{{ departure.Id }}</p>
                     </div>
                   </div>
                 </div>
                 <div class="container right-container">
                   <div (click)="selectDeparture(departure)" class="price-box">
                     <div
+                      id="{{ i }}"
+                      (click)="getIndex()"
+                      tabindex="{{ i }}"
+                      [style]="priceChecked"
                       class="price-box-first"
-                      [ngClass]="{
-                        'price-box-first-clicked': !toggled,
-                        'price-box-first': toggled
-                      }"
-                      (focus)="('s')"
                     >
-                      <div>{{ booking.Price }} SEK</div>
+                      {{ booking.Price }} SEK | {{ departure.Id }}
                     </div>
                   </div>
                 </div>
