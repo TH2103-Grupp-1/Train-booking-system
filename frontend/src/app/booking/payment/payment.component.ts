@@ -25,9 +25,9 @@ export class PaymentComponent implements OnInit {
   constructor(private authService: AuthService, bookingService: BookingBuilderService, router: Router, private paymentService: PaymentService) {
     this.booking = bookingService.getBooking();
     if(this.booking === undefined) { router.navigateByUrl('/'); }
-    delete this.booking.Train?.Carriages;
-    delete this.booking.TicketReciever;
-    delete this.booking.Travelers;
+    // delete this.booking.Train?.Carriages;
+    // delete this.booking.TicketReciever;
+    // delete this.booking.Travelers;
   }
 
 
@@ -46,7 +46,6 @@ export class PaymentComponent implements OnInit {
   }
 
   checkout() {
-   console.log(this.booking.Price);
-   this.paymentService.postPayment(this.booking.Price!, `${this.booking.FromLocation?.AdvertisedLocationName} - ${this.booking.ToLocation?.AdvertisedLocationName}`, JSON.stringify(this.booking));
+   this.paymentService.postPayment(JSON.stringify(this.booking));
   }
 }
