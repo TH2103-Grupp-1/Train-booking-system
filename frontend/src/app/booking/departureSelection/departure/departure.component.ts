@@ -162,7 +162,7 @@ export class DepartureComponent implements OnInit {
       var hours = Math.floor(decimalTid / (60 * 60));
       var diff5 = decimalTid - hours * 60 * 60;
       var minutes = Math.floor(diff5 / 60);
-      time.Time! = String('Restid ' + hours + ':' + minutes + 'h');
+      time.Time! = String(' ' + hours + ':' + minutes + ' h');
     }
   }
   //diff
@@ -177,6 +177,10 @@ export class DepartureComponent implements OnInit {
   // ********************************************************
   // Get the current to date next and previous dates
   myDate = new Date();
+
+  //for traslate to localtime se-se (still in progress)
+  // date.toLocaleDateString("sv-se")
+
   //sets mydate to a Date we can change
   changeDate: number = this.myDate.setDate(this.myDate.getDate());
 
