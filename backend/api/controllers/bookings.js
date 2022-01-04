@@ -1,27 +1,18 @@
 import { db } from "../index.js";
 
 export const createBooking = (req, res) => {
+  let arrivalTime = req.body.ArrivalTime;
+  let customerName = req.body.CustomerName;
+  let departureTime = req.body.DepartureTime;
+  let fromLocation = req.body.FromLocation;
+  let price = req.body.Price;
+  let seatId = req.body.SeatId;
+  let toLocation = req.body.ToLocation;
+  let trainType = req.body.TrainType;
 
-  let destination = req.body.destination;
-  let fromStation = req.body.fromStation
-  let departureTime = req.body.departureTime;
-  let departureDate = req.body.departureDate;
-  let arrivalTime = req.body.arrivalTime;
-  let arrivalDate = req.body.arrivalDate;
-  let price = req.body.price;
-  let email = req.body.email;
-  let phoneNumber = req.body.phoneNumber;
-  let seatNumber = req.body.seatNumber;
-  let carriageNumber = req.body.carriageNumber;
-  let trainChanges = req.body.trainChanges;
-  let travelClass = req.body.travelClass;
-  let returnTrip = req.body.returnTrip;
+  let preparedStatement = db.prepare("INSERT INTO CompleteBooking (ArrivalTime, CustomerName, DepartureTime, FromLocation, Price, SeatId, ToLocation, TrainType) VALUES(?,?,?,?,?,?,?,?)");
 
-  console.log(req.body);
-
-  let preparedStatement = db.prepare("INSERT INTO Bookings (destination, fromStation, departureTime, departureDate, arrivalTime, arrivalDate, price, email, phoneNumber, seatNumber, carriageNumber, trainChanges, travelClass, returnTrip) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-
-  preparedStatement.run(destination, fromStation, departureTime, departureDate, arrivalTime, arrivalDate, price, email, phoneNumber, seatNumber, carriageNumber,trainChanges, travelClass, returnTrip);
+  preparedStatement.run(arrivalTime, customerName, departureTime, fromLocation, price, seatId, toLocation, trainType);
 
   res.send("Data inserted!");
 }
