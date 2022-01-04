@@ -73,22 +73,6 @@
               board. If your screen is broken, we recommend a different delivery method.' | translate }}
             </div>
           </div>
-          <div class="container border no-padding">
-            <div class="form-check padding" data-toggle="collapse" href="#pick-up" role="button" aria-expanded="false"
-              aria-controls="pick-up">
-              <label class="form-check-label radio-label" for="flexRadioDefault3">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked />
-
-                {{ "Pick up" | translate }}
-              </label>
-            </div>
-            <div class="container collapse" id="pick-up" data-parent="#radio-buttons">
-              <hr />
-              {{ 'Pick up your ticket in our Ticket Machine. Tickets can also be picked up, for a fee of 100 SEK per
-              booking number, at Pressbyrån and 7-Eleven. Keep in mind that our Ticket Machine, Pressbyrån or 7-Eleven
-              is not available in all locations!' | translate }}
-            </div>
-          </div>
         </div>
         <!-- Form -->
         <form class="container no-padding" [formGroup]="paymentForm">
@@ -115,30 +99,6 @@
           </div>
         </form>
 
-
-        <!-- Payment method -->
-        <div class="container no-padding">
-          <h2>{{ "Payment method" | translate }}</h2>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault4" />
-            <label class="form-check-label" for="flexRadioDefault4"> Swish </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault5" checked />
-            <label class="form-check-label" for="flexRadioDefault5">
-              {{ "Credit card" | translate }}
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault6" checked />
-            <label class="form-check-label" for="flexRadioDefault6">
-              {{ "Private invoice" | translate }}
-              <span class="invoice-text">{{
-                "Invoice fee 0 kr, with the possibility of partial payment" | translate
-                }}</span>
-            </label>
-          </div>
-        </div>
 
         <!-- Buttons for navigating -->
         <div class="container no-padding">
