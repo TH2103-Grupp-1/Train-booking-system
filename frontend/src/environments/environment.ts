@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'http://localhost:5000/api'
+  BASE_URL: 'http://localhost:5000/api',
+  success_url: 'http://localhost:5000/api/overview',
+  cancel_url: 'http://localhost:5000/api/payment'
+
 };
 
 /*

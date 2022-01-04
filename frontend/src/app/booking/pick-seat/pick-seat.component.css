@@ -1,10 +1,14 @@
+a
+{
+  color: black;
+}
+
 .page-orientation-bar-back {
   text-align: center;
   background-color: rgb(120, 190, 14);
   border: solid 1px white;
 }
-
-.page-orientation-bar-back a {
+.page-orientation-bar-back a{
   color: white;
   font-size: 10px;
 }
@@ -16,8 +20,7 @@
   padding-left: 0px;
   padding-right: 0px;
 }
-
-.page-orientation-bar-current a {
+.page-orientation-bar-current a{
   color: white;
   font-size: 10px;
 }
@@ -27,8 +30,7 @@
   background-color: rgb(235, 231, 231);
   border: solid 1px white;
 }
-
-.page-orientation-bar-next a {
+.page-orientation-bar-next a{
   color: rgb(134, 134, 134);
   font-size: 10px;
 }
@@ -73,9 +75,21 @@ h1 {
 
 
 
+.occupied {
+  background-color: red;
+}
+
 .carriage {
   width: 150px;
   height: 50px;
+}
+
+.restaurant {
+  background-color: rgb(173, 173, 173);
+  width: 200px;
+  height: 60px;
+  display: flex;
+  display: inline-block;
 }
 
 .carriage-thing {

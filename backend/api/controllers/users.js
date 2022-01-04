@@ -1,6 +1,5 @@
-import Database from "better-sqlite3";
+import { db } from "../index.js";
 import { encrypt } from "./encryption.js"
-let db = new Database("./database.db");
 
 export const createUser = async(req, res) => {
 

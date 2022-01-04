@@ -1,0 +1,219 @@
+.page-orientation-bar-back {
+  text-align: center;
+  background-color: rgb(120, 190, 14);
+  border: solid 1px white;
+}
+
+.page-orientation-bar-back a {
+  color: white;
+  font-size: 10px;
+}
+
+.page-orientation-bar-current {
+  text-align: center;
+  background-color: #156e31;
+  border: solid 1px white;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.page-orientation-bar-current a {
+  color: white;
+  font-size: 10px;
+}
+
+.page-orientation-bar-next {
+  text-align: center;
+  background-color: rgb(235, 231, 231);
+  border: solid 1px white;
+}
+
+.page-orientation-bar-next a {
+  color: rgb(134, 134, 134);
+  font-size: 10px;
+}
+
+.datepicker{
+  background-color: black;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.wrapper{
+  display:flex;
+  flex-direction:column;
+  min-height: 250px;
+  align-items: center;
+  background-color:#F4F4EE;
+}
+
+
+.choosen-cities-container{
+  display:flex;
+  justify-content: center;
+  margin-top: 4rem;
+  margin-bottom:3rem;
+  /* font-size:larger; */
+}
+.choosen-cities-container h2{
+  font-size:1.8rem;
+  font-weight:400;
+}
+
+.date-choosen-cities{
+display:flex;
+justify-content: space-between;
+}
+
+#datesContainer{
+  padding: 20px;
+}
+
+#datesContainer p {
+  margin: 0px;
+}
+
+.info-tabel-header{
+  display:flex;
+  justify-content:space-between;
+  margin-top: 3rem;
+}
+
+.info-tabel-header > div{
+  padding: 0px;
+}
+
+.depature-info{
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+  align-items: center;
+  min-height:75px;
+  margin-top: 8px;
+  width:auto;
+}
+
+.left-container{
+  padding: 0px;
+}
+.right-container{
+  display: flex;
+  justify-content:center;
+  width: fit-content;
+  padding: 0px;
+  margin: 0px;
+/* height:100% */
+}
+
+.box-info{
+  display: flex;
+  height: fit-content;
+  background-color: #F4F4EE;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+/* *********** PRICE SECTION ********* */
+.price-box{
+  display: flex;
+  /* width :40%; */
+  /* flex-direction:column; */
+  justify-content:space-evenly;
+  /* align-items: start; */
+  /* border: 1px solid #d6d660; */
+}
+
+.price-box-first{
+  border:#cfcfcb solid 2px;
+  border-radius: 5px;
+  width: 120px;
+  height: fit-content;
+  text-align:center;
+  cursor: pointer;
+}
+
+.price-box-first:hover{
+  background-color: #FAFAF7;
+  color: #00A2C7;
+}
+
+.price-box-second{
+ border:#adb5bd solid 1px;
+ margin-top:5px;
+  width: 6rem;
+  text-align:left;
+  cursor: pointer;
+  border-bottom: 2px solid #00AF49;
+}
+.price-box-second:hover{
+  background-color: #FAFAF7;
+  color: #00AF49;
+}
+
+.price-box-second >div{
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+.more-train-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.train-image{
+  width:160px;
+  margin-top: 5px;
+}
+.train-pic-holder{
+  height: 100px;
+  position:relative;
+}
+
+.box-holder{
+  display: flex;
+  width: 80%;
+}
+
+/*  CUSTOM PAGINATION DESIGN */
+
+.custom-pagination{
+  /* width: 80vh; */
+  display: flex;
+  /* flex-direction:column; */
+  justify-content: space-between;
+  align-items: center;
+  /* justify-items: end; */
+  /* flex-direction: column; */
+}
+
+.ticketBox{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.travelerSection{
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-expansion-panel-header{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.arrvial-holder{
+  margin-top :-10px;
+}
+
+
+.summary {
+  display: flex;
+  justify-content: center;
+}

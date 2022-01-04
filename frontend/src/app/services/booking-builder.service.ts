@@ -10,9 +10,7 @@ export class BookingBuilderService {
 
   constructor() { }
 
-  updateBooking(booking: Booking) {
-    this.booking = booking;
-  }
+  updateBooking(booking: Booking) { this.booking = booking; }
 
   getBooking() : Booking { return this.booking }
 }
