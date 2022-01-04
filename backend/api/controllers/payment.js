@@ -4,8 +4,8 @@ import { db } from "../index.js";
 export const checkout = async (req, res) => {
     const stripe = new Stripe('sk_test_51KBEVTFsTQg8DW3AcC4T7kIy2bRIh3rmTOaixwXjvMI0UN8uayvhuEx5CppoXGZcmDSk2a4FVUZhUKgYieoRXb1U001PQsHRW3');
     let booking = JSON.parse(req.body.booking);
-    // const BASE_URL = req.protocol+"://"+req.headers.host;
-    const BASE_URL = 'http://localhost:4200'
+    const BASE_URL = req.protocol+"://"+req.headers.host;
+    // const BASE_URL = 'http://localhost:4200'
     console.log('this is the checkout method booking object');
     console.log(booking);
     const product = await stripe.products.create({
