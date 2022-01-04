@@ -81,7 +81,7 @@
         <div class ="travelerSection">
           <div>
             <mat-form-field *ngFor="let traveler of travelers; let i = index;" appearance="fill">
-              <mat-select (selectionChange)="changeTraveler(i, $event.value)">
+              <mat-select value="{{traveler.ageGroup}}" (selectionChange)="changeTraveler(i, $event.value)">
                 <mat-option value="child">Child</mat-option>
                 <mat-option value="adult">Adult</mat-option>
                 <mat-option value="retired">Retired</mat-option>
