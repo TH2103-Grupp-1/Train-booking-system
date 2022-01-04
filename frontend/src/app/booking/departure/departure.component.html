@@ -78,6 +78,19 @@
 
         <!-- loops and create list of departures "dynamic from component And pagintaes to 4 items/site" -->
 
+        <div class ="travelerSection">
+          <div>
+            <mat-form-field *ngFor="let traveler of travelers; let i = index;" appearance="fill">
+              <mat-select value="{{traveler.ageGroup}}" (selectionChange)="changeTraveler(i, $event.value)">
+                <mat-option value="child">Child</mat-option>
+                <mat-option value="adult">Adult</mat-option>
+                <mat-option value="retired">Retired</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <button (click)="addTraveler()">{{'Add Traveler' | translate}}</button>
+        </div>
+        
         <!-- <div>ashdasd{{departure.ArrivalTime}}</div> -->
         <div class="ticketBox" *ngFor="let departure of trainTimeTables">
           <mat-accordion>

@@ -9,8 +9,6 @@
   font-size: 10px;
 }
 
-//
-
 .page-orientation-bar-current {
   text-align: center;
   background-color: #156e31;
@@ -197,6 +195,11 @@ justify-content: space-between;
 .ticketBox{
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.travelerSection{
+  display: flex;
+  justify-content: space-between;
 }
 
 mat-expansion-panel-header{
