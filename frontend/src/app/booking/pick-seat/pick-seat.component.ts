@@ -39,6 +39,25 @@ export class PickSeatComponent implements OnInit {
 
   selectSeat(seat: number) {
     this.selectedSeat.push(seat);
+    let doc = document.getElementById('seatsDesktop');
+    let seats = doc?.getElementsByClassName('seat');
+    
+    let reservationTextPhone = document.getElementById('seatReservationPhone');
+    let reservationTextDesktop = document.getElementById('seatReservationDesktop');
+
+    reservationTextPhone!.style.textDecoration = "none";
+    reservationTextPhone!.classList.add('text-success');
+
+    reservationTextDesktop!.style.textDecoration = "none";
+    reservationTextDesktop!.classList.add('text-success');
+    
+
+   for(var i = 0; i < seats!.length; i++){
+      document.getElementById("phone" + i.toString())!.style.backgroundColor = "darkgrey";
+      document.getElementById("desktop" + i.toString())!.style.backgroundColor = "darkgrey";
+   }
+   document.getElementById("phone" + seat.toString())!.style.backgroundColor = "#1a883d";
+   document.getElementById("desktop" + seat.toString())!.style.backgroundColor = "#1a883d";
   }
 
   change(group: any) {
@@ -59,4 +78,18 @@ export class PickSeatComponent implements OnInit {
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/overview');
   }
+
+  counter(i: number) {
+    return new Array(i);
+}
+
+iconTogglePhone(){
+  
+  document.getElementById('iconPhone')?.classList.toggle('fa-caret-up');  
+}
+iconToggleDesktop(){
+  
+  document.getElementById('iconDesktop')?.classList.toggle('fa-caret-up');  
+}
+
 }
