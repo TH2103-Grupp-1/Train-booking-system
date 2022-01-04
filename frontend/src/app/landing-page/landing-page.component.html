@@ -1,133 +1,248 @@
+<div class="body">
 
-<div class="container-fluid" id="banner">
-  <div class=" h-100 d-flex justify-content-center align-items-center">
-    <div class="d-flex flex-column">
-      <p class="travel-text" >{{'Where do you want to travel?' | translate}}</p>
-      <div class="row d-flex justify-content-center">
+  <!------------------------------------------------------------ Banner --------------------------------------------------------------------------------->
+  <div class="container-fluid" id="banner">
+    <div class=" h-100 d-flex justify-content-center align-items-center">
+      <div class="d-flex flex-column">
+        <p class="travel-text">{{'Where do you want to travel?' | translate}}</p>
+        <div class="row d-flex justify-content-center">
 
-        <div class="col">
-          <form class="search-form">
-            <mat-form-field class="search-full-width" appearance="fill">
-              <mat-label>{{'FROM' | translate}}</mat-label>
-              <input maxlength="30" type="text" matInput [formControl]="fromStationControl" [matAutocomplete]="auto1">
-              <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayFromStation" (optionSelected)='selectFromStation($event)'>
-                <mat-option *ngFor="let option of filteredFromStationOptions | async" [value]="option">
-                  {{option.AdvertisedLocationName}}
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
-          </form>
-        </div>
-
-        <div class="col">
-          <form class="search-form">
-            <mat-form-field class="search-full-width" appearance="fill">
-              <mat-label>{{'TO' | translate}}</mat-label>
-              <input maxlength="30" type="text" matInput [formControl]="toStationControl" [matAutocomplete]="auto2">
-              <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayToStation" (optionSelected)='selectToStation($event)'>
-                <mat-option *ngFor="let option of filteredToStationOptions | async" [value]="option">
-                  {{option.AdvertisedLocationName}}
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
-          </form>
-        </div>
-
-      </div>
-
-      <div *ngIf="fromStation !== undefined && toStation !== undefined" class="booking-options">
-        <mat-card>
-          <div class="left-buttons">
-            <div>
-              <input type="radio" id="arrival" name="One-way-trip" value="Arrival" checked>
-              <label for="arrival">{{'Arrival' | translate}}</label>
-            </div>
-            <div>
-              <input type="radio" id="departure" name="One-way-trip" value="Departure">
-              <label for="departure">{{'Departure' | translate }}</label>
-            </div>
-          </div>
-          <div class="right-buttons">
-            <div>
-              <input type="checkbox" (change)="onCheck()" id="return-trip" value="Return-trip">
-              <label for="return-trip">{{'Return trip' | translate}}</label>
-            </div>
-            <div>
-              <input type="radio" id="arrival" name="Return-trip" value="Return-arrival" checked>
-              <label for="arrival">{{'Arrival' | translate}}</label>
-            </div>
-            <div>
-              <input type="radio" id="departure" name="Return-trip" value="Return-departure">
-              <label for="departure">{{'Departure' | translate }}</label>
-            </div>
+          <div class="col">
+            <form class="search-form">
+              <mat-form-field class="search-full-width" appearance="fill">
+                <mat-label>{{'FROM' | translate}}</mat-label>
+                <input maxlength="30" type="text" matInput [formControl]="fromStationControl" [matAutocomplete]="auto1">
+                <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayFromStation"
+                  (optionSelected)='selectFromStation($event)'>
+                  <mat-option *ngFor="let option of filteredFromStationOptions | async" [value]="option">
+                    {{option.AdvertisedLocationName}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </form>
           </div>
 
-        </mat-card>
+          <div class="col">
+            <form class="search-form">
+              <mat-form-field class="search-full-width" appearance="fill">
+                <mat-label>{{'TO' | translate}}</mat-label>
+                <input maxlength="30" type="text" matInput [formControl]="toStationControl" [matAutocomplete]="auto2">
+                <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayToStation"
+                  (optionSelected)='selectToStation($event)'>
+                  <mat-option *ngFor="let option of filteredToStationOptions | async" [value]="option">
+                    {{option.AdvertisedLocationName}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </form>
+          </div>
+        </div>
+
+        <!------------------------------------------------------------ Datepicker1 desctop --------------------------------------------------------------------------------->
+
+
+        <div *ngIf="fromStation !== undefined && toStation !== undefined" class="row d-flex justify-content-center" id="datePickers-desctop">
+          <div class="col" id="datePickers-desctop">
+            <mat-card class="border-bottom-radius-none border-bottom pb-0">
+              <div class="row no-padding">
+                <div class="col">
+                  <span class="pull-left">
+                    <input type="radio" id="departure" name="One-way-trip" value="Departure">
+                    <label class="ml-1" for="departure">{{'Departure' | translate }}</label>
+                  </span>
+                </div>
+                <div class="col p-0">
+                  <span>
+                    <input type="radio" id="arrival" name="One-way-trip" value="Arrival" checked>
+                    <label class="ml-1" for="arrival">{{'Arrival' | translate}}</label>
+                  </span>
+                </div>
+                <div class="col">
+                  <span class="pull-right">
+                    <input type="checkbox" (change)="onCheck()" id="return-trip" value="Return-trip">
+                    <label class="ml-1" for="return-trip">{{'Return trip' | translate}}</label>
+                  </span>
+                </div>
+
+              </div>
+            </mat-card>
+            <mat-card class="border-top-none">
+              <p>{{selectedDate_calendar1 | date: 'shortDate'}} - {{selectedTime_calendar1}}</p>
+              <input class="timepicker" type="time" #time (change)="setTimeCalendar1(time.value)">
+              <mat-calendar [(selected)]="selectedDate_calendar1" [minDate]="minDate" [maxDate]="maxDate">
+              </mat-calendar>
+            </mat-card>
+          </div>
+          <!------------------------------------------------------------ Datepicker2 desctop --------------------------------------------------------------------------------->
+
+
+
+          <div class="col" id="datePickers-desctop">
+            <mat-card [style]="calendarStyle" class="border-bottom-radius-none border-bottom pb-0">
+              <div class="row no-padding">
+                <div class="col">
+                  <span class="pull-right ml-3">
+                    <input type="radio" id="arrival" name="One-way-trip" value="Arrival" checked>
+                    <label class="ml-1" for="arrival">{{'Arrival' | translate}}</label>
+                  </span>
+                  <span class="pull-right">
+                    <input type="radio" id="departure" name="Return-trip" value="Return-departure">
+                    <label class="ml-1" for="departure">{{'Departure' | translate }}</label>
+                  </span>
+                </div>
+              </div>
+            </mat-card>
+            <mat-card [style]="calendarStyle" class="border-top-none">
+              <p>{{selectedDate_calendar2 | date: 'shortDate'}} - {{selectedTime_calendar2}}</p>
+              <input class="timepicker" name="timeCalendar2" type="time" #time (change)="setTimeCalendar2(time.value)">
+              <mat-calendar [(selected)]="selectedDate_calendar2" [minDate]="minDate" [maxDate]="maxDate">
+              </mat-calendar>
+            </mat-card>
+          </div>
+        </div>
+        <h3 class="safety-heading">{{'Travel safely with us' | translate}}</h3>
+        <p class="safety-message">{{"Right now the Swedish Public Health Agency recommends that you use a face mask when
+          traveling with public transport when it's crowded. Read more about how you can help us make the journey safe
+          for you and your fellow travelers here." | translate}}</p>
       </div>
-
-      <div *ngIf="fromStation !== undefined && toStation !== undefined" class="calendars fadein">
-
-        <mat-card class="mr-3">
-          <p>{{selectedDate_calendar1 | date: 'shortDate'}} - {{selectedTime_calendar1}}</p>
-          <input class="timepicker" type="time" #time (change)="setTimeCalendar1(time.value)">
-          <mat-calendar [(selected)] ="selectedDate_calendar1"></mat-calendar>
-        </mat-card>
-
-        <mat-card [style] = "calendarStyle" class="ml-3">
-          <p>{{selectedDate_calendar2 | date: 'shortDate'}} - {{selectedTime_calendar2}}</p>
-          <input class="timepicker" name="timeCalendar2" type="time" #time (change)="setTimeCalendar2(time.value)">
-          <mat-calendar [(selected)] ="selectedDate_calendar2"></mat-calendar>
-        </mat-card>
-
-      </div>
-      <button *ngIf="fromStation !== undefined && toStation !== undefined" class="btn btn-success continue-button" color="primary" type="submit" (click)="getDistanceAndCost()">{{'Continue' | translate }}</button>
-
-
-
-
-      <h3 class="safety-heading">{{'Travel safely with us' | translate}}</h3>
-      <p class="safety-message">{{"Right now the Swedish Public Health Agency recommends that you use a face mask when traveling with public transport when it's crowded. Read more about how you can help us make the journey safe for you and your fellow travelers here." | translate}}</p>
     </div>
   </div>
-</div>
+
+  <!------------------------------------------------------------ Datepicker1 phone --------------------------------------------------------------------------------->
+
+  <div class="container">
+
+    <div class="conatiner" id="datePickers-phone">
+      <div class="row justify-content-center">
+        <div *ngIf="fromStation !== undefined && toStation !== undefined" class="col">
+          <div class="container no-padding">
+            <div class="row">
+              <div class="col">
+                <span class="pull-left">{{'Exit trip' | translate}}</span>
+              </div>
+              <div class="col">
+                <span class="pull-right ml-3">
+                  <input type="radio" id="arrival" name="One-way-trip" value="Arrival" checked>
+                  <label class="ml-1" for="arrival">{{'Arrival' | translate}}</label>
+                </span>
+                <span class="pull-right">
+                  <input type="radio" id="departure" name="One-way-trip" value="Departure">
+                  <label class="ml-1" for="departure">{{'Departure' | translate }}</label>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="container no-padding mt-0">
+            <mat-card>
+              <p>{{selectedDate_calendar1 | date: 'shortDate'}} - {{selectedTime_calendar1}}</p>
+              <input class="timepicker" type="time" #time (change)="setTimeCalendar1(time.value)">
+              <mat-calendar [(selected)]="selectedDate_calendar1" [minDate]="minDate" [maxDate]="maxDate">
+              </mat-calendar>
+            </mat-card>
+          </div>
+        </div>
+
+        <!------------------------------------------------------------ Book rerturn trip button --------------------------------------------------------------------------------->
 
 
-<div class="container">
-  <div class="border-bottom">
-    <div class="row">
-      <div class="col">
-        <a href="">
-          <mat-icon aria-hidden="false" aria-label="Example home icon"
-            >update</mat-icon
-          >
-          <p class="icon-text">{{'Last minute' | translate}}</p>
-        </a>
+        <div *ngIf="fromStation !== undefined && toStation !== undefined" class="container no-padding border-style"
+          (click)="showReturnCalender()" id="add-more-trips">
+          <div class="row justify-content-center">
+            <span>
+              <i class="fa fa-plus-circle fa-lg mr-2"></i>
+              {{'Book return trip' | translate}}
+            </span>
+          </div>
+        </div>
+
+        <!------------------------------------------------------------ Datepicker2 phone --------------------------------------------------------------------------------->
+
+
+        <div *ngIf="fromStation !== undefined && toStation !== undefined" class="col" id="returnCalender">
+          <div class="container no-padding">
+            <div class="row">
+              <div class="col">
+                <span class="pull-left">{{'Return trip' | translate}}</span>
+              </div>
+              <div class="col">
+                <span class="pull-right ml-3">
+                  <input type="radio" id="arrival" name="One-way-trip" value="Arrival" checked>
+                  <label class="ml-1" for="arrival">{{'Arrival' | translate}}</label>
+                </span>
+                <span class="pull-right">
+                  <input type="radio" id="departure" name="Return-trip" value="Return-departure">
+                  <label class="ml-1" for="departure">{{'Departure' | translate }}</label>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="container no-padding mt-0">
+            <mat-card [style]="calendarStyle">
+              <p>{{selectedDate_calendar2 | date: 'shortDate'}} - {{selectedTime_calendar2}}</p>
+              <input class="timepicker" name="timeCalendar2" type="time" #time (change)="setTimeCalendar2(time.value)">
+              <mat-calendar [(selected)]="selectedDate_calendar2" [minDate]="minDate" [maxDate]="maxDate">
+              </mat-calendar>
+            </mat-card>
+          </div>
+        </div>
       </div>
-      <div class="col">
-        <a href="">
-          <mat-icon aria-hidden="false" aria-label="Example home icon"
-            >warning</mat-icon
-          >
-          <p class="icon-text">{{'Traffic info' | translate}}</p>
-        </a>
-      </div>
-      <div class="col">
-        <a href="">
-          <mat-icon aria-hidden="false" aria-label="Example home icon"
-            >confirmation_number</mat-icon
-          >
-          <p class="icon-text">
-            {{'Commuter tickets & annual passes' | translate}}
-          </p>
-        </a>
-      </div>
-      <div class="col">
-        <a href="">
-          <mat-icon aria-hidden="false" aria-label="Example home icon"
-            >directions_transit_filled</mat-icon
-          >
-          <p class="icon-text">{{'My trip' | translate}}</p>
-        </a>
+    </div>
+
+    <!------------------------------------------------------------ Continue button --------------------------------------------------------------------------------->
+
+
+    <button *ngIf="fromStation !== undefined && toStation !== undefined" class="btn btn-primary btn-lg btn-block mb-5"
+      id="continue-btn-phone" type="submit" (click)="getDistanceAndCost()">
+      {{'Continue' | translate }}
+      <span class="pull-right">
+        <i class="fa fa-angle-right fa-lg"></i>
+      </span>
+    </button>
+
+
+
+    <button *ngIf="fromStation !== undefined && toStation !== undefined" type="submit" (click)="getDistanceAndCost()"
+      class="btn btn-primary btn-lg pull-right mb-5" id="continue-btn-desktop">
+      {{'Continue' | translate}}
+      <span class="pull-right">
+        <i class="fa fa-angle-right fa-lg"></i>
+      </span>
+    </button>
+
+
+    <!------------------------------------------------------------ Icons --------------------------------------------------------------------------------->
+
+
+    <div *ngIf="fromStation === undefined && toStation === undefined" class="container">
+      <div class="border-bottom">
+        <div class="row">
+          <div class="col">
+            <a href="">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">update</mat-icon>
+              <p class="icon-text">{{'Last minute' | translate}}</p>
+            </a>
+          </div>
+          <div class="col">
+            <a href="">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">warning</mat-icon>
+              <p class="icon-text">{{'Traffic info' | translate}}</p>
+            </a>
+          </div>
+          <div class="col">
+            <a href="">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">confirmation_number</mat-icon>
+              <p class="icon-text">
+                {{'Commuter tickets & annual passes' | translate}}
+              </p>
+            </a>
+          </div>
+          <div class="col">
+            <a href="">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">directions_transit_filled</mat-icon>
+              <p class="icon-text">{{'My trip' | translate}}</p>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

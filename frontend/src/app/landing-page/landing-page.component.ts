@@ -22,6 +22,9 @@ export class LandingPageComponent implements OnInit {
 
   calendarStyle: string = this.disabledCelandarStyle;
 
+  minDate: Date;
+  maxDate: Date;
+
   selectedDate_calendar1: Date = new Date() || null;
   selectedTime_calendar1: string = "00:00";
 
@@ -39,7 +42,13 @@ export class LandingPageComponent implements OnInit {
   fromStation!: Station;
   toStation!: Station;
 
-  constructor(private stationService: StationService, private bookingBuilder: BookingBuilderService, private route: Router) { }
+  constructor(private stationService: StationService, private bookingBuilder: BookingBuilderService, private route: Router) {
+    const currentYear = new Date().getFullYear();
+    const currentDate = new Date();
+
+    this.minDate = new Date(currentDate);
+    this.maxDate = new Date(currentYear + 1, 11, 31);
+  }
 
   setTimeCalendar1(time: string) {
     this.selectedTime_calendar1 = time;
@@ -121,11 +130,11 @@ export class LandingPageComponent implements OnInit {
     let toYCoord = Number(toStationCoords[6]);
 
     let distance = Math.round(this.calculateDistance(fromYCoord, fromXCoord, toYCoord, toXCoord));
-    let cost =this.getCostForDistance(distance);
+    // let cost =this.getCostForDistance(distance);
 
     this.booking.FromLocation = this.fromStation;
     this.booking.ToLocation = this.toStation;
-    this.booking.Price = cost;
+    // this.booking.Price = cost;
     this.booking.Distance = distance;
 
     this.booking.Travelers = [TravelerType.Adult];
@@ -133,10 +142,6 @@ export class LandingPageComponent implements OnInit {
 
     this.route.navigateByUrl('/departures');
   }
-
-    getCostForDistance(distance: number) {
-      return Math.round(1.8 * distance);
-    }
 
     calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
     var p = 0.017453292519943295;    // Math.PI / 180
@@ -146,6 +151,14 @@ export class LandingPageComponent implements OnInit {
             (1 - c((lon2 - lon1) * p))/2;
 
     return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+  }
+
+  showReturnCalender(): void {
+    var target = document.getElementById('returnCalender');
+    target?.setAttribute("style", "visibility:visible; display:block;");
+
+    var clickedElement = document.getElementById('add-more-trips');
+    clickedElement?.setAttribute("style", "visibility:hidden; display:none;");
   }
 
 

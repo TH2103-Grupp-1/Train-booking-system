@@ -73,7 +73,7 @@
   width: 100%;
   animation: fadein 1s;
 
-  height: fit-content;
+  height: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,7 +93,6 @@
 .safety-message {
   text-align: center;
   color: white;
-  margin-bottom: 40px;
   max-width: 700px;
 }
 
@@ -148,13 +147,60 @@ a {
   font-size: 12px;
 }
 
+.margin-bottom{
+  margin-bottom: 10px;
+}
 
+#add-more-trips{
+  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-style: dashed;
+  border-width: 2px;
+  border-color: lightgray;
+  max-width: 85%;
+}
 
+.fa-plus-circle{
+  color:rgb(62, 62, 236);
+  margin-left: 5px;
+}
+
+#continue-btn-phone {
+  border-radius: 0px;
+  background-color:  #156e31;
+  border-bottom: solid 3px #105426;
+  font-weight: bold;
+  text-align: left;
+  color: white;
+  transition: 0.40s linear;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+#continue-btn-desktop{
+  height: 50px;
+  width: 250px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  margin-left: 27px;
+  border-radius: 0px;
+  background-color:  #156e31;
+  border-bottom: solid 3px #105426;
+  font-weight: bold;
+  text-align: left;
+  color: white;
+  transition: 0.40s linear;
+}
+#continue-btn-desktop:hover {
+  background-color: green;
+}
 
 #banner {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://wallup.net/wp-content/uploads/2017/11/17/364154-city-cityscape-lights-city_lights-blurred.jpg");
   /* Set a specific height */
-  height: 80%;
+  height: fit-content;
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
   background-repeat: no-repeat;
@@ -176,6 +222,21 @@ a {
   width: 100%;
 }
 
+mat-card{
+  z-index: 1;
+}
+.border-top-none{
+  border-top: none;
+  box-shadow: none;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+.border-bottom-radius-none{
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
 @media only screen and (max-width: 320px) {
    .material-icons {
      font-size: 30px
@@ -189,3 +250,53 @@ a {
 
 }
 
+
+@media only screen and (max-width: 520px) {
+  .safety-heading{
+    margin-top: 15px;
+  }
+  #continue-btn-desktop{
+    visibility: hidden;
+    display: none;
+  }
+  #continue-btn-phone{
+    visibility: visible;
+    display: block;
+  }
+  #add-more-trips{
+    visibility: visible;
+    display: block;
+  }
+  #returnCalender{
+    visibility: hidden;
+    display: none;
+  }
+  #datePickers-desctop{
+    visibility: hidden;
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 520px){
+  #continue-btn-phone{
+    visibility: hidden;
+    display: none;
+  }
+  #continue-btn-desktop{
+    visibility: visible;
+    display: block;
+  }
+  #add-more-trips{
+    visibility: hidden;
+    display: none;
+  }
+  #datePickers-phone{
+    visibility: hidden;
+    display: none;
+  }
+
+}
+
+  #banner{
+    height: fit-content;
+  }

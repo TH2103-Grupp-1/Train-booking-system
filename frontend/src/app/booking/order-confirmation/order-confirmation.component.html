@@ -43,24 +43,24 @@
         <div class="container border shadow p-3 mb-5 rounded" id="info-container-phone-1">
             <div class="container border-bottom inner-container">
                 <h2>
-                    <span>Stockholm C</span>
+                    <span>{{confirmation.FromLocation}}</span>
                     <span> - </span>
-                    <span>Halmstad C</span>
+                    <span>{{confirmation.ToLocation}}</span>
                 </h2>
-                <p>tisdag, 22 december, 18:11</p>
+                <p>{{confirmation.DepartureTime}}</p>
             </div>
             <div class="container inner-container" id="trip-info">
                 <h3>
                     <span><i class="fa fa-angle-double-right fa-lg"></i></span>
-                    <span>18:11</span>
+                    <span>{{confirmation.DepartureTime}}</span>
                     <span>&nbsp;</span>
-                    <span>Stockholm C</span>
+                    <span>{{confirmation.FromLocation}}</span>
                     <span> - </span>
-                    <span>22:45</span>
+                    <span>{{confirmation.ArrivalTime}}</span>
                     <span>&nbsp;</span>
-                    <span>Halmstad C</span>
+                    <span>{{confirmation.ToLocation}}</span>
                 </h3>
-                <p>SJ, X 2000, 445</p>
+                <p>{{confirmation.TrainType}}</p>
                 <p>
                     <span>{{'Vagon ' | translate}}</span>
                     <span>6</span>
@@ -75,16 +75,12 @@
                 <div class="container inner-container margin-top border-top">
                     <div class="container inner-container">
                         <h3 class="bold">
-                            <span>Skalle</span>
-                            <span>&nbsp;</span>
-                            <span>Skallesson</span>
+                            <span>{{confirmation.CustomerName}}</span>
                         </h3>
                         <div class="row">
                             <div class="col text-align-left" id="phone-row-col-left">
                                 <p class="border-bottom">
-                                    <span>2</span>
-                                    <span>&nbsp;</span>
-                                    <span>{{'Class' | translate}}</span>
+                                    <span>{{'Ticket' | translate}}</span>
                                 </p>
                                 <p class="border-bottom">{{'Seat reservation' | translate}}</p>
                                 <p class="border-bottom">{{'Cannot be rebooked' | translate}}</p>
@@ -92,7 +88,7 @@
                             </div>
                             <div class="col text-align-right" id="phone-row-col-right">
                                 <p class="border-bottom">
-                                    <span>245</span>
+                                    <span>{{confirmation.Price}}</span>
                                     <span>:-</span>
                                 </p>
                                 <p class="border-bottom">{{'Included' | translate}}</p>
@@ -101,7 +97,7 @@
                                     <span>:-</span>
                                 </p>
                                 <p>
-                                    <span>245</span>
+                                    <span>{{confirmation.Price}}</span>
                                     <span>:-</span>
                                 </p>
                             </div>
@@ -112,7 +108,7 @@
         </div>
     <!----------------------------------------- Phone info card 2-------------------------------------------------->
 
-        <div class="container border margin-top shadow p-3 mb-5 rounded" id="info-container-phone-2">
+        <!-- <div class="container border margin-top shadow p-3 mb-5 rounded" id="info-container-phone-2">
             <div class="container border-bottom inner-container">
                 <h2>
                     <span>Stockholm C</span>
@@ -179,42 +175,41 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--------------------------------- Desktop info card 1 ---------------------------------------->
         <div class="container border shadow p-3 mb-5 rounded" id="info-container-1">
             <div class="container border-bottom inner-container">
                 <h2>
-                    <span>Stockholm C</span>
+                    <span>{{confirmation.FromLocation}} C</span>
                     <span> - </span>
-                    <span>Halmstad C</span>
+                    <span>{{confirmation.ToLocation}}</span>
                 </h2>
-                <p>tisdag, 22 december, 18:11</p>
+                <p>{{confirmation.DepartureTime}}</p>
             </div>
             <div class="row">
                 <div class="col-8">
                     <div class="container inner-container" id="trip-info">
                         <h3>
                             <span><i class="fa fa-angle-double-right fa-lg"></i></span>
-                            <span>18:11</span>
+                            <span>{{confirmation.DepartureTime}}</span>
                             <span>&nbsp;</span>
-                            <span>Stockholm C</span>
+                            <span>{{confirmation.FromLocation}}</span>
                             <span> - </span>
-                            <span>22:45</span>
+                            <span>{{confirmation.ArrivalTime}}</span>
                             <span>&nbsp;</span>
-                            <span>Halmstad C</span>
+                            <span>{{confirmation.ToLocation}}</span>
                         </h3>
                     </div>
-                    <p>SJ, X 2000, 445</p>
+                    <p>{{confirmation.TrainType}}</p>
                     <h3 class="bold">
-                        <span>Skalle</span>
-                        <span>&nbsp;</span>
-                        <span>Skallesson</span>
+                        <span>{{confirmation.CustomerName}}</span>
                     </h3>
                     <p>
                         <span>{{'Vagon ' | translate}}</span>
                         <span>6</span>
                         <span>, </span>
-                        <span>{{'Seat ' | translate}}</span>
+                        <span>{{'Seat' | translate}}</span>
+                        <span>&nbsp;</span>
                         <span>22</span>
                         <span>, </span>
                         <span>{{'Window' | translate}}</span>
@@ -225,16 +220,12 @@
                 <div class="col-4 margin-top border-left">
                     <div class="container inner-container">
                         <h3 class="bold">
-                            <span>Skalle</span>
-                            <span>&nbsp;</span>
-                            <span>Skallesson</span>
+                            <span>{{confirmation.DepartureTime}}</span>
                         </h3>
                         <div class="row justify-content-center">
                             <div class="col pull-left">
                                 <p>
-                                    <span>2</span>
-                                    <span>&nbsp;</span>
-                                    <span>{{'Class' | translate}}</span>
+                                    <span>{{'Ticket' | translate}}</span>
                                 </p>
                                 <p>{{'Seat reservation' | translate}}</p>
                                 <p>{{'Cannot be rebooked' | translate}}</p>
@@ -242,7 +233,7 @@
                             </div>
                             <div class="col pull-right">
                                 <p>
-                                    <span>245</span>
+                                    <span>{{confirmation.Price}}</span>
                                     <span>:-</span>
                                 </p>
                                 <p>{{'Included' | translate}}</p>
@@ -251,7 +242,7 @@
                                     <span>:-</span>
                                 </p>
                                 <p>
-                                    <span>245</span>
+                                    <span>{{confirmation.Price}}</span>
                                     <span>:-</span>
                                 </p>
                             </div>
@@ -260,7 +251,10 @@
                 </div>
             </div>
         </div>
-        <div class="container border shadow p-3 mb-5 rounded" id="info-container-2">
+
+        <!-- Return card -->
+
+        <!-- <div class="container border shadow p-3 mb-5 rounded" id="info-container-2">
             <div class="container border-bottom inner-container">
                 <h2>
                     <span>Halmstad C</span>
@@ -293,7 +287,8 @@
                         <span>{{'Vagon ' | translate}}</span>
                         <span>6</span>
                         <span>, </span>
-                        <span>{{'Seat ' | translate}}</span>
+                        <span>{{'Seat' | translate}}</span>
+                        <span>&nbsp;</span>
                         <span>22</span>
                         <span>, </span>
                         <span>{{'Window' | translate}}</span>
@@ -354,5 +349,5 @@
                 <span>:-</span>
             </h2>
         </div>
-    </div>  
-</div>
+    </div>
+</div> -->

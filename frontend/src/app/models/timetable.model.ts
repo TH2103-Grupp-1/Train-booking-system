@@ -1,6 +1,4 @@
-import { Station } from './station.model';
-
-export interface TimeTable {
+export interface TrainTimeTable {
   Id?: number;
   // DepartureStation?: Station;
   DepartureTime?: Date;
@@ -8,4 +6,9 @@ export interface TimeTable {
   ArrivalTime?: Date;
   empty?: any;
   Time?: string;
+  TrainId: number;
+  TrainType: string;
+  BasePrice: number;
+  Speed: number;
+  PriceTotal?: number;
 }
