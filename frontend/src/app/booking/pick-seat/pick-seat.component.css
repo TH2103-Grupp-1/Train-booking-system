@@ -79,9 +79,21 @@ h1 {
   background-color: red;
 }
 
+.occupied {
+  background-color: red;
+}
+
 .carriage {
   width: 150px;
   height: 50px;
+}
+
+.restaurant {
+  background-color: rgb(173, 173, 173);
+  width: 200px;
+  height: 60px;
+  display: flex;
+  display: inline-block;
 }
 
 .restaurant {

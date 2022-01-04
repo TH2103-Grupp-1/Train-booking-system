@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Confirmation } from 'src/app/models/confirmation.model';
 import { PaymentService } from 'src/app/services/payment.service';
+import { BookingService } from 'src/app/services/booking.service';
 
 @Component({
   selector: 'app-order-confirmation',
@@ -15,15 +15,9 @@ export class OrderConfirmationComponent implements OnInit {
 
   confirmation!: Confirmation;
 
-  constructor(private route: ActivatedRoute, private router: Router, private paymentService: PaymentService) {
-  }
-
-  ngOnInit(): void {
-    this.SESSION_ID = this.route.snapshot.queryParamMap.get('session_id');
+  constructor(private route: ActivatedRoute, private router: Router, private paymentService: PaymentService, private bookingService: BookingService) {
     this.paymentService.getSessionDetails(this.SESSION_ID!).subscribe(o => {
-      if(o.message === "Not found") { this.router.navigateByUrl('/'); }
       this.confirmation = o.message;
-    });
+      this.bookingService.postBooking(this.confirmation);
   }
-
-}
+  
