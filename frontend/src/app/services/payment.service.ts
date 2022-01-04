@@ -24,12 +24,10 @@ export class PaymentService {
   }
 
 
-   postPayment(price: number, productName: string, booking: string): void {
+   postPayment(booking: string): void {
     this.http
       .post<ISession>(this.BASE_URL + '/payment', {
-        booking,
-        price,
-        productName
+        booking
       })
       .subscribe((session) => {
         this.redirectToCheckout(session);

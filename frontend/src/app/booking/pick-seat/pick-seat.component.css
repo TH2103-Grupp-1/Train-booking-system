@@ -73,6 +73,10 @@ h1{
   margin: 20px;
 }
 
+.occupied {
+  background-color: red;
+}
+
 .carriage {
   background-color: #fff;
   width: 200px;
