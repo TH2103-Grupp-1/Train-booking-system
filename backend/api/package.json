@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "set NODE_ENV=production && npm run start:prod",
     "start:prod": "set NODE_ENV=production && node index.js",
-    "start:dev": "set NODE_ENV=development && nodenv -f index.js"
+    "start:dev": "set NODE_ENV=development && nodemon nodenv -f index.js"
   },
   "author": "",
   "license": "ISC",
