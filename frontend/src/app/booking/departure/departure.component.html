@@ -90,28 +90,14 @@
         <!-- loops and create list of departures "dynamic from component And pagintaes to 4 items/site" -->
 
         <div class="travelerSection">
-          <div>
-            <mat-form-field
-              *ngFor="
-                let traveler of travelers
-                  | paginate
-                    : {
-                        itemsPerPage: 4,
-                        currentPage: page,
-                        totalItems: totalLength
-                      };
-                let i = index
-              "
-              appearance="fill"
-            >
-              <mat-select
-                value="{{ traveler.ageGroup }}"
-                (selectionChange)="changeTraveler(i, $event.value)"
-              >
+          <div class="dropdowns">
+            <mat-form-field *ngFor="let traveler of travelers let i = index" appearance="fill">
+              <mat-select value="{{ traveler.ageGroup }}" (selectionChange)="changeTraveler(i, $event.value)">
                 <mat-option value="child">Child</mat-option>
                 <mat-option value="adult">Adult</mat-option>
                 <mat-option value="retired">Retired</mat-option>
               </mat-select>
+              <mat-icon matSuffix (click)="deleteTravelerer(i)">delete</mat-icon>
             </mat-form-field>
           </div>
           <button (click)="addTraveler()">
