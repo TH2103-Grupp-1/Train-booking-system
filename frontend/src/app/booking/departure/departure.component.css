@@ -210,6 +210,30 @@ h1 {
 .travelerSection{
   display: flex;
   justify-content: space-between;
+  padding-top: 30px;
+}
+
+.travelerSection > button{
+  width: 100px;
+  height: 50px;
+  border: solid 1px rgb(58, 58, 58);
+  border-radius: 3px;
+  background-color: white;
+}
+
+.travelerSection > button:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+mat-form-field{
+  margin-right: 10px;
+}
+
+.dropdowns{
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%
 }
 
 mat-expansion-panel-header{
