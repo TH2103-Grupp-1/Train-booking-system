@@ -43,8 +43,9 @@ export class PickSeatComponent implements OnInit {
     this.selectedCarriage = ca;
   }
 
-  selectSeat(seat: number, seatId: number) {
+  selectSeat(seat: number) {
     this.selectedSeat.push(seat);
+    
     let doc = document.getElementById('seatsDesktop');
     let seats = doc?.getElementsByClassName('seat');
     
