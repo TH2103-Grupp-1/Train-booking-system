@@ -4,9 +4,7 @@
       <a href=""> 1. </a>
     </div>
     <div class="col page-orientation-bar-current">
-      <a href="">
-          2. {{'Timetable' | translate}}
-      </a>
+      <a href=""> 2. {{ "Timetable" | translate }} </a>
     </div>
     <div class="col-3 page-orientation-bar-next">
       <a> 3. </a>
@@ -86,38 +84,43 @@
     <div class="wrapper">
       <div class="container">
         <div class="info-tabel-header">
-          <div class="col-5">{{'Departure' | translate}}</div>
+          <div class="col-5">{{ "Departure" | translate }}</div>
         </div>
 
         <!-- loops and create list of departures "dynamic from component And pagintaes to 4 items/site" -->
 
-        <div class ="travelerSection">
+        <div class="travelerSection">
           <div>
-            <mat-form-field *ngFor="let traveler of travelers; let i = index;" appearance="fill">
-              <mat-select value="{{traveler.ageGroup}}" (selectionChange)="changeTraveler(i, $event.value)">
+            <mat-form-field
+              *ngFor="
+                let traveler of travelers
+                  | paginate
+                    : {
+                        itemsPerPage: 4,
+                        currentPage: page,
+                        totalItems: totalLength
+                      };
+                let i = index
+              "
+              appearance="fill"
+            >
+              <mat-select
+                value="{{ traveler.ageGroup }}"
+                (selectionChange)="changeTraveler(i, $event.value)"
+              >
                 <mat-option value="child">Child</mat-option>
                 <mat-option value="adult">Adult</mat-option>
                 <mat-option value="retired">Retired</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
-          <button (click)="addTraveler()">{{'Add Traveler' | translate}}</button>
+          <button (click)="addTraveler()">
+            {{ "Add Traveler" | translate }}
+          </button>
         </div>
-        
+
         <!-- <div>ashdasd{{departure.ArrivalTime}}</div> -->
-        <div
-          *ngFor="
-            let departure of tableData
-              | paginate
-                : {
-                    itemsPerPage: 4,
-                    currentPage: page,
-                    totalItems: totalLength
-                  };
-            let i = index
-          ">
-        
-          <!-- *ngFor="let time of tableData" -->
+
         <div class="ticketBox" *ngFor="let departure of trainTimeTables">
           <mat-accordion>
             <mat-expansion-panel
@@ -129,17 +132,18 @@
                   {{ departure.DepartureTime | date: "H:mm" }} -
                   {{ departure.ArrivalTime | date: "H:mm" }}
                 </mat-panel-title>
-                <mat-panel-description>
-                </mat-panel-description>
+                <!-- <mat-panel-description>
+              </mat-panel-description> -->
               </mat-expansion-panel-header>
-              <p>{{'Select ticket'| translate}}</p>
-              <div class=" container box-info">
+              <p>{{ "Select ticket" | translate }}</p>
+              <div class="container box-info">
                 <div class="container left-container">
                   <div class="more-train-info">
                     <div class="departure-holder">
-                      <strong>{{'Departure'| translate}} </strong>
-                      {{departure.DepartureTime |date:'h:mm'}} <h4>
-                        {{booking.FromLocation?.AdvertisedLocationName}}
+                      <strong>{{ "Departure" | translate }} </strong>
+                      {{ departure.DepartureTime | date: "h:mm" }}
+                      <h4>
+                        {{ booking.FromLocation?.AdvertisedLocationName }}
                       </h4>
                     </div>
                     <div class="train-pic-holder">
@@ -155,26 +159,19 @@
                       <h4>{{ booking.ToLocation?.AdvertisedLocationName }}</h4>
                     </div>
                     <div>
-                      <p>{{ "Travel time" | translate }}{{ departure.Time }}</p>
-                      <p><strong>Train:</strong> {{departure.TrainType}}</p>
+                      <p>
+                        {{ "Travel time" | translate }}{{ " 5:20h"
+                        }}{{ departure.Time }}
+                      </p>
+                      <p><strong>Train:</strong> {{ departure.TrainType }}</p>
                     </div>
-                    <div>
-                      <p>TrainServices</p>
-                      <!-- <h3>{{ i }}</h3> -->
-                      <p>{{ departure.Id }}</p>
-                    </div>
+                    <div></div>
                   </div>
                 </div>
                 <div class="container right-container">
                   <div (click)="selectDeparture(departure)" class="price-box">
-                    <div
-                     
-                     
-                      class="price-box-first"
-                    >
-                      {{ booking.Price }} SEK | {{ departure.Id }}
                     <div class="price-box-first">
-                      <div>{{departure.PriceTotal}} SEK</div>
+                      <div>{{ departure.PriceTotal }} SEK</div>
                     </div>
                   </div>
                 </div>
@@ -188,6 +185,8 @@
 </div>
 
 <div *ngIf="selectedDeparture !== undefined" class="summary">
-  <h1><strong>Total SEK:</strong> {{booking.Price}}</h1>
-  <button class="btn btn-success" (click)="submit()">{{'Continue' | translate }}</button>
+  <h1><strong>Total SEK:</strong> {{ booking.Price }}</h1>
+  <button class="btn btn-success" (click)="submit()">
+    {{ "Continue" | translate }}
+  </button>
 </div>
