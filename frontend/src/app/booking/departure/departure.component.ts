@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+// import { log } from 'console';
 import { Booking } from 'src/app/models/booking.model';
 import { TrainTimeTable } from 'src/app/models/timetable.model';
 import { BookingBuilderService } from 'src/app/services/booking-builder.service';
@@ -38,6 +39,7 @@ export class DepartureComponent implements OnInit {
         this.trainTimeTables = t;
       });
     }
+    this.calculateTime();
   }
 
   travelers: AgeGroupInterface[] = [{ id: 0, ageGroup: 'adult' }];
@@ -60,6 +62,22 @@ export class DepartureComponent implements OnInit {
     console.log(this.travelers);
   }
 
+  calculateTime() {
+    for (let time of this.trainTimeTables) {
+      //calc arrivaltim - departuretime and get to MILISEC
+      var date3 = time.ArrivalTime!.getTime() - time.DepartureTime!.getTime();
+      console.log(date3);
+      //check days
+      var dagar = Math.floor(date3 / (60 * 60 * 24 * 1000));
+      var datum4 = date3 / (60 * 60 * 1000) - dagar * 24;
+      //Calc milisec to hours and minutes
+      var decimalTid = datum4 * 60 * 60;
+      var hours = Math.floor(decimalTid / (60 * 60));
+      var diff5 = decimalTid - hours * 60 * 60;
+      var minutes = Math.floor(diff5 / 60);
+      time.Time! = String(' ' + hours + ':' + minutes + ' h');
+    }
+  }
   // ********************************************************
   // Get the current to date next and previous dates
   myDate = new Date();
