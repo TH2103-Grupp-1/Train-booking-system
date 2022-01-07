@@ -49,7 +49,9 @@ export class DepartureComponent implements OnInit {
     if (this.travelers.length < 9) {
       this.counter++;
       this.travelers.push({ id: this.counter, ageGroup: 'adult' });
+      this.resetId();
     }
+    console.log(this.travelers);
   }
 
   changeTraveler(index: number, value: string) {
