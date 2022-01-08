@@ -80,7 +80,9 @@ export class DepartureComponent implements OnInit {
   }
   // ********************************************************
   // Get the current to date next and previous dates
-  myDate = new Date();
+  testdate = '2022-01-24';
+  myDate = new Date(this.testdate);
+
   //sets mydate to a Date we can change
   changeDate: number = this.myDate.setDate(this.myDate.getDate());
 
@@ -146,5 +148,6 @@ export class DepartureComponent implements OnInit {
     this.booking.TimeTable = this.selectedDeparture;
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/seat');
+    console.log(this.myDate);
   }
 }
