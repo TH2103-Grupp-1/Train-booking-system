@@ -50,16 +50,24 @@ export class DepartureComponent implements OnInit {
       this.counter++;
       this.travelers.push({ id: this.counter, ageGroup: 'adult' });
     }
-    console.log('Travelers');
   }
 
   changeTraveler(index: number, value: string) {
+    this.counter = 0;
+
     for (let traveler of this.travelers) {
+      traveler.id = this.counter;
+      this.counter++;
       if (index === traveler.id) {
         traveler.ageGroup = value;
       }
     }
     console.log(this.travelers);
+  }
+
+  deleteTravelerer(index: number) {
+    console.log(this.travelers);
+    this.travelers.splice(index, 1);
   }
 
   calculateTime() {
