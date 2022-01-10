@@ -92,10 +92,12 @@ export class DepartureComponent implements OnInit {
   }
 
   deleteTicket(index: number) {
-    this.tickets.splice(index, 1);
-    this.resetId();
-    this.booking.Price = this.calculateTotalPrice();
-    console.log(this.tickets);
+    if (this.tickets.length > 1) {
+      this.tickets.splice(index, 1);
+      this.resetId();
+      this.booking.Price = this.calculateTotalPrice();
+      console.log(this.tickets);
+    }
   }
 
   resetId() {
