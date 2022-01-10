@@ -90,14 +90,14 @@
           <div class="dropdowns">
             <mat-form-field *ngFor="let traveler of travelers let i = index" appearance="fill">
               <mat-select value="{{ traveler.ageGroup }}" (selectionChange)="changeTraveler(i, $event.value)">
-                <mat-option value="child">Child</mat-option>
-                <mat-option value="adult">Adult</mat-option>
-                <mat-option value="retired">Retired</mat-option>
+                <mat-option value="child">Child: 26kr</mat-option>
+                <mat-option value="adult">Adult: 39kr</mat-option>
+                <mat-option value="retired">Retired: 26kr</mat-option>
               </mat-select>
               <mat-icon matSuffix (click)="deleteTravelerer(i)">delete</mat-icon>
             </mat-form-field>
           </div>
-          <button class="add-button" (click)="addTraveler()">{{'Add Traveler' | translate}}</button>
+          <button (click)="addTraveler()">{{'Add Traveler' | translate}}</button>
         </div>
 
         <!-- <div>ashdasd{{departure.ArrivalTime}}</div> -->
