@@ -4,6 +4,8 @@ export interface TrainTimeTable {
   DepartureTime?: Date;
   // ArrivalStation?: Station;
   ArrivalTime?: Date;
+  empty?: any;
+  Time?: string;
   TrainId: number;
   TrainType: string;
   BasePrice: number;
