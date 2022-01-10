@@ -5,7 +5,7 @@ import { Booking } from 'src/app/models/booking.model';
 import { TrainTimeTable } from 'src/app/models/timetable.model';
 import { BookingBuilderService } from 'src/app/services/booking-builder.service';
 import { TimetableService } from 'src/app/services/timetable.service';
-import { TicketInterface } from "../../models/tickets.model";
+import { TicketInterface, AgeGroup } from "../../models/tickets.model";
 
 @Component({
   selector: 'app-departure',
@@ -43,7 +43,20 @@ export class DepartureComponent implements OnInit {
   //---------------------------------Tickets---------------------------------
 
   tickets: TicketInterface[] = [{ id: 0, ageGroup: 'adult', price: 39 }];
-  ageGroups = new Array<string>();
+  ageGroups: AgeGroup[] = [
+    { 
+      value: "child",
+      viewValue: "Child"
+    },
+    { 
+      value: "adult",
+      viewValue: "Adult"
+    },
+    { 
+      value: "retired",
+      viewValue: "Retired"
+    }
+  ]
   counter: number = 0;
 
   addTicket() {
@@ -95,13 +108,19 @@ export class DepartureComponent implements OnInit {
 
   calculateTotalPrice(): number {
     let sum: number = 0;
-    for (let traveler of this.tickets) {
-      sum += traveler.price;
+    for (let ticket of this.tickets) {
+      if (this.tickets.length > 1) {
+        if (this.departurePrice) {
+          sum += (80 / 100) * this.departurePrice + ticket.price;
+        }
+      }
+      else {
+        if (this.departurePrice) {
+          sum += this.departurePrice + ticket.price;
+        }
+      }
     }
-    if (this.departurePrice) {
-      sum += this.departurePrice
-    }
-    return sum;
+    return Math.round(sum);
   }
 
   //---------------------------------Tickets---------------------------------
