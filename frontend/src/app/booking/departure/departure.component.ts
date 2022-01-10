@@ -6,10 +6,12 @@ import { TrainTimeTable } from 'src/app/models/timetable.model';
 import { BookingBuilderService } from 'src/app/services/booking-builder.service';
 import { TimetableService } from 'src/app/services/timetable.service';
 
-interface AgeGroupInterface {
+interface TicketInterface {
   id: number;
   ageGroup: string;
+  price: number;
 }
+
 @Component({
   selector: 'app-departure',
   templateUrl: './departure.component.html',
@@ -42,14 +44,18 @@ export class DepartureComponent implements OnInit {
     this.calculateTime();
   }
 
-  travelers: AgeGroupInterface[] = [{ id: 0, ageGroup: 'adult' }];
+  //---------------------------------Travelers---------------------------------
+
+  travelers: TicketInterface[] = [{ id: 0, ageGroup: 'adult', price: 39 }];
+  ageGroups = new Array<string>();
   counter: number = 0;
 
   addTraveler() {
     if (this.travelers.length < 9) {
       this.counter++;
-      this.travelers.push({ id: this.counter, ageGroup: 'adult' });
+      this.travelers.push({ id: this.counter, ageGroup: 'adult', price: 39 });
       this.resetId();
+      this.booking.Price = this.calculateTotalPrice();
     }
     console.log(this.travelers);
   }
@@ -58,6 +64,19 @@ export class DepartureComponent implements OnInit {
     for (let traveler of this.travelers) {
       if (index === traveler.id) {
         traveler.ageGroup = value;
+
+        switch (value) {
+          case 'adult':
+            traveler.price = 39;
+            break;
+          case 'child':
+            traveler.price = 26;
+            break;
+          case 'retired':
+            traveler.price = 26
+            break;
+        }
+        this.booking.Price = this.calculateTotalPrice();
       }
     }
     console.log(this.travelers);
@@ -66,6 +85,7 @@ export class DepartureComponent implements OnInit {
   deleteTravelerer(index: number) {
     this.travelers.splice(index, 1);
     this.resetId();
+    this.booking.Price = this.calculateTotalPrice();
     console.log(this.travelers);
   }
 
@@ -76,6 +96,19 @@ export class DepartureComponent implements OnInit {
       this.counter++;
     }
   }
+
+  calculateTotalPrice(): number {
+    let sum: number = 0;
+    for (let traveler of this.travelers) {
+      sum += traveler.price;
+    }
+    if (this.departurePrice) {
+      sum += this.departurePrice
+    }
+    return sum;
+  }
+
+  //---------------------------------Travelers---------------------------------
 
   calculateTime() {
     for (let time of this.trainTimeTables) {
@@ -151,10 +184,12 @@ export class DepartureComponent implements OnInit {
   page: number = 1;
 
   totalcost: any;
+  departurePrice?: number;
 
   selectDeparture(departure: TrainTimeTable) {
     this.selectedDeparture = departure;
-    this.booking.Price = departure.PriceTotal;
+    this.departurePrice = departure.PriceTotal
+    this.booking.Price = this.calculateTotalPrice();
   }
 
   submit() {
