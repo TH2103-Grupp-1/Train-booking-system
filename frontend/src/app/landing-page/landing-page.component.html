@@ -211,7 +211,7 @@
 
 
     <!------------------------------------------------------------ Same station message --------------------------------------------------------------------------------->
-    <div *ngIf="toStation === fromStation" class="container location-error-message">
+    <div *ngIf="toStation === fromStation && toStation !== undefined" class="container location-error-message">
       <p>{{'You must enter two different stations' | translate }}</p>
     </div>
     <!------------------------------------------------------------ Icons --------------------------------------------------------------------------------->
