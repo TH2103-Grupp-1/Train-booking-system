@@ -18,12 +18,19 @@ interface AgeGroupInterface {
 export class DepartureComponent implements OnInit {
   booking!: Booking;
   trainTimeTables!: TrainTimeTable[];
+  testdate!: Date;
+  myDate!: Date;
+  changeDate!: number;
+  nextDate!: Date;
+  nextDay!: number;
+  previousDate!: Date;
+  previousDay!: number;
 
   constructor(
     private bookingService: BookingBuilderService,
     private timeTableService: TimetableService,
     private route: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (this.bookingService.getBooking() === undefined) {
@@ -40,7 +47,7 @@ export class DepartureComponent implements OnInit {
       });
     }
     console.log(this.booking);
-
+    this.prepare();
     this.calculateTime();
   }
 
@@ -64,7 +71,6 @@ export class DepartureComponent implements OnInit {
         traveler.ageGroup = value;
       }
     }
-    console.log(this.travelers);
   }
 
   deleteTravelerer(index: number) {
@@ -92,16 +98,22 @@ export class DepartureComponent implements OnInit {
   // ********************************************************
   // Get the current to date next and previous dates
 
-  testdate = this.booking.DepartureDate!;
-  myDate = this.testdate!;
+  prepare() {
+    this.myDate = this.booking.DepartureDate!;
+    //sets mydate to a Date we can change
+    this.changeDate = this.myDate.setDate(this.myDate.getDate());
+    // nextdate
+    this.nextDate = new Date(this.booking.DepartureDate!);
+    // set next date to show next day
+    this.nextDay = this.nextDate.setDate(this.nextDate.getDate() + 1);
+    this.previousDate = new Date(this.booking.DepartureDate!);
+    // Show departures on previous day.
+    this.previousDay = this.previousDate.setDate(
 
-  //sets mydate to a Date we can change
-  changeDate: number = this.myDate.setDate(this.myDate.getDate());
+    this.previousDate.getDate() - 1
+    );
+  }
 
-  // nextdate
-  nextDate = new Date(this.booking.DepartureDate!);
-  // set next date to show next day
-  nextDay: number = this.nextDate.setDate(this.nextDate.getDate() + 1);
 
   // Show deparures on date after today.
   showNextDay() {
@@ -118,13 +130,6 @@ export class DepartureComponent implements OnInit {
       );
     }
   }
-
-  previousDate = new Date(this.booking.DepartureDate!);
-
-  // Show departures on previous day.
-  previousDay: number = this.previousDate.setDate(
-    this.previousDate.getDate() - 1
-  );
   showPreviousDay() {
     if (this.myDate !== this.nextDate) {
       this.changeDate = this.myDate.setDate(this.myDate.getDate() - 1);
