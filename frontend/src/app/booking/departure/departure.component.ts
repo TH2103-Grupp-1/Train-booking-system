@@ -39,6 +39,7 @@ export class DepartureComponent implements OnInit {
         this.trainTimeTables = t;
       });
     }
+    console.log(this.booking);
 
     this.calculateTime();
   }
@@ -86,19 +87,19 @@ export class DepartureComponent implements OnInit {
       var minutes = Math.floor(diff5 / 60);
       time.Time! = String(' ' + hours + ':' + minutes + ' h');
     }
-    console.log(this.firefoxdate);
   }
 
   // ********************************************************
   // Get the current to date next and previous dates
-  testdate = '2022-01-24';
-  myDate = new Date(this.testdate);
+
+  testdate = this.booking.DepartureDate!;
+  myDate = this.testdate!;
 
   //sets mydate to a Date we can change
   changeDate: number = this.myDate.setDate(this.myDate.getDate());
 
   // nextdate
-  nextDate = new Date();
+  nextDate = new Date(this.booking.DepartureDate!);
   // set next date to show next day
   nextDay: number = this.nextDate.setDate(this.nextDate.getDate() + 1);
 
@@ -118,7 +119,7 @@ export class DepartureComponent implements OnInit {
     }
   }
 
-  previousDate = new Date();
+  previousDate = new Date(this.booking.DepartureDate!);
 
   // Show departures on previous day.
   previousDay: number = this.previousDate.setDate(
@@ -150,8 +151,6 @@ export class DepartureComponent implements OnInit {
   page: number = 1;
 
   totalcost: any;
-
-  firefoxdate = new Date('1995, 11, 17, 3, 24, 0');
 
   selectDeparture(departure: TrainTimeTable) {
     this.selectedDeparture = departure;
