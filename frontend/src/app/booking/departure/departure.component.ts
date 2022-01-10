@@ -19,6 +19,7 @@ export class DepartureComponent implements OnInit {
   booking!: Booking;
   trainTimeTables!: TrainTimeTable[];
   testdate!: Date;
+  currentDate!: Date;
   myDate!: Date;
   changeDate!: number;
   nextDate!: Date;
@@ -30,7 +31,7 @@ export class DepartureComponent implements OnInit {
     private bookingService: BookingBuilderService,
     private timeTableService: TimetableService,
     private route: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     if (this.bookingService.getBooking() === undefined) {
@@ -46,7 +47,7 @@ export class DepartureComponent implements OnInit {
         this.trainTimeTables = t;
       });
     }
-    console.log(this.booking);
+
     this.prepare();
     this.calculateTime();
   }
@@ -79,18 +80,20 @@ export class DepartureComponent implements OnInit {
   }
 
   calculateTime() {
+    console.log('traintimetabel' + this.trainTimeTables);
+
     for (let time of this.trainTimeTables) {
       //calc arrivaltim - departuretime and get to MILISEC
-      var date3 = time.ArrivalTime!.getTime() - time.DepartureTime!.getTime();
+      let date3 = time.ArrivalTime!.getTime() - time.DepartureTime!.getTime();
       console.log(date3);
       //check days
-      var dagar = Math.floor(date3 / (60 * 60 * 24 * 1000));
-      var datum4 = date3 / (60 * 60 * 1000) - dagar * 24;
+      let dagar = Math.floor(date3 / (60 * 60 * 24 * 1000));
+      let datum4 = date3 / (60 * 60 * 1000) - dagar * 24;
       //Calc milisec to hours and minutes
-      var decimalTid = datum4 * 60 * 60;
-      var hours = Math.floor(decimalTid / (60 * 60));
-      var diff5 = decimalTid - hours * 60 * 60;
-      var minutes = Math.floor(diff5 / 60);
+      let decimalTid = datum4 * 60 * 60;
+      let hours = Math.floor(decimalTid / (60 * 60));
+      let diff5 = decimalTid - hours * 60 * 60;
+      let minutes = Math.floor(diff5 / 60);
       time.Time! = String(' ' + hours + ':' + minutes + ' h');
     }
   }
@@ -109,11 +112,9 @@ export class DepartureComponent implements OnInit {
     this.previousDate = new Date(this.booking.DepartureDate!);
     // Show departures on previous day.
     this.previousDay = this.previousDate.setDate(
-
-    this.previousDate.getDate() - 1
+      this.previousDate.getDate() - 1
     );
   }
-
 
   // Show deparures on date after today.
   showNextDay() {
@@ -130,19 +131,36 @@ export class DepartureComponent implements OnInit {
       );
     }
   }
+  // noMoreDates() {
+  //   this.currentDate = new Date()
+  //   if (this.currentDate === this.myDate) {
+  //     alert('error')
+  //   }
+  // }
   showPreviousDay() {
+    // this.currentDate = new Date()
+    // console.log('current' +this.currentDate)
+    
+    // console.log('myDate' +this.myDate);
+    // if (this.myDate == this.currentDate!) {
+    //     alert('error')
+    //   }
     if (this.myDate !== this.nextDate) {
+       console.log('mydate in loop' + this.myDate);
+       
       this.changeDate = this.myDate.setDate(this.myDate.getDate() - 1);
       this.previousDay = this.previousDate.setDate(
         this.previousDate.getDate() - 1
       );
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() - 1);
-    } else if (this.myDate === this.nextDate) {
+    }  else if (this.myDate === this.nextDate) {
       this.previousDay = this.previousDate.setDate(
         this.previousDate.getDate() - 1
       );
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() - 1);
-    }
+      }
+   
+      
   }
 
   // sets panel false for use to our accordion

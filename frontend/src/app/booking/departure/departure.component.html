@@ -35,7 +35,7 @@
     <div class="col-md-12 col- no-padding">
       <div class="container custom-pagination">
         <div class="pagination-icon-previous">
-          <div (click)="p.previous();">
+          <div (click)="p.previous();showPreviousDay()">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -58,7 +58,7 @@
           </p>
         </div>
         <div class="pagination-icon-next">
-          <div (click)="p.next();">
+          <div (click)="p.next();showNextDay()">
             {{ nextDay | date: "E d LLL " }}
             <svg
               xmlns=" http://www.w3.org/2000/svg"
@@ -119,7 +119,7 @@
             >
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  {{ departure.DepartureTime }}-
+                  {{ departure.DepartureTime | date: "H:mm"}} -
                   {{ departure.ArrivalTime | date: "H:mm" }}
                 </mat-panel-title>
                 <!-- <mat-panel-description>
