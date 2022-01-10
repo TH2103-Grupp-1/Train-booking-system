@@ -29,6 +29,13 @@ export const getBookingById = (req, res) => {
   let preparedStatement = db.prepare("SELECT * FROM Bookings WHERE id = ?");
 
   let booking = preparedStatement.get(req.params.id);
-
   res.send(booking);
+}
+
+export const getBookingsByUserId = (req, res) => {
+  let result = db.prepare("SELECT * FROM Bookings JOIN Users ON Bookings.UserId = Users.Id WHERE Bookings.UserId = ?").all(req.params.id);
+  for(let booking of result) {
+    delete booking.Password;
+  }
+  res.send(result);
 }

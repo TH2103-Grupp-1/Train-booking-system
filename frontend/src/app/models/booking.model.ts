@@ -22,3 +22,16 @@ export class Booking {
   SeatId?: number;
 
 }
+
+export interface UserBooking {
+  DepartureTime: Date;
+  ArrivalTime: Date;
+  FirstName: string;
+  LastName: string;
+  Price: number;
+  ToLocation: string;
+  FromLocation: string;
+  TrainType: string;
+  Email: string;
+  PhoneNumber: string;
+}
