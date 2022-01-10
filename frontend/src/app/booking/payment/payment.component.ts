@@ -13,13 +13,8 @@ import { PaymentService } from 'src/app/services/payment.service';
 })
 export class PaymentComponent implements OnInit {
 
-  paymentForm = new FormGroup({
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^(\+|00)[1-9][0-9 \-\(\)\.]{7,32}$/)]),
-    email: new FormControl('', [Validators.required, Validators.email])
-  });
 
+  paymentForm!: FormGroup;
   booking: Booking;
 
   constructor(private authService: AuthService, bookingService: BookingBuilderService, router: Router, private paymentService: PaymentService) {
@@ -33,6 +28,14 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserData();
+
+
+    this.paymentForm = new FormGroup({
+      'firstName': new FormControl(null, [Validators.required]),
+      'lastName': new FormControl(null, [Validators.required]),
+      'phoneNumber': new FormControl(null, [Validators.required, Validators.pattern(/^(\+|00)[1-9][0-9 \-\(\)\.]{7,32}$/)]),
+      'email': new FormControl(null, [Validators.required, Validators.email])
+    });
   }
 
   getUserData() {
@@ -45,7 +48,22 @@ export class PaymentComponent implements OnInit {
 
   }
 
+  get firstName() {
+    return this.paymentForm.get('firstName');
 
+  }
+
+  get lastName() {
+    return this.paymentForm.get('lastName');
+  }
+
+  get phoneNumber() {
+    return this.paymentForm.get('phoneNumber');
+  }
+
+  get email() {
+    return this.paymentForm.get('email');
+  }
 
   checkout() {
    this.paymentService.postPayment(JSON.stringify(this.booking));

@@ -79,22 +79,60 @@
           <h2>{{ "Travelers" | translate }}</h2>
           <div class="row">
             <div class="col col-md-4">
-              <label for="" required>{{ "First name" | translate }}</label>
-              <input type="text" class="form-control" maxlength="30" formControlName="firstName" required />
+              <label
+                for="validationName"
+                class="form-label"
+                required>
+                {{ "First name" | translate }}
+              </label>
+              <input
+              type="text"
+              id="validationName"
+              class="form-control"
+              maxlength="30"
+              formControlName="firstName"
+              required
+              >
+              <small *ngIf="firstName!.invalid && firstName!.touched ">First name is required</small>
+
             </div>
             <div class="col col-md-4">
               <label for="">{{ "Last name" | translate }}</label>
-              <input type="text" class="form-control" maxlength="30" formControlName="lastName" required/>
+              <input
+                type="text"
+                class="form-control"
+                maxlength="30"
+                formControlName="lastName"
+                required
+                />
+                <small *ngIf="lastName!.invalid && lastName!.touched">Last name is required</small>
             </div>
           </div>
           <div class="row">
             <div class="col col-md-4">
               <label for="">{{ "Phone number" | translate }}</label>
-              <input type="tel" class="form-control" maxlength="12" formControlName="phoneNumber" required />
+              <input
+              type="tel"
+              class="form-control"
+              maxlength="12"
+              formControlName="phoneNumber"
+              required />
+              <small *ngIf="phoneNumber!.invalid && phoneNumber!.touched">Phone number is required <br>
+                Example: +46727505050</small>
             </div>
             <div class="col col-md-4">
               <label for="">E-mail</label>
-              <input type="text" class="form-control" maxlength="50" formControlName="email" required/>
+              <input
+              type="text"
+              class="form-control"
+              maxlength="50"
+              formControlName="email"
+              required/>
+              <small *ngIf="email!.invalid && email!.touched">
+                Email is required
+                <br>
+                Example: test@hotmail.com
+              </small>
             </div>
           </div>
         </form>
