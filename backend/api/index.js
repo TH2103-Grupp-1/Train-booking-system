@@ -23,7 +23,7 @@ console.log('Running in ' + process.env.NODE_ENV + 'mode.');
 if(process.env.NODE_ENV.trim() === 'production') {
     
       
-} else {tgffty
+} else {
     app.use(cors()); // ONLY FOR DEVELOPMENT
 }
 
