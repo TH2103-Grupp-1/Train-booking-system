@@ -79,22 +79,22 @@
           <h2>{{ "Travelers" | translate }}</h2>
           <div class="row">
             <div class="col col-md-4">
-              <label for="">{{ "First name" | translate }}</label>
-              <input type="text" class="form-control" maxlength="30" formControlName="firstName" />
+              <label for="" required>{{ "First name" | translate }}</label>
+              <input type="text" class="form-control" maxlength="30" formControlName="firstName" required />
             </div>
             <div class="col col-md-4">
               <label for="">{{ "Last name" | translate }}</label>
-              <input type="text" class="form-control" maxlength="30" formControlName="lastName" />
+              <input type="text" class="form-control" maxlength="30" formControlName="lastName" required/>
             </div>
           </div>
           <div class="row">
             <div class="col col-md-4">
               <label for="">{{ "Phone number" | translate }}</label>
-              <input type="text" class="form-control" maxlength="12" formControlName="phoneNumber" />
+              <input type="tel" class="form-control" maxlength="12" formControlName="phoneNumber" required />
             </div>
             <div class="col col-md-4">
               <label for="">E-mail</label>
-              <input type="text" class="form-control" maxlength="50" formControlName="email" />
+              <input type="text" class="form-control" maxlength="50" formControlName="email" required/>
             </div>
           </div>
         </form>
@@ -115,7 +115,7 @@
                   <button type="button" class="btn btn-primary btn-lg btn-block" id="cancel-btn">{{ 'Cancel' | translate }}</button>
                 </div>
                 <div class="col pull-right col-btn no-padding">
-                  <button type="button" class="btn btn-primary btn-lg btn-block" id="continue-btn" (click)="checkout()">{{ 'Checkout' | translate }}
+                  <button type="submit" class="btn btn-primary btn-lg btn-block" id="continue-btn" (click)="checkout()" [disabled]="paymentForm.invalid">{{ 'Checkout' | translate }}
                     <span class="pull-right">
                       <i class="fa fa-angle-right fa-lg"></i>
                     </span>
@@ -125,6 +125,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
     <!------------------------------------------------- second column ----------------------------------------------------------->

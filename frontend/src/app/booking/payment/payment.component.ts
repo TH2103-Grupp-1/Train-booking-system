@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Booking } from 'src/app/models/booking.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -14,10 +14,10 @@ import { PaymentService } from 'src/app/services/payment.service';
 export class PaymentComponent implements OnInit {
 
   paymentForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    phoneNumber: new FormControl(''),
-    email: new FormControl('')
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^(\+|00)[1-9][0-9 \-\(\)\.]{7,32}$/)]),
+    email: new FormControl('', [Validators.required, Validators.email])
   });
 
   booking: Booking;
@@ -44,6 +44,8 @@ export class PaymentComponent implements OnInit {
     }
 
   }
+
+
 
   checkout() {
    this.paymentService.postPayment(JSON.stringify(this.booking));
