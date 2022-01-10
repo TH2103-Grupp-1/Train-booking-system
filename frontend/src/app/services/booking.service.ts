@@ -23,7 +23,7 @@ export class BookingService {
     this.http.post<Confirmation>(this.BASE_URL + '/bookings', confirmation).subscribe();
   }
 
-  getBookingsByUserId(userId: number) : Observable<UserBooking> {
-    return this.http.get<UserBooking>(`${this.BASE_URL}/bookings/user/${userId}`)
+  getBookingsByUserId(userId: number) : Observable<UserBooking[]> {
+    return this.http.get<UserBooking[]>(`${this.BASE_URL}/bookings/user/${userId}`)
   }
 }

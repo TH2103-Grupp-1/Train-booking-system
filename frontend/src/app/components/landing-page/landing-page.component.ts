@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Station } from '../models/station.model';
-import { StationService } from '../services/station.service';
+import { Station } from '../../models/station.model';
+import { StationService } from '../../services/station.service';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import { Booking } from '../models/booking.model';
+import { Booking } from '../../models/booking.model';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { BookingBuilderService } from '../services/booking-builder.service';
+import { BookingBuilderService } from '../../services/booking-builder.service';
 import { Route, Router } from '@angular/router';
-import { TravelerType } from '../models/traveler.model';
+import { TravelerType } from '../../models/traveler.model';
 
 @Component({
   selector: 'app-landing-page',

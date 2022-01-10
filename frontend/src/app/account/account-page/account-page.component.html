@@ -23,7 +23,29 @@
                     </div>
                 </div>
                 <div class="container travel-info">
-                    <h2>{{'Upcoming Trips' | translate}}</h2>
+                  <router-outlet></router-outlet>
+                    <h2>{{'Trips' | translate}}</h2>
+                    <table class="table table-responsive">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">{{'Departure Station' | translate}}</th>
+                                <th scope="col">{{'Destination' | translate}}</th>
+                                <th scope="col">{{'Departure Time' | translate}}</th>
+                                <th scope="col">{{'Time Of Arrival' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let booking of userBooking | async; index as i">
+                                <th scope="row">{{i + 1}}</th>
+                                <td>{{booking.FromLocation}}</td>
+                                <td>{{booking.ToLocation}}</td>
+                                <td>{{booking.DepartureTime}}</td>
+                                <td>{{booking.ArrivalTime}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- <h2>{{'Commuter Tickets' | translate}}</h2>
                     <table class="table table-responsive">
                         <thead class="thead-dark">
                             <tr>
@@ -43,28 +65,7 @@
                                 <td>16:00</td>
                             </tr>
                         </tbody>
-                    </table>
-                    <h2>{{'Commuter Tickets' | translate}}</h2>
-                    <table class="table table-responsive">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">{{'Departure Station' | translate}}</th>
-                                <th scope="col">{{'Destination' | translate}}</th>
-                                <th scope="col">{{'Departure Time' | translate}}</th>
-                                <th scope="col">{{'Time Of Arrival' | translate}}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Göteborg C</td>
-                                <td>Stockholm C</td>
-                                <td>12.45</td>
-                                <td>16:00</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    </table> -->
                     <h2>{{'Credit Card' | translate}}</h2>
                     <table class="table table-responsive">
                         <thead class="thead-dark">
@@ -141,7 +142,7 @@
                         </a>
                     </div>
                     <div class="container inner-container border-bottom padding-left">
-                        <a href="">
+                        <a routerLink="/account/bookings">
                             <h3>{{'All Bookings' | translate}}</h3>
                         </a>
                     </div>
@@ -167,7 +168,7 @@
                     </div>
                 </div>
                 <div class="container no-padding margin-top">
-                    <button type="button" class="btn btn-primary btn-lg btn-block" id="booking-btn">Boka Resa</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" id="booking-btn" routerLink="/">Boka Resa</button>
                 </div>
             </div>
         </div>
