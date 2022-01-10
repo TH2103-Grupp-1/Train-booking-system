@@ -5,12 +5,7 @@ import { Booking } from 'src/app/models/booking.model';
 import { TrainTimeTable } from 'src/app/models/timetable.model';
 import { BookingBuilderService } from 'src/app/services/booking-builder.service';
 import { TimetableService } from 'src/app/services/timetable.service';
-
-interface TicketInterface {
-  id: number;
-  ageGroup: string;
-  price: number;
-}
+import { TicketInterface } from "../../models/tickets.model";
 
 @Component({
   selector: 'app-departure',
@@ -42,26 +37,27 @@ export class DepartureComponent implements OnInit {
       });
     }
     this.calculateTime();
+    this.booking
   }
 
-  //---------------------------------Travelers---------------------------------
+  //---------------------------------Tickets---------------------------------
 
-  travelers: TicketInterface[] = [{ id: 0, ageGroup: 'adult', price: 39 }];
+  tickets: TicketInterface[] = [{ id: 0, ageGroup: 'adult', price: 39 }];
   ageGroups = new Array<string>();
   counter: number = 0;
 
-  addTraveler() {
-    if (this.travelers.length < 9) {
+  addTicket() {
+    if (this.tickets.length < 9) {
       this.counter++;
-      this.travelers.push({ id: this.counter, ageGroup: 'adult', price: 39 });
+      this.tickets.push({ id: this.counter, ageGroup: 'adult', price: 39 });
       this.resetId();
       this.booking.Price = this.calculateTotalPrice();
     }
-    console.log(this.travelers);
+    console.log(this.tickets);
   }
 
-  changeTraveler(index: number, value: string) {
-    for (let traveler of this.travelers) {
+  changeTicket(index: number, value: string) {
+    for (let traveler of this.tickets) {
       if (index === traveler.id) {
         traveler.ageGroup = value;
 
@@ -79,19 +75,19 @@ export class DepartureComponent implements OnInit {
         this.booking.Price = this.calculateTotalPrice();
       }
     }
-    console.log(this.travelers);
+    console.log(this.tickets);
   }
 
-  deleteTravelerer(index: number) {
-    this.travelers.splice(index, 1);
+  deleteTicket(index: number) {
+    this.tickets.splice(index, 1);
     this.resetId();
     this.booking.Price = this.calculateTotalPrice();
-    console.log(this.travelers);
+    console.log(this.tickets);
   }
 
   resetId() {
     this.counter = 0;
-    for (let traveler of this.travelers) {
+    for (let traveler of this.tickets) {
       traveler.id = this.counter;
       this.counter++;
     }
@@ -99,7 +95,7 @@ export class DepartureComponent implements OnInit {
 
   calculateTotalPrice(): number {
     let sum: number = 0;
-    for (let traveler of this.travelers) {
+    for (let traveler of this.tickets) {
       sum += traveler.price;
     }
     if (this.departurePrice) {
@@ -108,7 +104,7 @@ export class DepartureComponent implements OnInit {
     return sum;
   }
 
-  //---------------------------------Travelers---------------------------------
+  //---------------------------------Tickets---------------------------------
 
   calculateTime() {
     for (let time of this.trainTimeTables) {
@@ -193,6 +189,7 @@ export class DepartureComponent implements OnInit {
   }
 
   submit() {
+    this.booking.Tickets = this.tickets;
     this.booking.TimeTable = this.selectedDeparture;
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/seat');
