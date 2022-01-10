@@ -3,3 +3,8 @@ export interface TicketInterface {
   ageGroup: string;
   price: number;
 }
+
+export interface AgeGroup {
+  value: string;
+  viewValue: string;
+}
