@@ -42,19 +42,22 @@ export class DepartureComponent implements OnInit {
 
   //---------------------------------Tickets---------------------------------
 
-  tickets: TicketInterface[] = [{ id: 0, ageGroup: 'adult', price: 39 }];
+  tickets: TicketInterface[] = [{ id: 0, ageGroup: 'adult', price: 39}];
   ageGroups: AgeGroup[] = [
     { 
       value: "child",
-      viewValue: "Child"
+      viewValue: "Child",
+      price: 26
     },
     { 
       value: "adult",
-      viewValue: "Adult"
+      viewValue: "Adult",
+      price: 39
     },
     { 
       value: "retired",
-      viewValue: "Retired"
+      viewValue: "Retired",
+      price: 26
     }
   ]
   counter: number = 0;

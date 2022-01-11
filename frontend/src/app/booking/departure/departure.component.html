@@ -90,7 +90,7 @@
           <div class="dropdowns">
             <mat-form-field *ngFor="let ticket of tickets let i = index" appearance="fill">
               <mat-select value="{{ ticket.ageGroup }}" (selectionChange)="changeTicket(i, $event.value)">
-                <mat-option *ngFor="let ageGroup of ageGroups" [value]="ageGroup.value">{{ageGroup.viewValue | translate}}</mat-option>
+                <mat-option *ngFor="let ageGroup of ageGroups" [value]="ageGroup.value">{{ageGroup.viewValue | translate}} : {{ageGroup.price}} sek</mat-option>
               </mat-select>
               <mat-icon matSuffix (click)="deleteTicket(i)">delete</mat-icon>
             </mat-form-field>

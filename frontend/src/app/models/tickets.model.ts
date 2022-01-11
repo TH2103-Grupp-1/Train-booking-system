@@ -7,4 +7,5 @@ export interface TicketInterface {
 export interface AgeGroup {
   value: string;
   viewValue: string;
+  price: number;
 }
