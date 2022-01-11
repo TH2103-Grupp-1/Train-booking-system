@@ -40,16 +40,14 @@
         <h2>{{ "Delivery" | translate }}</h2>
         <div id="radio-buttons">
           <div class="container border no-padding">
+            <label class="form-check-label radio-label" for="flexRadioDefault1">
             <div class="form-check padding" data-toggle="collapse" href="#e-ticket" role="button" aria-expanded="false"
               aria-controls="e-ticket">
-
-              <label class="form-check-label radio-label" for="flexRadioDefault1">
                 <span><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
                     checked /></span>
                 <span>{{ "E-ticket" | translate }}</span>
-
-              </label>
             </div>
+          </label>
             <div class="container collapse" id="e-ticket" data-parent="#radio-buttons">
               <hr />
               {{ 'The ticket is a pdf that is sent to your e-mail.On the train, you show the ticket in your mobile or
@@ -58,14 +56,16 @@
 
           </div>
           <div class="container border no-padding">
+            <label class="form-check-label radio-label" for="flexRadioDefault2">
             <div class="form-check padding" data-toggle="collapse" href="#sms-ticket" role="button"
               aria-expanded="false" aria-controls="sms-ticket">
-              <label class="form-check-label radio-label" for="flexRadioDefault2">
+
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
 
                 {{ "SMS-ticket" | translate }}
-              </label>
+
             </div>
+          </label>
             <div class="container collapse" id="sms-ticket" data-parent="#radio-buttons">
               <hr />
               {{ 'An SMS with a link to your ticket will be sent the day before departure. If you travel within 24
@@ -150,7 +150,7 @@
             <div class="col pull-right">
               <div class="row pull-right">
                 <div class="col col-btn no-padding">
-                  <button type="button" class="btn btn-primary btn-lg btn-block" id="cancel-btn">{{ 'Cancel' | translate }}</button>
+                  <button type="button" class="btn btn-primary btn-lg btn-block" id="cancel-btn" (click)="openDialog()">{{ 'Cancel' | translate }}</button>
                 </div>
                 <div class="col pull-right col-btn no-padding">
                   <button type="submit" class="btn btn-primary btn-lg btn-block" id="continue-btn" (click)="checkout()" [disabled]="paymentForm.invalid">{{ 'Checkout' | translate }}

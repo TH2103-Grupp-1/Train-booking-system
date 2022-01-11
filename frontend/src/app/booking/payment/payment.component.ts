@@ -5,6 +5,8 @@ import { Booking } from 'src/app/models/booking.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { BookingBuilderService } from 'src/app/services/booking-builder.service';
 import { PaymentService } from 'src/app/services/payment.service';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { PaymentCancelComponent } from './payment-cancel/payment-cancel.component';
 
 @Component({
   selector: 'app-payment',
@@ -17,7 +19,7 @@ export class PaymentComponent implements OnInit {
   paymentForm!: FormGroup;
   booking: Booking;
 
-  constructor(private authService: AuthService, bookingService: BookingBuilderService, router: Router, private paymentService: PaymentService) {
+  constructor(private authService: AuthService, bookingService: BookingBuilderService, router: Router, private paymentService: PaymentService, public dialog: MatDialog) {
     this.booking = bookingService.getBooking();
     if(this.booking === undefined) { router.navigateByUrl('/'); }
     // delete this.booking.Train?.Carriages;
@@ -45,6 +47,11 @@ export class PaymentComponent implements OnInit {
         this.paymentForm.setValue({ firstName: currentUser.FirstName, lastName: currentUser.LastName, phoneNumber: currentUser.PhoneNumber, email: currentUser.Email })
       }
     }
+
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(PaymentCancelComponent);
 
   }
 
