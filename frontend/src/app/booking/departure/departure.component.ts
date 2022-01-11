@@ -30,7 +30,7 @@ export class DepartureComponent implements OnInit {
       this.timeTableService.getTimeTables().subscribe((t) => {
         for (let train of t) {
           train.PriceTotal = Math.round(
-            train.BasePrice * this.booking.Distance!
+            train.BasePrice * this.booking.Distance! + 3
           );
         }
         this.trainTimeTables = t;
@@ -44,17 +44,17 @@ export class DepartureComponent implements OnInit {
 
   tickets: TicketInterface[] = [{ id: 0, ageGroup: 'adult', price: 39}];
   ageGroups: AgeGroup[] = [
-    { 
+    {
       value: "child",
       viewValue: "Child",
       price: 26
     },
-    { 
+    {
       value: "adult",
       viewValue: "Adult",
       price: 39
     },
-    { 
+    {
       value: "retired",
       viewValue: "Retired",
       price: 26
