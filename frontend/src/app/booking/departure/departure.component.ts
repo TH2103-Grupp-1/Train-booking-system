@@ -33,7 +33,7 @@ export class DepartureComponent implements OnInit {
       this.timeTableService.getTimeTables().subscribe((t) => {
         for (let train of t) {
           train.PriceTotal = Math.round(
-            train.BasePrice * this.booking.Distance!
+            train.BasePrice * this.booking.Distance! + 3
           );
         }
         this.trainTimeTables = t;
