@@ -36,7 +36,7 @@ export class PaymentComponent implements OnInit {
       'firstName': new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
       'lastName': new FormControl(null, [Validators.required,  Validators.pattern('[a-zA-Z ]*')]),
       'phoneNumber': new FormControl(null, [Validators.required, Validators.pattern(/^(\+|00)[1-9][0-9 \-\(\)\.]{7,32}$/)]),
-      'email': new FormControl(null, [Validators.required, Validators.email])
+      'email': new FormControl(null, [Validators.required, Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}')])
     });
   }
 
