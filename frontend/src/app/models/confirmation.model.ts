@@ -6,4 +6,5 @@ export interface Confirmation {
   Price: string;
   ToLocation: string;
   TrainType: string;
+  SeatNumber: string;
 }

@@ -7,12 +7,13 @@ export const createBooking = (req, res) => {
   let fromLocation = req.body.FromLocation;
   let price = req.body.Price;
   let seatId = req.body.SeatId;
+  let seatNumber = req.body.SeatNumber;
   let toLocation = req.body.ToLocation;
   let trainType = req.body.TrainType;
 
-  let preparedStatement = db.prepare("INSERT INTO Bookings (ArrivalTime, CustomerName, DepartureTime, FromLocation, Price, SeatId, ToLocation, TrainType) VALUES(?,?,?,?,?,?,?,?)");
+  let preparedStatement = db.prepare("INSERT INTO Bookings (ArrivalTime, CustomerName, DepartureTime, FromLocation, Price, SeatId, SeatNumber. ToLocation, TrainType) VALUES(?,?,?,?,?,?,?,?,?)");
 
-  preparedStatement.run(arrivalTime, customerName, departureTime, fromLocation, price, seatId, toLocation, trainType);
+  preparedStatement.run(arrivalTime, customerName, departureTime, fromLocation, price, seatId, seatNumber, toLocation, trainType);
 
   res.send("Data inserted!");
 }

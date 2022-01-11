@@ -62,11 +62,9 @@ export class DepartureComponent implements OnInit {
         traveler.ageGroup = value;
       }
     }
-    console.log(this.travelers);
   }
 
   deleteTravelerer(index: number) {
-    console.log(this.travelers);
     this.travelers.splice(index, 1);
   }
 

@@ -46,6 +46,8 @@ export class PickSeatComponent implements OnInit {
   selectSeat(seat: number, seatId: number) {
     this.selectedSeat.push(seat);
     this.booking.SeatId = seatId;
+    this.booking.SeatNumber = seat;
+    console.log(this.booking.SeatNumber);
   }
 
   change(group: any) {
@@ -59,10 +61,10 @@ export class PickSeatComponent implements OnInit {
   }
 
   submit() {
-    for(let seat of this.selectedSeat) {
-      this.selectedCarriage.Seats?.push({ SeatNumber: seat });
-    }
-    this.booking.Train?.Carriages?.push(this.selectedCarriage);
+    // for(let seat of this.selectedSeat) {
+    //   this.selectedCarriage.Seats?.push({ SeatNumber: seat });
+    // }
+    // this.booking.Train?.Carriages?.push(this.selectedCarriage);
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/overview');
   }

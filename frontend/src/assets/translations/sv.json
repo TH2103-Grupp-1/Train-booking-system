@@ -118,5 +118,17 @@
   "Checkout": "Till Betalning",
   "Active Bookings": "Aktiva Bokningar",
   "All bookings": "Alla bokningar",
-  "You do not have any upcoming trips, you can view you previous bookings under 'All Bookings'.": "Du har inga kommande resor, du kan se dina tidigare bokningar under 'Alla Bokningar'."
+  "You do not have any upcoming trips, you can view you previous bookings under 'All Bookings'.": "Du har inga kommande resor, du kan se dina tidigare bokningar under 'Alla Bokningar'.",
+  "Add Traveler": "Lägg till resande",
+  "Adult": "Vuxen",
+  "Child": "Minderårig",
+  "Retired": "Senior",
+  "January": "Januari",
+  "February": "Februari",
+  "March": "Mars",
+  "May": "Maj",
+  "June": "Juni",
+  "July": "Juli",
+  "August": "Augusti",
+  "October": "Oktober"
 }

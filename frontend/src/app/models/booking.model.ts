@@ -20,7 +20,7 @@ export class Booking {
   DeliveryMethod?: 'Sms' | 'Email';
   TicketReciever?: TicketReciever;
   SeatId?: number;
-
+  SeatNumber?: number;
 }
 
 export interface UserBooking {
