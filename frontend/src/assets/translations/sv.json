@@ -115,5 +115,13 @@
   "Optional": "Tillval",
   "Timetable": "Tidstabell",
   "Exit trip": "Utresa",
-  "Checkout": "Till Betalning"
+  "Checkout": "Till Betalning",
+  "First name is required": "Förnamn är obligatorisk",
+  "Last name is required":"Efternamn är obligatorisk",
+  "Phone number is required": "Telefonnummer är obligatorisk",
+  "Example:": "Exempel:",
+  "Email is required":"Email är obligatorisk"
+
+
+
 }

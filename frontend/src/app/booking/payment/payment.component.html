@@ -93,7 +93,7 @@
               formControlName="firstName"
               required
               >
-              <small *ngIf="firstName!.invalid && firstName!.touched ">First name is required</small>
+              <small *ngIf="firstName!.invalid && firstName!.touched ">{{ 'First name is required' | translate }}</small>
 
             </div>
             <div class="col col-md-4">
@@ -105,7 +105,7 @@
                 formControlName="lastName"
                 required
                 />
-                <small *ngIf="lastName!.invalid && lastName!.touched">Last name is required</small>
+                <small *ngIf="lastName!.invalid && lastName!.touched">{{ 'Last name is required' | translate }}</small>
             </div>
           </div>
           <div class="row">
@@ -117,8 +117,8 @@
               maxlength="12"
               formControlName="phoneNumber"
               required />
-              <small *ngIf="phoneNumber!.invalid && phoneNumber!.touched">Phone number is required <br>
-                Example: +46727505050</small>
+              <small *ngIf="phoneNumber!.invalid && phoneNumber!.touched">{{ 'Phone number is required' | translate }} <br>
+                {{ 'Example:' | translate}} +46727505050</small>
             </div>
             <div class="col col-md-4">
               <label for="">E-mail</label>
@@ -129,9 +129,9 @@
               formControlName="email"
               required/>
               <small *ngIf="email!.invalid && email!.touched">
-                Email is required
+                {{ 'Email is required' | translate }}
                 <br>
-                Example: test@hotmail.com
+                {{ 'Example:' | translate }} test@hotmail.com
               </small>
             </div>
           </div>
