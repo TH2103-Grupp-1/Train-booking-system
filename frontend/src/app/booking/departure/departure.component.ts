@@ -6,6 +6,7 @@ import { TrainTimeTable } from 'src/app/models/timetable.model';
 import { BookingBuilderService } from 'src/app/services/booking-builder.service';
 import { TimetableService } from 'src/app/services/timetable.service';
 
+
 interface AgeGroupInterface {
   id: number;
   ageGroup: string;
@@ -26,6 +27,7 @@ export class DepartureComponent implements OnInit {
   nextDay!: number;
   previousDate!: Date;
   previousDay!: number;
+  
 
   constructor(
     private bookingService: BookingBuilderService,
@@ -80,7 +82,6 @@ export class DepartureComponent implements OnInit {
   }
 
   calculateTime() {
-    console.log('traintimetabel' + this.trainTimeTables);
 
     for (let time of this.trainTimeTables) {
       //calc arrivaltim - departuretime and get to MILISEC
@@ -102,6 +103,10 @@ export class DepartureComponent implements OnInit {
   // Get the current to date next and previous dates
 
   prepare() {
+    if (this.booking.DepartureDate == undefined) {
+      this.booking.DepartureDate = this.currentDate
+    }
+    else {
     this.myDate = this.booking.DepartureDate!;
     //sets mydate to a Date we can change
     this.changeDate = this.myDate.setDate(this.myDate.getDate());
@@ -113,11 +118,18 @@ export class DepartureComponent implements OnInit {
     // Show departures on previous day.
     this.previousDay = this.previousDate.setDate(
       this.previousDate.getDate() - 1
-    );
+      );
+    }
   }
 
-  // Show deparures on date after today.
+  // Show deparures on date after "today" or picked date.
   showNextDay() {
+     this.currentDate = new Date();
+    const hidePrevDate = document.querySelector('.pagination-icon-previous-hidden') as HTMLElement
+      if (this.currentDate.getDay() === this.myDate.getDay()) {
+        hidePrevDate.style.opacity = "1"
+      hidePrevDate.style.pointerEvents= "auto"
+      }
     if (this.myDate !== this.nextDate) {
       this.changeDate = this.myDate.setDate(this.myDate.getDate() + 1);
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() + 1);
@@ -129,25 +141,28 @@ export class DepartureComponent implements OnInit {
       this.previousDay = this.previousDate.setDate(
         this.previousDate.getDate() + 1
       );
+      
     }
   }
-  // noMoreDates() {
-  //   this.currentDate = new Date()
-  //   if (this.currentDate === this.myDate) {
-  //     alert('error')
-  //   }
-  // }
+
   showPreviousDay() {
-    // this.currentDate = new Date()
-    // console.log('current' +this.currentDate)
+
+    const hidePrevDate = document.querySelector('.pagination-icon-previous-hidden') as HTMLElement
+    this.currentDate = new Date();
+    if (this.currentDate.getDay() === this.myDate.getDay()){
+
+      hidePrevDate.style.opacity = "0.5"
+      hidePrevDate.style.pointerEvents= "none";
+
+      alert('error');
+      this.nextDay = this.nextDate.setDate(this.nextDate.getDate() + 1);
+      this.changeDate = this.myDate.setDate(this.myDate.getDate() +1);
+        this.previousDay = this.previousDate.setDate(this.previousDate.getDate() + 1,
+      );
+      }
     
-    // console.log('myDate' +this.myDate);
-    // if (this.myDate == this.currentDate!) {
-    //     alert('error')
-    //   }
+    
     if (this.myDate !== this.nextDate) {
-       console.log('mydate in loop' + this.myDate);
-       
       this.changeDate = this.myDate.setDate(this.myDate.getDate() - 1);
       this.previousDay = this.previousDate.setDate(
         this.previousDate.getDate() - 1
@@ -155,13 +170,12 @@ export class DepartureComponent implements OnInit {
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() - 1);
     }  else if (this.myDate === this.nextDate) {
       this.previousDay = this.previousDate.setDate(
-        this.previousDate.getDate() - 1
+        this.previousDate.getDate() - 1,
       );
+      
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() - 1);
       }
-   
-      
-  }
+  } 
 
   // sets panel false for use to our accordion
   panelExpanded = false;

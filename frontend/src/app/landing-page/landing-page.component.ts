@@ -57,9 +57,6 @@ export class LandingPageComponent implements OnInit {
 
   setTimeCalendar1(time: string) {
     this.selectedTime_calendar1 = time;
-    console.log(
-      'date' + this.selectedDate_calendar1 + this.selectedTime_calendar1
-    );
   }
 
   setTimeCalendar2(time: string) {
@@ -153,7 +150,6 @@ export class LandingPageComponent implements OnInit {
     this.booking.DepartureDate = this.selectedDate_calendar1;
     this.booking.Travelers = [TravelerType.Adult];
     this.bookingBuilder.updateBooking(this.booking);
-    console.log(this.booking.DepartureDate);
     this.route.navigateByUrl('/departures');
   }
 
