@@ -25,6 +25,7 @@
                 <div class="container travel-info">
                   <router-outlet></router-outlet>
                     <h2>{{'Bookings' | translate}}</h2>
+                  <ng-template *ngIf="(userBooking | async) !== null; else elseBlock">
                     <table class="table table-responsive">
                         <thead class="thead-dark">
                             <tr>
@@ -45,6 +46,10 @@
                             </tr>
                         </tbody>
                     </table>
+                  </ng-template>
+                  <ng-template #elseBlock>
+                    <h2>Hello ijsoijodfjoifdsjdsofjsdoifjsdoifjdsfoidsjfoidsfjsoifjfdsoijfdoifdsj</h2>
+                  </ng-template>
                     <!-- <h2>{{'Commuter Tickets' | translate}}</h2>
                     <table class="table table-responsive">
                         <thead class="thead-dark">

@@ -19,7 +19,7 @@ export class AccountPageComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.userBooking = this.bookingService.getBookingsByUserId(this.authService.currentUser!.Id);
+    this.userBooking = this.bookingService.getBookingsByUserIdAndDate(this.authService.currentUser!.Id);
   }
 
 }

@@ -34,14 +34,12 @@ export const getBookingById = (req, res) => {
 
 export const getBookingsByUserId = (req, res) => {
   let result;
-  console.log(req.query.date);
-  if(req.query.date !== undefined) {
-   result =db.prepare("SELECT * FROM Bookings WHERE instr(DepartureTime, '?') > 0").all(req.query.date);
-    console.log(result);
+  if (req.query.date !== undefined) {
+    result = db.prepare("SELECT * FROM Bookings WHERE instr(DepartureTime, @date) > 0 AND UserId = @user").all({ date: req.query.date, user: req.params.id });
   } else {
     result = db.prepare("SELECT * FROM Bookings JOIN Users ON Bookings.UserId = Users.Id WHERE Bookings.UserId = ?").all(req.params.id);
   }
-  for(let booking of result) {
+  for (let booking of result) {
     delete booking.Password;
   }
   res.send(result);
