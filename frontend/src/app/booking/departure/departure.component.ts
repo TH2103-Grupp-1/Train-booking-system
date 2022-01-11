@@ -154,7 +154,6 @@ export class DepartureComponent implements OnInit {
       hidePrevDate.style.opacity = "0.5"
       hidePrevDate.style.pointerEvents= "none";
 
-      alert('error');
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() + 1);
       this.changeDate = this.myDate.setDate(this.myDate.getDate() +1);
         this.previousDay = this.previousDate.setDate(this.previousDate.getDate() + 1,
