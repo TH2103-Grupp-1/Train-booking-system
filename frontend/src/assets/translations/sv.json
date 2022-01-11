@@ -116,5 +116,8 @@
   "Timetable": "Tidstabell",
   "Exit trip": "Utresa",
   "Checkout": "Till Betalning",
-  "You must enter two different stations": "Du måste ange två olika stationer"
+  "Child": "Barn",
+  "Adult": "Vuxen",
+  "Retired": "Pensionär",
+  "Add Ticket": "Lägg till biljett"
 }
