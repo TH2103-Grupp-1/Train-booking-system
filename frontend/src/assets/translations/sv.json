@@ -120,7 +120,11 @@
   "Last name is required":"Efternamn är obligatorisk",
   "Phone number is required": "Telefonnummer är obligatorisk",
   "Example:": "Exempel:",
-  "Email is required":"Email är obligatorisk"
+  "Email is required":"Email är obligatorisk",
+  "Are you sure you want to cancel?": "Är du säker på att du vill avbryta?",
+  "You can't regret this choice!": "Du kan inte ångra detta val!",
+  "Yes": "Ja",
+  "No": "Nej"
 
 
 
