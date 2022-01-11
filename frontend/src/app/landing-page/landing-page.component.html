@@ -8,10 +8,10 @@
         <div class="row d-flex justify-content-center">
 
           <div class="col">
-            <form class="search-form">
+            <form class="search-form" onSubmit="return false">
               <mat-form-field class="search-full-width" appearance="fill">
                 <mat-label>{{'FROM' | translate}}</mat-label>
-                <input maxlength="30" type="text" matInput [formControl]="fromStationControl" [matAutocomplete]="auto1">
+                <input maxlength="30" type="text" matInput [formControl]="fromStationControl" [matAutocomplete]="auto1" required>
                 <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayFromStation"
                   (optionSelected)='selectFromStation($event)'>
                   <mat-option *ngFor="let option of filteredFromStationOptions | async" [value]="option">
@@ -23,10 +23,10 @@
           </div>
 
           <div class="col">
-            <form class="search-form">
-              <mat-form-field class="search-full-width" appearance="fill">
+            <form class="search-form" onSubmit="return false">
+              <mat-form-field class="search-full-width" appearance="fill" >
                 <mat-label>{{'TO' | translate}}</mat-label>
-                <input maxlength="30" type="text" matInput [formControl]="toStationControl" [matAutocomplete]="auto2">
+                <input maxlength="30" type="text" matInput [formControl]="toStationControl" [matAutocomplete]="auto2" required>
                 <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayToStation"
                   (optionSelected)='selectToStation($event)'>
                   <mat-option *ngFor="let option of filteredToStationOptions | async" [value]="option">
@@ -198,7 +198,7 @@
         <i class="fa fa-angle-right fa-lg"></i>
       </span>
     </button>
-
+ 
 
 
     <button *ngIf="fromStation !== undefined && toStation !== undefined" type="submit" (click)="getDistanceAndCost()"
