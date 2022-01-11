@@ -117,5 +117,6 @@
   "Exit trip": "Utresa",
   "Checkout": "Till Betalning",
   "Active Bookings": "Aktiva Bokningar",
-  "All bookings": "Alla bokningar"
+  "All bookings": "Alla bokningar",
+  "You do not have any upcoming trips, you can view you previous bookings under 'All Bookings'.": "Du har inga kommande resor, du kan se dina tidigare bokningar under 'Alla Bokningar'."
 }

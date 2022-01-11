@@ -12,15 +12,17 @@ import { BookingService } from '../../services/booking.service';
 export class AccountPageComponent implements OnInit {
 
   name: string | undefined;
-  userBooking!: Observable<UserBooking[]>;
+  userBooking!: UserBooking[];
 
   constructor(private authService: AuthService, private bookingService: BookingService) {
     this.name = authService.currentUser?.FirstName;
     console.log(this.userBooking);
-   }
+  }
 
   ngOnInit(): void {
-    this.userBooking = this.bookingService.getBookingsByUserIdAndDate(this.authService.currentUser!.Id);
-  }
+    this.bookingService.getBookingsByUserIdAndDate(this.authService.currentUser!.Id).subscribe(ub => {
+      this.userBooking = ub;
+  })
+}
 
 }
