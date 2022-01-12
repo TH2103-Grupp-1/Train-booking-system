@@ -36,7 +36,7 @@
   <div class="container h-75 train-container">
     <div class="align-items-center h-75">
       <div class="scrolling-wrapper">
-        <div *ngFor="let carriage of carriages" (click)="selectCarriage(carriage)" class="carriage card"><h2 class="carriage-type">{{carriage.CarriageType}}</h2>
+        <div *ngFor="let carriage of carriages" (click)="selectCarriage(carriage)" class="carriage card"><h2 class="carriage-type">{{ carriage.CarriageType! | translate }}</h2>
       </div>
       </div>
         <div *ngIf="selectedCarriage !== undefined" class="seats">
@@ -57,10 +57,10 @@
           </mat-button-toggle-group>
           </div>
           </div>
-          <div class="container train-container"><h1>Passengers: {{booking.Travelers!.length}}</h1></div>
+          <div class="container train-container"><h1>{{ 'Passengers' | translate }}: {{booking.Travelers!.length}}</h1></div>
           <div *ngIf="selectedSeat.length > 0" class="container train-container">
-            <h1>You selected seat {{selectedSeat.concat()}} on carriage {{selectedCarriage.CarriageType}} </h1>
-            <button class="btn btn-success" (click)="submit()">{{'Continue' | translate }}</button>
+            <h1>{{'You selected seat' | translate}} {{selectedSeat.concat()}} {{'on carriage' | translate }} {{selectedCarriage.CarriageType! | translate}} </h1>
+            <button class="btn btn-success continue-btn" (click)="submit()">{{'Continue' | translate }}</button>
           </div>
         </div>
       </div>

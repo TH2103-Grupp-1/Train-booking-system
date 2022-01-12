@@ -120,5 +120,10 @@
   "Adult": "Vuxen",
   "Retired": "Pensionär",
   "Add Ticket": "Lägg till biljett",
-  "You must enter two different stations": "Du måste ange två olika stationer"
+  "You must enter two different stations": "Du måste ange två olika stationer",
+  "Restaurant": "Restaurangvagn",
+  "Regular": "Passagerarvagn",
+  "Passengers": "Passagerare",
+  "You selected seat": "Du har valt säte",
+  "on carriage": "på vagn"
 }
