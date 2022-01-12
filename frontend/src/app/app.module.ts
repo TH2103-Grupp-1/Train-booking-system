@@ -35,6 +35,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PaymentCancelComponent } from './booking/payment/payment-cancel/payment-cancel.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/translations/', '.json');
@@ -52,7 +55,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     OrderConfirmationComponent,
     PaymentComponent,
     PickSeatComponent,
+    PaymentCancelComponent,
+
   ],
+  entryComponents: [PaymentCancelComponent],
   imports: [
     BrowserModule,
     NgxPaginationModule,
@@ -75,6 +81,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatExpansionModule,
     MatStepperModule,
     MatGridListModule,
+    MatDialogModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
