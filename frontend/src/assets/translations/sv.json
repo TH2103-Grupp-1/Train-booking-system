@@ -119,5 +119,6 @@
   "Child": "Barn",
   "Adult": "Vuxen",
   "Retired": "Pensionär",
-  "Add Ticket": "Lägg till biljett"
+  "Add Ticket": "Lägg till biljett",
+  "You must enter two different stations": "Du måste ange två olika stationer"
 }

@@ -36,7 +36,7 @@
   <div class="container h-75 train-container">
     <div class="align-items-center h-75">
       <div class="scrolling-wrapper">
-        <div *ngFor="let carriage of carriages" (click)="selectCarriage(carriage)" class="carriage card"><h2>{{carriage.CarriageType}}</h2>
+        <div *ngFor="let carriage of carriages" (click)="selectCarriage(carriage)" class="carriage card"><h2 class="carriage-type">{{carriage.CarriageType}}</h2>
       </div>
       </div>
         <div *ngIf="selectedCarriage !== undefined" class="seats">
