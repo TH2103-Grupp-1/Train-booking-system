@@ -50,12 +50,12 @@ export class DepartureComponent implements OnInit {
       
       
       
+
     }
     this.myDate = this.booking.DepartureDate!;
 console.log(this.currentDate);
       console.log(this.booking.DepartureDate);
     this.prepare();
-    this.calculateTime();
     this.booking
   }
 
@@ -171,6 +171,8 @@ console.log(this.currentDate);
     for (let time of this.trainTimeTables) {
       //calc arrivaltim - departuretime and get to MILISEC
       var date3 = time.ArrivalTime!.getTime() - time.DepartureTime!.getTime();
+      
+      
       console.log(date3);
       //check days
       var dagar = Math.floor(date3 / (60 * 60 * 24 * 1000));
@@ -294,6 +296,8 @@ console.log(this.currentDate);
     this.selectedDeparture = departure;
     this.departurePrice = departure.PriceTotal
     this.booking.Price = this.calculateTotalPrice();
+    console.log(this.trainTimeTables);
+    
   }
 
   submit() {
