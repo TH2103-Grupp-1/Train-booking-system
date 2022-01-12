@@ -115,5 +115,9 @@
   "Optional": "Tillval",
   "Timetable": "Tidstabell",
   "Exit trip": "Utresa",
-  "Checkout": "Till Betalning"
+  "Checkout": "Till Betalning",
+  "Child": "Barn",
+  "Adult": "Vuxen",
+  "Retired": "Pensionär",
+  "Add Ticket": "Lägg till biljett"
 }
