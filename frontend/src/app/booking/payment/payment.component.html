@@ -114,7 +114,8 @@
               <input
               type="tel"
               class="form-control"
-              maxlength="12"
+              minlength="10"
+              maxlength="14"
               formControlName="phoneNumber"
               required />
               <small *ngIf="phoneNumber!.invalid && phoneNumber!.touched">{{ 'Phone number is required' | translate }} <br>
@@ -125,7 +126,7 @@
               <input
               type="email"
               class="form-control"
-              maxlength="50"
+              maxlength="40"
               formControlName="email"
               required/>
               <small *ngIf="email!.invalid && email!.touched">
