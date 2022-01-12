@@ -11,7 +11,7 @@ export class Booking {
   ToLocation?: Station;
   ReturnTrip?: Boolean;
   TimeTable?: TrainTimeTable;
-  // DepartureDate?: Date;
+  DepartureDate?: Date;
   // ReturnTripDate?: Date;
   Travelers?: TravelerType[];
   Train?: Train;
