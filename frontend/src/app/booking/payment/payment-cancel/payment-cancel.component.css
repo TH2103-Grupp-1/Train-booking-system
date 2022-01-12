@@ -1,0 +1,11 @@
+.yes-btn {
+  background-color: red;
+}
+
+.no-btn {
+  background-color: blue;
+}
+
+.yes-btn, .no-btn{
+  color:white;
+}
