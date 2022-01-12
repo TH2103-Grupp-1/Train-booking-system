@@ -178,7 +178,7 @@ console.log(this.currentDate);
     
     const hidePrevDate = document.querySelector('.pagination-icon-previous-hidden') as HTMLElement
     if (this.currentDate.getDate() === this.myDate.getDate() && this.currentDate.getMonth() === this.myDate.getMonth()) {
-      alert('')
+      // alert('')
        hidePrevDate.style.opacity = "0.5"
        hidePrevDate.style.pointerEvents = "none"
     
