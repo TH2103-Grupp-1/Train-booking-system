@@ -40,3 +40,27 @@ export const updateSeat = async (req, res) => {
 
   
 }
+
+export const createSeats = async (req, res) => {
+
+
+  let preparedStatement = db.prepare("INSERT INTO Seats (CarriageId, SeatNumber, Occupied) VALUES(?,?,?)");
+  
+  for (let index = 1; index <= 20; index++) {
+    preparedStatement.run(1, index, 0);
+  }
+  for (let index = 1; index <= 20; index++) {
+    preparedStatement.run(3, index, 0);
+  }
+  for (let index = 1; index <= 20; index++) {
+    preparedStatement.run(5, index, 0);
+  }
+  for (let index = 1; index <= 20; index++) {
+    preparedStatement.run(7, index, 0);
+  }
+  for (let index = 1; index <= 20; index++) {
+    preparedStatement.run(9, index, 0);
+  }
+
+  res.send("Data inserted!");
+}
