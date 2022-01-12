@@ -47,7 +47,6 @@ export class PickSeatComponent implements OnInit {
     this.selectedSeat.push(seat);
     this.booking.SeatId = seatId;
     this.booking.SeatNumber = seat;
-    console.log(this.booking.SeatNumber);
   }
 
   change(group: any) {
