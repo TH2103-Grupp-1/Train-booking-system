@@ -191,7 +191,7 @@
     <!------------------------------------------------------------ Continue button --------------------------------------------------------------------------------->
 
 
-    <button *ngIf="fromStation !== undefined && toStation !== undefined" class="btn btn-primary btn-lg btn-block mb-5"
+    <button *ngIf="fromStation !== undefined && toStation !== undefined && fromStation !== toStation" class="btn btn-primary btn-lg btn-block mb-5"
       id="continue-btn-phone" type="submit" (click)="getDistanceAndCost()">
       {{'Continue' | translate }}
       <span class="pull-right">
@@ -201,13 +201,19 @@
 
 
 
-    <button *ngIf="fromStation !== undefined && toStation !== undefined" type="submit" (click)="getDistanceAndCost()"
+    <button *ngIf="fromStation !== undefined && toStation !== undefined && fromStation !== toStation" type="submit" (click)="getDistanceAndCost()"
       class="btn btn-primary btn-lg pull-right mb-5" id="continue-btn-desktop">
       {{'Continue' | translate}}
       <span class="pull-right">
         <i class="fa fa-angle-right fa-lg"></i>
       </span>
     </button>
+
+
+    <!------------------------------------------------------------ Same station message --------------------------------------------------------------------------------->
+    <div *ngIf="toStation === fromStation && toStation !== undefined" class="container location-error-message">
+      <p>{{'You must enter two different stations' | translate }}</p>
+    </div>
 
 
     <!------------------------------------------------------------ Icons --------------------------------------------------------------------------------->

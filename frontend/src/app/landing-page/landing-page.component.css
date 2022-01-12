@@ -250,6 +250,11 @@ mat-card{
 
 }
 
+.location-error-message {
+  text-align: center;
+  padding-bottom: 10px;
+  color: red;
+}
 
 @media only screen and (max-width: 520px) {
   .safety-heading{

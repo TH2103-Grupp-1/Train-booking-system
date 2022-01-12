@@ -124,8 +124,9 @@
   "Are you sure you want to cancel?": "Är du säker på att du vill avbryta?",
   "You can't regret this choice!": "Du kan inte ångra detta val!",
   "Yes": "Ja",
-  "No": "Nej"
-
-
-
+  "No": "Nej",
+  "Child": "Barn",
+  "Adult": "Vuxen",
+  "Retired": "Pensionär",
+  "Add Ticket": "Lägg till biljett"
 }
