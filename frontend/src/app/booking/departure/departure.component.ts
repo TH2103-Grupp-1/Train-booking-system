@@ -53,10 +53,8 @@ export class DepartureComponent implements OnInit {
     }
     this.myDate = this.booking.DepartureDate!;
 console.log(this.currentDate);
-      console.log(this.myDate);
+      console.log(this.booking.DepartureDate);
     this.prepare();
-    // this.testfunk();
-    // this.calculateTime();
     this.calculateTime();
     this.booking
   }
@@ -304,5 +302,7 @@ console.log(this.currentDate);
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/seat');
     console.log(this.myDate);
+    console.log(this.booking.TimeTable);
+    
   }
 }

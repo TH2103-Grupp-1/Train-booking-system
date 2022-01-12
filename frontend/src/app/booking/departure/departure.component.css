@@ -127,19 +127,19 @@ h1 {
 }
 
 .price-box-first{
-  border:#cfcfcb solid 2px;
-  border-radius: 5px;
+  /* border:#cfcfcb solid 2px; */
+  /* border-radius: 5px; */
   width: 120px;
   height: fit-content;
   text-align:center;
   cursor: pointer;
 }
 
-.price-box-first:hover {
+/* .price-box-first:hover {
   background-color: #fafaf7;
   color: #00a2c7;
-}
-.price-box-first-clicked {
+} */
+/* .price-box-first-clicked {
   border: #adb5bd solid 1px;
   margin-top: 5px;
   width: 6rem;
@@ -149,7 +149,7 @@ h1 {
   padding-top: 5px;
   background-color: #00a2c7;
   color: #fff;
-}
+} */
 
 .price-box-second{
  border:#adb5bd solid 1px;

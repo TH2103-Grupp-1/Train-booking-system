@@ -99,7 +99,7 @@
 
         <!-- <div>ashdasd{{departure.ArrivalTime}}</div> -->
 
-        <div class="ticketBox" *ngFor="let departure of trainTimeTables">
+        <div class="ticketBox" *ngFor="let departure of trainTimeTables let i for index">
           <mat-accordion>
             <mat-expansion-panel
               (opened)="panelOpenState = true"
@@ -149,7 +149,7 @@
                 <div class="container right-container">
                   <div (click)="selectDeparture(departure)" class="price-box">
                     <div class="price-box-first">
-                      <div>{{ departure.PriceTotal }} SEK</div>
+                      <div ><button class="btn btn-primary">{{ departure.PriceTotal }} SEK</button></div>
                     </div>
                   </div>
                 </div>
