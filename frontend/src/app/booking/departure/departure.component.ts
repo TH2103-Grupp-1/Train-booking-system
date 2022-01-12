@@ -33,7 +33,10 @@ export class DepartureComponent implements OnInit {
     private bookingService: BookingBuilderService,
     private timeTableService: TimetableService,
     private route: Router
-  ) {}
+  ) {
+    this.currentDate = new Date();
+    
+  }
 
   ngOnInit(): void {
     if (this.bookingService.getBooking() === undefined) {
@@ -48,10 +51,16 @@ export class DepartureComponent implements OnInit {
         }
         this.trainTimeTables = t;
       });
+      
+      
+      
     }
-
+    this.myDate = this.booking.DepartureDate!;
+console.log(this.currentDate);
+      console.log(this.myDate);
     this.prepare();
-    this.calculateTime();
+    // this.testfunk();
+    // this.calculateTime();
   }
 
   travelers: AgeGroupInterface[] = [{ id: 0, ageGroup: 'adult' }];
@@ -81,30 +90,30 @@ export class DepartureComponent implements OnInit {
     this.travelers.splice(index, 1);
   }
 
-  calculateTime() {
+  // calculateTime() {
 
-    for (let time of this.trainTimeTables) {
-      //calc arrivaltim - departuretime and get to MILISEC
-      let date3 = time.ArrivalTime!.getTime() - time.DepartureTime!.getTime();
-      console.log(date3);
-      //check days
-      let dagar = Math.floor(date3 / (60 * 60 * 24 * 1000));
-      let datum4 = date3 / (60 * 60 * 1000) - dagar * 24;
-      //Calc milisec to hours and minutes
-      let decimalTid = datum4 * 60 * 60;
-      let hours = Math.floor(decimalTid / (60 * 60));
-      let diff5 = decimalTid - hours * 60 * 60;
-      let minutes = Math.floor(diff5 / 60);
-      time.Time! = String(' ' + hours + ':' + minutes + ' h');
-    }
-  }
+  //   for (let time of this.trainTimeTables) {
+  //     //calc arrivaltim - departuretime and get to MILISEC
+  //     let date3 = time.ArrivalTime!.getTime() - time.DepartureTime!.getTime();
+  //     console.log(date3);
+  //     //check days
+  //     let dagar = Math.floor(date3 / (60 * 60 * 24 * 1000));
+  //     let datum4 = date3 / (60 * 60 * 1000) - dagar * 24;
+  //     //Calc milisec to hours and minutes
+  //     let decimalTid = datum4 * 60 * 60;
+  //     let hours = Math.floor(decimalTid / (60 * 60));
+  //     let diff5 = decimalTid - hours * 60 * 60;
+  //     let minutes = Math.floor(diff5 / 60);
+  //     time.Time! = String(' ' + hours + ':' + minutes + ' h');
+  //   }
+  // }
 
   // ********************************************************
   // Get the current to date next and previous dates
 
   prepare() {
-    if (this.booking.DepartureDate == undefined) {
-      this.booking.DepartureDate = this.currentDate
+    if (this.booking.DepartureDate === undefined) {
+      // this.booking.DepartureDate = this.currentDate
     }
     else {
     this.myDate = this.booking.DepartureDate!;
@@ -124,12 +133,18 @@ export class DepartureComponent implements OnInit {
 
   // Show deparures on date after "today" or picked date.
   showNextDay() {
-     this.currentDate = new Date();
+    console.log('current from nextday '+this.currentDate);
+    console.log('mydate from nextday ' + this.myDate);
+        console.log('log departureday day '+this.booking.DepartureDate);
+
+    //  this.currentDate = new Date();
     const hidePrevDate = document.querySelector('.pagination-icon-previous-hidden') as HTMLElement
-      if (this.currentDate.getDay() === this.myDate.getDay()) {
-        hidePrevDate.style.opacity = "1"
-      hidePrevDate.style.pointerEvents= "auto"
-      }
+      hidePrevDate.style.opacity = "1"
+         hidePrevDate.style.pointerEvents = "auto"
+    // if (this.currentDate.getDate() !== this.myDate.getDate() && this.currentDate.getMonth() !== this.myDate.getMonth()){
+       
+    // }
+   
     if (this.myDate !== this.nextDate) {
       this.changeDate = this.myDate.setDate(this.myDate.getDate() + 1);
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() + 1);
@@ -138,29 +153,40 @@ export class DepartureComponent implements OnInit {
       );
     } else if (this.myDate === this.nextDate) {
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() + 1);
-      this.previousDay = this.previousDate.setDate(
-        this.previousDate.getDate() + 1
-      );
-      
+      this.previousDay = this.previousDate.setDate(this.previousDate.getDate() + 1)
     }
   }
-
+  
+  // testfunk() {
+  //   // const hidePrevDate = document.querySelector('.pagination-icon-previous-hidden') as HTMLElement
+  //      if (this.currentDate.getDay() === this.myDate.getDay()) {
+  //       // hidePrevDate.style.opacity = "1"
+  //       //  hidePrevDate.style.pointerEvents = "auto"
+  //        alert('')
+       
+  //     }
+  // }
+  
   showPreviousDay() {
-
+//  this.currentDate = new Date();
+   console.log('current from prevday '+this.currentDate);
+    console.log('mydate from prevday ' + this.myDate);
+    console.log('log departureday prevday ' + this.booking.DepartureDate);
+    // console.log('previous day' + this.previousDay);
+    
+    
+    
     const hidePrevDate = document.querySelector('.pagination-icon-previous-hidden') as HTMLElement
-    this.currentDate = new Date();
-    if (this.currentDate.getDay() === this.myDate.getDay()){
-
-      hidePrevDate.style.opacity = "0.5"
-      hidePrevDate.style.pointerEvents= "none";
-
-      this.nextDay = this.nextDate.setDate(this.nextDate.getDate() + 1);
-      this.changeDate = this.myDate.setDate(this.myDate.getDate() +1);
-        this.previousDay = this.previousDate.setDate(this.previousDate.getDate() + 1,
+    if (this.currentDate.getDate() === this.myDate.getDate() && this.currentDate.getMonth() === this.myDate.getMonth()) {
+      alert('')
+       hidePrevDate.style.opacity = "0.5"
+       hidePrevDate.style.pointerEvents = "none"
+    
+      this.nextDay = this.nextDate.setDate(this.nextDate.getDate()+1);
+      this.changeDate = this.myDate.setDate(this.myDate.getDate()+1);
+        this.previousDay = this.previousDate.setDate(this.previousDate.getDate()+1,
       );
       }
-    
-    
     if (this.myDate !== this.nextDate) {
       this.changeDate = this.myDate.setDate(this.myDate.getDate() - 1);
       this.previousDay = this.previousDate.setDate(
@@ -168,9 +194,9 @@ export class DepartureComponent implements OnInit {
       );
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() - 1);
     }  else if (this.myDate === this.nextDate) {
-      this.previousDay = this.previousDate.setDate(
-        this.previousDate.getDate() - 1,
-      );
+      this.previousDay = this.previousDate.setDate(this.previousDate.getDate() - 1);
+        
+      
       
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() - 1);
       }
