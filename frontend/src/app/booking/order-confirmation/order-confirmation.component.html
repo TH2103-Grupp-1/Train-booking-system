@@ -43,7 +43,7 @@
         <div class="container border shadow p-3 mb-5 rounded" id="info-container-phone-1">
             <div class="container border-bottom inner-container">
                 <h2>
-                    <span>{{confirmation.FromLocation}}</span>
+                    <span>{{confirmation.FromLocation!}}</span>
                     <span> - </span>
                     <span>{{confirmation.ToLocation}}</span>
                 </h2>
@@ -54,17 +54,14 @@
                     <span><i class="fa fa-angle-double-right fa-lg"></i></span>
                     <span>{{confirmation.DepartureTime}}</span>
                     <span>&nbsp;</span>
-                    <span>{{confirmation.FromLocation}}</span>
+                    <span>{{confirmation.FromLocation!}}</span>
                     <span> - </span>
                     <span>{{confirmation.ArrivalTime}}</span>
                     <span>&nbsp;</span>
-                    <span>{{confirmation.ToLocation}}</span>
+                    <span>{{confirmation.ToLocation!}}</span>
                 </h3>
                 <p>{{confirmation.TrainType}}</p>
                 <p>
-                    <span>{{'Vagon ' | translate}}</span>
-                    <span>6</span>
-                    <span>, </span>
                     <span>{{'Seat ' | translate}}</span>
                     <span>{{confirmation.SeatNumber}}</span>
                 </p>
@@ -176,7 +173,7 @@
         <div class="container border shadow p-3 mb-5 rounded" id="info-container-1">
             <div class="container border-bottom inner-container">
                 <h2>
-                    <span>{{confirmation.FromLocation}} C</span>
+                    <span>{{confirmation.FromLocation!}} C</span>
                     <span> - </span>
                     <span>{{confirmation.ToLocation}}</span>
                 </h2>
@@ -189,7 +186,7 @@
                             <span><i class="fa fa-angle-double-right fa-lg"></i></span>
                             <span>{{confirmation.DepartureTime}}</span>
                             <span>&nbsp;</span>
-                            <span>{{confirmation.FromLocation}}</span>
+                            <span>{{confirmation.FromLocation!}}</span>
                             <span> - </span>
                             <span>{{confirmation.ArrivalTime}}</span>
                             <span>&nbsp;</span>
@@ -201,9 +198,6 @@
                         <span>{{confirmation.CustomerName}}</span>
                     </h3>
                     <p>
-                        <span>{{'Vagon ' | translate}}</span>
-                        <span>6</span>
-                        <span>, </span>
                         <span>{{'Seat' | translate}}</span>
                         <span>&nbsp;</span>
                         <span>{{confirmation.SeatNumber}}</span>

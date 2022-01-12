@@ -6,7 +6,6 @@ export const checkout = async (req, res) => {
     let booking = JSON.parse(req.body.booking);
     const BASE_URL = req.protocol + "://" + req.headers.host;
 
-
     const product = await stripe.products.create({
         name: booking.FromLocation.AdvertisedLocationName + ' - ' + booking.ToLocation.AdvertisedLocationName,
         images: ['https://wallup.net/wp-content/uploads/2017/11/17/364154-city-cityscape-lights-city_lights-blurred.jpg'],
@@ -34,7 +33,8 @@ export const checkout = async (req, res) => {
             DepartureTime: booking.TimeTable.DepartureTime,
             ArrivalTime: booking.TimeTable.ArrivalTime,
             SeatId: booking.SeatId,
-            SeatNumber: booking.SeatNumber
+            SeatNumber: booking.SeatNumber,
+            UserId: booking.UserId
         },
         success_url: `${BASE_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${BASE_URL}`,
@@ -48,14 +48,15 @@ export const orderSuccess = async (req, res) => {
         const stripe = new Stripe('sk_test_51KBEVTFsTQg8DW3AcC4T7kIy2bRIh3rmTOaixwXjvMI0UN8uayvhuEx5CppoXGZcmDSk2a4FVUZhUKgYieoRXb1U001PQsHRW3')
         const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
         const customer = await stripe.customers.retrieve(session.customer);
+
         let result = session.metadata;
-        console.log('This is the orderSuccess metadata');
-        console.log(result);
         result.CustomerName = customer.name;
 
         let prepareStatement = db.prepare("SELECT Occupied FROM Seats WHERE Id = ?");
         let foundSeat = prepareStatement.get(parseInt(result.SeatId));
+
         foundSeat.occupied = true;
+        
         let updateSeats = db.prepare('UPDATE Seats SET Occupied = 1 WHERE Id = ?');
 
         updateSeats.run(parseInt(result.SeatId));

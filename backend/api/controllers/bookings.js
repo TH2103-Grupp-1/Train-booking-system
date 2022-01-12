@@ -10,10 +10,12 @@ export const createBooking = (req, res) => {
   let seatNumber = req.body.SeatNumber;
   let toLocation = req.body.ToLocation;
   let trainType = req.body.TrainType;
+  let userId = req.body.UserId;
 
-  let preparedStatement = db.prepare("INSERT INTO Bookings (ArrivalTime, CustomerName, DepartureTime, FromLocation, Price, SeatId, SeatNumber. ToLocation, TrainType) VALUES(?,?,?,?,?,?,?,?,?)");
+  console.log(req.body);
+  let preparedStatement = db.prepare("INSERT INTO Bookings (ArrivalTime, CustomerName, DepartureTime, FromLocation, Price, SeatId, SeatNumber, ToLocation, TrainType, UserId) VALUES(?,?,?,?,?,?,?,?,?,?)");
 
-  preparedStatement.run(arrivalTime, customerName, departureTime, fromLocation, price, seatId, seatNumber, toLocation, trainType);
+  preparedStatement.run(arrivalTime, customerName, departureTime, fromLocation, price, seatId, seatNumber, toLocation, trainType, userId);
 
   res.send("Data inserted!");
 }
@@ -43,6 +45,5 @@ export const getBookingsByUserId = (req, res) => {
   for (let booking of result) {
     delete booking.Password;
   }
-  console.log(result);
   res.send(result);
 }

@@ -21,6 +21,7 @@ export class Booking {
   TicketReciever?: TicketReciever;
   SeatId?: number;
   SeatNumber?: number;
+  UserId?: number;
 }
 
 export interface UserBooking {

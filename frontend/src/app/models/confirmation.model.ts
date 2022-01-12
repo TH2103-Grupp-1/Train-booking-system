@@ -7,4 +7,5 @@ export interface Confirmation {
   ToLocation: string;
   TrainType: string;
   SeatNumber: string;
+  UserId?: number;
 }
