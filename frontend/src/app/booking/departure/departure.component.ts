@@ -5,12 +5,8 @@ import { Booking } from 'src/app/models/booking.model';
 import { TrainTimeTable } from 'src/app/models/timetable.model';
 import { BookingBuilderService } from 'src/app/services/booking-builder.service';
 import { TimetableService } from 'src/app/services/timetable.service';
+import { TicketInterface, AgeGroup } from "../../models/tickets.model";
 
-
-interface AgeGroupInterface {
-  id: number;
-  ageGroup: string;
-}
 @Component({
   selector: 'app-departure',
   templateUrl: './departure.component.html',
@@ -46,7 +42,7 @@ export class DepartureComponent implements OnInit {
       this.timeTableService.getTimeTables().subscribe((t) => {
         for (let train of t) {
           train.PriceTotal = Math.round(
-            train.BasePrice * this.booking.Distance!
+            train.BasePrice * this.booking.Distance! + 3
           );
         }
         this.trainTimeTables = t;
@@ -61,33 +57,71 @@ console.log(this.currentDate);
     this.prepare();
     // this.testfunk();
     // this.calculateTime();
+    this.calculateTime();
+    this.booking
   }
 
-  travelers: AgeGroupInterface[] = [{ id: 0, ageGroup: 'adult' }];
+  //---------------------------------Tickets---------------------------------
+
+  tickets: TicketInterface[] = [{ id: 0, ageGroup: 'adult', price: 39}];
+  ageGroups: AgeGroup[] = [
+    {
+      value: "child",
+      viewValue: "Child",
+      price: 26
+    },
+    {
+      value: "adult",
+      viewValue: "Adult",
+      price: 39
+    },
+    {
+      value: "retired",
+      viewValue: "Retired",
+      price: 26
+    }
+  ]
   counter: number = 0;
 
-  addTraveler() {
-    if (this.travelers.length < 9) {
+  addTicket() {
+    if (this.tickets.length < 9) {
       this.counter++;
-      this.travelers.push({ id: this.counter, ageGroup: 'adult' });
+      this.tickets.push({ id: this.counter, ageGroup: 'adult', price: 39 });
+      this.resetId();
+      this.booking.Price = this.calculateTotalPrice();
     }
+    console.log(this.tickets);
   }
 
-  changeTraveler(index: number, value: string) {
-    this.counter = 0;
-
-    for (let traveler of this.travelers) {
-      traveler.id = this.counter;
-      this.counter++;
+  changeTicket(index: number, value: string) {
+    for (let traveler of this.tickets) {
       if (index === traveler.id) {
         traveler.ageGroup = value;
+
+        switch (value) {
+          case 'adult':
+            traveler.price = 39;
+            break;
+          case 'child':
+            traveler.price = 26;
+            break;
+          case 'retired':
+            traveler.price = 26
+            break;
+        }
+        this.booking.Price = this.calculateTotalPrice();
       }
     }
+    console.log(this.tickets);
   }
 
-  deleteTravelerer(index: number) {
-    console.log(this.travelers);
-    this.travelers.splice(index, 1);
+  deleteTicket(index: number) {
+    if (this.tickets.length > 1) {
+      this.tickets.splice(index, 1);
+      this.resetId();
+      this.booking.Price = this.calculateTotalPrice();
+      console.log(this.tickets);
+    }
   }
 
   // calculateTime() {
@@ -108,6 +142,49 @@ console.log(this.currentDate);
   //   }
   // }
 
+  resetId() {
+    this.counter = 0;
+    for (let traveler of this.tickets) {
+      traveler.id = this.counter;
+      this.counter++;
+    }
+  }
+
+  calculateTotalPrice(): number {
+    let sum: number = 0;
+    for (let ticket of this.tickets) {
+      if (this.tickets.length > 1) {
+        if (this.departurePrice) {
+          sum += (80 / 100) * this.departurePrice + ticket.price;
+        }
+      }
+      else {
+        if (this.departurePrice) {
+          sum += this.departurePrice + ticket.price;
+        }
+      }
+    }
+    return Math.round(sum);
+  }
+
+  //---------------------------------Tickets---------------------------------
+
+  calculateTime() {
+    for (let time of this.trainTimeTables) {
+      //calc arrivaltim - departuretime and get to MILISEC
+      var date3 = time.ArrivalTime!.getTime() - time.DepartureTime!.getTime();
+      console.log(date3);
+      //check days
+      var dagar = Math.floor(date3 / (60 * 60 * 24 * 1000));
+      var datum4 = date3 / (60 * 60 * 1000) - dagar * 24;
+      //Calc milisec to hours and minutes
+      var decimalTid = datum4 * 60 * 60;
+      var hours = Math.floor(decimalTid / (60 * 60));
+      var diff5 = decimalTid - hours * 60 * 60;
+      var minutes = Math.floor(diff5 / 60);
+      time.Time! = String(' ' + hours + ':' + minutes + ' h');
+    }
+  }
   // ********************************************************
   // Get the current to date next and previous dates
 
@@ -213,13 +290,16 @@ console.log(this.currentDate);
   page: number = 1;
 
   totalcost: any;
+  departurePrice?: number;
 
   selectDeparture(departure: TrainTimeTable) {
     this.selectedDeparture = departure;
-    this.booking.Price = departure.PriceTotal;
+    this.departurePrice = departure.PriceTotal
+    this.booking.Price = this.calculateTotalPrice();
   }
 
   submit() {
+    this.booking.Tickets = this.tickets;
     this.booking.TimeTable = this.selectedDeparture;
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/seat');

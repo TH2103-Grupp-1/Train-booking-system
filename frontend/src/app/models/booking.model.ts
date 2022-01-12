@@ -1,8 +1,9 @@
-import { Station } from './station.model';
-import { TicketReciever } from './ticketreciever.model';
-import { TrainTimeTable } from './timetable.model';
-import { Train } from './train.model';
-import { TravelerType } from './traveler.model';
+import { Station } from "./station.model";
+import { TicketReciever } from "./ticketreciever.model";
+import { TrainTimeTable } from "./timetable.model";
+import { Train } from "./train.model";
+import { TravelerType } from "./traveler.model";
+import { TicketInterface } from "./tickets.model";
 
 export class Booking {
   Id?: number;
@@ -20,4 +21,5 @@ export class Booking {
   DeliveryMethod?: 'Sms' | 'Email';
   TicketReciever?: TicketReciever;
   SeatId?: number;
+  Tickets?: TicketInterface[];
 }

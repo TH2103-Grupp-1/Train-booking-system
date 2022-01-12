@@ -107,9 +107,7 @@ export class LandingPageComponent implements OnInit {
   private _filter(name: string): Station[] {
     const filterValue = name.toLowerCase();
 
-    return this.stations.filter((station) =>
-      station.AdvertisedLocationName.toLowerCase().includes(filterValue)
-    );
+    return this.stations.filter(station => station.AdvertisedLocationName.toLowerCase().match(filterValue) && station.AdvertisedLocationName.toLowerCase().charAt(0) === filterValue.charAt(0));
   }
 
   getStations(): void {
