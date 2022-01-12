@@ -5,6 +5,8 @@ import { Booking } from 'src/app/models/booking.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { BookingBuilderService } from 'src/app/services/booking-builder.service';
 import { PaymentService } from 'src/app/services/payment.service';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { PaymentCancelComponent } from './payment-cancel/payment-cancel.component';
 
 @Component({
   selector: 'app-payment',
@@ -13,16 +15,11 @@ import { PaymentService } from 'src/app/services/payment.service';
 })
 export class PaymentComponent implements OnInit {
 
-  paymentForm = new FormGroup({
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^(\+|00)[1-9][0-9 \-\(\)\.]{7,32}$/)]),
-    email: new FormControl('', [Validators.required, Validators.email])
-  });
 
+  paymentForm!: FormGroup;
   booking: Booking;
 
-  constructor(private authService: AuthService, bookingService: BookingBuilderService, router: Router, private paymentService: PaymentService) {
+  constructor(private authService: AuthService, bookingService: BookingBuilderService, router: Router, private paymentService: PaymentService, public dialog: MatDialog) {
     this.booking = bookingService.getBooking();
     if(this.booking === undefined) { router.navigateByUrl('/'); }
     // delete this.booking.Train?.Carriages;
@@ -33,6 +30,14 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserData();
+
+
+    this.paymentForm = new FormGroup({
+      'firstName': new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
+      'lastName': new FormControl(null, [Validators.required,  Validators.pattern('[a-zA-Z ]*')]),
+      'phoneNumber': new FormControl(null, [Validators.required, Validators.pattern(/^(\+|00)[1-9][0-9 \-\(\)\.]{7,32}$/)]),
+      'email': new FormControl(null, [Validators.required, Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}')])
+    });
   }
 
   getUserData() {
@@ -45,7 +50,27 @@ export class PaymentComponent implements OnInit {
 
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(PaymentCancelComponent);
 
+  }
+
+  get firstName() {
+    return this.paymentForm.get('firstName');
+
+  }
+
+  get lastName() {
+    return this.paymentForm.get('lastName');
+  }
+
+  get phoneNumber() {
+    return this.paymentForm.get('phoneNumber');
+  }
+
+  get email() {
+    return this.paymentForm.get('email');
+  }
 
   checkout() {
    this.paymentService.postPayment(JSON.stringify(this.booking));
