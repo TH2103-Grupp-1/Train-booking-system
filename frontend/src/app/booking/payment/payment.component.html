@@ -137,11 +137,14 @@
           </div>
         </form>
 
+        <div  *ngIF="test()" [ngClass]="ticketText">
+          
+        </div>
 
         <!-- Buttons for navigating -->
         <div class="container no-padding">
           <div class="row">
-            <div class="col-2 pull-left">
+            <div [ngClass]="buttons">
               <a class="a-tag-back" routerLink="/overview">
                 <span><i class="fa fa-angle-left fa-10x"></i></span>
                 <span>{{ "Back" | translate }}</span>
@@ -167,7 +170,7 @@
       </div>
     </div>
     <!------------------------------------------------- second column ----------------------------------------------------------->
-    <div class="col-3 pull-right">
+    <div [ngClass]="ticketText">
       <!-- Current ticket -->
       <div class="container main sticky-top no-padding pull-right">
         <div class="my-choices">

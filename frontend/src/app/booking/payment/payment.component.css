@@ -182,6 +182,10 @@ a{
   .page-orientation-bar-back a{
       font-size: 10px;
   }
+
+  .col-3 {
+    float: none;
+  }
 }
 
 .form-control.ng-touched.ng-invalid {
