@@ -1,252 +1,69 @@
 <div class="container">
-      <div class="row page-orientagion">
-          <div class="col page-orientation-bar-back">
-              <a href="">
-                  1.
-              </a>
-          </div>
-          <div class="col page-orientation-bar-back">
-            <a routerLink="/departures">
-                  2.
-              </a>
-          </div>
-          <div class="col-3 page-orientation-bar-current">
-              <a>
-                 3. {{'Optional' | translate}}
-              </a>
-          </div>
-          <div class="col page-orientation-bar-next">
-              <a>
-                  4.
-              </a>
-          </div>
-          <div class="col page-orientation-bar-next">
-              <a>
-                  5.
-              </a>
-          </div>
-          <div class="col page-orientation-bar-next">
-              <a>
-                  6.
-              </a>
-          </div>
+  <div class="row page-orientagion">
+      <div class="col page-orientation-bar-back">
+          <a href="">
+              1.
+          </a>
+      </div>
+      <div class="col page-orientation-bar-back">
+        <a routerLink="/departures">
+              2. {{'Timetable' | translate}}
+          </a>
+      </div>
+      <div class="col-3 page-orientation-bar-current">
+          <a>
+             3. {{'Optional' | translate}}
+          </a>
+      </div>
+      <div class="col page-orientation-bar-next">
+          <a>
+              4.
+          </a>
+      </div>
+      <div class="col page-orientation-bar-next">
+          <a>
+              5.
+          </a>
+      </div>
+      <div class="col page-orientation-bar-next">
+          <a>
+              6.
+          </a>
       </div>
   </div>
+</div>
 
-
-
-  <div class="container phone-ticket">
-
-    <!-------------------------------------------------------------- Exit trip phone card ------------------------------------------------------------------------------------------>
-  
-    <h1 class="font-weight-bold text-left mb-0 pb-0">
-      <span><i class="fa fa-angle-double-right fa-10x mr-1"></i></span>
-      <span>{{'Exit trip' | translate}}</span>
-    </h1>
-    <div class="container p-3 mb-3">
-      <h3 clas="font-weight-bold mb-1">{{'Selected trip' | translate}}</h3>
-      <div class="container m-0 border">
-        <div class="row border-bottom">
-          <div class="col-8">
-            <h2 class="pull-left mb-0">
-              <span>{{booking.FromLocation?.AdvertisedLocationName}}</span>
-              <span> - </span>
-              <span>{{booking.ToLocation?.AdvertisedLocationName}}</span>
-            </h2>
-          </div>
-          <div class="col p-0">
-            <button type="button" class="btn btn-light pull-right mt-2 mr-2 mb-2" data-toggle="collapse"
-              data-target="#seatPickerExitTrip" aria-expanded="false" aria-controls="seatPickerExitTrip"
-              (click)="iconTogglePhone()" id="seatPickerToggle">
-              <i class="fa fa-caret-down" id="iconPhone"></i>
-            </button>
-          </div>
+<div class="container h-75 train-container">
+<div class="align-items-center h-75">
+<div class="scrolling-wrapper">
+  <div *ngFor="let carriage of carriages" (click)="selectCarriage(carriage)" class="carriage card"><h2 class="carriage-type">{{ carriage.CarriageType! | translate }}</h2>
+</div>
+</div>
+  <div *ngIf="selectedCarriage !== undefined" class="seats">
+    <div class="seats-overview card">
+        <mat-button-toggle-group #group="matButtonToggleGroup" class="carriage-thing card row" multiple (change)="change(group)">
+      <div *ngFor="let seat of seats | async">
+        <div *ngIf="!seat.Occupied"  class="seat card" (click)="selectSeat(seat.SeatNumber!, seat.Id!)">
+          <mat-button-toggle id="seat-number-{{seat.SeatNumber}}">
+            {{seat.SeatNumber}}
+          </mat-button-toggle>
         </div>
-        <div class="row">
-          <div class="col">
-            <p class="pull-left mb-0 mt-1" id="seatReservationPhone">
-              <span>
-                <i class="material-icons" style="font-size: 16px;">airline_seat_recline_normal</i>
-              </span>
-              <span>&nbsp;</span>
-              <span>{{'Seat reserved' | translate}}</span>
-            </p>
-          </div>
-          <div class="col">
-            <h3 class="pull-right mb-0">SJ</h3>
-          </div>
+        <div *ngIf="seat.Occupied" class="seat card occupied">
+          <mat-button-toggle id="seat-number-{{seat.SeatNumber}}" >
+            {{seat.SeatNumber}}
+          </mat-button-toggle>
         </div>
       </div>
+    </mat-button-toggle-group>
     </div>
-    <div class="container outer" id="seatPickerExitTrip">
-      <div class="container">
-        <div class="align-items-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div *ngFor="let carriage of carriages" (click)="selectCarriage(carriage)" class="carriage card"><h2>{{carriage.CarriageType}}</h2>
-              </div>
-            </div>
-          </div>
-          <h2 class="mb-2 text-center">
-            <span class="mr-2">{{'Travel direction' | translate}}</span>
-            <span><i class="fa fa-arrow-right"></i></span>
-          </h2>
-          <div *ngIf="selectedCarriage !== undefined" class="seats">
-        
-                <mat-button-toggle-group #group="matButtonToggleGroup" class="carriage-thing card row" multiple (change)="change(group)">
-              <div *ngFor="let seat of seats | async">
-                <div *ngIf="!seat.Occupied" class="seat card border-bottom pl-0 pt-1 pl-1 pb-1" (click)="selectSeat(seat.SeatNumber!, seat.Id!)">
-                  <mat-button-toggle class="seatnumber">
-                    {{seat.SeatNumber}}
-                  </mat-button-toggle>
-                </div>
-                <div *ngIf="seat.Occupied" class="seat card occupied pl-0 pt-1 pl-1 pb-1">
-                  <mat-button-toggle class="seatnumber">
-                    {{seat.SeatNumber}}
-                  </mat-button-toggle>
-                </div>
-              </div>
-            </mat-button-toggle-group>
-           
-            </div>
-        </div>
-      </div>
     </div>
-  
-<!-- 
-    
-  <div class="container h-75 train-container">
-    <div class="align-items-center h-75">
-      <div class="scrolling-wrapper">
-        <div *ngFor="let carriage of carriages" (click)="selectCarriage(carriage)" class="carriage card"><h2 class="carriage-type">{{ carriage.CarriageType! | translate }}</h2>
-      </div>
-      </div>
-        <div *ngIf="selectedCarriage !== undefined" class="seats">
-          <div class="seats-overview card">
-              <mat-button-toggle-group #group="matButtonToggleGroup" class="carriage-thing card row" multiple (change)="change(group)">
-            <div *ngFor="let seat of seats | async">
-              <div *ngIf="!seat.Occupied" class="seat card" (click)="selectSeat(seat.SeatNumber!, seat.Id!)">
-                <mat-button-toggle>
-                  {{seat.SeatNumber}}
-                </mat-button-toggle>
-              </div>
-              <div *ngIf="seat.Occupied" class="seat card occupied">
-                <mat-button-toggle>
-                  {{seat.SeatNumber}}
-                </mat-button-toggle>
-              </div>
-            </div>
-          </mat-button-toggle-group>
-          </div>
-          </div>
-          <div class="container train-container"><h1>{{ 'Passengers' | translate }}: {{booking.Travelers!.length}}</h1></div>
-          <div *ngIf="selectedSeat.length > 0" class="container train-container">
-            <h1>{{'You selected seat' | translate}} {{selectedSeat.concat()}} {{'on carriage' | translate }} {{selectedCarriage.CarriageType! | translate}} </h1>
-            <button class="btn btn-success continue-btn" (click)="submit()">{{'Continue' | translate }}</button>
-          </div>
-        </div>
-      </div> -->
-
-  
-  
-    <!-------------------------------------------------------------- Return trip phone card ------------------------------------------------------------------------------------------>
-  
-  <!-- 
-    <h1 class="font-weight-bold text-left mb-0 pb-0 border-top">
-      <span><i class="fa fa-angle-double-left fa-10x mr-1"></i></span>
-      <span>Return trip</span>
-    </h1>
-    <div class="container p-3 mb-3">
-      <h3 clas="font-weight-bold mb-1">Selected trip</h3>
-      <div class="container m-0 border">
-        <div class="row border-bottom">
-          <div class="col-8">
-            <h2 class="pull-left mb-0">
-              <span>{{booking.FromLocation?.AdvertisedLocationName}}</span>
-              <span> - </span>
-              <span>{{booking.ToLocation?.AdvertisedLocationName}}</span>
-            </h2>
-          </div>
-          <div class="col p-0">
-            <button type="button" class="btn btn-light pull-right mt-2 mr-2 mb-2">
-              <i class="fa fa-caret-down"></i>
-            </button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col align-content-center">
-            <p class="text-success pull-left mb-0 mt-1">
-              <span>
-                <i class="material-icons" style="font-size: 16px;">airline_seat_recline_normal</i>
-              </span>
-              <span>&nbsp;</span>
-              <span>Seat reserved</span>
-            </p>
-          </div>
-          <div class="col">
-            <h3 class="pull-right mb-0">SJ</h3>
-          </div>
-        </div>
-  
-      </div>
-    </div> -->
-  
-  
-    <!-------------------------------------------------------------- Price summary phone card ------------------------------------------------------------------------------------------>
-  
-    <div class="container-fluid border-top pt-2">
-      <div class="container">
-        <span>
-          <p class="pull-left">{{'Total for 1 traveller' | translate}}</p>
-        </span>
-        <span>
-          <h2 class="pull-right">{{booking.Price}}:-</h2>
-        </span>
-        <button type="button" (click)="submit()" class="btn btn-primary btn-lg btn-block" id="continue-btn-phone">
-          {{'Continue' | translate}}
-          <span class="pull-right">
-            <i class="fa fa-angle-right fa-lg"></i>
-          </span>
-        </button>
-        <div class="row">
-          <div class="col">
-            <h2 class="pull-left font-weight-bold">
-              <span><i class="fa fa-angle-double-right fa-15x mr-2"></i></span>
-              <span>{{'Exit trip' | translate}}</span>
-            </h2>
-          </div>
-          <div class="col">
-            <h1 class="pull-right p-0 m-0">{{'Price' | translate}}</h1>
-          </div>
-        </div>
-        <p>
-          <span>date of travel</span>
-          <span>, </span>
-          <span>{{booking.TimeTable?.DepartureTime}}-{{booking.TimeTable?.ArrivalTime}}</span>
-        </p>
-  
-        <!-- <div class="row">
-          <div class="col">
-            <h2 class="pull-left font-weight-bold">
-              <span><i class="fa fa-angle-double-right fa-15x mr-2"></i></span>
-              <span>Exit trip</span>
-            </h2>
-          </div>
-          <div class="col">
-            <h1 class="pull-right p-0 m-0">price</h1>
-          </div>
-        </div>
-        <p>
-          <span>date of travel</span>
-          <span>, </span>
-          <span>{{booking.TimeTable?.DepartureTime}}-{{booking.TimeTable?.ArrivalTime}}</span>
-        </p> -->
-      </div>
-    </div>
+    <div class="container train-container"><h1>{{ 'Passengers' | translate }}: {{booking.Travelers!.length}}</h1></div>
+    <div *ngIf="selectedSeat.length === maxSeats" class="container train-container">
+      <h1>{{'You selected seat' | translate}} {{selectedSeat.concat()}} {{'on carriage' | translate }} {{selectedCarriage.CarriageType! | translate}} </h1>
+      <button class="btn btn-success continue-btn" (click)="submit()">{{'Continue' | translate }}</button>
   </div>
-
-
-  
+</div>
+</div>
 
 
 
