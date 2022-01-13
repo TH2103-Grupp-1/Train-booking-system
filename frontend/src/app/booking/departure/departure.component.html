@@ -91,8 +91,8 @@
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  {{ departure.DepartureTime | date: "H:mm" }} -
-                  {{ departure.ArrivalTime | date: "H:mm" }}
+                  {{ departure.DepartureTime }} -
+                  {{ departure.ArrivalTime }}
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <p>{{ "Select ticket" | translate }}</p>
@@ -101,7 +101,7 @@
                   <div class="more-train-info">
                     <div class="departure-holder">
                       <strong>{{ "Departure" | translate }} </strong>
-                      {{ departure.DepartureTime | date: "h:mm" }}
+                      {{ departure.DepartureTime }}
                       <h4>
                         {{ booking.FromLocation?.AdvertisedLocationName }}
                       </h4>
@@ -111,7 +111,7 @@
                     </div>
                     <div class="arrvial-holder">
                       <strong> {{ "Arrival" | translate }}{{ " " }} </strong>
-                      {{ departure.ArrivalTime | date: "H:mm" }}
+                      {{ departure.ArrivalTime }}
                       <h4>{{ booking.ToLocation?.AdvertisedLocationName }}</h4>
                     </div>
                     <div>

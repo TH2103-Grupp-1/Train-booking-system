@@ -23,7 +23,7 @@ export class DepartureComponent implements OnInit {
     private bookingService: BookingBuilderService,
     private timeTableService: TimetableService,
     private route: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (this.bookingService.getBooking() === undefined) {
@@ -149,6 +149,8 @@ export class DepartureComponent implements OnInit {
   }
 
   submit() {
+    this.selectedDeparture.ArrivalTime = new Date(`${this.myDate.toISOString().split('T')[0]} ${this.selectedDeparture.ArrivalTime?.toString()}`);
+    this.selectedDeparture.DepartureTime = new Date(`${this.myDate.toISOString().split('T')[0]} ${this.selectedDeparture.DepartureTime?.toString()}`);
     this.booking.TimeTable = this.selectedDeparture;
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/seat');
