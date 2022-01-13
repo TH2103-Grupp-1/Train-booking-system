@@ -41,29 +41,22 @@
         <!------------------------------------------------------------ Datepicker1 desctop --------------------------------------------------------------------------------->
 
 
-        <div *ngIf="fromStation !== undefined && toStation !== undefined" class="row d-flex justify-content-center" id="datePickers-desctop">
+        <div *ngIf="fromStation !== undefined && toStation !== undefined" class="row d-flex justify-content-center mt-3" id="datePickers-desctop">
           <div class="col" id="datePickers-desctop">
             <mat-card class="border-bottom-radius-none border-bottom pb-0">
               <div class="row no-padding">
-                <div class="col">
-                  <span class="pull-left">
+                <div class="col fit-content">
+                  <span class="pull-left fit-content">
                     <input type="radio" id="departure" name="One-way-trip" value="Departure">
                     <label class="ml-1" for="departure">{{'Departure' | translate }}</label>
                   </span>
                 </div>
-                <div class="col p-0">
-                  <span>
+                <div class="col fit-content">
+                  <span class="pull-right">
                     <input type="radio" id="arrival" name="One-way-trip" value="Arrival" checked>
                     <label class="ml-1" for="arrival">{{'Arrival' | translate}}</label>
                   </span>
                 </div>
-                <div class="col">
-                  <span class="pull-right">
-                    <input type="checkbox" (change)="onCheck()" id="return-trip" value="Return-trip">
-                    <label class="ml-1" for="return-trip">{{'Return trip' | translate}}</label>
-                  </span>
-                </div>
-
               </div>
             </mat-card>
             <mat-card class="border-top-none">
@@ -73,11 +66,12 @@
               </mat-calendar>
             </mat-card>
           </div>
+      
           <!------------------------------------------------------------ Datepicker2 desctop --------------------------------------------------------------------------------->
 
 
 
-          <div class="col" id="datePickers-desctop">
+          <!-- <div class="col" id="datePickers-desctop">
             <mat-card [style]="calendarStyle" class="border-bottom-radius-none border-bottom pb-0">
               <div class="row no-padding">
                 <div class="col">
@@ -98,7 +92,7 @@
               <mat-calendar [(selected)]="selectedDate_calendar2" [minDate]="minDate" [maxDate]="maxDate">
               </mat-calendar>
             </mat-card>
-          </div>
+          </div> -->
         </div>
         <h3 class="safety-heading">{{'Travel safely with us' | translate}}</h3>
         <p class="safety-message">{{"Right now the Swedish Public Health Agency recommends that you use a face mask when
@@ -113,27 +107,26 @@
   <div class="container">
 
     <div class="conatiner" id="datePickers-phone">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center" id="datePickers-phone">
         <div *ngIf="fromStation !== undefined && toStation !== undefined" class="col">
-          <div class="container no-padding">
-            <div class="row">
-              <div class="col">
-                <span class="pull-left">{{'Exit trip' | translate}}</span>
+          <div class="col" id="datePickers-phone">
+            <mat-card class="border-bottom-radius-none border-bottom pb-0">
+              <div class="row no-padding">
+                <div class="col fit-content">
+                  <span class="pull-left fit-content">
+                    <input type="radio" id="departure" name="One-way-trip" value="Departure">
+                    <label class="ml-1" for="departure">{{'Departure' | translate }}</label>
+                  </span>
+                </div>
+                <div class="col fit-content">
+                  <span class="pull-right">
+                    <input type="radio" id="arrival" name="One-way-trip" value="Arrival" checked>
+                    <label class="ml-1" for="arrival">{{'Arrival' | translate}}</label>
+                  </span>
+                </div>
               </div>
-              <div class="col">
-                <span class="pull-right ml-3">
-                  <input type="radio" id="arrival" name="One-way-trip" value="Arrival" checked>
-                  <label class="ml-1" for="arrival">{{'Arrival' | translate}}</label>
-                </span>
-                <span class="pull-right">
-                  <input type="radio" id="departure" name="One-way-trip" value="Departure">
-                  <label class="ml-1" for="departure">{{'Departure' | translate }}</label>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="container no-padding mt-0">
-            <mat-card>
+            </mat-card>
+            <mat-card class="border border-top-none">
               <p>{{selectedDate_calendar1 | date: 'shortDate'}} - {{selectedTime_calendar1}}</p>
               <input class="timepicker" type="time" #time (change)="setTimeCalendar1(time.value)">
               <mat-calendar [(selected)]="selectedDate_calendar1" [minDate]="minDate" [maxDate]="maxDate">
@@ -145,7 +138,7 @@
         <!------------------------------------------------------------ Book rerturn trip button --------------------------------------------------------------------------------->
 
 
-        <div *ngIf="fromStation !== undefined && toStation !== undefined" class="container no-padding border-style"
+        <!-- <div *ngIf="fromStation !== undefined && toStation !== undefined" class="container no-padding border-style"
           (click)="showReturnCalender()" id="add-more-trips">
           <div class="row justify-content-center">
             <span>
@@ -153,11 +146,11 @@
               {{'Book return trip' | translate}}
             </span>
           </div>
-        </div>
+        </div> -->
 
         <!------------------------------------------------------------ Datepicker2 phone --------------------------------------------------------------------------------->
 
-
+<!-- 
         <div *ngIf="fromStation !== undefined && toStation !== undefined" class="col" id="returnCalender">
           <div class="container no-padding">
             <div class="row">
@@ -184,7 +177,9 @@
               </mat-calendar>
             </mat-card>
           </div>
-        </div>
+        </div> -->
+
+
       </div>
     </div>
 
@@ -219,7 +214,7 @@
     <!------------------------------------------------------------ Icons --------------------------------------------------------------------------------->
 
 
-    <div *ngIf="fromStation === undefined && toStation === undefined" class="container">
+    <!-- <div *ngIf="fromStation === undefined && toStation === undefined" class="container">
       <div class="border-bottom">
         <div class="row">
           <div class="col">
@@ -250,6 +245,8 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+
+
   </div>
 </div>
