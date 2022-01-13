@@ -23,7 +23,7 @@ export class DepartureComponent implements OnInit {
   nextDay!: number;
   previousDate!: Date;
   previousDay!: number;
-  
+  isChecked = false;
 
   constructor(
     private bookingService: BookingBuilderService,
@@ -57,6 +57,8 @@ console.log(this.currentDate);
       console.log(this.booking.DepartureDate);
     this.prepare();
     this.booking
+    this.booking.TimeTable
+    this.calculateTime()
   }
 
   //---------------------------------Tickets---------------------------------
@@ -167,13 +169,12 @@ console.log(this.currentDate);
 
   //---------------------------------Tickets---------------------------------
 
-  calculateTime() {
+
+  calculateTime() {     
     for (let time of this.trainTimeTables) {
       //calc arrivaltim - departuretime and get to MILISEC
       var date3 = time.ArrivalTime!.getTime() - time.DepartureTime!.getTime();
-      
-      
-      console.log(date3);
+
       //check days
       var dagar = Math.floor(date3 / (60 * 60 * 24 * 1000));
       var datum4 = date3 / (60 * 60 * 1000) - dagar * 24;
@@ -183,6 +184,8 @@ console.log(this.currentDate);
       var diff5 = decimalTid - hours * 60 * 60;
       var minutes = Math.floor(diff5 / 60);
       time.Time! = String(' ' + hours + ':' + minutes + ' h');
+      console.log(time);
+      
     }
   }
   // ********************************************************
@@ -291,22 +294,60 @@ console.log(this.currentDate);
 
   totalcost: any;
   departurePrice?: number;
-
+  
   selectDeparture(departure: TrainTimeTable) {
+    
+     const hidePrevDate = document.querySelector('.summary') as HTMLElement
+    if (!this.isChecked && departure.TrainId) {
+      this.isChecked = !this.isChecked
+      console.log(this.isChecked);
+      hidePrevDate.style.display = 'block';
     this.selectedDeparture = departure;
     this.departurePrice = departure.PriceTotal
     this.booking.Price = this.calculateTotalPrice();
     console.log(this.trainTimeTables);
-    
+    } else  {
+      this.isChecked = !this.isChecked
+      // console.log('is un checked');
+     
+      hidePrevDate.style.display = 'none';
+      console.log(this.isChecked);
+      
+      
+    }
   }
 
+  
+checkbox = true;
   submit() {
+    if (this.checkbox) {
     this.booking.Tickets = this.tickets;
     this.booking.TimeTable = this.selectedDeparture;
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/seat');
     console.log(this.myDate);
     console.log(this.booking.TimeTable);
-    
+    // }
+    // else if (!this.checkbox) {
+      
+    }
   }
-}
+
+//   random(event: Event) {
+//  if ( event.target.checked ) {
+//          this.checkbox = true;
+//     }
+  
+// let btns = document.querySelectorAll('button');
+
+// btns.forEach((btn)=> {
+//     btn.addEventListener('click', function() {
+//         if(document.querySelector('button.active')){
+//          document.querySelector('button.active')?.classList.remove('active');
+//         }
+//         btn.classList.add('active');
+//     });
+    //     });
+  }
+  
+

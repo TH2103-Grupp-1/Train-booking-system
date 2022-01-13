@@ -147,9 +147,19 @@
                   </div>
                 </div>
                 <div class="container right-container">
-                  <div (click)="selectDeparture(departure)" class="price-box">
+                  <div  class="price-box">
                     <div class="price-box-first">
-                      <div ><button class="btn btn-success">{{ departure.PriceTotal }} SEK</button></div>
+                      <input class="button12"  type="checkbox" [checked]="!departure.TrainId"
+                      
+                      (change)="selectDeparture(departure)">
+                      <!-- (change)="selectDeparture($event, departure)"  -->
+                      <div class ="box">
+                        <p>{{departure.PriceTotal}}{{" SEK"| translate}}</p>
+                        <!-- <input id="button12" type="checkbox" value="321" name="{{departure.PriceTotal}}:unchecked">  -->
+                        <!-- <label for="123"></label> -->
+                        <!-- <button class="btn-primary">{{ departure.PriceTotal }} SEK</button> -->
+                        <!-- <input type="radio" value="{{ departure.PriceTotal }} SEK"> -->
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -161,10 +171,10 @@
     </div>
   </table>
 </div>
-
+<footer class ="summary">
 <div *ngIf="selectedDeparture !== undefined" class="summary">
   <h1><strong>Total SEK:</strong> {{ booking.Price }}</h1>
-  <button class="btn btn-success" (click)="submit()">
+  <button class="btn btn-success summary-btn" (click)="submit()">
     {{ "Continue" | translate }}
   </button>
-</div>
+</div></footer>
