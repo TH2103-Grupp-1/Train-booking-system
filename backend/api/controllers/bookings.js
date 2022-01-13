@@ -11,13 +11,16 @@ export const createBooking = (req, res) => {
   let toLocation = req.body.ToLocation;
   let trainType = req.body.TrainType;
   let userId = req.body.UserId;
+  let orderNumber = req.body.OrderNumber;
 
-  console.log(req.body);
-  let preparedStatement = db.prepare("INSERT INTO Bookings (ArrivalTime, CustomerName, DepartureTime, FromLocation, Price, SeatId, SeatNumber, ToLocation, TrainType, UserId) VALUES(?,?,?,?,?,?,?,?,?,?)");
-
-  preparedStatement.run(arrivalTime, customerName, departureTime, fromLocation, price, seatId, seatNumber, toLocation, trainType, userId);
-
-  res.send("Data inserted!");
+  let bookingExists = db.prepare("SELECT * FROM Bookings WHERE OrderNumber = ?").all(orderNumber);
+  if (bookingExists.length > 0) {
+    res.sendStatus(200);
+  } else {
+    db.prepare("INSERT INTO Bookings (ArrivalTime, CustomerName, DepartureTime, FromLocation, Price, SeatId, SeatNumber, ToLocation, TrainType, UserId, OrderNumber) VALUES(?,?,?,?,?,?,?,?,?,?,?)")
+      .run(arrivalTime, customerName, departureTime, fromLocation, price, seatId, seatNumber, toLocation, trainType, userId, orderNumber);
+    res.sendStatus(201);
+  }
 }
 
 export const getAllBookings = (req, res) => {

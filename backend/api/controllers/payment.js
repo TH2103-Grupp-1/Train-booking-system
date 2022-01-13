@@ -5,7 +5,7 @@ export const checkout = async (req, res) => {
     const stripe = new Stripe('sk_test_51KBEVTFsTQg8DW3AcC4T7kIy2bRIh3rmTOaixwXjvMI0UN8uayvhuEx5CppoXGZcmDSk2a4FVUZhUKgYieoRXb1U001PQsHRW3');
     let booking = JSON.parse(req.body.booking);
     const BASE_URL = req.protocol + "://" + req.headers.host;
-
+    let orderNumber = Math.floor((Math.random() * 100000000024) + 1).toString();
     const product = await stripe.products.create({
         name: booking.FromLocation.AdvertisedLocationName + ' - ' + booking.ToLocation.AdvertisedLocationName,
         images: ['https://wallup.net/wp-content/uploads/2017/11/17/364154-city-cityscape-lights-city_lights-blurred.jpg'],
@@ -34,7 +34,8 @@ export const checkout = async (req, res) => {
             ArrivalTime: booking.TimeTable.ArrivalTime,
             SeatId: booking.SeatId,
             SeatNumber: booking.SeatNumber,
-            UserId: booking.UserId
+            UserId: booking.UserId,
+            OrderNumber: orderNumber
         },
         success_url: `${BASE_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${BASE_URL}`,
@@ -63,6 +64,7 @@ export const orderSuccess = async (req, res) => {
 
         res.json({ message: result });
     } catch (error) {
+        console.log(error);
         res.json({ message: 'Not found' });
     }
 }

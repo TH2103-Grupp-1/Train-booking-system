@@ -21,7 +21,6 @@ export class OrderConfirmationComponent implements OnInit {
   ngOnInit(): void {
     this.SESSION_ID = this.route.snapshot.queryParamMap.get('session_id');
     this.paymentService.getSessionDetails(this.SESSION_ID!).subscribe(o => {
-
       if(o.message === "Not found") { this.router.navigateByUrl('/'); }
       this.confirmation = o.message;
       this.bookingService.postBooking(this.confirmation);

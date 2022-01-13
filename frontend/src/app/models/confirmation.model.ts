@@ -8,4 +8,5 @@ export interface Confirmation {
   TrainType: string;
   SeatNumber: string;
   UserId?: number;
+  OrderNumber: string;
 }
