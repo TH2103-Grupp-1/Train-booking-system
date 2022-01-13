@@ -73,6 +73,10 @@ h1{
   margin: 20px;
 }
 
+.selected-seat {
+  background-color: green;
+}
+
 .occupied {
   background-color: red;
 }
