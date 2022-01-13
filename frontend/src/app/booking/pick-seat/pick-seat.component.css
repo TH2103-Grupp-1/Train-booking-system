@@ -35,8 +35,7 @@ a
   font-size: 10px;
 }
 
-h1{
-  text-align: center;
+h1 {
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -61,16 +60,23 @@ h1{
   /* position: relative; */
 }
 
-.seats-overview {
-  margin-top: 50px;
-  width: 800px;
-  height: 400px;
-}
 
 .seat {
-  height: 40px;
-  width: 40px;
-  margin: 20px;
+  height: 50px;
+  width: 50px;
+  margin: 15px;
+  background-color: darkgray;
+}
+ 
+.seatnumber {
+  background-color: white;
+  max-height: 97%;
+}
+
+
+
+.occupied {
+  background-color: red;
 }
 
 .occupied {
@@ -78,7 +84,12 @@ h1{
 }
 
 .carriage {
-  background-color: #fff;
+  width: 150px;
+  height: 50px;
+}
+
+.restaurant {
+  background-color: rgb(173, 173, 173);
   width: 200px;
   height: 60px;
   display: flex;
@@ -111,8 +122,91 @@ h1{
 }
 
 .scrolling-wrapper {
-  width: 800px;
+  min-width: 330px;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
 }
+
+#continue-btn-phone {
+  border-radius: 0px;
+  background-color:  #156e31;
+  border-bottom: solid 3px #105426;
+  font-weight: bold;
+  text-align: left;
+  color: white;
+  transition: 0.40s linear;
+  margin-bottom: 20px;
+}
+
+.btn-light{
+  border-radius: 0px;
+  border: solid 2px darkgray;
+}
+
+.outer {
+  white-space: nowrap;
+  position: relative;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.outer .col-4 {
+  display: inline-block;
+}
+.phone-seatpicker-container{
+  max-width: 380px;
+}
+
+#seatReservationPhone{
+  text-decoration: line-through;
+}
+#seatReservationDesktop{
+  text-decoration: line-through;
+}
+
+@media (min-width: 780px){
+  .phone-ticket{
+      visibility: hidden;
+      display: none;
+  }
+  .phone-bottom{
+      visibility: hidden;
+      display: none;
+  }
+  .page-orientation-bar-current a{
+      font-size: 13px;
+  }
+  .page-orientation-bar-next a{
+      font-size: 13px;
+  }
+  .page-orientation-bar-back a{
+      font-size: 13px;
+  }
+}
+
+@media (max-width: 780px){
+  .desktop-ticket{
+      visibility: hidden;
+      display: none;
+  }
+  .desktop-bottom{
+      visibility: hidden;
+      display: none;
+  }
+  .page-orientation-bar-current a{
+      font-size: 10px;
+  }
+  .page-orientation-bar-next a{
+      font-size: 10px;
+  }
+  .page-orientation-bar-back a{
+      font-size: 10px;
+  }
+}
+
+.occupied {
+  background-color: red;
+}
+
