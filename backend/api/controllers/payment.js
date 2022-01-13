@@ -59,15 +59,19 @@ export const orderSuccess = async (req, res) => {
         console.log(result);
         result.CustomerName = customer.name;
         
-        let prepareStatement = db.prepare("SELECT Occupied FROM Seats WHERE Id = ?");
+        const seatIdArray = result.SeatId.split(',');
 
-        let foundSeat = prepareStatement.get(parseInt(result.SeatId));
+        seatIdArray.forEach(id => {
+            let prepareStatement = db.prepare("SELECT Occupied FROM Seats WHERE Id = ?");
 
-        foundSeat.occupied = true;
-
-        let updateSeats = db.prepare('UPDATE Seats SET Occupied = 1 WHERE Id = ?');
-
-        updateSeats.run(parseInt(result.SeatId));
+            let foundSeat = prepareStatement.get(id);
+    
+            foundSeat.occupied = true;
+    
+            let updateSeats = db.prepare('UPDATE Seats SET Occupied = 1 WHERE Id = ?');
+    
+            updateSeats.run(id);
+        });
 
         res.json({ message: result });
     } catch (error) {
