@@ -46,6 +46,8 @@ export class PickSeatComponent implements OnInit {
   selectSeat(seat: number, seatId: number) {
     this.selectedSeat.push(seat);
     this.booking.SeatId = seatId;
+
+    
   }
 
   change(group: any) {
@@ -56,6 +58,15 @@ export class PickSeatComponent implements OnInit {
       // this.selectedSeat.push(newValue);
       this.selectedSeat = [];
     }
+  }
+
+  iconTogglePhone(){
+  
+    document.getElementById('iconPhone')?.classList.toggle('fa-caret-up');  
+  }
+  iconToggleDesktop(){
+    
+    document.getElementById('iconDesktop')?.classList.toggle('fa-caret-up');  
   }
 
   submit() {
