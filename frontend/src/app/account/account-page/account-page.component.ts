@@ -16,7 +16,6 @@ export class AccountPageComponent implements OnInit {
 
   constructor(private authService: AuthService, private bookingService: BookingService) {
     this.name = authService.currentUser?.FirstName;
-    console.log(this.userBooking);
   }
 
   ngOnInit(): void {
