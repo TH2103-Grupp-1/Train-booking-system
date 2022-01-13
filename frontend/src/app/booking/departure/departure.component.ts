@@ -23,7 +23,7 @@ export class DepartureComponent implements OnInit {
   nextDay!: number;
   previousDate!: Date;
   previousDay!: number;
-  
+
 
   constructor(
     private bookingService: BookingBuilderService,
@@ -31,7 +31,7 @@ export class DepartureComponent implements OnInit {
     private route: Router
   ) {
     this.currentDate = new Date();
-    
+
   }
 
   ngOnInit(): void {
@@ -47,9 +47,9 @@ export class DepartureComponent implements OnInit {
         }
         this.trainTimeTables = t;
       });
-      
-      
-      
+
+
+
     }
     this.myDate = this.booking.DepartureDate!;
 console.log(this.currentDate);
@@ -89,6 +89,7 @@ console.log(this.currentDate);
       this.tickets.push({ id: this.counter, ageGroup: 'adult', price: 39 });
       this.resetId();
       this.booking.Price = this.calculateTotalPrice();
+      this.booking.Travelers?.push(1);
     }
     console.log(this.tickets);
   }
@@ -121,6 +122,7 @@ console.log(this.currentDate);
       this.resetId();
       this.booking.Price = this.calculateTotalPrice();
       console.log(this.tickets);
+      this.booking.Travelers?.shift();
     }
   }
 
@@ -219,9 +221,9 @@ console.log(this.currentDate);
       hidePrevDate.style.opacity = "1"
          hidePrevDate.style.pointerEvents = "auto"
     // if (this.currentDate.getDate() !== this.myDate.getDate() && this.currentDate.getMonth() !== this.myDate.getMonth()){
-       
+
     // }
-   
+
     if (this.myDate !== this.nextDate) {
       this.changeDate = this.myDate.setDate(this.myDate.getDate() + 1);
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() + 1);
@@ -233,32 +235,32 @@ console.log(this.currentDate);
       this.previousDay = this.previousDate.setDate(this.previousDate.getDate() + 1)
     }
   }
-  
+
   // testfunk() {
   //   // const hidePrevDate = document.querySelector('.pagination-icon-previous-hidden') as HTMLElement
   //      if (this.currentDate.getDay() === this.myDate.getDay()) {
   //       // hidePrevDate.style.opacity = "1"
   //       //  hidePrevDate.style.pointerEvents = "auto"
   //        alert('')
-       
+
   //     }
   // }
-  
+
   showPreviousDay() {
 //  this.currentDate = new Date();
    console.log('current from prevday '+this.currentDate);
     console.log('mydate from prevday ' + this.myDate);
     console.log('log departureday prevday ' + this.booking.DepartureDate);
     // console.log('previous day' + this.previousDay);
-    
-    
-    
+
+
+
     const hidePrevDate = document.querySelector('.pagination-icon-previous-hidden') as HTMLElement
     if (this.currentDate.getDate() === this.myDate.getDate() && this.currentDate.getMonth() === this.myDate.getMonth()) {
       // alert('')
        hidePrevDate.style.opacity = "0.5"
        hidePrevDate.style.pointerEvents = "none"
-    
+
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate()+1);
       this.changeDate = this.myDate.setDate(this.myDate.getDate()+1);
         this.previousDay = this.previousDate.setDate(this.previousDate.getDate()+1,
@@ -272,12 +274,12 @@ console.log(this.currentDate);
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() - 1);
     }  else if (this.myDate === this.nextDate) {
       this.previousDay = this.previousDate.setDate(this.previousDate.getDate() - 1);
-        
-      
-      
+
+
+
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() - 1);
       }
-  } 
+  }
 
   // sets panel false for use to our accordion
   panelExpanded = false;
