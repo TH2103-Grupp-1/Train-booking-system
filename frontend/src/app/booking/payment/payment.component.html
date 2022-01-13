@@ -76,7 +76,7 @@
         </div>
         <!-- Form -->
         <form class="container no-padding" [formGroup]="paymentForm">
-          <h2>{{ "Travelers" | translate }}</h2>
+          <h2>{{ "Ticket recipient" | translate }}</h2>
           <div class="row">
             <div class="col col-md-4">
               <label
@@ -181,7 +181,7 @@
           </div>
           <br>
           <div class="price">
-            <p>1 {{ 'traveler' | translate }} </p>
+            <p>{{booking.Travelers?.length}} {{ this.travelerMessage | translate }} </p>
             <p>{{booking.Price}}:-</p>
           </div>
           <hr>
