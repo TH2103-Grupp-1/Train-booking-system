@@ -8,6 +8,12 @@ export const checkout = async (req, res) => {
     // const BASE_URL = 'http://localhost:4200'
     console.log('this is the checkout method booking object');
     console.log(booking);
+
+    let seatIds = booking.SeatId.toString();
+
+    console.log('this is the seat id array as string');
+    console.log(seatIds);
+
     const product = await stripe.products.create({
         name: booking.FromLocation.AdvertisedLocationName + ' - ' + booking.ToLocation.AdvertisedLocationName,
         images: ['https://wallup.net/wp-content/uploads/2017/11/17/364154-city-cityscape-lights-city_lights-blurred.jpg'],
@@ -34,7 +40,7 @@ export const checkout = async (req, res) => {
             TrainType: booking.TimeTable.TrainType,
             DepartureTime: booking.TimeTable.DepartureTime,
             ArrivalTime: booking.TimeTable.ArrivalTime,
-            SeatId: booking.SeatId
+            SeatId: seatIds
         },
         success_url: `${BASE_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${BASE_URL}`,
