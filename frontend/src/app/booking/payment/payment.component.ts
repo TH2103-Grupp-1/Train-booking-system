@@ -8,6 +8,8 @@ import { PaymentService } from 'src/app/services/payment.service';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { PaymentCancelComponent } from './payment-cancel/payment-cancel.component';
 
+
+
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -15,7 +17,7 @@ import { PaymentCancelComponent } from './payment-cancel/payment-cancel.componen
 })
 export class PaymentComponent implements OnInit {
 
-
+  travelerMessage!: string;
   paymentForm!: FormGroup;
   booking: Booking;
 
@@ -25,19 +27,19 @@ export class PaymentComponent implements OnInit {
     // delete this.booking.Train?.Carriages;
     // delete this.booking.TicketReciever;
     // delete this.booking.Travelers;
+    this.travelerMessage = ( this.booking.Travelers!.length === 1) ? 'Traveler' : 'Travelers';
   }
 
 
   ngOnInit(): void {
-    this.getUserData();
-
-
     this.paymentForm = new FormGroup({
-      'firstName': new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
-      'lastName': new FormControl(null, [Validators.required,  Validators.pattern('[a-zA-Z ]*')]),
-      'phoneNumber': new FormControl(null, [Validators.required, Validators.pattern(/^(\+|00)[1-9][0-9 \-\(\)\.]{7,32}$/)]),
-      'email': new FormControl(null, [Validators.required, Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}')])
+      firstName: new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
+      lastName: new FormControl(null, [Validators.required,  Validators.pattern('[a-zA-Z ]*')]),
+      phoneNumber: new FormControl(null, [Validators.required, Validators.pattern(/^(\+|[0-9])[1-9][0-9 \-\(\)\.]{7,32}$/)]),
+      email: new FormControl(null, [Validators.required, Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}')])
     });
+
+    this.getUserData();
   }
 
   getUserData() {
@@ -50,8 +52,9 @@ export class PaymentComponent implements OnInit {
 
   }
 
+
   openDialog() {
-    const dialogRef = this.dialog.open(PaymentCancelComponent);
+    this.dialog.open(PaymentCancelComponent);
 
   }
 
