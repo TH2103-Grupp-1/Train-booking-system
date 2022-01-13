@@ -58,7 +58,7 @@
     </div>
     </div>
     <div class="container train-container"><h1>{{ 'Passengers' | translate }}: {{booking.Travelers!.length}}</h1></div>
-    <div *ngIf="selectedSeat.length > 0" class="container train-container">
+    <div *ngIf="selectedSeat.length === maxSeats" class="container train-container">
       <h1>{{'You selected seat' | translate}} {{selectedSeat.concat()}} {{'on carriage' | translate }} {{selectedCarriage.CarriageType! | translate}} </h1>
       <button class="btn btn-success continue-btn" (click)="submit()">{{'Continue' | translate }}</button>
   </div>
