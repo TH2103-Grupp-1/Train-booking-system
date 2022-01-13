@@ -8,12 +8,12 @@
       </div>
       <div class="col page-orientation-bar-back">
         <a routerLink="/departures">
-          2.
+          2. {{'Timetable' | translate}}
       </a>
       </div>
       <div class="col page-orientation-bar-back">
         <a routerLink="/seat">
-          3.
+          3. {{'Optional' | translate}}
         </a>
       </div>
       <div class="col-3 page-orientation-bar-current">
@@ -88,7 +88,7 @@
       </div>
     </div>
   </div> -->
-  <div class="container phone-ticket no-padding border shadow rounded">
+  <div class="container phone-ticket no-padding border shadow-sm">
     <div class="container border-bottom">
       <div class="container inner-container">
         <h2>
@@ -97,25 +97,15 @@
           <span>{{booking.ToLocation!.AdvertisedLocationName}}</span>
         </h2>
         <p>
-          <span>{{getDepartureDate()}}</span>
+          <span>{{booking.TimeTable!.DepartureTime}}</span>
         </p>
       </div>
     </div>
     <div class="container border-bottom">
       <p><span>1 </span><span>{{'Traveller' | translate}}</span></p>
+      <p><span>2 </span><span>{{'Class' | translate}}</span></p>
       <p>{{'Cannot be rebooked' | translate}}</p>
-      <p class="text-success">
-        <i class="fa fa-check"></i> {{'Seat reservation' | translate}}
-        <span class="ml-2" id="seatReservationPhone">
-          <i class="fa fa-caret-down" data-toggle="collapse" href="#seatInformation" role="button"
-           aria-expanded="false" aria-controls="seatInformation" id="iconPhone" (click)="iconTogglePhone()"></i>
-        </span>
-      </p>
-      <p class="collapse" id="seatInformation">
-        <span>{{ 'Wagon' | translate }}</span>
-        <span> 1, </span>
-        <span>{{ 'Seat' | translate }} {{this.booking.SeatId!}}</span>
-      </p>
+      <p><i class="fa fa-check"></i> Seat reservation</p>
     </div>
     <div class="container border-bottom">
       <div class="container inner-container no-padding">
@@ -124,9 +114,10 @@
             {{booking.TimeTable!.TrainType}}
           </span>
           <span>
-            <span>{{'Travel time' | translate}}</span>
-            <span> - </span>
-            <span id="travelTimePhone">{{getTravelTime()}} h</span>
+            <span>{{'Travel time' | translate}}</span><span> 3:11h</span>
+          </span>
+          <span id="right">
+            <span>0 </span><span>{{'Swaps' | translate}}</span>
           </span>
         </p>
       </div>
@@ -150,7 +141,7 @@
     </div>
   </div>
   <!---------------------------- Desktop size cards --------------------------------->
-  <div class="container border desktop-card margin-bottom shadow rounded">
+  <div class="container border desktop-card margin-bottom">
     <div class="container border-bottom no-padding margin-top">
       <div class="row justify-content-center">
         <div class="col col-auto">
@@ -163,8 +154,8 @@
         </div>
         <div class="col col-auto thin">
           <h2 id="desktop-date">
-            <span>{{getDepartureDate()}}</span>
-            <!-- <span class="time">kl 06:24</span> -->
+            <!-- <span>Torsdag 23 december 2021</span>
+            <span class="time">kl 06:24</span> -->
           </h2>
         </div>
         <div class="col">
@@ -180,25 +171,24 @@
     </div>
     <div class="container border-bottom no-padding margin-top">
       <p id="left">
-          <span>1 </span><span>{{'Traveller' | translate}}</span>
-          <span class="margin-left">{{'Cannot be rebooked' | translate}}</span>
-          <span class="margin-left text-success">
-            <i class="fa fa-check"></i> {{'Seat reservation' | translate}}
-          </span>
-          <span class="margin-left">       
-            <span>{{ 'Wagon' | translate }}</span>
-            <span> 1, </span>
-            <span>{{ 'Seat' | translate }} {{this.booking.SeatId!}}</span>  
-          </span>
-      </p>  
+        <span>1 </span><span>{{'Traveller' | translate}}</span>
+        <span class="margin-left">
+          <span>2 </span>
+          <span>{{'Class' | translate}}</span>
+        </span>
+        <span class="margin-left">{{'Cannot be rebooked' | translate}}</span>
+      </p>
     </div>
     <div class="container no-padding margin-top">
       <p id="left">
         {{booking.TimeTable!.TrainType}}
           <span class="margin-left">
             <span>{{'Travel time' | translate}}</span>
-            <span> - </span>
-            <span id="travelTimeDesktop">{{getTravelTime()}} h</span>
+            <span> 4:05 h</span>
+          </span>
+          <span class="margin-left">
+            <span>0 </span>
+            <span>{{'Swaps' | translate}}</span>
           </span>
       </p>
     </div>
@@ -293,7 +283,7 @@
         <div class="col">
           <h1 id="left">{{'Total' | translate}}</h1>
         </div>
-        <div class="col border-left">
+        <div class="col">
           <div class="row align-items-center float-right">
             <h1>{{booking.Price}}:-</h1>
             <button type="button" (click)="submit()" class="btn btn-primary btn-lg" id="continue-btn-desktop">
