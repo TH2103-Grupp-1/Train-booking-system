@@ -94,6 +94,7 @@ h1 {
   height: 60px;
   display: flex;
   display: inline-block;
+  margin-right: 10px;
 }
 
 .restaurant {
@@ -102,6 +103,14 @@ h1 {
   height: 60px;
   display: flex;
   display: inline-block;
+}
+
+.carriage-type {
+  color: black;
+}
+
+.continue-btn {
+  margin-left: 10px;
 }
 
 .carriage-thing {
