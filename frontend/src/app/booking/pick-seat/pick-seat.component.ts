@@ -48,8 +48,10 @@ export class PickSeatComponent implements OnInit {
     if (!this.selectedSeat.includes(seat)) {
       this.selectedSeat.push(seat);
       this.seatIds.push(seatId);
-      let seatElement = document.getElementById(`seat-number-${seat}`);
-      seatElement?.classList.add('selected-seat');
+      let seatElementDesktop = document.getElementById(`seat-number-desktop-${seat}`);
+      let seatElementPhone = document.getElementById(`seat-number-phone-${seat}`);
+      seatElementDesktop?.classList.add('selected-seat');
+      seatElementPhone?.classList.add('selected-seat');
       console.log(this.booking.SeatId);
     }
   }
@@ -57,8 +59,10 @@ export class PickSeatComponent implements OnInit {
   change(group: any) {
     if (this.selectedSeat.length >= this.maxSeats) {
       this.selectedSeat.forEach(seat => {
-        let seatElement = document.getElementById(`seat-number-${seat}`);
-        seatElement?.classList.remove('selected-seat');
+        let seatElementDesktop = document.getElementById(`seat-number-desktop-${seat}`);
+        let seatElementPhone = document.getElementById(`seat-number-phone-${seat}`);
+        seatElementDesktop?.classList.remove('selected-seat');
+        seatElementPhone?.classList.remove('selected-seat');
       });
       this.selectedSeat = [];
       this.seatIds! = [];
@@ -76,6 +80,32 @@ export class PickSeatComponent implements OnInit {
 iconTogglePhone(){
   
   document.getElementById('iconPhone')?.classList.toggle('fa-caret-up');  
+}
+
+getTravelTime(): string{
+  let ArrivalTime = this.booking.TimeTable?.ArrivalTime?.toLocaleString();
+  let DepartureTime = this.booking.TimeTable?.DepartureTime?.toLocaleString();
+  
+  let arrTime = Date.parse(ArrivalTime!);
+  let depTime = Date.parse(DepartureTime!);
+
+  let msDiff = arrTime! - depTime!;
+  let timeDiff = this.msToHMS(msDiff);
+
+  return timeDiff;
+}
+
+ msToHMS(ms: number): string{
+
+  let seconds = ms / 1000;
+
+  let hours = Math.floor(seconds / 3600); 
+
+  let minutes = Math.floor(seconds - (hours * 3600)) / 60; 
+ 
+  let time = hours.toString() + ':' +  minutes.toString();
+
+  return time;
 }
 
   submit() {

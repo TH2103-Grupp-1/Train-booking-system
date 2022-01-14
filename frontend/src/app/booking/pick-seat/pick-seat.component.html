@@ -70,7 +70,11 @@
           </p>
         </div>
         <div class="col">
-          <h3 class="pull-right mb-0">SJ</h3>
+         <div class="row">
+           <div class="col border-right" *ngFor="let seat of selectedSeat">
+            {{seat}}
+           </div>
+         </div>
         </div>
       </div>
     </div>
@@ -86,12 +90,12 @@
         <mat-button-toggle-group #group="matButtonToggleGroup" class="border row" multiple (change)="change(group)">
       <div *ngFor="let seat of seats | async">
         <div *ngIf="!seat.Occupied"  class="seat card" (click)="selectSeat(seat.SeatNumber!, seat.Id!)">
-          <mat-button-toggle id="seat-number-{{seat.SeatNumber}}">
+          <mat-button-toggle id="seat-number-phone-{{seat.SeatNumber}}">
             {{seat.SeatNumber}}
           </mat-button-toggle>
         </div>
         <div *ngIf="seat.Occupied" class="seat card occupied">
-          <mat-button-toggle id="seat-number-{{seat.SeatNumber}}" >
+          <mat-button-toggle id="seat-number-phone-{{seat.SeatNumber}}" >
             {{seat.SeatNumber}}
           </mat-button-toggle>
         </div>
@@ -125,12 +129,11 @@
           </div>
         </div>
         <p>
-          <span>date of travel</span>
-          <span>, </span>
-          <span>{{booking.TimeTable?.DepartureTime}}-{{booking.TimeTable?.ArrivalTime}}</span>
-        </p>
-  
-        
+          {{booking.TimeTable?.DepartureTime?.toLocaleString()}} - {{booking.TimeTable?.ArrivalTime?.toLocaleString()}}
+        </p>  
+        <p>
+          {{getTravelTime()}}
+        </p> 
       </div>
     </div>
 </div>
@@ -148,7 +151,7 @@
     </span>
   </h1>
 
-  <div class="container border shadow rounded p-2">
+  <div class="container border shadow rounded p-2 mb-5">
     <div class="row font-weight-bold">
       <div class="col-md-3">{{'Seats' | translate}}</div>
       <div class="col-md-3">{{'Trip' | translate}}</div>
@@ -157,9 +160,13 @@
 
     <div class="row mt-2 font-weight-light">
       <div class="col-md-3">
-        <h2 id="seatReservationDesktop">
-          {{'Seat reserved' | translate}}
-        </h2>
+        <div class="row">
+          <div class="col-1 fit-content m-1" *ngFor="let seat of selectedSeat">
+            <h3>
+              {{seat}}
+            </h3>
+          </div>
+        </div>
       </div>
       <div class="col-md-3">
         <h2 class="mr-0" id="locationInformation">
@@ -172,7 +179,7 @@
       </div>
       <div class="col-md-3">
         <h2 id="travelTime">
-          {{'Traveltime' | translate}}
+          {{getTravelTime()}} h
         </h2>
       </div>
       <div class="col-md-3 text-center">
@@ -194,21 +201,21 @@
 
 
   <div class="align-items-center h-75 justify-content-center" id="seatPickerDesktop">
-    <div class="continer scrolling-wrapper justify-content-center">
-      <div *ngFor="let carriage of carriages" (click)="selectCarriage(carriage)" class="carriage border"><h2 class="carriage-type">{{ carriage.CarriageType! | translate }}</h2>
+    <div class="continer scrolling-wrapper justify-content-center row mb-3">
+      <div *ngFor="let carriage of carriages" (click)="selectCarriage(carriage)" class="carriage border"><h2 class="carriage-type text-center">{{ carriage.CarriageType! | translate }}</h2>
     </div>
     </div>
-      <div *ngIf="selectedCarriage !== undefined" class="continer scrolling-wrapper justify-content-center">
+      <div *ngIf="selectedCarriage !== undefined" class="continer scrolling-wrapper justify-content-center row mb-3">
         <div class="seats-overview">
             <mat-button-toggle-group #group="matButtonToggleGroup" class="border row" multiple (change)="change(group)">
           <div *ngFor="let seat of seats | async">
             <div *ngIf="!seat.Occupied"  class="seat card" (click)="selectSeat(seat.SeatNumber!, seat.Id!)">
-              <mat-button-toggle id="seat-number-{{seat.SeatNumber}}">
+              <mat-button-toggle id="seat-number-desktop-{{seat.SeatNumber}}">
                 {{seat.SeatNumber}}
               </mat-button-toggle>
             </div>
             <div *ngIf="seat.Occupied" class="seat card occupied">
-              <mat-button-toggle id="seat-number-{{seat.SeatNumber}}" >
+              <mat-button-toggle id="seat-number-desktop-{{seat.SeatNumber}}" >
                 {{seat.SeatNumber}}
               </mat-button-toggle>
             </div>
@@ -236,14 +243,18 @@
             <span>{{booking.ToLocation?.AdvertisedLocationName}}</span>
           </span>
         </h2>
+        <h3>
+          {{this.booking.TimeTable?.DepartureTime?.toLocaleString()}}
+        </h3>
       </div>
       <div class="col">
         <div class="row">
           <div class="col pull-left">
             <h2>{{'Total' | translate}}</h2>
             <p>
-              <span class="mr-1">{{booking.Travelers}}</span>
-              <span>{{'Traveler' | translate}}</span>
+              <span class="mr-1">{{booking.Travelers!.length}}</span>
+              <span *ngIf="booking.Travelers!.length > 1">{{'Travelers' | translate}}</span>
+              <span *ngIf="booking.Travelers!.length <= 1">{{'Traveler' | translate}}</span>
             </p>
           </div>
           <div class="col-8 p-0">
