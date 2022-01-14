@@ -65,6 +65,17 @@ export class PickSeatComponent implements OnInit {
     group.value = this.selectedSeat;
   }
 
+  iconToggleDesktop(){
+  
+    document.getElementById('iconDesktop')?.classList.toggle('fa-caret-up');  
+  }
+
+    
+iconTogglePhone(){
+  
+  document.getElementById('iconPhone')?.classList.toggle('fa-caret-up');  
+}
+
   submit() {
     for(let seat of this.selectedSeat) {
       this.selectedCarriage.Seats?.push({ SeatNumber: seat });
