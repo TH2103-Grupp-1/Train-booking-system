@@ -7,16 +7,16 @@
       <div class="row d-flex justify-content-center">
         <form  [formGroup]="loginForm" (submit)="onSubmit()">
             <div class="col">
-              <mat-form-field class="input-field" appearance="outline">
+              <mat-form-field class="input-field" appearance="outline" hideRequiredMarker>
                 <mat-label>{{'Email' | translate }}</mat-label>
-                <input matInput placeholder="pat@example.com" formControlName="email" required maxlength="30">
+                <input matInput placeholder="pat@example.com" formControlName="email" required maxlength="40">
                 <mat-error *ngIf="loginForm.value.email.invalid">{{getErrorMessage()}}</mat-error>
               </mat-form-field>
             </div>
             <div class="col">
-              <mat-form-field class="input-field" appearance="outline">
+              <mat-form-field class="input-field" appearance="outline" hideRequiredMarker>
                 <mat-label>{{'Password' | translate }}</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password" maxlength="30">
+                <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password" required maxlength="30">
                 <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                   <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button> -->
