@@ -405,9 +405,9 @@ border-radius: inherit;
     pointer-events: none;
     border-radius: inherit;
 }
-.test{
+.p-price{
   position: relative;
   z-index:100;
-  color:#185ADB;
+  color:#0b0c0e;
   font-size:1rem;
 }
