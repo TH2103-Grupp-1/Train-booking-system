@@ -32,7 +32,7 @@ export class DepartureComponent implements OnInit {
     private route: Router
   ) {
     this.currentDate = new Date();
-    
+
   }
 
   ngOnInit(): void {
@@ -48,9 +48,8 @@ export class DepartureComponent implements OnInit {
         }
         this.trainTimeTables = t;
       });
-      
-      
-      
+
+
 
     }
     this.myDate = this.booking.DepartureDate!;
@@ -91,6 +90,7 @@ export class DepartureComponent implements OnInit {
       this.tickets.push({ id: this.counter, ageGroup: 'adult', price: 39 });
       this.resetId();
       this.booking.Price = this.calculateTotalPrice();
+      this.booking.Travelers?.push(1);
     }
     console.log(this.tickets);
   }
@@ -123,6 +123,7 @@ export class DepartureComponent implements OnInit {
       this.resetId();
       this.booking.Price = this.calculateTotalPrice();
       console.log(this.tickets);
+      this.booking.Travelers?.shift();
     }
   }
 
@@ -221,9 +222,9 @@ export class DepartureComponent implements OnInit {
     hidePrevDate.style.opacity = "1"
     hidePrevDate.style.pointerEvents = "auto"
     // if (this.currentDate.getDate() !== this.myDate.getDate() && this.currentDate.getMonth() !== this.myDate.getMonth()){
-       
+
     // }
-   
+
     if (this.myDate !== this.nextDate) {
       this.changeDate = this.myDate.setDate(this.myDate.getDate() + 1);
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() + 1);

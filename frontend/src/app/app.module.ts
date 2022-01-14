@@ -37,6 +37,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio'
+import { MatDialogModule } from '@angular/material/dialog';
+import { PaymentCancelComponent } from './booking/payment/payment-cancel/payment-cancel.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/translations/', '.json');
@@ -54,7 +57,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     OrderConfirmationComponent,
     PaymentComponent,
     PickSeatComponent,
+    PaymentCancelComponent,
+
   ],
+  entryComponents: [PaymentCancelComponent],
   imports: [
     BrowserModule,
     NgxPaginationModule,
@@ -79,6 +85,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatGridListModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatDialogModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
