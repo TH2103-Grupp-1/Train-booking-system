@@ -215,9 +215,6 @@ export class DepartureComponent implements OnInit {
 
   // Show deparures on date after "today" or picked date.
   showNextDay() {
-    console.log('current from nextday ' + this.currentDate);
-    console.log('mydate from nextday ' + this.myDate);
-    console.log('log departureday day ' + this.booking.DepartureDate);
 
     //  this.currentDate = new Date();
     const hidePrevDate = document.querySelector('.pagination-icon-previous-hidden') as HTMLElement
@@ -239,28 +236,14 @@ export class DepartureComponent implements OnInit {
     }
   }
   
-  // testfunk() {
-  //   // const hidePrevDate = document.querySelector('.pagination-icon-previous-hidden') as HTMLElement
-  //      if (this.currentDate.getDay() === this.myDate.getDay()) {
-  //       // hidePrevDate.style.opacity = "1"
-  //       //  hidePrevDate.style.pointerEvents = "auto"
-  //        alert('')
-       
-  //     }
-  // }
   
   showPreviousDay() {
     //  this.currentDate = new Date();
-    console.log('current from prevday ' + this.currentDate);
-    console.log('mydate from prevday ' + this.myDate);
-    console.log('log departureday prevday ' + this.booking.DepartureDate);
-    // console.log('previous day' + this.previousDay);
-    
-    
+
     
     const hidePrevDate = document.querySelector('.pagination-icon-previous-hidden') as HTMLElement
     if (this.currentDate.getDate() === this.myDate.getDate() && this.currentDate.getMonth() === this.myDate.getMonth()) {
-      // alert('')
+
       hidePrevDate.style.opacity = "0.5"
       hidePrevDate.style.pointerEvents = "none"
     
@@ -277,9 +260,6 @@ export class DepartureComponent implements OnInit {
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() - 1);
     } else if (this.myDate === this.nextDate) {
       this.previousDay = this.previousDate.setDate(this.previousDate.getDate() - 1);
-        
-      
-      
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() - 1);
     }
   }
@@ -298,32 +278,10 @@ export class DepartureComponent implements OnInit {
   departurePrice?: number;
   
   selectDeparture(departure: TrainTimeTable) {
-    // const checkboxHtml = document.getElementById('id') as HTMLInputElement;
-
-    //  const hidePrevDate = document.querySelector('.summary') as HTMLElement
-    // if (!this.isChecked ) {
-      console.log('+ is this.isChecked 1 '+this.isChecked);
-      
-      // this.isChecked = !this.isChecked
-      console.log('+ is this.isChecked 2 '+this.isChecked);
-      console.log(departure.TrainId);
-      
-      // hidePrevDate.style.display = 'block';
     this.selectedDeparture = departure;
     this.departurePrice = departure.PriceTotal
     this.booking.Price = this.calculateTotalPrice();
-    // } else  {
-    //   this.isChecked = !this.isChecked
-      //   console.log('checked html' + checkboxHtml.checked);
-      // console.log(checkboxHtml);
-      // // checkboxHtml.checked;
-      // console.log('is un checked');
-     
-      // hidePrevDate.style.display = 'none';
-      // console.log('+ is this.isChecked '+this.isChecked);
-      
-      
-    // }
+ 
   }
 
   
@@ -338,21 +296,4 @@ export class DepartureComponent implements OnInit {
     }
   }
 
-//   random(event: Event) {
-//  if ( event.target.checked ) {
-//          this.checkbox = true;
-//     }
-  
-// let btns = document.querySelectorAll('button');
-
-// btns.forEach((btn)=> {
-//     btn.addEventListener('click', function() {
-//         if(document.querySelector('button.active')){
-//          document.querySelector('button.active')?.classList.remove('active');
-//         }
-//         btn.classList.add('active');
-//     });
-    //     });
-  
-  
 

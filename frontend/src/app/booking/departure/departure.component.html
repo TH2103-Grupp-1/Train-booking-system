@@ -97,8 +97,6 @@
           <button (click)="addTicket()">{{'Add Ticket' | translate}}</button>
         </div>
 
-        <!-- <div>ashdasd{{departure.ArrivalTime}}</div> -->
-
         <div class="ticketBox" *ngFor="let departure of trainTimeTables let i for index">
           <mat-accordion>
             <mat-expansion-panel
@@ -152,11 +150,7 @@
 
                       <div class ="box">
                           <mat-radio-button class="button12" value="{{isChecked}}" (change)="selectDeparture(departure)"><p class="p-price">{{departure.PriceTotal}} {{" SEK"| translate}}</p></mat-radio-button>
-                      <!-- <input class="button12"  type="radio" value="{{isChecked}}"
-                      
-                      (change)="selectDeparture(departure)"> -->
-                      <!-- (change)="selectDeparture($event, departure)"  -->
-                        <!-- <p>{{departure.PriceTotal}}{{" SEK"| translate}}</p> -->
+          
                         </div>
                     </div>
                   </div>
