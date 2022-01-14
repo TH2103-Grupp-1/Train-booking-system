@@ -5,36 +5,36 @@
       <div class="row d-flex justify-content-center">
         <form [formGroup]="registerForm">
               <div class="col">
-                <mat-form-field class="input-field" appearance="outline" hideRequiredMarker>
+                <mat-form-field class="input-field" appearance="outline">
                   <mat-label>{{'Email' | translate }}</mat-label>
-                  <input type="email" matInput placeholder="pat@example.com" formControlName="email" required maxlength="40">
+                  <input matInput placeholder="pat@example.com" formControlName="email" required maxlength="50">
                   <mat-error *ngIf="registerForm.value.email.invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
               </div>
               <div class="col">
-                <mat-form-field appearance="outline" hideRequiredMarker>
+                <mat-form-field appearance="outline">
                   <mat-label>{{'First name' | translate }}</mat-label>
-                  <input matInput formControlName="firstName" required maxlength="30">
+                  <input matInput formControlName="firstName" required maxlength="20">
                 </mat-form-field>
               </div>
               <div class="col">
-                <mat-form-field appearance="outline" hideRequiredMarker>
+                <mat-form-field appearance="outline">
                   <mat-label>{{'Last name' | translate }}</mat-label>
-                  <input matInput formControlName="lastName" required maxlength="30">
+                  <input matInput formControlName="lastName" required maxlength="40">
                 </mat-form-field>
               </div>
               <div class="col">
-                <mat-form-field appearance="outline" hideRequiredMarker>
+                <mat-form-field appearance="outline">
                   <mat-label>{{'Phone number' | translate }}</mat-label>
-                  <input matInput formControlName="phoneNumber" minlength="10" maxlength="14">
+                  <input matInput formControlName="phoneNumber" required maxlength="30">
                   <mat-icon matSuffix>phone</mat-icon>
-                  <mat-hint style="color: inherit;">{{'Include area code if you want' | translate }}</mat-hint>
+                  <mat-hint style="color: inherit;">{{'Include area code' | translate }}</mat-hint>
                 </mat-form-field>
               </div>
               <div class="col">
-                <mat-form-field class="input-field" appearance="outline" hideRequiredMarker>
+                <mat-form-field class="input-field" appearance="outline">
                   <mat-label>{{'Password' | translate }}</mat-label>
-                  <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password" minlength="8" maxlength="30">
+                  <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password" maxlength="30">
                   <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
