@@ -311,21 +311,10 @@ background-color: green;} */
    transition: all 0.2s;  
  }  
 
- .price-box-first input:checked ~ .box p{  
-   /* transform: translateY(-30px); */
-   /* transform: translateX(30px) */
- } 
- /* .box p::before{  
-   content: attr(data-text);  
-   position: absolute;  
-   transform: translateY(30px);  
- } */
  .price-box-first input:checked ~ .box p::before{  
    transform: translateY(30px);  
  } 
- /* .price-box-first input: ~ .box{
 
- } */
  .price-box-first input:checked ~ .box {  
    text-align: center;
    background: #f7f7f7;
@@ -353,35 +342,33 @@ background-color: green;} */
 
 
 .button12 .mat-radio-outer-circle{
-    /* height: 50px;
-    width: 50px;
-    border-Radius:-20px;*/
     opacity: 0;
     appearance: none; 
 }
+
 .mat-radio-button .button12 .mat-accent .mat-radio-checked {
 background-color:blue;
 color: black;
 }
 
 .button12 .mat-radio-inner-circle{
-  /* background-color: #185ADB!important;
-  background-color: green; */
 height: 200px;
 width: 450px;
 top: calc(-75% - 0px);
 left: calc(-435% - 0px);
 overflow: hidden;
 border-radius: inherit;
- 
-    /* overflow:hidden; */
+
 }
+
 .mat-radio-button.mat-accent .mat-radio-inner-circle{
   background-color: #00af49;
 }
+
 ::ng-deep .mat-ripple .mat-radio-ripple .mat-focus-indicator{
   background-color: lawngreen
  }
+
 .mat-radio-button .mat-radio-ripple{
     position: absolute;
     left: calc(-120% - 100px) !important;
@@ -391,7 +378,6 @@ border-radius: inherit;
     z-index: 1;
     pointer-events: none;
     align-content: center;
-
 }
 
 .button12 .mat-radio-button .mat-radio-ripple {
@@ -405,6 +391,7 @@ border-radius: inherit;
     pointer-events: none;
     border-radius: inherit;
 }
+
 .p-price{
   position: relative;
   z-index:100;
