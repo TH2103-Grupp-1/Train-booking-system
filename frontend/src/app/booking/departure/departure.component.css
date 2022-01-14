@@ -151,6 +151,7 @@ h1 {
 
 }
 
+
 .ticketBox{
   margin-top: 15px;
   margin-bottom: 15px;
@@ -189,6 +190,7 @@ mat-expansion-panel-header{
   display: flex;
   width: 100%;
   justify-content: space-between;
+   height: 100px !important;
 }
 
 .arrvial-holder {
