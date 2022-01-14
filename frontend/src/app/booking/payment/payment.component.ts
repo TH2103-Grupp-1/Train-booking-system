@@ -17,8 +17,6 @@ import { PaymentCancelComponent } from './payment-cancel/payment-cancel.componen
 })
 export class PaymentComponent implements OnInit {
 
-  ticketText!: string;
-  buttons!: string;
   travelerMessage!: string;
   paymentForm!: FormGroup;
   booking: Booking;
@@ -41,8 +39,6 @@ export class PaymentComponent implements OnInit {
       email: new FormControl(null, [Validators.required, Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}')])
     });
 
-
-
     this.getUserData();
   }
 
@@ -56,19 +52,9 @@ export class PaymentComponent implements OnInit {
 
   }
 
-
   openDialog() {
     this.dialog.open(PaymentCancelComponent);
 
-  }
-
-  test() {
-    this.ticketText = 'col-3 pull-right';
-    this.buttons = 'col-2 pull-left'
-    if(window.innerWidth < 700){
-      this.ticketText = '';
-      this.buttons = 'col-3'
-    }
   }
   get firstName() {
     return this.paymentForm.get('firstName');
