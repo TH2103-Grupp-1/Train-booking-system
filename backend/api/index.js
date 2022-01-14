@@ -20,14 +20,9 @@ const port = process.env.PORT || 5000;
 
 console.log('Running in ' + process.env.NODE_ENV + 'mode.');
 
-// if(process.env.NODE_ENV.trim() === 'production') {
+app.use(cors()); // ONLY FOR DEVELOPMENT
 
-
-// } else {tgffty
-//app.use(cors()); // ONLY FOR DEVELOPMENT
-// }
-
-app.use(express.static('./public')); // FOR PRODUCTION
+// app.use(express.static('./public')); // FOR PRODUCTION
 export const db = new Database("./database.db");
 
 
@@ -44,8 +39,8 @@ app.use("/api/seats", seatRoutes);
 app.use("/api/timetables", timeTableRoutes);
 app.use("/api/users", userRoutes);
 
-app.get('/*', (req, res) => {
-  res.sendFile('index.html', { root: './public' });
-});
+// app.get('/*', (req, res) => {
+//     res.sendFile('index.html', { root: './public' });
+// });  
 
 app.listen(port, () => console.log('Listening on port ' + port));

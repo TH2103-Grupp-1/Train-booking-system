@@ -154,8 +154,7 @@
         </div>
         <div class="col col-auto thin">
           <h2 id="desktop-date">
-            <!-- <span>Torsdag 23 december 2021</span>
-            <span class="time">kl 06:24</span> -->
+            <span><strong>{{booking.TimeTable?.DepartureTime | date:'yyyy/MM/dd hh:mm'}} - {{booking.TimeTable?.ArrivalTime | date:'hh:mm'}}</strong></span>
           </h2>
         </div>
         <div class="col">
@@ -172,10 +171,6 @@
     <div class="container border-bottom no-padding margin-top">
       <p id="left">
         <span>1 </span><span>{{'Traveller' | translate}}</span>
-        <span class="margin-left">
-          <span>2 </span>
-          <span>{{'Class' | translate}}</span>
-        </span>
         <span class="margin-left">{{'Cannot be rebooked' | translate}}</span>
       </p>
     </div>

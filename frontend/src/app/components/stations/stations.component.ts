@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Station } from '../models/station.model';
-import { StationService } from '../services/station.service';
+import { Station } from '../../models/station.model';
+import { StationService } from '../../services/station.service';
 
 @Component({
   selector: 'app-stations',
