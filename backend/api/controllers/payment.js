@@ -4,8 +4,21 @@ import { db } from "../index.js";
 export const checkout = async (req, res) => {
     const stripe = new Stripe('sk_test_51KBEVTFsTQg8DW3AcC4T7kIy2bRIh3rmTOaixwXjvMI0UN8uayvhuEx5CppoXGZcmDSk2a4FVUZhUKgYieoRXb1U001PQsHRW3');
     let booking = JSON.parse(req.body.booking);
+<<<<<<< HEAD
     const BASE_URL = req.protocol + "://" + req.headers.host;
     let orderNumber = Math.floor((Math.random() * 100000000024) + 1).toString();
+=======
+    const BASE_URL = req.protocol+"://"+req.headers.host;
+    // const BASE_URL = 'http://localhost:4200'
+    console.log('this is the checkout method booking object');
+    console.log(booking);
+
+    let seatIds = booking.SeatId.toString();
+
+    console.log('this is the seat id array as string');
+    console.log(seatIds);
+
+>>>>>>> main
     const product = await stripe.products.create({
         name: booking.FromLocation.AdvertisedLocationName + ' - ' + booking.ToLocation.AdvertisedLocationName,
         images: ['https://wallup.net/wp-content/uploads/2017/11/17/364154-city-cityscape-lights-city_lights-blurred.jpg'],
@@ -32,10 +45,14 @@ export const checkout = async (req, res) => {
             TrainType: booking.TimeTable.TrainType,
             DepartureTime: booking.TimeTable.DepartureTime,
             ArrivalTime: booking.TimeTable.ArrivalTime,
+<<<<<<< HEAD
             SeatId: booking.SeatId,
             SeatNumber: booking.SeatNumber,
             UserId: booking.UserId,
             OrderNumber: orderNumber
+=======
+            SeatId: seatIds
+>>>>>>> main
         },
         success_url: `${BASE_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${BASE_URL}`,
@@ -52,6 +69,7 @@ export const orderSuccess = async (req, res) => {
 
         let result = session.metadata;
         result.CustomerName = customer.name;
+<<<<<<< HEAD
 
         let prepareStatement = db.prepare("SELECT Occupied FROM Seats WHERE Id = ?");
         let foundSeat = prepareStatement.get(parseInt(result.SeatId));
@@ -59,8 +77,22 @@ export const orderSuccess = async (req, res) => {
         foundSeat.occupied = true;
         
         let updateSeats = db.prepare('UPDATE Seats SET Occupied = 1 WHERE Id = ?');
+=======
+        
+        const seatIdArray = result.SeatId.split(',');
 
-        updateSeats.run(parseInt(result.SeatId));
+        seatIdArray.forEach(id => {
+            let prepareStatement = db.prepare("SELECT Occupied FROM Seats WHERE Id = ?");
+>>>>>>> main
+
+            let foundSeat = prepareStatement.get(id);
+    
+            foundSeat.occupied = true;
+    
+            let updateSeats = db.prepare('UPDATE Seats SET Occupied = 1 WHERE Id = ?');
+    
+            updateSeats.run(id);
+        });
 
         res.json({ message: result });
     } catch (error) {

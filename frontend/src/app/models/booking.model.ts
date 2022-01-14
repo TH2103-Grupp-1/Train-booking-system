@@ -3,6 +3,7 @@ import { TicketReciever } from "./ticketreciever.model";
 import { TrainTimeTable } from "./timetable.model";
 import { Train } from "./train.model";
 import { TravelerType } from "./traveler.model";
+import { TicketInterface } from "./tickets.model";
 
 export class Booking {
   Id?: number;
@@ -10,7 +11,7 @@ export class Booking {
   ToLocation?: Station;
   ReturnTrip?: Boolean;
   TimeTable?: TrainTimeTable;
-  // DepartureDate?: Date;
+  DepartureDate?: Date;
   // ReturnTripDate?: Date;
   Travelers?: TravelerType[];
   Train?: Train;
@@ -35,4 +36,6 @@ export interface UserBooking {
   TrainType: string;
   Email: string;
   PhoneNumber: string;
+  SeatId?: number[];
+  Tickets?: TicketInterface[];
 }

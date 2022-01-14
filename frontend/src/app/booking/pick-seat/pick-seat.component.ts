@@ -7,6 +7,7 @@ import { TrainService } from 'src/app/services/train.service';
 import { Train } from 'src/app/models/train.model';
 import { Observable } from 'rxjs';
 import { Seat } from 'src/app/models/seat.model';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-pick-seat',
@@ -29,6 +30,7 @@ export class PickSeatComponent implements OnInit {
   selectedCarriage!: Carriage;
   selectedSeat: number[] = [];
   maxSeats: number = 0;
+  seatIds: number[] = [];
 
   ngOnInit(): void {
     this.maxSeats = this.booking.Travelers!.length;
@@ -45,18 +47,26 @@ export class PickSeatComponent implements OnInit {
 
   selectSeat(seat: number, seatId: number) {
     this.selectedSeat.push(seat);
-    this.booking.SeatId = seatId;
-    this.booking.SeatNumber = seat;
+    if (!this.selectedSeat.includes(seat)) {
+      this.selectedSeat.push(seat);
+      this.booking.SeatId!.push(seatId);
+      this.booking.SeatNumber!.push(seat);
+      let seatElement = document.getElementById(`seat-number-${seat}`);
+      seatElement?.classList.add('selected-seat');
+    }
   }
 
   change(group: any) {
-    if (group.value.length >= this.maxSeats) {
-      let newValue = group.value;
-      newValue.shift();
-      group.value = newValue;
-      // this.selectedSeat.push(newValue);
+    if (this.selectedSeat.length >= this.maxSeats) {
+      this.selectedSeat.forEach(seat => {
+        let seatElement = document.getElementById(`seat-number-${seat}`);
+        seatElement?.classList.remove('selected-seat');
+      });
       this.selectedSeat = [];
+      this.booking.SeatId! = [];
+      this.booking.SeatNumber! = [];
     }
+    group.value = this.selectedSeat;
   }
 
   submit() {
