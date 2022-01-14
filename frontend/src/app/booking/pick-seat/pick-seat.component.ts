@@ -44,18 +44,24 @@ export class PickSeatComponent implements OnInit {
   }
 
   selectSeat(seat: number, seatId: number) {
-    this.selectedSeat.push(seat);
-    this.booking.SeatId = seatId;
+    if (!this.selectedSeat.includes(seat)) {
+      this.selectedSeat.push(seat);
+      this.booking.SeatId = seatId;
+      console.log(this.selectedSeat);
+      let seatElement = document.getElementById(`seat-number-${seat}`);
+      seatElement?.classList.add('selected-seat');
+    }
   }
 
   change(group: any) {
-    if (group.value.length >= this.maxSeats) {
-      let newValue = group.value;
-      newValue.shift();
-      group.value = newValue;
-      // this.selectedSeat.push(newValue);
+    if (this.selectedSeat.length >= this.maxSeats) {
+      this.selectedSeat.forEach(seat => {
+        let seatElement = document.getElementById(`seat-number-${seat}`);
+        seatElement?.classList.remove('selected-seat');
+      });
       this.selectedSeat = [];
     }
+    group.value = this.selectedSeat;
   }
 
   submit() {

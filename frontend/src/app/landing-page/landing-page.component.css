@@ -237,6 +237,14 @@ mat-card{
   border-bottom-left-radius: 0px;
 }
 
+#datePickers-desctop .col{
+  max-width: 50%;
+}
+
+.fit-content{
+  width: fit-content;
+}
+
 @media only screen and (max-width: 320px) {
    .material-icons {
      font-size: 30px
@@ -256,7 +264,7 @@ mat-card{
   color: red;
 }
 
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 780px) {
   .safety-heading{
     margin-top: 15px;
   }
@@ -282,7 +290,7 @@ mat-card{
   }
 }
 
-@media only screen and (min-width: 520px){
+@media only screen and (min-width: 780px){
   #continue-btn-phone{
     visibility: hidden;
     display: none;
