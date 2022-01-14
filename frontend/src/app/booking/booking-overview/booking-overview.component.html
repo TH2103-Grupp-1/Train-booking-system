@@ -8,12 +8,12 @@
       </div>
       <div class="col page-orientation-bar-back">
         <a routerLink="/departures">
-          2. {{'Timetable' | translate}}
+          2.
       </a>
       </div>
       <div class="col page-orientation-bar-back">
         <a routerLink="/seat">
-          3. {{'Optional' | translate}}
+          3.
         </a>
       </div>
       <div class="col-3 page-orientation-bar-current">
@@ -102,10 +102,10 @@
       </div>
     </div>
     <div class="container border-bottom">
-      <p><span>1 </span><span>{{'Traveller' | translate}}</span></p>
-      <p><span>2 </span><span>{{'Class' | translate}}</span></p>
+      <p><span>{{booking.Travelers}} </span><span>{{'Traveller' | translate}}</span></p>
+     
       <p>{{'Cannot be rebooked' | translate}}</p>
-      <p><i class="fa fa-check"></i> Seat reservation</p>
+      <p class="text-success"><i class="fa fa-check"></i> {{'Seat reservation' | translate}}</p>
     </div>
     <div class="container border-bottom">
       <div class="container inner-container no-padding">
@@ -114,10 +114,7 @@
             {{booking.TimeTable!.TrainType}}
           </span>
           <span>
-            <span>{{'Travel time' | translate}}</span><span> 3:11h</span>
-          </span>
-          <span id="right">
-            <span>0 </span><span>{{'Swaps' | translate}}</span>
+            <span>{{'Travel time' | translate}}</span><span> {{getTravelTime()}} h</span>
           </span>
         </p>
       </div>
@@ -170,8 +167,9 @@
     </div>
     <div class="container border-bottom no-padding margin-top">
       <p id="left">
-        <span>1 </span><span>{{'Traveller' | translate}}</span>
+        <span>{{booking.Travelers}} </span><span>{{'Traveller' | translate}}</span>    
         <span class="margin-left">{{'Cannot be rebooked' | translate}}</span>
+        <span class="text-success margin-left"><i class="fa fa-check"></i> {{'Seat reservation' | translate}}</span>
       </p>
     </div>
     <div class="container no-padding margin-top">
@@ -179,11 +177,7 @@
         {{booking.TimeTable!.TrainType}}
           <span class="margin-left">
             <span>{{'Travel time' | translate}}</span>
-            <span> 4:05 h</span>
-          </span>
-          <span class="margin-left">
-            <span>0 </span>
-            <span>{{'Swaps' | translate}}</span>
+            <span> {{getTravelTime()}} h</span>
           </span>
       </p>
     </div>
