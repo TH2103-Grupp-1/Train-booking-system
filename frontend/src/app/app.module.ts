@@ -36,6 +36,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { UserBookingsComponent } from './account/user-bookings/user-bookings.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio'
 import { MatDialogModule } from '@angular/material/dialog';
 import { PaymentCancelComponent } from './booking/payment/payment-cancel/payment-cancel.component';
 
@@ -82,6 +84,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatExpansionModule,
     MatStepperModule,
     MatGridListModule,
+    MatCheckboxModule,
+    MatRadioModule,
     MatDialogModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
