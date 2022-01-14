@@ -3,7 +3,7 @@ import { TicketReciever } from "./ticketreciever.model";
 import { TrainTimeTable } from "./timetable.model";
 import { Train } from "./train.model";
 import { TravelerType } from "./traveler.model";
-import { TicketInterface } from "./tickets.model";
+import { Ticket } from "./tickets.model";
 
 export class Booking {
   Id?: number;
@@ -20,9 +20,10 @@ export class Booking {
   Distance?: number;
   DeliveryMethod?: 'Sms' | 'Email';
   TicketReciever?: TicketReciever;
-  SeatId?: number;
-  SeatNumber?: number;
+  SeatId?: number[];
+  SeatNumber?: number[];
   UserId?: number;
+  Tickets?: Ticket[];
 }
 
 export interface UserBooking {
@@ -37,5 +38,5 @@ export interface UserBooking {
   Email: string;
   PhoneNumber: string;
   SeatId?: number[];
-  Tickets?: TicketInterface[];
+  Tickets?: Ticket[];
 }
