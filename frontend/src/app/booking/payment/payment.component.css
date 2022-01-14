@@ -40,6 +40,7 @@ a{
 
 .row {
   margin-bottom: 20px;
+  margin-right: -65px;
 }
 
 .invoice-text {
