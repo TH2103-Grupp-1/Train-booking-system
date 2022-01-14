@@ -48,7 +48,7 @@ export class DepartureComponent implements OnInit {
         }
         this.trainTimeTables = t;
       });
-
+      this.booking.Travelers = [];
 
 
     }
@@ -91,7 +91,6 @@ export class DepartureComponent implements OnInit {
       this.tickets.push({ id: this.counter, ageGroup: 'adult', price: 39 });
       this.resetId();
       this.booking.Price = this.calculateTotalPrice();
-      this.booking.Travelers?.push(1);
     }
     console.log(this.tickets);
   }
@@ -128,7 +127,6 @@ export class DepartureComponent implements OnInit {
       this.resetId();
       this.booking.Price = this.calculateTotalPrice();
       console.log(this.tickets);
-      this.booking.Travelers?.shift();
     }
   }
 
@@ -193,7 +191,7 @@ export class DepartureComponent implements OnInit {
       var minutes = Math.floor(diff5 / 60);
       time.Time! = String(' ' + hours + ':' + minutes + ' h');
       console.log(time);
-      
+
     }
   }
   // ********************************************************
@@ -241,18 +239,18 @@ export class DepartureComponent implements OnInit {
       this.previousDay = this.previousDate.setDate(this.previousDate.getDate() + 1)
     }
   }
-  
-  
+
+
   showPreviousDay() {
     //  this.currentDate = new Date();
 
-    
+
     const hidePrevDate = document.querySelector('.pagination-icon-previous-hidden') as HTMLElement
     if (this.currentDate.getDate() === this.myDate.getDate() && this.currentDate.getMonth() === this.myDate.getMonth()) {
 
       hidePrevDate.style.opacity = "0.5"
       hidePrevDate.style.pointerEvents = "none"
-    
+
       this.nextDay = this.nextDate.setDate(this.nextDate.getDate() + 1);
       this.changeDate = this.myDate.setDate(this.myDate.getDate() + 1);
       this.previousDay = this.previousDate.setDate(this.previousDate.getDate() + 1,
@@ -282,25 +280,38 @@ export class DepartureComponent implements OnInit {
 
   totalcost: any;
   departurePrice?: number;
-  
+
   selectDeparture(departure: TrainTimeTable) {
     this.selectedDeparture = departure;
     this.departurePrice = departure.PriceTotal
     this.booking.Price = this.calculateTotalPrice();
- 
+
   }
 
-  
+
   submit() {
     this.selectedDeparture.ArrivalTime = new Date(`${this.myDate.toISOString().split('T')[0]} ${this.selectedDeparture.ArrivalTime?.toString()}`);
     this.selectedDeparture.DepartureTime = new Date(`${this.myDate.toISOString().split('T')[0]} ${this.selectedDeparture.DepartureTime?.toString()}`);
     this.booking.Tickets = this.tickets;
     this.booking.TimeTable = this.selectedDeparture;
+    this.tickets.forEach(t => {
+      let travelerType: number;
+      if (t.ageGroup == 'adult') {
+        travelerType = 0;
+      }
+      if (t.ageGroup == 'adult') {
+        travelerType = 3;
+      }
+      if (t.ageGroup == 'adult') {
+        travelerType = 1;
+      }
+      this.booking.Travelers?.push(travelerType!)
+    });
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/seat');
     console.log(this.myDate);
     console.log(this.booking.TimeTable);
-      
+
     }
   }
 
