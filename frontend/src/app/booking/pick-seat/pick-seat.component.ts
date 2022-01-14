@@ -29,6 +29,7 @@ export class PickSeatComponent implements OnInit {
   selectedCarriage!: Carriage;
   selectedSeat: number[] = [];
   maxSeats: number = 0;
+  seatIds: number[] = [];
 
   ngOnInit(): void {
     this.maxSeats = this.booking.Travelers!.length;
@@ -46,8 +47,7 @@ export class PickSeatComponent implements OnInit {
   selectSeat(seat: number, seatId: number) {
     if (!this.selectedSeat.includes(seat)) {
       this.selectedSeat.push(seat);
-      this.booking.SeatId = seatId;
-      console.log(this.selectedSeat);
+      this.seatIds.push(seatId);
       let seatElement = document.getElementById(`seat-number-${seat}`);
       seatElement?.classList.add('selected-seat');
     }
@@ -60,6 +60,7 @@ export class PickSeatComponent implements OnInit {
         seatElement?.classList.remove('selected-seat');
       });
       this.selectedSeat = [];
+      this.seatIds = [];
     }
     group.value = this.selectedSeat;
   }
@@ -69,6 +70,7 @@ export class PickSeatComponent implements OnInit {
       this.selectedCarriage.Seats?.push({ SeatNumber: seat });
     }
     this.booking.Train?.Carriages?.push(this.selectedCarriage);
+    this.booking.SeatId = this.seatIds;
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/overview');
   }
