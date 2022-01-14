@@ -149,7 +149,8 @@
                     <div class="price-box-first">
 
                       <div class ="box">
-                          <mat-radio-button class="button12" value="{{isChecked}}" (change)="selectDeparture(departure)"><p class="p-price">{{departure.PriceTotal}} {{" SEK"| translate}}</p></mat-radio-button>
+                          <mat-radio-button class="button12" value="{{isChecked}}" (change)="selectDeparture(departure)">
+                            <div  class="p-price"><p class="p-price-first">{{departure.PriceTotal}} </p><p class="p-price-second" >{{"SEK"| translate}}</p></div> </mat-radio-button>
           
                         </div>
                     </div>

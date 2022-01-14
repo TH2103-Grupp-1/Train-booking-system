@@ -292,10 +292,45 @@ border-radius: inherit;
     align-content: center;
 }
 
-
 .p-price{
   position: relative;
   z-index:100;
   color:#0b0c0e;
   font-size:1rem;
+  display: flex;
+  flex-direction: row;
+}
+.p-price-second{
+  padding-left:5px!important;
+}
+.p-price-first{
+  margin-left:22px;
+}
+
+@media only screen and (max-width: 768px){
+  .p-price{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .p-price-first{
+  margin-left:0px!important;
+}
+.p-price-second{
+  /* padding-top: -10px!important; */
+  padding: left 4px !important;;
+  margin-top: -10px!important;
+}
+  .mat-radio-button .mat-radio-ripple{
+    top: calc(-90% - 100px) !important;
+  } 
+
+ .button12 .mat-radio-inner-circle{
+    left: calc(-245% - 0px);
+  }
+  .button12 .mat-radio-container{
+    width: 70px;
+}
+
 }
