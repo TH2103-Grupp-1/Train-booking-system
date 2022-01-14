@@ -4,15 +4,13 @@ import { db } from "../index.js";
 export const checkout = async (req, res) => {
     const stripe = new Stripe('sk_test_51KBEVTFsTQg8DW3AcC4T7kIy2bRIh3rmTOaixwXjvMI0UN8uayvhuEx5CppoXGZcmDSk2a4FVUZhUKgYieoRXb1U001PQsHRW3');
     let booking = JSON.parse(req.body.booking);
-    const BASE_URL = req.protocol+"://"+req.headers.host;
-    // const BASE_URL = 'http://localhost:4200'
-    console.log('this is the checkout method booking object');
+    const BASE_URL = req.protocol + "://" + req.headers.host;
+    let orderNumber = Math.floor((Math.random() * 100000000024) + 1).toString();
+
     console.log(booking);
 
     let seatIds = booking.SeatId.toString();
-
-    console.log('this is the seat id array as string');
-    console.log(seatIds);
+    let seatNumbers = booking.SeatNumber.toString();
 
     const product = await stripe.products.create({
         name: booking.FromLocation.AdvertisedLocationName + ' - ' + booking.ToLocation.AdvertisedLocationName,
@@ -40,6 +38,10 @@ export const checkout = async (req, res) => {
             TrainType: booking.TimeTable.TrainType,
             DepartureTime: booking.TimeTable.DepartureTime,
             ArrivalTime: booking.TimeTable.ArrivalTime,
+            SeatId: booking.SeatId,
+            SeatNumber: seatNumbers,
+            UserId: booking.UserId,
+            OrderNumber: orderNumber,
             SeatId: seatIds
         },
         success_url: `${BASE_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
@@ -54,9 +56,8 @@ export const orderSuccess = async (req, res) => {
         const stripe = new Stripe('sk_test_51KBEVTFsTQg8DW3AcC4T7kIy2bRIh3rmTOaixwXjvMI0UN8uayvhuEx5CppoXGZcmDSk2a4FVUZhUKgYieoRXb1U001PQsHRW3')
         const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
         const customer = await stripe.customers.retrieve(session.customer);
+
         let result = session.metadata;
-        console.log('This is the orderSuccess metadata');
-        console.log(result);
         result.CustomerName = customer.name;
         
         const seatIdArray = result.SeatId.split(',');
@@ -75,6 +76,7 @@ export const orderSuccess = async (req, res) => {
 
         res.json({ message: result });
     } catch (error) {
+        console.log(error);
         res.json({ message: 'Not found' });
     }
 }

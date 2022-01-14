@@ -1,4 +1,4 @@
-export interface TicketInterface {
+export interface Ticket {
   id: number;
   ageGroup: string;
   price: number;

@@ -24,6 +24,10 @@ export class PaymentComponent implements OnInit {
   constructor(private authService: AuthService, bookingService: BookingBuilderService, router: Router, private paymentService: PaymentService, public dialog: MatDialog) {
     this.booking = bookingService.getBooking();
     if(this.booking === undefined) { router.navigateByUrl('/'); }
+    if(this.authService.currentUser !== null) {
+      this.booking.UserId = this.authService.currentUser.Id;
+    }
+    console.log(this.booking);
     // delete this.booking.Train?.Carriages;
     // delete this.booking.TicketReciever;
     // delete this.booking.Travelers;
