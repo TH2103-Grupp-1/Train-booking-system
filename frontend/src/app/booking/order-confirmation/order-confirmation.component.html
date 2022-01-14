@@ -68,7 +68,10 @@
                 <div class="container inner-container margin-top border-top">
                     <div class="container inner-container">
                         <h3 class="bold">
-                            <span>{{confirmation.CustomerName}}</span>
+                          <span *ngIf="userName === 'undefined undefined'; else isLoggedIn">{{confirmation.CustomerName}}</span>
+                          <ng-template #isLoggedIn>
+                            <span>{{userName}}</span>
+                          </ng-template>
                         </h3>
                         <div class="row">
                             <div class="col text-align-left" id="phone-row-col-left">
@@ -195,7 +198,7 @@
                     </div>
                     <p>{{confirmation.TrainType}}</p>
                     <h3 class="bold">
-                        <span *ngIf="userName === null; else isLoggedIn">{{confirmation.CustomerName}}</span>
+                        <span *ngIf="userName === 'undefined undefined'; else isLoggedIn">{{confirmation.CustomerName}}</span>
                         <ng-template #isLoggedIn>
                           <span>{{userName}}</span>
                         </ng-template>

@@ -231,7 +231,6 @@ width: 190px !important;
 }
 .price-box-first{
    width: 20%;
-
    position: absolute;
    z-index: 1;
    background: #f7f7f7;
