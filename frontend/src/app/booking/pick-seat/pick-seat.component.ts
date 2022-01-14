@@ -7,7 +7,6 @@ import { TrainService } from 'src/app/services/train.service';
 import { Train } from 'src/app/models/train.model';
 import { Observable } from 'rxjs';
 import { Seat } from 'src/app/models/seat.model';
-import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-pick-seat',
@@ -46,13 +45,12 @@ export class PickSeatComponent implements OnInit {
   }
 
   selectSeat(seat: number, seatId: number) {
-    this.selectedSeat.push(seat);
     if (!this.selectedSeat.includes(seat)) {
       this.selectedSeat.push(seat);
-      this.booking.SeatId!.push(seatId);
-      this.booking.SeatNumber!.push(seat);
+      this.seatIds.push(seatId);
       let seatElement = document.getElementById(`seat-number-${seat}`);
       seatElement?.classList.add('selected-seat');
+      console.log(this.booking.SeatId);
     }
   }
 
@@ -63,13 +61,15 @@ export class PickSeatComponent implements OnInit {
         seatElement?.classList.remove('selected-seat');
       });
       this.selectedSeat = [];
-      this.booking.SeatId! = [];
-      this.booking.SeatNumber! = [];
+      this.seatIds! = [];
+      this.selectedSeat! = [];
     }
     group.value = this.selectedSeat;
   }
 
   submit() {
+    this.booking.SeatId = this.seatIds;
+    this.booking.SeatNumber = this.selectedSeat;
     // for(let seat of this.selectedSeat) {
     //   this.selectedCarriage.Seats?.push({ SeatNumber: seat });
     // }

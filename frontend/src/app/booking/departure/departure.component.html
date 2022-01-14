@@ -96,8 +96,8 @@
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  {{ departure.DepartureTime | date: "H:mm"}} -
-                  {{ departure.ArrivalTime | date: "H:mm" }}
+                  {{ departure.DepartureTime}} -
+                  {{ departure.ArrivalTime}}
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <p>{{ "Select ticket" | translate }}</p>
