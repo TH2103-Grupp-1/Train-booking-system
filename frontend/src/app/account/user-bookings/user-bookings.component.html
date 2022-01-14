@@ -1,0 +1,25 @@
+<div class="container travel-info">
+  <router-outlet></router-outlet>
+    <h2>{{'All bookings' | translate}}</h2>
+    <table class="table table-responsive">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">{{'Departure Station' | translate}}</th>
+                <th scope="col">{{'Destination' | translate}}</th>
+                <th scope="col">{{'Departure Time' | translate}}</th>
+                <th scope="col">{{'Time Of Arrival' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let booking of userBooking | async; index as i">
+                <th scope="row">{{i + 1}}</th>
+                <td>{{booking.FromLocation}}</td>
+                <td>{{booking.ToLocation}}</td>
+                <td>{{booking.DepartureTime}}</td>
+                <td>{{booking.ArrivalTime}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button mat-raised-button (click)="goBack()">{{'Close' | translate}}</button>
+</div>

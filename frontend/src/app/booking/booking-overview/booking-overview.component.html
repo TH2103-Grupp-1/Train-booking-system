@@ -151,9 +151,7 @@
         </div>
         <div class="col col-auto thin">
           <h2 id="desktop-date">
-            {{booking.TimeTable!.DepartureTime}}
-            <!-- <span>Torsdag 23 december 2021</span>
-            <span class="time">kl 06:24</span> -->
+            <span><strong>{{booking.TimeTable?.DepartureTime | date:'yyyy/MM/dd hh:mm'}} - {{booking.TimeTable?.ArrivalTime | date:'hh:mm'}}</strong></span>
           </h2>
         </div>
         <div class="col">

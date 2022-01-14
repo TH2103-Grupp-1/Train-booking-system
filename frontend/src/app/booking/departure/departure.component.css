@@ -56,7 +56,6 @@ h1 {
   justify-content: center;
   margin-top: 4rem;
   margin-bottom: 3rem;
-  /* font-size:larger; */
 }
 .choosen-cities-container h2 {
   font-size: 1.8rem;
@@ -102,7 +101,7 @@ h1 {
 .right-container {
   display: flex;
   justify-content:center;
-  width: fit-content;
+  width: 100%t;
   padding: 0px;
   margin: 0px;
 /* height:100% */
@@ -119,54 +118,7 @@ h1 {
 /* *********** PRICE SECTION ********* */
 .price-box {
   display: flex;
-  /* width :40%; */
-  /* flex-direction:column; */
   justify-content:space-evenly;
-  /* align-items: start; */
-  /* border: 1px solid #d6d660; */
-}
-
-.price-box-first{
-  border:#cfcfcb solid 2px;
-  border-radius: 5px;
-  width: 120px;
-  height: fit-content;
-  text-align:center;
-  cursor: pointer;
-}
-
-.price-box-first:hover {
-  background-color: #fafaf7;
-  color: #00a2c7;
-}
-.price-box-first-clicked {
-  border: #adb5bd solid 1px;
-  margin-top: 5px;
-  width: 6rem;
-  text-align: right;
-  cursor: pointer;
-  padding-right: 5px;
-  padding-top: 5px;
-  background-color: #00a2c7;
-  color: #fff;
-}
-
-.price-box-second{
- border:#adb5bd solid 1px;
- margin-top:5px;
-  width: 6rem;
-  text-align: left;
-  cursor: pointer;
-  border-bottom: 2px solid #00af49;
-}
-.price-box-second:hover {
-  background-color: #fafaf7;
-  color: #00af49;
-}
-
-.price-box-second > div {
-  padding-left: 5px;
-  padding-top: 5px;
 }
 
 .more-train-info {
@@ -193,13 +145,10 @@ h1 {
 /*  CUSTOM PAGINATION DESIGN */
 
 .custom-pagination {
-  /* width: 80vh; */
   display: flex;
-  /* flex-direction:column; */
   justify-content: space-between;
   align-items: center;
-  /* justify-items: end; */
-  /* flex-direction: column; */
+
 }
 
 .ticketBox{
@@ -247,10 +196,104 @@ mat-expansion-panel-header{
 }
 
 .summary {
+  position: -webkit-sticky;
+  position: sticky;
   display: flex;
   justify-content: center;
+  align-items:baseline;
+  bottom:0;
+  background-color: #2D3436;
+  z-index:10;
+}
+
+.summary-btn{
+  margin-left: 10px;
+
 }
 
 .prev-hidden {
   display: none;
+}
+
+/* **************************************************************** */
+.mat-radio-label{
+width: 190px !important;
+}
+.price-box-first{
+   width: 20%;  
+
+   position: absolute;  
+   z-index: 1;  
+   background: #f7f7f7;    
+   border: 2px solid #d1d1d1;  
+   color: rgb(63, 63, 63);  
+   border-radius: 5px;  
+   display: flex;  
+   justify-content: center;  
+   align-items: center;  
+   overflow: hidden;  
+   transition: all 0.6s;  
+
+}
+
+ .price-box-first input:checked ~ .box {  
+   text-align: center;
+   background: #f7f7f7;
+   padding: 2px; 
+   border: 2px solid #185ADB!important;
+   border-radius: 5px;
+   width:100%;
+   height: 50%;
+   color: #185ADB!important;
+ }
+
+.button12 .mat-radio-container{
+    height: 70px;
+    width: 40px;
+    appearance: none;
+    border-radius:inherit
+}
+
+
+.button12 .mat-radio-outer-circle{
+    opacity: 0;
+    appearance: none; 
+}
+
+.mat-radio-button .button12 .mat-accent .mat-radio-checked {
+background-color:blue;
+color: black;
+}
+
+.button12 .mat-radio-inner-circle{
+height: 200px;
+width: 450px;
+top: calc(-80% - 0px);
+left: calc(-325% - 0px);
+overflow: hidden;
+border-radius: inherit;
+
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+  background-color: #00af49;
+}
+
+.mat-radio-button .mat-radio-ripple{
+    position: absolute;
+    left: calc(-50% - 100px) !important;
+    top: calc(-90% - 100px) !important;
+    height: 400px!important;
+    width: 400px!important;
+    z-index: 1;
+    pointer-events: none;
+    align-content: center;
+}
+
+
+.p-price{
+  position: relative;
+  z-index:100;
+  color:#0b0c0e;
+  font-size:1rem;
 }

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Station } from '../models/station.model';
-import { StationService } from '../services/station.service';
+import { Station } from '../../models/station.model';
+import { StationService } from '../../services/station.service';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { Booking } from '../models/booking.model';
+import { Booking } from '../../models/booking.model';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { BookingBuilderService } from '../services/booking-builder.service';
-import { Route, Router } from '@angular/router';
-import { TravelerType } from '../models/traveler.model';
+import { BookingBuilderService } from '../../services/booking-builder.service';
+import { Router } from '@angular/router';
+import { TravelerType } from '../../models/traveler.model';
 
 @Component({
   selector: 'app-landing-page',
@@ -124,7 +124,7 @@ export class LandingPageComponent implements OnInit {
     this.fromStation = e.option.value;
   }
 
-  submit() {}
+  submit() { }
 
   getDistanceAndCost() {
     let fromStationCoords = this.fromStation.Coordinates.split(/([() ])/);
@@ -159,7 +159,7 @@ export class LandingPageComponent implements OnInit {
       c((lat2 - lat1) * p) / 2 +
       (c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))) / 2;
 
-    return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+    return 12742 * Math.asin(Math.sqrt(a));
   }
 
   showReturnCalender(): void {
