@@ -148,9 +148,13 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
-
+.pagination-icon-next {
+cursor: pointer;
+}
+.pagination-icon-previous-hidden{
+cursor: pointer;
+}
 
 .ticketBox{
   margin-top: 15px;
