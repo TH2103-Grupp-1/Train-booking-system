@@ -149,16 +149,14 @@
                 <div class="container right-container">
                   <div  class="price-box">
                     <div class="price-box-first">
-                      <input class="button12"  type="checkbox" [checked]="!departure.TrainId"
-                      
-                      (change)="selectDeparture(departure)">
-                      <!-- (change)="selectDeparture($event, departure)"  -->
+
                       <div class ="box">
-                        <p>{{departure.PriceTotal}}{{" SEK"| translate}}</p>
-                        <!-- <input id="button12" type="checkbox" value="321" name="{{departure.PriceTotal}}:unchecked">  -->
-                        <!-- <label for="123"></label> -->
-                        <!-- <button class="btn-primary">{{ departure.PriceTotal }} SEK</button> -->
-                        <!-- <input type="radio" value="{{ departure.PriceTotal }} SEK"> -->
+                          <mat-radio-button class="button12" value="{{isChecked}}" (change)="selectDeparture(departure)"><p class="test">{{departure.PriceTotal}} {{" SEK"| translate}}</p></mat-radio-button>
+                      <!-- <input class="button12"  type="radio" value="{{isChecked}}"
+                      
+                      (change)="selectDeparture(departure)"> -->
+                      <!-- (change)="selectDeparture($event, departure)"  -->
+                        <!-- <p>{{departure.PriceTotal}}{{" SEK"| translate}}</p> -->
                         </div>
                     </div>
                   </div>

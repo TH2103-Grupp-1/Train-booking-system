@@ -35,6 +35,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio'
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/translations/', '.json');
@@ -75,6 +77,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatExpansionModule,
     MatStepperModule,
     MatGridListModule,
+    MatCheckboxModule,
+    MatRadioModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
