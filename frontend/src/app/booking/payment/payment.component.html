@@ -37,7 +37,7 @@
   <div class="row">
     <div class="col-8">
       <div class="container no-padding">
-        <h2>{{ "Delivery" | translate }}</h2>
+        <!-- <h2>{{ "Delivery" | translate }}</h2>
         <div id="radio-buttons">
           <div class="container border no-padding">
             <label class="form-check-label radio-label" for="flexRadioDefault1">
@@ -57,9 +57,13 @@
           </div>
           <div class="container border no-padding">
             <label class="form-check-label radio-label" for="flexRadioDefault2">
-            <div class="form-check padding" data-toggle="collapse" href="#sms-ticket" role="button"
-              aria-expanded="false" aria-controls="sms-ticket">
-
+            <div
+              class="form-check padding"
+              data-toggle="collapse"
+              href="#sms-ticket"
+              role="button"
+              aria-expanded="false"
+              aria-controls="sms-ticket">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
 
                 {{ "SMS-ticket" | translate }}
@@ -73,7 +77,7 @@
               board. If your screen is broken, we recommend a different delivery method.' | translate }}
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- Form -->
         <form class="container no-padding" [formGroup]="paymentForm">
           <h2>{{ "Ticket recipient" | translate }}</h2>
@@ -139,10 +143,36 @@
         </form>
 
 
+<div>
+  <!-- Current ticket -->
+  <div class="container main sticky-top no-padding">
+    <div class="my-choices">
+      <h3> {{ 'My choices' | translate }} </h3>
+    </div>
+    <div class="ticket-info">
+      <div class="ticket-time">
+        <h4>{{booking.FromLocation!.AdvertisedLocationName}} - {{booking.ToLocation!.AdvertisedLocationName}}</h4>
+        <p>{{booking.TimeTable!.DepartureTime}} - {{booking.TimeTable!.ArrivalTime!}} </p>
+      </div>
+      <br>
+      <div class="price">
+        <p>{{booking.Travelers?.length}} {{ this.travelerMessage | translate }} </p>
+        <p>{{booking.Price}}:-</p>
+      </div>
+      <hr>
+      <div class="pay">
+        <p>Total</p>
+        <p>{{booking.Price}}:-</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
         <!-- Buttons for navigating -->
         <div class="container no-padding">
           <div class="row">
-            <div class="col-2 pull-left">
+            <div>
               <a class="a-tag-back" routerLink="/overview">
                 <span><i class="fa fa-angle-left fa-10x"></i></span>
                 <span>{{ "Back" | translate }}</span>
@@ -164,33 +194,7 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
-    <!------------------------------------------------- second column ----------------------------------------------------------->
-    <div class="col-3 pull-right">
-      <!-- Current ticket -->
-      <div class="container main sticky-top no-padding pull-right">
-        <div class="my-choices">
-          <h3> {{ 'My choices' | translate }} </h3>
-        </div>
-        <div class="ticket-info">
-          <div class="ticket-time">
-            <h4>{{booking.FromLocation!.AdvertisedLocationName}} - {{booking.ToLocation!.AdvertisedLocationName}}</h4>
-            <p>{{booking.TimeTable!.DepartureTime}} - {{booking.TimeTable!.ArrivalTime!}} </p>
-          </div>
-          <br>
-          <div class="price">
-            <p>{{booking.Travelers?.length}} {{ this.travelerMessage | translate }} </p>
-            <p>{{booking.Price}}:-</p>
-          </div>
-          <hr>
-          <div class="pay">
-            <p>Total</p>
-            <p>{{booking.Price}}:-</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
+

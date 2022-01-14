@@ -50,6 +50,7 @@ export class PickSeatComponent implements OnInit {
       this.seatIds.push(seatId);
       let seatElement = document.getElementById(`seat-number-${seat}`);
       seatElement?.classList.add('selected-seat');
+      console.log(this.booking.SeatId);
     }
   }
 
@@ -60,17 +61,19 @@ export class PickSeatComponent implements OnInit {
         seatElement?.classList.remove('selected-seat');
       });
       this.selectedSeat = [];
-      this.seatIds = [];
+      this.seatIds! = [];
+      this.selectedSeat! = [];
     }
     group.value = this.selectedSeat;
   }
 
   submit() {
-    for(let seat of this.selectedSeat) {
-      this.selectedCarriage.Seats?.push({ SeatNumber: seat });
-    }
-    this.booking.Train?.Carriages?.push(this.selectedCarriage);
     this.booking.SeatId = this.seatIds;
+    this.booking.SeatNumber = this.selectedSeat;
+    // for(let seat of this.selectedSeat) {
+    //   this.selectedCarriage.Seats?.push({ SeatNumber: seat });
+    // }
+    // this.booking.Train?.Carriages?.push(this.selectedCarriage);
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/overview');
   }

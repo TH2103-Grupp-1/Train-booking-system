@@ -1,0 +1,315 @@
+
+.input-textbox {
+  margin: 5px;
+}
+
+.travel-text,
+.safety-heading {
+  text-align: center;
+  font-size: large;
+  margin-top: 40px;
+  color: white;
+}
+
+.booking-options{
+  display: flex;
+  justify-content: center;
+}
+
+.booking-options mat-card{
+  width: 100%;
+  height: 40px;
+  padding: 0px;
+  display: flex;
+  justify-content: space-between;
+  animation: fadein 1s;
+}
+
+.left-buttons{
+  width: 50%;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.left-buttons input{
+  margin-right: 5px;
+}
+
+.right-buttons{
+  width: 50%;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.right-buttons input{
+  margin-right: 5px;
+}
+
+.fadein {
+  -moz-transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+@keyframes fadein {
+  from { opacity: 0}
+  to   { opacity: 1}
+}
+
+.calendars{
+  display: flex;
+  justify-content: center;
+}
+
+.calendars mat-card{
+  margin-top: 10px;
+  width: 100%;
+  animation: fadein 1s;
+
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timepicker{
+  width: 80%;
+  border-radius: 5px;
+  border: 1px solid rgb(145, 145, 145);
+}
+
+.calendars mat-calendar{
+  width: 90%;
+}
+
+
+.safety-message {
+  text-align: center;
+  color: white;
+  max-width: 700px;
+}
+
+
+.container h2,
+.info-text {
+  text-align: center;
+}
+
+.info-container {
+  margin-top: 50px;
+}
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+
+.continue-button {
+  animation: fadein 2s;
+}
+
+.border-bottom {
+  text-align: center;
+}
+
+.material-icons {
+  font-size: 48px;
+  width: 45px;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+a {
+  color: inherit;
+}
+
+.icon-text {
+  font-size: 12px;
+}
+
+.margin-bottom{
+  margin-bottom: 10px;
+}
+
+#add-more-trips{
+  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-style: dashed;
+  border-width: 2px;
+  border-color: lightgray;
+  max-width: 85%;
+}
+
+.fa-plus-circle{
+  color:rgb(62, 62, 236);
+  margin-left: 5px;
+}
+
+#continue-btn-phone {
+  border-radius: 0px;
+  background-color:  #156e31;
+  border-bottom: solid 3px #105426;
+  font-weight: bold;
+  text-align: left;
+  color: white;
+  transition: 0.40s linear;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+#continue-btn-desktop{
+  height: 50px;
+  width: 250px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  margin-left: 27px;
+  border-radius: 0px;
+  background-color:  #156e31;
+  border-bottom: solid 3px #105426;
+  font-weight: bold;
+  text-align: left;
+  color: white;
+  transition: 0.40s linear;
+}
+#continue-btn-desktop:hover {
+  background-color: green;
+}
+
+#banner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://wallup.net/wp-content/uploads/2017/11/17/364154-city-cityscape-lights-city_lights-blurred.jpg");
+  /* Set a specific height */
+  height: fit-content;
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.search-form {
+  min-width: 120px;
+  max-width: 500px;
+  width: 100%;
+  background-color: azure;
+  color: black;
+  padding: 0px 5px;
+  border-radius: 5px;
+  margin: 10px 0px;
+}
+
+.search-full-width {
+  width: 100%;
+}
+
+mat-card{
+  z-index: 1;
+}
+.border-top-none{
+  border-top: none;
+  box-shadow: none;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+.border-bottom-radius-none{
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+#datePickers-desctop .col{
+  max-width: 50%;
+}
+
+.fit-content{
+  width: fit-content;
+}
+
+@media only screen and (max-width: 320px) {
+   .material-icons {
+     font-size: 30px
+   }
+   .icon-text {
+     font-size: 12px;
+   }
+   /* .col {
+    padding-left: 35px;
+   } */
+
+}
+
+.location-error-message {
+  text-align: center;
+  padding-bottom: 10px;
+  color: red;
+}
+
+@media only screen and (max-width: 780px) {
+  .safety-heading{
+    margin-top: 15px;
+  }
+  #continue-btn-desktop{
+    visibility: hidden;
+    display: none;
+  }
+  #continue-btn-phone{
+    visibility: visible;
+    display: block;
+  }
+  #add-more-trips{
+    visibility: visible;
+    display: block;
+  }
+  #returnCalender{
+    visibility: hidden;
+    display: none;
+  }
+  #datePickers-desctop{
+    visibility: hidden;
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 780px){
+  #continue-btn-phone{
+    visibility: hidden;
+    display: none;
+  }
+  #continue-btn-desktop{
+    visibility: visible;
+    display: block;
+  }
+  #add-more-trips{
+    visibility: hidden;
+    display: none;
+  }
+  #datePickers-phone{
+    visibility: hidden;
+    display: none;
+  }
+
+}
+
+  #banner{
+    height: fit-content;
+  }

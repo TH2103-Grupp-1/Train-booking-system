@@ -26,3 +26,7 @@ body.light-mode {
   color: #2d3436;
 }
 
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 9999 !important;
+}
