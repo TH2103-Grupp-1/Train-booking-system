@@ -203,18 +203,28 @@ mat-expansion-panel-header{
 
 .summary {
   position: -webkit-sticky;
-  position: sticky;
+  /* position: sticky; */
   display: flex;
   justify-content: center;
   align-items:baseline;
   bottom:0;
-  background-color: #2D3436;
+  background-color: inherit;
   z-index:10;
 }
 
-.summary-btn{
-  margin-left: 10px;
+.submit {
+  position: -webkit-sticky;
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
 
+.summary-btn{
+  /* margin-left: 10px; */
+  /* display: inline-block; */
+  font-size: 26px;
+  padding: 1rem 5rem;
 }
 
 .prev-hidden {
@@ -226,26 +236,25 @@ mat-expansion-panel-header{
 width: 190px !important;
 }
 .price-box-first{
-   width: 20%;  
-
-   position: absolute;  
-   z-index: 1;  
-   background: #f7f7f7;    
-   border: 2px solid #d1d1d1;  
-   color: rgb(63, 63, 63);  
-   border-radius: 5px;  
-   display: flex;  
-   justify-content: center;  
-   align-items: center;  
-   overflow: hidden;  
-   transition: all 0.6s;  
+   width: 20%;
+   position: absolute;
+   z-index: 1;
+   background: #f7f7f7;
+   border: 2px solid #d1d1d1;
+   color: rgb(63, 63, 63);
+   border-radius: 5px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   overflow: hidden;
+   transition: all 0.6s;
 
 }
 
- .price-box-first input:checked ~ .box {  
+ .price-box-first input:checked ~ .box {
    text-align: center;
    background: #f7f7f7;
-   padding: 2px; 
+   padding: 2px;
    border: 2px solid #185ADB!important;
    border-radius: 5px;
    width:100%;
@@ -263,7 +272,7 @@ width: 190px !important;
 
 .button12 .mat-radio-outer-circle{
     opacity: 0;
-    appearance: none; 
+    appearance: none;
 }
 
 .mat-radio-button .button12 .mat-accent .mat-radio-checked {
