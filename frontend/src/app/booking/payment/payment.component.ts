@@ -56,12 +56,10 @@ export class PaymentComponent implements OnInit {
 
   }
 
-
   openDialog() {
     this.dialog.open(PaymentCancelComponent);
 
   }
-
   get firstName() {
     return this.paymentForm.get('firstName');
 

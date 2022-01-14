@@ -40,6 +40,7 @@ a{
 
 .row {
   margin-bottom: 20px;
+  margin-right: -65px;
 }
 
 .invoice-text {
@@ -97,7 +98,6 @@ a{
 }
 
 .radio-label {
-
   width: 100%;
   height:100%;
   cursor:pointer;
@@ -181,6 +181,10 @@ a{
   }
   .page-orientation-bar-back a{
       font-size: 10px;
+  }
+
+  .col-3 {
+    float: none;
   }
 }
 
