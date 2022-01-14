@@ -60,18 +60,10 @@
         <div class="pagination-icon-next">
           <div (click)="p.next();showNextDay()">
             {{ nextDay | date: "E d LLL " }}
-            <svg
-              xmlns=" http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-chevron-right"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-              />
+            <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-chevron-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </div>
         </div>
@@ -99,17 +91,12 @@
 
         <div class="ticketBox" *ngFor="let departure of trainTimeTables let i for index">
           <mat-accordion>
-            <mat-expansion-panel
-              (opened)="panelOpenState = true"
-              (closed)="panelOpenState = false"
-            >
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  {{ departure.DepartureTime | date: "H:mm"}} -
-                  {{ departure.ArrivalTime | date: "H:mm" }}
+                  {{ departure.DepartureTime}} -
+                  {{ departure.ArrivalTime}}
                 </mat-panel-title>
-                <!-- <mat-panel-description>
-              </mat-panel-description> -->
               </mat-expansion-panel-header>
               <p>{{ "Select ticket" | translate }}</p>
               <div class="container box-info">
@@ -117,21 +104,17 @@
                   <div class="more-train-info">
                     <div class="departure-holder">
                       <strong>{{ "Departure" | translate }} </strong>
-                      {{ departure.DepartureTime | date: "h:mm" }}
+                      {{ departure.DepartureTime }}
                       <h4>
                         {{ booking.FromLocation?.AdvertisedLocationName }}
                       </h4>
                     </div>
                     <div class="train-pic-holder">
-                      <img
-                        class="train-image"
-                        src="../../../../assets/images/dubbeldackare-70x340.png"
-                        alt=""
-                      />
+                      <img class="train-image" src="../../../../assets/images/dubbeldackare-70x340.png" alt="" />
                     </div>
                     <div class="arrvial-holder">
                       <strong> {{ "Arrival" | translate }}{{ " " }} </strong>
-                      {{ departure.ArrivalTime | date: "H:mm" }}
+                      {{ departure.ArrivalTime }}
                       <h4>{{ booking.ToLocation?.AdvertisedLocationName }}</h4>
                     </div>
                     <div>
@@ -139,7 +122,6 @@
                         {{ "Travel time" | translate }}{{ " 5:20h"
                         }}{{ departure.Time | date: "H:mm" }}
                       </p>
-                      <p><strong>Train:</strong> {{ departure.TrainType }}</p>
                     </div>
                     <div></div>
                   </div>
