@@ -2,7 +2,7 @@
 
 Due to limitations with Heroku, index.js needs adjustments before running in dev mode.
 
-Navigate to **backend/api**. Open index.js and make **comment** the following code snippets.
+Navigate to **backend/api**. Open index.js and **comment** the following code snippets.
 
 ```javascript
 app.use(express.static('./public'));
