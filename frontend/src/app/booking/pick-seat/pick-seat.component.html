@@ -107,7 +107,7 @@
 
 
     <!-------------------------------------------------------------- Price summary phone card ------------------------------------------------------------------------------------------>
-  
+
     <div class="container-fluid border-top pt-2">
       <div class="container">
 
@@ -130,17 +130,17 @@
         </div>
         <p>
           {{booking.TimeTable?.DepartureTime?.toLocaleString()}} - {{booking.TimeTable?.ArrivalTime?.toLocaleString()}}
-        </p>  
+        </p>
         <p>
-          {{getTravelTime()}}
-        </p> 
+          {{booking.TravelTime}}
+        </p>
       </div>
     </div>
 </div>
 
 
 <!--------------------------------------------------------------- Desktop-ticket ------------------------------------------------------------------------------------>
-  
+
 <div class="container desktop-ticket p-0">
   <h1>
     <span><i class="fa fa-angle-double-right fa-10x mr-1"></i></span>
@@ -179,7 +179,7 @@
       </div>
       <div class="col-md-3">
         <h2 id="travelTime">
-          {{getTravelTime()}} h
+          {{booking.TravelTime}}
         </h2>
       </div>
       <div class="col-md-3 text-center">
@@ -224,7 +224,7 @@
         </div>
         </div>
     </div>
-    
+
 
 </div>
 

@@ -20,7 +20,7 @@ const port = process.env.PORT || 5000;
 
 console.log('Running in ' + process.env.NODE_ENV + 'mode.');
 
-//app.use(cors()); // ONLY FOR DEVELOPMENT
+// app.use(cors()); // ONLY FOR DEVELOPMENT
 
 app.use(express.static('./public')); // FOR PRODUCTION
 export const db = new Database("./database.db");
