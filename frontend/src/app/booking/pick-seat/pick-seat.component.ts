@@ -34,7 +34,7 @@ export class PickSeatComponent implements OnInit {
   ngOnInit(): void {
     this.maxSeats = this.booking.Travelers!.length;
     this.trainService.getTrainCarriages(this.booking.TimeTable?.TrainId!).subscribe(t => {
-     this.carriages = t;
+      this.carriages = t;
     });
   }
 
@@ -71,50 +71,20 @@ export class PickSeatComponent implements OnInit {
     group.value = this.selectedSeat;
   }
 
-  iconToggleDesktop(){
-  
-    document.getElementById('iconDesktop')?.classList.toggle('fa-caret-up');  
+  iconToggleDesktop() {
+
+    document.getElementById('iconDesktop')?.classList.toggle('fa-caret-up');
   }
 
-    
-iconTogglePhone(){
-  
-  document.getElementById('iconPhone')?.classList.toggle('fa-caret-up');  
-}
 
-getTravelTime(): string{
-  let ArrivalTime = this.booking.TimeTable?.ArrivalTime?.toLocaleString();
-  let DepartureTime = this.booking.TimeTable?.DepartureTime?.toLocaleString();
-  
-  let arrTime = Date.parse(ArrivalTime!);
-  let depTime = Date.parse(DepartureTime!);
+  iconTogglePhone() {
 
-  let msDiff = arrTime! - depTime!;
-  let timeDiff = this.msToHMS(msDiff);
-
-  return timeDiff;
-}
-
- msToHMS(ms: number): string{
-
-  let seconds = ms / 1000;
-
-  let hours = Math.floor(seconds / 3600); 
-
-  let minutes = Math.floor(seconds - (hours * 3600)) / 60; 
- 
-  let time = hours.toString() + ':' +  minutes.toString();
-
-  return time;
-}
+    document.getElementById('iconPhone')?.classList.toggle('fa-caret-up');
+  }
 
   submit() {
     this.booking.SeatId = this.seatIds;
     this.booking.SeatNumber = this.selectedSeat;
-    // for(let seat of this.selectedSeat) {
-    //   this.selectedCarriage.Seats?.push({ SeatNumber: seat });
-    // }
-    // this.booking.Train?.Carriages?.push(this.selectedCarriage);
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/overview');
   }
