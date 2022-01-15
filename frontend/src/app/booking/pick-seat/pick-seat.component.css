@@ -64,7 +64,20 @@ h1{
 .seats-overview {
   margin-top: 50px;
   width: 800px;
-  height: 400px;
+  height: fit-content;
+  display: flex;
+  display: inline-block;
+}
+
+#continue-btn-phone {
+  border-radius: 0px;
+  background-color:  #156e31;
+  border-bottom: solid 3px #105426;
+  font-weight: bold;
+  text-align: left;
+  color: white;
+  transition: 0.40s linear;
+  margin-bottom: 20px;
 }
 
 .seat {
@@ -77,12 +90,12 @@ h1{
   background-color: green;
 }
 
+
 .occupied {
   background-color: red;
 }
 
 .carriage {
-  background-color: #fff;
   width: 200px;
   height: 60px;
   display: flex;
@@ -115,8 +128,46 @@ h1{
 }
 
 .scrolling-wrapper {
-  width: 800px;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
+}
+@media (min-width: 780px){
+  .phone-ticket{
+      visibility: hidden;
+      display: none;
+  }
+  .phone-bottom{
+      visibility: hidden;
+      display: none;
+  }
+  .page-orientation-bar-current a{
+      font-size: 13px;
+  }
+  .page-orientation-bar-next a{
+      font-size: 13px;
+  }
+  .page-orientation-bar-back a{
+      font-size: 13px;
+  }
+}
+
+@media (max-width: 780px){
+  .desktop-ticket{
+      visibility: hidden;
+      display: none;
+  }
+  .desktop-bottom{
+      visibility: hidden;
+      display: none;
+  }
+  .page-orientation-bar-current a{
+      font-size: 10px;
+  }
+  .page-orientation-bar-next a{
+      font-size: 10px;
+  }
+  .page-orientation-bar-back a{
+      font-size: 10px;
+  }
 }
