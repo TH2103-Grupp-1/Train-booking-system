@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 // import { log } from 'console';
 import { Booking } from 'src/app/models/booking.model';
@@ -16,7 +16,6 @@ import { Ticket, AgeGroup } from "../../models/tickets.model";
 export class DepartureComponent implements OnInit {
   booking!: Booking;
   trainTimeTables!: TrainTimeTable[];
-  testdate!: Date;
   currentDate: Date;
   myDate!: Date;
   changeDate!: number;
@@ -25,13 +24,13 @@ export class DepartureComponent implements OnInit {
   previousDate!: Date;
   previousDay!: number;
   isChecked = false;
+  counter: number = 0;
+  selectedDeparture!: TrainTimeTable;
+  panelOpenState = false;
+  page: number = 1;
+  departurePrice?: number;
 
-  constructor(
-  
-    private bookingService: BookingBuilderService,
-    private timeTableService: TimetableService,
-    private route: Router
-  ) {
+  constructor(private bookingService: BookingBuilderService, private timeTableService: TimetableService, private route: Router) {
     this.currentDate = new Date();
   }
 
@@ -42,23 +41,20 @@ export class DepartureComponent implements OnInit {
       this.booking = this.bookingService.getBooking();
       this.timeTableService.getTimeTables().subscribe((t) => {
         for (let train of t) {
-          train.PriceTotal = Math.round(
-            train.BasePrice * this.booking.Distance! + 3
-          );
+          train.PriceTotal = Math.round(train.BasePrice * this.booking.Distance! + 3);
+          const d1 = new Date('1970-01-01 ' + train.ArrivalTime);
+          const d2 = new Date('1970-01-01 ' + train.DepartureTime);
+          var difference = d1.getTime() - d2.getTime();
+          train.Time = `${new Date(difference).getHours() - 1}:${new Date(difference).getMinutes()}h`
+          console.log(train.Time);
         }
         this.trainTimeTables = t;
       });
       this.booking.Travelers = [];
-
-
     }
     this.myDate = this.booking.DepartureDate!;
-    console.log(this.currentDate);
-    console.log(this.booking.DepartureDate);
     this.prepare();
-    this.booking
-    this.booking.TimeTable
-    this.calculateTime()
+   
   }
 
   //---------------------------------Tickets---------------------------------
@@ -82,7 +78,6 @@ export class DepartureComponent implements OnInit {
       price: 26
     }
   ]
-  counter: number = 0;
 
   addTicket() {
     if (this.tickets.length < 9) {
@@ -115,20 +110,13 @@ export class DepartureComponent implements OnInit {
     }
   }
 
-  // deleteTravelerer(index: number) {
-  //   this.travelers.splice(index, 1);
-  //   console.log(this.tickets);
-  // }
-
   deleteTicket(index: number) {
     if (this.tickets.length > 1) {
       this.tickets.splice(index, 1);
       this.resetId();
       this.booking.Price = this.calculateTotalPrice();
-      console.log(this.tickets);
     }
   }
-
 
   resetId() {
     this.counter = 0;
@@ -155,30 +143,6 @@ export class DepartureComponent implements OnInit {
     return Math.round(sum);
   }
 
-  //---------------------------------Tickets---------------------------------
-
-
-  calculateTime() {
-    for (let time of this.trainTimeTables) {
-      //calc arrivaltim - departuretime and get to MILISEC
-      var date3 = time.ArrivalTime!.getTime() - time.DepartureTime!.getTime();
-
-      //check days
-      var dagar = Math.floor(date3 / (60 * 60 * 24 * 1000));
-      var datum4 = date3 / (60 * 60 * 1000) - dagar * 24;
-      //Calc milisec to hours and minutes
-      var decimalTid = datum4 * 60 * 60;
-      var hours = Math.floor(decimalTid / (60 * 60));
-      var diff5 = decimalTid - hours * 60 * 60;
-      var minutes = Math.floor(diff5 / 60);
-      time.Time! = String(' ' + hours + ':' + minutes + ' h');
-      console.log(time);
-
-    }
-  }
-  // ********************************************************
-  // Get the current to date next and previous dates
-
   prepare() {
     if (this.booking.DepartureDate === undefined) {
       // this.booking.DepartureDate = this.currentDate
@@ -201,14 +165,10 @@ export class DepartureComponent implements OnInit {
 
   // Show deparures on date after "today" or picked date.
   showNextDay() {
-
     //  this.currentDate = new Date();
     const hidePrevDate = document.querySelector('.pagination-icon-previous-hidden') as HTMLElement
     hidePrevDate.style.opacity = "1"
     hidePrevDate.style.pointerEvents = "auto"
-    // if (this.currentDate.getDate() !== this.myDate.getDate() && this.currentDate.getMonth() !== this.myDate.getMonth()){
-
-    // }
 
     if (this.myDate !== this.nextDate) {
       this.changeDate = this.myDate.setDate(this.myDate.getDate() + 1);
@@ -225,8 +185,6 @@ export class DepartureComponent implements OnInit {
 
   showPreviousDay() {
     //  this.currentDate = new Date();
-
-
     const hidePrevDate = document.querySelector('.pagination-icon-previous-hidden') as HTMLElement
     if (this.currentDate.getDate() === this.myDate.getDate() && this.currentDate.getMonth() === this.myDate.getMonth()) {
 
@@ -250,32 +208,18 @@ export class DepartureComponent implements OnInit {
     }
   }
 
-  // sets panel false for use to our accordion
-  panelExpanded = false;
-  selectedDeparture!: TrainTimeTable;
-
-  panelOpenState = false;
-
-  //PaginationService
-  totalLength: any;
-  page: number = 1;
-
-  totalcost: any;
-  departurePrice?: number;
-
   selectDeparture(departure: TrainTimeTable) {
     this.selectedDeparture = departure;
     this.departurePrice = departure.PriceTotal
     this.booking.Price = this.calculateTotalPrice();
-
   }
-
 
   submit() {
     this.selectedDeparture.ArrivalTime = new Date(`${this.myDate.toISOString().split('T')[0]} ${this.selectedDeparture.ArrivalTime?.toString()}`);
     this.selectedDeparture.DepartureTime = new Date(`${this.myDate.toISOString().split('T')[0]} ${this.selectedDeparture.DepartureTime?.toString()}`);
     this.booking.Tickets = this.tickets;
     this.booking.TimeTable = this.selectedDeparture;
+    this.booking.TravelTime = this.selectedDeparture.Time;
     this.tickets.forEach(t => {
       let travelerType: number;
       if (t.ageGroup == 'adult') {
@@ -291,12 +235,8 @@ export class DepartureComponent implements OnInit {
     });
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/seat');
-    console.log(this.myDate);
-    console.log(this.booking.TimeTable);
-
   }
 }
-
 
   
 

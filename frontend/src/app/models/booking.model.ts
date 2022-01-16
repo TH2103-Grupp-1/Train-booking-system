@@ -24,6 +24,7 @@ export class Booking {
   SeatNumber?: number[];
   UserId?: number;
   Tickets?: Ticket[];
+  TravelTime?: string;
 }
 
 export interface UserBooking {
