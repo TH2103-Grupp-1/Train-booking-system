@@ -11,7 +11,7 @@ import { Ticket, AgeGroup } from "../../models/tickets.model";
   selector: 'app-departure',
   templateUrl: './departure.component.html',
   styleUrls: ['./departure.component.css'],
-  encapsulation : ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None,
 })
 export class DepartureComponent implements OnInit {
   booking!: Booking;
@@ -25,7 +25,6 @@ export class DepartureComponent implements OnInit {
   previousDate!: Date;
   previousDay!: number;
   isChecked = false;
-  mobileMedia:any = window.matchMedia("(max-width:768px)")
 
   constructor(
   
@@ -33,10 +32,7 @@ export class DepartureComponent implements OnInit {
     private timeTableService: TimetableService,
     private route: Router
   ) {
-  this.currentDate = new Date();
-    if (this.mobileMedia.mathces) {
-      alert('768px')
-    }
+    this.currentDate = new Date();
   }
 
   ngOnInit(): void {
@@ -63,12 +59,11 @@ export class DepartureComponent implements OnInit {
     this.booking
     this.booking.TimeTable
     this.calculateTime()
-    this.CustPagination()
   }
 
   //---------------------------------Tickets---------------------------------
 
-  tickets: Ticket[] = [{ id: 0, ageGroup: 'adult', price: 39}];
+  tickets: Ticket[] = [{ id: 0, ageGroup: 'adult', price: 39 }];
 
   ageGroups: AgeGroup[] = [
     {
@@ -134,23 +129,6 @@ export class DepartureComponent implements OnInit {
     }
   }
 
-  // calculateTime() {
-
-  //   for (let time of this.trainTimeTables) {
-  //     //calc arrivaltim - departuretime and get to MILISEC
-  //     let date3 = time.ArrivalTime!.getTime() - time.DepartureTime!.getTime();
-  //     console.log(date3);
-  //     //check days
-  //     let dagar = Math.floor(date3 / (60 * 60 * 24 * 1000));
-  //     let datum4 = date3 / (60 * 60 * 1000) - dagar * 24;
-  //     //Calc milisec to hours and minutes
-  //     let decimalTid = datum4 * 60 * 60;
-  //     let hours = Math.floor(decimalTid / (60 * 60));
-  //     let diff5 = decimalTid - hours * 60 * 60;
-  //     let minutes = Math.floor(diff5 / 60);
-  //     time.Time! = String(' ' + hours + ':' + minutes + ' h');
-  //   }
-  // }
 
   resetId() {
     this.counter = 0;
@@ -316,20 +294,9 @@ export class DepartureComponent implements OnInit {
     console.log(this.myDate);
     console.log(this.booking.TimeTable);
 
-    }
-
-
-
-
-
-// STYLING FUNCTIONS *********************************************
-
-CustPagination() {
-  if (this.mobileMedia.mathces) {
-  alert('768px')
   }
+}
 
-}
-}
+
   
 

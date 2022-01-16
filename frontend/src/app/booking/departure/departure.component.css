@@ -329,7 +329,6 @@ border-radius: inherit;
   margin-left:0px!important;
 }
 .p-price-second{
-  /* padding-top: -10px!important; */
   padding: left 4px !important;;
   margin-top: -10px!important;
 }
@@ -352,5 +351,6 @@ border-radius: inherit;
 .choosen-cities-container h2{
   font-size:revert;
 }
+
 
 }
