@@ -4,7 +4,7 @@
 **Express**
 
 ### Frontend
-**Angular CLI** 
+**Angular CLI** - npm install -g @angular/cli
 
 ### Database
 **SQLite**<br>
