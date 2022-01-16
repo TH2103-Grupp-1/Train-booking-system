@@ -315,7 +315,15 @@ border-radius: inherit;
 .p-price-first{
   margin-left:22px;
 }
+.footer-wrapper{
+  display: flex;
+}
 
+.footer-wrapper .ng-star-inserted{
+
+  display: flex;
+  align-items: baseline;
+}
 
 
 @media only screen and (max-width: 768px){
@@ -351,6 +359,8 @@ border-radius: inherit;
 .choosen-cities-container h2{
   font-size:revert;
 }
-
+.right-container{
+  align-items: center;
+}
 
 }
