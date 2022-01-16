@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row page-orientagion">
+  <div class="row page-orientagion container-fluid">
     <div class="col page-orientation-bar-back">
       <a href=""> 1. </a>
     </div>
@@ -49,7 +49,8 @@
                 d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
               />
             </svg>
-            {{ previousDay | date: "E d LLL " }}
+            <div class ="previousDayDate">
+            {{ previousDay | date: "E d LLL " }}</div>
           </div>
         </div>
         <div>
@@ -58,8 +59,8 @@
           </p>
         </div>
         <div class="pagination-icon-next">
-          <div (click)="p.next();showNextDay()">
-            {{ nextDay | date: "E d LLL " }}
+          <div class="pagination-icon-previous-hidden" (click)="p.next();showNextDay()">
+              <div class="nextday-date">{{ nextDay | date: "E d LLL " }}</div>
             <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-chevron-right" viewBox="0 0 16 16">
               <path fill-rule="evenodd"

@@ -144,16 +144,21 @@ h1 {
 
 /*  CUSTOM PAGINATION DESIGN */
 
+
 .custom-pagination {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .pagination-icon-next {
+  display: flex;
 cursor: pointer;
 }
 .pagination-icon-previous-hidden{
+  display:flex;
+  align-items:center;
 cursor: pointer;
+padding:0,3px,0,3px
 }
 
 .ticketBox{
@@ -311,6 +316,8 @@ border-radius: inherit;
   margin-left:22px;
 }
 
+
+
 @media only screen and (max-width: 768px){
   .p-price{
     margin-top: 10px;
@@ -335,6 +342,15 @@ border-radius: inherit;
   }
   .button12 .mat-radio-container{
     width: 70px;
+}
+.nextday-date{
+  display: none;
+}
+.previousDayDate{
+  display: none;
+}
+.choosen-cities-container h2{
+  font-size:revert;
 }
 
 }

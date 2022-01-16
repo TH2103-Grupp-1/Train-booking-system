@@ -25,14 +25,18 @@ export class DepartureComponent implements OnInit {
   previousDate!: Date;
   previousDay!: number;
   isChecked = false;
+  mobileMedia:any = window.matchMedia("(max-width:768px)")
 
   constructor(
+  
     private bookingService: BookingBuilderService,
     private timeTableService: TimetableService,
     private route: Router
   ) {
-    this.currentDate = new Date();
-
+  this.currentDate = new Date();
+    if (this.mobileMedia.mathces) {
+      alert('768px')
+    }
   }
 
   ngOnInit(): void {
@@ -59,7 +63,7 @@ export class DepartureComponent implements OnInit {
     this.booking
     this.booking.TimeTable
     this.calculateTime()
-
+    this.CustPagination()
   }
 
   //---------------------------------Tickets---------------------------------
@@ -313,6 +317,19 @@ export class DepartureComponent implements OnInit {
     console.log(this.booking.TimeTable);
 
     }
+
+
+
+
+
+// STYLING FUNCTIONS *********************************************
+
+CustPagination() {
+  if (this.mobileMedia.mathces) {
+  alert('768px')
   }
 
+}
+}
+  
 
