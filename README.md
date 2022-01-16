@@ -1,3 +1,15 @@
+## Stack / Required tools
+### Backend
+**Node.js** v16 or later: https://nodejs.org/en/<br>
+**Express**
+
+### Frontend
+**Angular CLI** 
+
+### Database
+**SQLite**<br>
+Recommended: **SQLite DB Browser** https://sqlitebrowser.org/
+
 ## Install dependencies
 Navigate to **backend/api**. Run **npm install**<br>
 Navigate to **frontend**. Run **npm install**
