@@ -86,7 +86,6 @@ export class DepartureComponent implements OnInit {
       this.resetId();
       this.booking.Price = this.calculateTotalPrice();
     }
-    console.log(this.tickets);
   }
 
   changeTicket(index: number, value: string) {

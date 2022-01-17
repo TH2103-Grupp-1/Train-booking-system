@@ -146,7 +146,7 @@
 </div>
 <footer class ="summary">
   <div *ngIf="selectedDeparture !== undefined">
-    <h1><strong>Total SEK:</strong> {{ booking.Price }}:-</h1>
+    <h1><strong>{{'Total price' | translate}}:</strong> {{ booking.Price }} SEK</h1>
     <div class="submit">
     <button class="btn btn-success summary-btn" (click)="submit()"> {{ "Continue" | translate }}
     </button>
