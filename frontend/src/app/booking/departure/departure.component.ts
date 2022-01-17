@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import { DarkModeService } from 'angular-dark-mode';
+import { Observable } from 'rxjs';
 // import { log } from 'console';
 import { Booking } from 'src/app/models/booking.model';
 import { TrainTimeTable } from 'src/app/models/timetable.model';
@@ -29,12 +31,24 @@ export class DepartureComponent implements OnInit {
   panelOpenState = false;
   page: number = 1;
   departurePrice?: number;
+  darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
 
-  constructor(private bookingService: BookingBuilderService, private timeTableService: TimetableService, private route: Router) {
+
+  constructor(private bookingService: BookingBuilderService, private timeTableService: TimetableService, private route: Router, private darkModeService: DarkModeService) {
     this.currentDate = new Date();
   }
 
   ngOnInit(): void {
+    this.darkMode$.subscribe(dm => {
+      let navbar = document.getElementById("container");
+      if (dm === true) {
+        navbar?.classList.remove("light-mode");
+        navbar?.classList.add("dark-mode");
+      } else {
+        navbar?.classList.add("light-mode");
+        navbar?.classList.remove("dark-mode");
+      }
+    });
     if (this.bookingService.getBooking() === undefined) {
       this.route.navigateByUrl('/');
     } else {
@@ -54,7 +68,7 @@ export class DepartureComponent implements OnInit {
     }
     this.myDate = this.booking.DepartureDate!;
     this.prepare();
-   
+
   }
 
   //---------------------------------Tickets---------------------------------
@@ -237,5 +251,5 @@ export class DepartureComponent implements OnInit {
   }
 }
 
-  
+
 

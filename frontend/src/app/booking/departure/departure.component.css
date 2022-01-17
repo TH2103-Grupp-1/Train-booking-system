@@ -55,7 +55,7 @@ h1 {
   flex-direction: column;
   min-height: 250px;
   align-items: center;
-  background-color: #f4f4ee;
+  background-color: inherit;
 }
 
 .choosen-cities-container {
