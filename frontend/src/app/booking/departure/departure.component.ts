@@ -54,6 +54,7 @@ export class DepartureComponent implements OnInit {
     }
     this.myDate = this.booking.DepartureDate!;
     this.prepare();
+   
   }
 
   //---------------------------------Tickets---------------------------------
@@ -237,4 +238,5 @@ export class DepartureComponent implements OnInit {
   }
 }
 
+  
 
