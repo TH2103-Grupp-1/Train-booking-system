@@ -57,9 +57,6 @@ export class LandingPageComponent implements OnInit {
 
   setTimeCalendar1(time: string) {
     this.selectedTime_calendar1 = time;
-    console.log(
-      'date' + this.selectedDate_calendar1 + this.selectedTime_calendar1
-    );
   }
 
   setTimeCalendar2(time: string) {
@@ -110,9 +107,7 @@ export class LandingPageComponent implements OnInit {
   private _filter(name: string): Station[] {
     const filterValue = name.toLowerCase();
 
-    return this.stations.filter((station) =>
-      station.AdvertisedLocationName.toLowerCase().includes(filterValue)
-    );
+    return this.stations.filter(station => station.AdvertisedLocationName.toLowerCase().match(filterValue) && station.AdvertisedLocationName.toLowerCase().charAt(0) === filterValue.charAt(0));
   }
 
   getStations(): void {
@@ -153,7 +148,6 @@ export class LandingPageComponent implements OnInit {
     this.booking.DepartureDate = this.selectedDate_calendar1;
     this.booking.Travelers = [TravelerType.Adult];
     this.bookingBuilder.updateBooking(this.booking);
-    console.log(this.booking.DepartureDate);
     this.route.navigateByUrl('/departures');
   }
 

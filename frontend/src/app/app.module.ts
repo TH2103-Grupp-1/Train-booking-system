@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StationsComponent } from './stations/stations.component';
+import { StationsComponent } from './components/stations/stations.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -10,7 +10,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -20,7 +20,7 @@ import { notyfFactory } from './shared/guards/notyf.token';
 import { DepartureComponent } from './booking/departure/departure.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ErrorInterceptor } from './shared/guards/interceptors/error-interceptor';
-import { AccountPageComponent } from './account-page/account-page.component';
+import { AccountPageComponent } from './account/account-page/account-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BookingOverviewComponent } from './booking/booking-overview/booking-overview.component';
 import { OrderConfirmationComponent } from './booking/order-confirmation/order-confirmation.component';
@@ -35,6 +35,12 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { UserBookingsComponent } from './account/user-bookings/user-bookings.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio'
+import { MatDialogModule } from '@angular/material/dialog';
+import { PaymentCancelComponent } from './booking/payment/payment-cancel/payment-cancel.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/translations/', '.json');
@@ -52,7 +58,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     OrderConfirmationComponent,
     PaymentComponent,
     PickSeatComponent,
+    UserBookingsComponent,
+    PaymentCancelComponent
   ],
+  entryComponents: [PaymentCancelComponent],
   imports: [
     BrowserModule,
     NgxPaginationModule,
@@ -75,6 +84,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatExpansionModule,
     MatStepperModule,
     MatGridListModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatDialogModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
