@@ -34,7 +34,7 @@ export class PickSeatComponent implements OnInit {
   ngOnInit(): void {
     this.maxSeats = this.booking.Travelers!.length;
     this.trainService.getTrainCarriages(this.booking.TimeTable?.TrainId!).subscribe(t => {
-     this.carriages = t;
+      this.carriages = t;
     });
   }
 
@@ -48,8 +48,10 @@ export class PickSeatComponent implements OnInit {
     if (!this.selectedSeat.includes(seat)) {
       this.selectedSeat.push(seat);
       this.seatIds.push(seatId);
-      let seatElement = document.getElementById(`seat-number-${seat}`);
-      seatElement?.classList.add('selected-seat');
+      let seatElementDesktop = document.getElementById(`seat-number-desktop-${seat}`);
+      let seatElementPhone = document.getElementById(`seat-number-phone-${seat}`);
+      seatElementDesktop?.classList.add('selected-seat');
+      seatElementPhone?.classList.add('selected-seat');
       console.log(this.booking.SeatId);
     }
   }
@@ -57,8 +59,10 @@ export class PickSeatComponent implements OnInit {
   change(group: any) {
     if (this.selectedSeat.length >= this.maxSeats) {
       this.selectedSeat.forEach(seat => {
-        let seatElement = document.getElementById(`seat-number-${seat}`);
-        seatElement?.classList.remove('selected-seat');
+        let seatElementDesktop = document.getElementById(`seat-number-desktop-${seat}`);
+        let seatElementPhone = document.getElementById(`seat-number-phone-${seat}`);
+        seatElementDesktop?.classList.remove('selected-seat');
+        seatElementPhone?.classList.remove('selected-seat');
       });
       this.selectedSeat = [];
       this.seatIds! = [];
@@ -67,13 +71,20 @@ export class PickSeatComponent implements OnInit {
     group.value = this.selectedSeat;
   }
 
+  iconToggleDesktop() {
+
+    document.getElementById('iconDesktop')?.classList.toggle('fa-caret-up');
+  }
+
+
+  iconTogglePhone() {
+
+    document.getElementById('iconPhone')?.classList.toggle('fa-caret-up');
+  }
+
   submit() {
     this.booking.SeatId = this.seatIds;
     this.booking.SeatNumber = this.selectedSeat;
-    // for(let seat of this.selectedSeat) {
-    //   this.selectedCarriage.Seats?.push({ SeatNumber: seat });
-    // }
-    // this.booking.Train?.Carriages?.push(this.selectedCarriage);
     this.bookingService.updateBooking(this.booking);
     this.route.navigateByUrl('/overview');
   }

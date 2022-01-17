@@ -114,7 +114,7 @@
             {{booking.TimeTable!.TrainType}}
           </span>
           <span>
-            <span>{{'Travel time' | translate}}</span><span> 3:11h</span>
+            <span>{{'Travel time' | translate}}</span><span> {{booking.TravelTime}}</span>
           </span>
           <span id="right">
             <span>0 </span><span>{{'Swaps' | translate}}</span>
@@ -170,7 +170,10 @@
     </div>
     <div class="container border-bottom no-padding margin-top">
       <p id="left">
-        <span>1 </span><span>{{'Traveller' | translate}}</span>
+        <span *ngIf="booking.Travelers!.length > 1; else singleTraveler">{{booking.Travelers!.length}} {{'Travelers' | translate}} </span>
+        <ng-template #singleTraveler>
+        <span>1 {{'Traveler' | translate}}</span>
+        </ng-template>
         <span class="margin-left">{{'Cannot be rebooked' | translate}}</span>
       </p>
     </div>
@@ -179,7 +182,7 @@
         {{booking.TimeTable!.TrainType}}
           <span class="margin-left">
             <span>{{'Travel time' | translate}}</span>
-            <span> 4:05 h</span>
+            <span> {{booking.TravelTime}}</span>
           </span>
           <span class="margin-left">
             <span>0 </span>

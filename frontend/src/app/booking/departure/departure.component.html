@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="row page-orientagion">
+  <div class="row page-orientagion container-fluid">
     <div class="col page-orientation-bar-back">
       <a href=""> 1. </a>
     </div>
-    <div class="col page-orientation-bar-current">
+    <div class="col-3 page-orientation-bar-current">
       <a href=""> 2. {{ "Timetable" | translate }} </a>
     </div>
-    <div class="col-3 page-orientation-bar-next">
+    <div class="col page-orientation-bar-next">
       <a> 3. </a>
     </div>
     <div class="col page-orientation-bar-next">
@@ -27,7 +27,6 @@
       {{ booking.ToLocation?.AdvertisedLocationName }}
     </h2>
   </div>
-
   <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
   <pagination-template #p="paginationApi" (pageChange)="page = $event">
   </pagination-template>
@@ -49,7 +48,8 @@
                 d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
               />
             </svg>
-            {{ previousDay | date: "E d LLL " }}
+            <div class ="previousDayDate">
+            {{ previousDay | date: "E d LLL " }}</div>
           </div>
         </div>
         <div>
@@ -58,8 +58,8 @@
           </p>
         </div>
         <div class="pagination-icon-next">
-          <div (click)="p.next();showNextDay()">
-            {{ nextDay | date: "E d LLL " }}
+          <div class="pagination-icon-previous-hidden" (click)="p.next();showNextDay()">
+              <div class="nextday-date">{{ nextDay | date: "E d LLL " }}</div>
             <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-chevron-right" viewBox="0 0 16 16">
               <path fill-rule="evenodd"
@@ -76,7 +76,6 @@
     <div class="wrapper">
       <div class="container">
         <!-- loops and create list of departures "dynamic from component And pagintaes to 4 items/site" -->
-
         <div class="travelerSection">
           <div class="dropdowns">
             <mat-form-field *ngFor="let ticket of tickets let i = index" appearance="fill">
@@ -118,9 +117,9 @@
                       <h4>{{ booking.ToLocation?.AdvertisedLocationName }}</h4>
                     </div>
                     <div>
+                      <p>{{departure.TrainType}}</p>
                       <p>
-                        {{ "Travel time" | translate }}{{ " 5:20h"
-                        }}{{ departure.Time | date: "H:mm" }}
+                        {{ "Travel time" | translate }} {{ departure.Time}}
                       </p>
                     </div>
                     <div></div>
@@ -130,7 +129,8 @@
                   <div  class="price-box">
                     <div class="price-box-first">
                       <div class ="box">
-                          <mat-radio-button class="button12" value="{{isChecked}}" (change)="selectDeparture(departure)"><p class="p-price">{{departure.PriceTotal}} {{" SEK"| translate}}</p></mat-radio-button>
+                          <mat-radio-button class="button12" value="{{isChecked}}" (change)="selectDeparture(departure)">
+                            <div  class="p-price"><p class="p-price-first">{{departure.PriceTotal}} </p><p class="p-price-second" >{{"SEK"| translate}}</p></div> </mat-radio-button>
 
                         </div>
                     </div>
@@ -145,10 +145,10 @@
   </table>
 </div>
 <footer class ="summary">
-<div *ngIf="selectedDeparture !== undefined">
-  <h1><strong>Total SEK:</strong> {{ booking.Price }}</h1>
-  <div class="submit">
-  <button class="btn btn-success summary-btn" (click)="submit()"> {{ "Continue" | translate }}
-  </button>
-</div>
-</div></footer>
+  <div *ngIf="selectedDeparture !== undefined">
+    <h1><strong>Total SEK:</strong> {{ booking.Price }}:-</h1>
+    <div class="submit">
+    <button class="btn btn-success summary-btn" (click)="submit()"> {{ "Continue" | translate }}
+    </button>
+  </div>
+  </div></footer>
