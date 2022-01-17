@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { tick } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { DarkModeService } from 'angular-dark-mode';
 import { Observable } from 'rxjs';
@@ -39,15 +40,46 @@ export class DepartureComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let container = document.getElementById("container");
+    let panels = document.getElementsByClassName("mat-expansion-panel");
+    let priceBoxes = document.getElementsByClassName("price-box-first");
+    let titles = document.getElementsByClassName("mat-expansion-panel-header-title");
     this.darkMode$.subscribe(dm => {
-      let navbar = document.getElementById("container");
-      if (dm === true) {
-        navbar?.classList.remove("light-mode");
-        navbar?.classList.add("dark-mode");
-      } else {
-        navbar?.classList.add("light-mode");
-        navbar?.classList.remove("dark-mode");
+      // for(let i = 0; i < titles.length; i++) {
+      //   if(dm == true) {
+      //     titles[i].classList.remove("light-mode")
+      //     titles[i].classList.add("dark-mode")
+      //   } else{
+      //     titles[i].classList.remove("dark-mode")
+      //     titles[i].classList.add("light-mode")
+      //   }
+      // }
+      for (let i = 0; i < priceBoxes.length; i++)
+      {
+        if(dm === true) {
+          priceBoxes[i].classList.remove("light-mode")
+          priceBoxes[i].classList.add("dark-mode")
+        } else {
+          priceBoxes[i].classList.remove("dark-mode")
+          priceBoxes[i].classList.add("light-mode")
+        }
       }
+      for (let i = 0; i < panels.length; i++) {
+        if (dm === true) {
+          panels[i].classList.remove("light-mode")
+          panels[i].classList.add("dark-mode")
+        } else {
+          panels[i].classList.remove("dark-mode")
+          panels[i].classList.add("light-mode")
+        }
+      }
+        if (dm === true) {
+          container?.classList.remove("light-mode");
+          container?.classList.add("dark-mode");
+        } else {
+          container?.classList.add("light-mode");
+          container?.classList.remove("dark-mode");
+        }
     });
     if (this.bookingService.getBooking() === undefined) {
       this.route.navigateByUrl('/');

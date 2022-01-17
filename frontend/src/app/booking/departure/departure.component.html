@@ -90,11 +90,11 @@
 
         <div class="ticketBox" *ngFor="let departure of trainTimeTables let i for index">
           <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel class="light-mode" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  {{ departure.DepartureTime}} -
-                  {{ departure.ArrivalTime}}
+                 <h2>{{ departure.DepartureTime}} -
+                 {{ departure.ArrivalTime}} </h2>
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <p>{{ "Select ticket" | translate }}</p>
@@ -127,7 +127,7 @@
                 </div>
                 <div class="container right-container">
                   <div  class="price-box">
-                    <div class="price-box-first">
+                    <div class="price-box-first light-mode">
                       <div class ="box">
                           <mat-radio-button class="button12" value="{{isChecked}}" (change)="selectDeparture(departure)">
                             <div  class="p-price"><p class="p-price-first">{{departure.PriceTotal}} </p><p class="p-price-second" >{{"SEK"| translate}}</p></div> </mat-radio-button>
