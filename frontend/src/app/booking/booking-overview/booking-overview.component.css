@@ -134,6 +134,10 @@ p #right{
     text-decoration: line-through;
   }
 
+.max-width{
+    max-width: fit-content;
+}
+
 @media (min-width: 780px){
     .phone-ticket{
         visibility: hidden;
