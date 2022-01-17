@@ -124,6 +124,8 @@ a{
 
 .a-tag-back{
   font-size: 15px;
+  color: rgb(58, 76, 240);
+  text-decoration: underline;
 }
 
 #continue-btn{
@@ -154,6 +156,13 @@ a{
   color: black;
 }
 
+#cancel-btn:hover{
+  background-color: grey;
+}
+
+#continue-btn:hover {
+  background-color: darkgreen;
+}
 .col-btn{
   max-width: fit-content;
 }

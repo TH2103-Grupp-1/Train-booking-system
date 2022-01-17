@@ -111,7 +111,7 @@
     <div class="container-fluid border-top pt-2">
       <div class="container">
 
-        <button type="button" (click)="submit()" class="btn btn-primary btn-lg btn-block" id="continue-btn-phone">
+        <button *ngIf="selectedSeat.length === maxSeats" type="button" (click)="submit()" class="btn btn-primary btn-lg btn-block" id="continue-btn-phone">
           {{'Continue' | translate}}
           <span class="pull-right">
             <i class="fa fa-angle-right fa-lg"></i>
@@ -263,7 +263,7 @@
                 <h1>{{booking.Price}}:-</h1>
               </div>
               <div class="col-8 pull-right p-0">
-                <button type="button" (click)="submit()" class="btn btn-primary btn-lg btn-block" id="continue-btn-phone">
+                <button *ngIf="selectedSeat.length === maxSeats" type="button" (click)="submit()" class="btn btn-primary btn-lg btn-block" id="continue-btn-phone">
                   {{'Continue' | translate}}
                   <span class="pull-right">
                     <i class="fa fa-angle-right fa-lg"></i>
