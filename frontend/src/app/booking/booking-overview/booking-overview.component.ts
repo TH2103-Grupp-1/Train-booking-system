@@ -68,7 +68,7 @@ iconTogglePhone(){
 }
 iconToggleDesktop(){
   
-  document.getElementById('iconDesktop')?.classList.toggle('fa-caret-up');  
+  document.getElementById('iconDesktop1')?.classList.toggle('fa-caret-left');  
 }
 
   submit() {
