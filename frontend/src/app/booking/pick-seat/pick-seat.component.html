@@ -244,8 +244,8 @@
           </span>
         </h2>
         <h3>
-          {{this.booking.TimeTable?.DepartureTime?.toLocaleString()}}
-        </h3>
+          {{this.booking.DepartureDate | date: 'mediumDate'}} - {{this.booking.TimeTable?.DepartureTime?.toLocaleString() | date:'HH:mm'}}
+        </h3> 
       </div>
       <div class="col">
         <div class="row">
