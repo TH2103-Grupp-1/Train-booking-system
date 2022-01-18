@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { tick } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { DarkModeService } from 'angular-dark-mode';
-import { Observable } from 'rxjs';
+import { debounceTime, first, flatMap, map, Observable, switchMap, take, tap, timeout } from 'rxjs';
 // import { log } from 'console';
 import { Booking } from 'src/app/models/booking.model';
 import { TrainTimeTable } from 'src/app/models/timetable.model';
@@ -40,16 +40,12 @@ export class DepartureComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let container = document.getElementById("container");
-    let panels = document.getElementsByClassName("mat-expansion-panel");
-    let priceBoxes = document.getElementsByClassName("price-box-first");
-    let titles = document.getElementsByClassName("mat-expansion-panel-header-title");
-    let button = document.getElementById("ticket-button");
+
     if (this.bookingService.getBooking() === undefined) {
       this.route.navigateByUrl('/');
     } else {
       this.booking = this.bookingService.getBooking();
-      this.timeTableService.getTimeTables().subscribe((t) => {
+      this.timeTableService.getTimeTables().pipe(map(t => {
         for (let train of t) {
           train.PriceTotal = Math.round(train.BasePrice * this.booking.Distance! + 3);
           const d1 = new Date('1970-01-01 ' + train.ArrivalTime);
@@ -58,33 +54,39 @@ export class DepartureComponent implements OnInit {
           train.Time = `${new Date(difference).getHours() - 1}:${new Date(difference).getMinutes()}h`
         }
         this.trainTimeTables = t;
+      })).subscribe();
         this.darkMode$.subscribe(dm => {
-          if (dm === true) {
-            container?.classList.remove("light-mode");
-            container?.classList.add("dark-mode");
-            button?.classList.add("dark-mode");
-          } else {
-            container?.classList.add("light-mode");
-            container?.classList.remove("dark-mode");
-            button?.classList.remove("dark-mode");
-          }
-          for (let i = 0; i < t.length; i++) {
-            if (dm == true) {
-              titles[i].classList.remove("light-mode")
-              titles[i].classList.add("dark-mode")
-              priceBoxes[i].classList.remove("light-mode")
-              priceBoxes[i].classList.add("dark-mode")
-              panels[i].classList.add("dark-mode")
+          setTimeout(() => {
+            let container = document.getElementById("container");
+            let panels = document.getElementsByClassName("mat-expansion-panel");
+            let priceBoxes = document.getElementsByClassName("price-box-first");
+            let titles = document.getElementsByClassName("mat-expansion-panel-header-title");
+            let button = document.getElementById("ticket-button");
+            if (dm === true) {
+              container?.classList.remove("light-mode");
+              container?.classList.add("dark-mode");
+              button?.classList.add("dark-mode");
             } else {
-              titles[i].classList.remove("dark-mode")
-              titles[i].classList.add("light-mode")
-              priceBoxes[i].classList.remove("dark-mode")
-              priceBoxes[i].classList.add("light-mode")
-              panels[i].classList.remove("dark-mode")
+              container?.classList.add("light-mode");
+              container?.classList.remove("dark-mode");
+              button?.classList.remove("dark-mode");
             }
-          }
+            for (let i = 0; i < this.trainTimeTables.length; i++) {
+              if (dm == true) {
+                titles[i].classList.add("dark-mode")
+                priceBoxes[i].classList.remove("light-mode")
+                priceBoxes[i].classList.add("dark-mode")
+                panels[i].classList.add("dark-mode")
+              } else {
+                titles[i].classList.remove("dark-mode")
+                priceBoxes[i].classList.remove("dark-mode")
+                priceBoxes[i].classList.add("light-mode")
+                panels[i].classList.remove("dark-mode")
+              }
+            }
+          });
         });
-      });
+
       this.booking.Travelers = [];
     }
     this.myDate = this.booking.DepartureDate!;
