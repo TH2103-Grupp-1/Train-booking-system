@@ -40,8 +40,8 @@
                                 <th scope="row">{{i + 1}}</th>
                                 <td>{{booking.FromLocation}}</td>
                                 <td>{{booking.ToLocation}}</td>
-                                <td>{{booking.DepartureTime}}</td>
-                                <td>{{booking.ArrivalTime}}</td>
+                                <td>{{booking.DepartureTime | date: 'dd/MM/yyyy HH:mm' }}</td>
+                                <td>{{booking.ArrivalTime | date: 'dd/MM/yyyy HH:mm' }}</td>
                             </tr>
                         </tbody>
                     </table>
