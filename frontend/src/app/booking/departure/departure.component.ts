@@ -250,7 +250,7 @@ export class DepartureComponent implements OnInit {
   }
 
   submit() {
-    this.selectedDeparture.ArrivalTime = new Date(`${this.myDate.getFullYear()}-${("0" + this.myDate.getMonth() + 1).slice(-2)}-${this.myDate.getDate()}T${this.selectedDeparture.ArrivalTime?.toString()}`);
+    this.selectedDeparture.ArrivalTime = new Date(`${this.myDate.getFullYear()}-${("00" + (this.myDate.getMonth() + 1)).slice(-2)}-${("00" + (this.myDate.getDate())).slice(-2)}T${this.selectedDeparture.ArrivalTime?.toString()}`);
     this.selectedDeparture.DepartureTime = new Date(`${this.myDate.getFullYear()}-${("00" + (this.myDate.getMonth() + 1)).slice(-2)}-${("00" + (this.myDate.getDate())).slice(-2)}T${this.selectedDeparture.DepartureTime?.toString()}`);
     console.log(`${("00" + (this.myDate.getMonth() + 1)).slice(-2)}`);
     this.booking.Tickets = this.tickets;
