@@ -7,8 +7,6 @@ export const checkout = async (req, res) => {
     const BASE_URL = req.protocol + "://" + req.headers.host;
     let orderNumber = Math.floor((Math.random() * 100000000024) + 1).toString();
 
-    console.log(booking);
-
     let seatIds = booking.SeatId.toString();
     let seatNumbers = booking.SeatNumber.toString();
 

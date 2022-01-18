@@ -52,7 +52,6 @@ export class PickSeatComponent implements OnInit {
       let seatElementPhone = document.getElementById(`seat-number-phone-${seat}`);
       seatElementDesktop?.classList.add('selected-seat');
       seatElementPhone?.classList.add('selected-seat');
-      console.log(this.booking.SeatId);
     }
   }
 

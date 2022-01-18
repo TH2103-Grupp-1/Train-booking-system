@@ -26,18 +26,38 @@ export class NavbarComponent implements OnInit {
     } else {
       this.setLanguage('sv');
     }
+    this.darkMode$.subscribe(dm => {
+      let navbar = document.getElementById("navbar");
+      if (dm === true) {
+        navbar?.classList.remove("light-mode");
+        navbar?.classList.add("dark-mode");
+      } else {
+        navbar?.classList.add("light-mode");
+        navbar?.classList.remove("dark-mode");
+      }
+    })
   }
 
   onToggle(): void {
     this.darkModeService.toggle();
+    this.darkMode$.subscribe(dm => {
+      let navbar = document.getElementById("navbar");
+      if (dm === true) {
+        navbar?.classList.remove("light-mode");
+        navbar?.classList.add("dark-mode");
+      } else {
+        navbar?.classList.add("light-mode");
+        navbar?.classList.remove("dark-mode");
+      }
+    })
   }
 
-  isLoggedIn() : boolean {
+  isLoggedIn(): boolean {
     let user = this.authService.currentUser;
-    if(user !== null) {
-      if(Object.keys(user).length !== 0) {
+    if (user !== null) {
+      if (Object.keys(user).length !== 0) {
         return true;
-    }
+      }
     } return false;
   }
 
