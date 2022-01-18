@@ -78,19 +78,19 @@
         <!-- loops and create list of departures "dynamic from component And pagintaes to 4 items/site" -->
         <div class="travelerSection">
           <div class="dropdowns">
-            <mat-form-field *ngFor="let ticket of tickets let i = index" appearance="fill">
+            <mat-form-field *ngFor="let ticket of tickets let i = index" appearance="fill" id="form-field">
               <mat-select value="{{ ticket.ageGroup }}" (selectionChange)="changeTicket(i, $event.value)">
                 <mat-option *ngFor="let ageGroup of ageGroups" [value]="ageGroup.value">{{ageGroup.viewValue | translate}} : {{ageGroup.price}} sek</mat-option>
               </mat-select>
               <mat-icon matSuffix (click)="deleteTicket(i)">delete</mat-icon>
             </mat-form-field>
           </div>
-          <button (click)="addTicket()">{{'Add Ticket' | translate}}</button>
+          <button id="ticket-button" (click)="addTicket()">{{'Add Ticket' | translate}}</button>
         </div>
 
         <div class="ticketBox" *ngFor="let departure of trainTimeTables let i for index">
           <mat-accordion>
-            <mat-expansion-panel class="light-mode" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
               <mat-expansion-panel-header>
                 <mat-panel-title>
                  <h2>{{ departure.DepartureTime}} -

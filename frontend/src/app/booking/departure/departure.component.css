@@ -89,13 +89,32 @@ h1 {
   font-weight: 400;
 }
 
+.mat-expansion-panel-header-title.dark-mode {
+  background-color: #384042;
+  color: white;
+}
+
+.mat-expansion-panel-header-title.light-mode {
+  background-color: #f3f3f3;
+  color: black;
+}
+
+#ticket-button.dark-mode {
+  background-color: #384042;
+  color: white;
+}
+
+button {
+  color: inherit;
+}
+
 .mat-expansion-panel.dark-mode {
-  background-color: #2d3436;
+  background-color: #384042;
   color: white;
 }
 
 .mat-expansion-panel.light-mode {
-  background-color: #dfdfdf;
+  background-color: #e7e6e6;
   color: black;
 }
 
@@ -274,11 +293,13 @@ mat-expansion-panel-header {
 }
 
 .price-box-first.light-mode{
-  color: white;
+  background-color: rgb(219, 219, 219); ;
+  color: black;
 }
 
 .price-box-first.dark-mode{
-  color: rgb(90, 90, 90);
+  background-color: rgb(90, 90, 90);
+  color: white;
 }
 
 .price-box-first input:checked ~ .box {

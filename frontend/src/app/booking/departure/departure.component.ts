@@ -44,43 +44,7 @@ export class DepartureComponent implements OnInit {
     let panels = document.getElementsByClassName("mat-expansion-panel");
     let priceBoxes = document.getElementsByClassName("price-box-first");
     let titles = document.getElementsByClassName("mat-expansion-panel-header-title");
-    this.darkMode$.subscribe(dm => {
-      // for(let i = 0; i < titles.length; i++) {
-      //   if(dm == true) {
-      //     titles[i].classList.remove("light-mode")
-      //     titles[i].classList.add("dark-mode")
-      //   } else{
-      //     titles[i].classList.remove("dark-mode")
-      //     titles[i].classList.add("light-mode")
-      //   }
-      // }
-      for (let i = 0; i < priceBoxes.length; i++)
-      {
-        if(dm === true) {
-          priceBoxes[i].classList.remove("light-mode")
-          priceBoxes[i].classList.add("dark-mode")
-        } else {
-          priceBoxes[i].classList.remove("dark-mode")
-          priceBoxes[i].classList.add("light-mode")
-        }
-      }
-      for (let i = 0; i < panels.length; i++) {
-        if (dm === true) {
-          panels[i].classList.remove("light-mode")
-          panels[i].classList.add("dark-mode")
-        } else {
-          panels[i].classList.remove("dark-mode")
-          panels[i].classList.add("light-mode")
-        }
-      }
-        if (dm === true) {
-          container?.classList.remove("light-mode");
-          container?.classList.add("dark-mode");
-        } else {
-          container?.classList.add("light-mode");
-          container?.classList.remove("dark-mode");
-        }
-    });
+    let button = document.getElementById("ticket-button");
     if (this.bookingService.getBooking() === undefined) {
       this.route.navigateByUrl('/');
     } else {
@@ -92,15 +56,39 @@ export class DepartureComponent implements OnInit {
           const d2 = new Date('1970-01-01 ' + train.DepartureTime);
           var difference = d1.getTime() - d2.getTime();
           train.Time = `${new Date(difference).getHours() - 1}:${new Date(difference).getMinutes()}h`
-          console.log(train.Time);
         }
         this.trainTimeTables = t;
+        this.darkMode$.subscribe(dm => {
+          if (dm === true) {
+            container?.classList.remove("light-mode");
+            container?.classList.add("dark-mode");
+            button?.classList.add("dark-mode");
+          } else {
+            container?.classList.add("light-mode");
+            container?.classList.remove("dark-mode");
+            button?.classList.remove("dark-mode");
+          }
+          for (let i = 0; i < t.length; i++) {
+            if (dm == true) {
+              titles[i].classList.remove("light-mode")
+              titles[i].classList.add("dark-mode")
+              priceBoxes[i].classList.remove("light-mode")
+              priceBoxes[i].classList.add("dark-mode")
+              panels[i].classList.add("dark-mode")
+            } else {
+              titles[i].classList.remove("dark-mode")
+              titles[i].classList.add("light-mode")
+              priceBoxes[i].classList.remove("dark-mode")
+              priceBoxes[i].classList.add("light-mode")
+              panels[i].classList.remove("dark-mode")
+            }
+          }
+        });
       });
       this.booking.Travelers = [];
     }
     this.myDate = this.booking.DepartureDate!;
     this.prepare();
-
   }
 
   //---------------------------------Tickets---------------------------------
