@@ -4,8 +4,6 @@ export const createTrainStation = (req, res) => {
 
   let trainStations = [];
 
-  console.log(trainStations);
-
   trainStations = req.body;
   const insert = db.prepare("INSERT INTO TrainStations (AdvertisedLocationName, LocationSignature, Coordinates) VALUES(?,?,?)");
   

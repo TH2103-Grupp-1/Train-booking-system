@@ -27,7 +27,6 @@ export class PaymentComponent implements OnInit {
     if(this.authService.currentUser !== null) {
       this.booking.UserId = this.authService.currentUser.Id;
     }
-    console.log(this.booking);
     // delete this.booking.Train?.Carriages;
     // delete this.booking.TicketReciever;
     // delete this.booking.Travelers;
