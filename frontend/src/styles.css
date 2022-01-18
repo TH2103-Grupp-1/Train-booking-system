@@ -26,6 +26,16 @@ body.light-mode {
   color: #2d3436;
 }
 
+.dark-mode {
+  background-color: #24292b;
+  color: #dfe6e9;
+}
+
+.light-mode {
+  background-color: #f3f3f3;
+  color: #2d3436;
+}
+
 .cdk-overlay-container {
   position: fixed;
   z-index: 9999 !important;

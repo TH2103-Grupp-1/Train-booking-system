@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { tick } from '@angular/core/testing';
 import { Router } from '@angular/router';
+import { DarkModeService } from 'angular-dark-mode';
+import { debounceTime, first, flatMap, map, Observable, switchMap, take, tap, timeout } from 'rxjs';
 // import { log } from 'console';
 import { Booking } from 'src/app/models/booking.model';
 import { TrainTimeTable } from 'src/app/models/timetable.model';
@@ -29,32 +32,65 @@ export class DepartureComponent implements OnInit {
   panelOpenState = false;
   page: number = 1;
   departurePrice?: number;
+  darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
 
-  constructor(private bookingService: BookingBuilderService, private timeTableService: TimetableService, private route: Router) {
+
+  constructor(private bookingService: BookingBuilderService, private timeTableService: TimetableService, private route: Router, private darkModeService: DarkModeService) {
     this.currentDate = new Date();
   }
 
   ngOnInit(): void {
+
     if (this.bookingService.getBooking() === undefined) {
       this.route.navigateByUrl('/');
     } else {
       this.booking = this.bookingService.getBooking();
-      this.timeTableService.getTimeTables().subscribe((t) => {
+      this.timeTableService.getTimeTables().pipe(map(t => {
         for (let train of t) {
           train.PriceTotal = Math.round(train.BasePrice * this.booking.Distance! + 3);
           const d1 = new Date('1970-01-01 ' + train.ArrivalTime);
           const d2 = new Date('1970-01-01 ' + train.DepartureTime);
           var difference = d1.getTime() - d2.getTime();
           train.Time = `${new Date(difference).getHours() - 1}:${new Date(difference).getMinutes()}h`
-          console.log(train.Time);
         }
         this.trainTimeTables = t;
-      });
+      })).subscribe();
+        this.darkMode$.subscribe(dm => {
+          setTimeout(() => {
+            let container = document.getElementById("container");
+            let panels = document.getElementsByClassName("mat-expansion-panel");
+            let priceBoxes = document.getElementsByClassName("price-box-first");
+            let titles = document.getElementsByClassName("mat-expansion-panel-header-title");
+            let button = document.getElementById("ticket-button");
+            if (dm === true) {
+              container?.classList.remove("light-mode");
+              container?.classList.add("dark-mode");
+              button?.classList.add("dark-mode");
+            } else {
+              container?.classList.add("light-mode");
+              container?.classList.remove("dark-mode");
+              button?.classList.remove("dark-mode");
+            }
+            for (let i = 0; i < this.trainTimeTables.length; i++) {
+              if (dm == true) {
+                titles[i].classList.add("dark-mode")
+                priceBoxes[i].classList.remove("light-mode")
+                priceBoxes[i].classList.add("dark-mode")
+                panels[i].classList.add("dark-mode")
+              } else {
+                titles[i].classList.remove("dark-mode")
+                priceBoxes[i].classList.remove("dark-mode")
+                priceBoxes[i].classList.add("light-mode")
+                panels[i].classList.remove("dark-mode")
+              }
+            }
+          });
+        });
+
       this.booking.Travelers = [];
     }
     this.myDate = this.booking.DepartureDate!;
     this.prepare();
-   
   }
 
   //---------------------------------Tickets---------------------------------
@@ -237,5 +273,5 @@ export class DepartureComponent implements OnInit {
   }
 }
 
-  
+
 
