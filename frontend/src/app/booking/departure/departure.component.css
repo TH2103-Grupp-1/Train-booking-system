@@ -1,12 +1,12 @@
+
 .page-orientation-bar-back {
   text-align: center;
   background-color: rgb(120, 190, 14);
   border: solid 1px white;
 }
-
-.page-orientation-bar-back a {
+.page-orientation-bar-back a{
   color: white;
-  font-size: 10px;
+  font-size: 13px;
 }
 
 .page-orientation-bar-current {
@@ -16,10 +16,25 @@
   padding-left: 0px;
   padding-right: 0px;
 }
-
-.page-orientation-bar-current a {
+.page-orientation-bar-current a{
   color: white;
-  font-size: 10px;
+  font-size: 13px;
+}
+
+.page-orientation-bar-next {
+  text-align: center;
+  background-color: rgb(235, 231, 231);
+  border: solid 1px white;
+}
+.page-orientation-bar-next a{
+  color: rgb(134, 134, 134)!important;
+  font-size: 13px;
+}
+
+h1{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .summary-btn{
@@ -29,16 +44,7 @@
   padding: 1rem 5rem;
 }
 
-.page-orientation-bar-next {
-  text-align: center;
-  background-color: rgb(235, 231, 231);
-  border: solid 1px white;
-}
 
-.page-orientation-bar-next a {
-  color: rgb(134, 134, 134);
-  font-size: 10px;
-}
 
 .datepicker{
   background-color: black;

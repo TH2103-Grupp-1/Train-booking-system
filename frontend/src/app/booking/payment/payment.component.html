@@ -137,7 +137,7 @@
     <div class="ticket-info">
       <div class="ticket-time">
         <h4>{{booking.FromLocation!.AdvertisedLocationName}} - {{booking.ToLocation!.AdvertisedLocationName}}</h4>
-        <p>{{booking.TimeTable!.DepartureTime}} - {{booking.TimeTable!.ArrivalTime!}} </p>
+        <p>{{booking.TimeTable!.DepartureTime  | date:'yy/MM/dd hh:mm'}} - {{booking.TimeTable!.ArrivalTime! | date:'yy/MM/dd hh:mm'}} </p>
       </div>
       <br>
       <div class="price">
