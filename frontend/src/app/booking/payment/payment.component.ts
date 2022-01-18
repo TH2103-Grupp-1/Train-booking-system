@@ -37,8 +37,8 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit(): void {
     this.paymentForm = new FormGroup({
-      firstName: new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
-      lastName: new FormControl(null, [Validators.required,  Validators.pattern('[a-zA-Z ]*')]),
+      firstName: new FormControl(null, [Validators.required, Validators.pattern(/[A-Za-z]/)]),
+      lastName: new FormControl(null, [Validators.required,  Validators.pattern(/[A-Za-z]/)]),
       phoneNumber: new FormControl(null, [Validators.required, Validators.pattern(/^(\+|[0-9])[1-9][0-9 \-\(\)\.]{7,32}$/)]),
       email: new FormControl(null, [Validators.required, Validators.email, Validators.pattern(/^\S+@\S+\.\S+$/), Validators.maxLength(30)]),
     });
