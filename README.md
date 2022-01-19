@@ -124,5 +124,5 @@ Open endpoints require no Authentication.
 Each endpoint manipulates or displays information related to the User whose
 Token is provided with the request:
 
-**Get user by ID** : `GET /api/users/:id` - Returns the user if found. Currently no requirement of JWT.
-**Update User** : `PATCH /api/users/:id` - Updates the specified user. Not implemented yet.
+* **Get user by ID** : `GET /api/users/:id` - Returns the user if found. Currently no requirement of JWT.
+* **Update User** : `PATCH /api/users/:id` - Updates the specified user. Not implemented yet.
