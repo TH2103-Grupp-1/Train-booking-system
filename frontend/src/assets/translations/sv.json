@@ -152,5 +152,8 @@
   "Travelers": "Resenärer",
   "Traveler": "Resenär",
   "Payment": "Betalning",
-  "Total price": "Totala priset"
+  "Trip": "Resa",
+  "Total price": "Totala priset",
+  "Seats": "Säten",
+  "Pick seat": "Välj plats"
 }
