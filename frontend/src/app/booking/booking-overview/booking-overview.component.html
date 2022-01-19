@@ -176,12 +176,12 @@
         </div>
         <div class="col col-auto thin">
           <h2 id="desktop-date">
-            <span><strong>{{booking.TimeTable?.DepartureTime | date:'yyyy/MM/dd hh:mm'}} - {{booking.TimeTable?.ArrivalTime | date:'hh:mm'}}</strong></span>
+            <span><strong>{{booking.TimeTable?.DepartureTime | date:'yyyy/MM/dd HH:mm'}} - {{booking.TimeTable?.ArrivalTime | date:'yyyy/MM/dd HH:mm'}}</strong></span>
           </h2>
         </div>
         <div class="col">
           <h2 class="pull-right">
-            <span class="border-right" id="desktop-price">{{booking.Price}}:-</span>
+            <span class="border-right" id="desktop-price">{{booking.Price}} SEK</span>
             <span id="desktop-trash-icon"> <a href="">
                 <i class="fa fa-trash"></i>
               </a>
@@ -298,7 +298,7 @@
         <h3 id="left">{{'Total' | translate}}</h3>
       </div>
       <div class="col">
-        <h3 id="right">{{booking.Price}}:-</h3>
+        <h3 id="right">{{booking.Price}} SEK</h3>
       </div>
     </div>
     <button type="button" (click)="submit()" class="btn btn-primary btn-lg btn-block" id="continue-btn-phone">
@@ -318,7 +318,7 @@
         </div>
         <div class="col">
           <div class="row align-items-center float-right">
-            <h1>{{booking.Price}}:-</h1>
+            <h1>{{booking.Price}} SEK</h1>
             <button type="button" (click)="submit()" class="btn btn-primary btn-lg" id="continue-btn-desktop">
               {{'Continue' | translate}}
               <span class="pull-right">
